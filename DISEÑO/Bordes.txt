@@ -1,0 +1,5 @@
+Se encuentra uno en la parte superior del mapa y otro en la parte inferior del mismo.
+Son los encargados de recibir a los objetos cuando tocan el borde y 
+ejecutar una respuesta.
+Cuando un enemigo toca el borde inferior reaparecerá en la parte superior del mapa
+(si son kamikazes).
