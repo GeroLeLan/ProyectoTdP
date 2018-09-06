@@ -1,4 +1,4 @@
 
-public interface Enemigo {
-
+public interface Enemigo extends Objeto{
+	
 }
