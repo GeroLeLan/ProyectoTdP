@@ -1,4 +1,4 @@
 
 public interface Objeto {
-
+   //comentario
 }
