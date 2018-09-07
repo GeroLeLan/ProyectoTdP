@@ -1,11 +1,11 @@
+package PaqueteObjetos;
 
-public interface Objeto {
-<<<<<<< HEAD
+public abstract class Objeto {
+
 	
 	/**
 	 *  si tenes esta clase directo en tu eclipse ya la re hicimos XD
 	 */
-=======
    //comentario
->>>>>>> f60da58675305a2bfa868f1d045c53c1cfc2daf3
+
 }
