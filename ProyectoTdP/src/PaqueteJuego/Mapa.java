@@ -1,7 +1,7 @@
 package PaqueteJuego;
 
 import PaqueteEnemigos.*;
-import PaqueteObjetosNacho.*;
+import PaqueteObjetosImplementados.*;
 import TDAListaDE.Position;
 
 public class Mapa {

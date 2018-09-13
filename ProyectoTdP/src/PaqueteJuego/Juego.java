@@ -1,8 +1,8 @@
 package PaqueteJuego;
 
 import TDAListaDE.*;
-import PaqueteObjetosNacho.*;
 import PaqueteEnemigos.*;
+import PaqueteObjetosImplementados.*;
 
 public class Juego {
 	private PositionList<Enemigo> listaEnemigos;

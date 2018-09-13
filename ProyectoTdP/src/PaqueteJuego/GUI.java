@@ -9,9 +9,9 @@ import javax.swing.JPanel;
 
 import java.awt.Color;
 
-import PaqueteObjetosNacho.*;
 import TDAListaDE.*;
 import PaqueteEnemigos.*;
+import PaqueteObjetosImplementados.*;
 
 public class GUI {
 	

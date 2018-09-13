@@ -1,4 +1,4 @@
-package PaqueteObjetosNacho;
+package PaqueteObjetosImplementados;
 
 import javax.swing.JLabel;
 import java.awt.Point;

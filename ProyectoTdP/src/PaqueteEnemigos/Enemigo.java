@@ -1,6 +1,6 @@
 package PaqueteEnemigos;
 
-import PaqueteObjetosNacho.Objeto;
+import PaqueteObjetosImplementados.Objeto;
 import TDAListaDE.Position;
 
 public class Enemigo extends Objeto {
