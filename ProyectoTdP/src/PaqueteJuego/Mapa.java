@@ -60,7 +60,10 @@ public class Mapa {
 		matrizPosiciones = new Terna[4][5];
 		for (int i = 0; i < 4; i++) {
 			for (int j = 0; j < 5; j++)
-				matrizPosiciones[i][j] = new Terna((j + 1) * 150, (i + 1) * 70);
+				if (i % 2 == 0)
+					matrizPosiciones[i][j] = new Terna(((j + 1) * 150) - 20, (i + 1) * 70);
+				else
+					matrizPosiciones[i][j] = new Terna(((j + 1) * 150) + 20, (i + 1) * 70);
 		}
 		crearEnemigos();
 		crearBarricadas();
@@ -197,7 +200,7 @@ public class Mapa {
 	}
 	
 	private void crearJugador() {
-		Jugador jugador = new Jugador(50, posXJugador, posYJugador);
+		Jugador jugador = new Jugador(7, posXJugador, posYJugador);
 		juego.setJugador(jugador);
 	}
 }

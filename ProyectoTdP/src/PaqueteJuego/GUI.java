@@ -54,14 +54,16 @@ public class GUI {
 		
 		frame.addKeyListener(new KeyAdapter() {
 			@Override
-			public void keyReleased(KeyEvent arg0) {
+			public void keyPressed(KeyEvent arg0) {
 				int direction = arg0.getKeyCode();
 				switch (direction) {
 					case KeyEvent.VK_LEFT : //Izquierda
-						jugador.getPos().x -= jugador.getVel();
+						if (jugador.getPos().x - 20 > 0)
+							jugador.getPos().x -= jugador.getVel();
 						break;
 					case KeyEvent.VK_RIGHT : //Derecha
-						jugador.getPos().x += jugador.getVel();
+						if (jugador.getPos().x + 250 + 15 < 1000)
+							jugador.getPos().x += jugador.getVel();
 						break;
 				}
 				
