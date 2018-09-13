@@ -52,11 +52,10 @@ public class GUI {
 		
 		nivel();
 		
-		panel.addKeyListener(new KeyAdapter() {
+		frame.addKeyListener(new KeyAdapter() {
 			@Override
 			public void keyReleased(KeyEvent arg0) {
 				int direction = arg0.getKeyCode();
-				
 				switch (direction) {
 					case KeyEvent.VK_LEFT : //Izquierda
 						jugador.getPos().x -= jugador.getVel();
@@ -87,7 +86,7 @@ public class GUI {
 		
 		panel.add(juego.getObstaculo(0).getGrafico());
 		panel.add(juego.getObstaculo(1).getGrafico());
-		
+
 		jugador = juego.getJugador();
 		panel.add(jugador.getGrafico());
 	}
