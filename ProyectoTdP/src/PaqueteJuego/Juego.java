@@ -14,7 +14,7 @@ public class Juego {
 	public Juego() {
 		listaEnemigos = new ListaDoblementeEnlazada<Enemigo>();
 		obstaculos = new Obstaculo[2];
-		mapa = new Mapa(2, this);
+		mapa = new Mapa(1, this);
 	}
 	
 	public Position<Enemigo> agregarEnemigo(Enemigo e){
