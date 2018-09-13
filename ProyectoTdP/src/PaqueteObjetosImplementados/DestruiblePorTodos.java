@@ -10,9 +10,7 @@ public class DestruiblePorTodos extends Obstaculo {
 	}
 	
 	protected void setGrafico() {
-		grafico.setIcon(new ImageIcon("/ImageIcons/DESTRUIBLE.png"));
+		grafico.setIcon(new ImageIcon("bin/ImageIcons/DESTRUIBLE.png"));
 	}
-	
-	//C:\\Users\\nacho\\Documents\\Nacho - Universidad\\Nacho - Universidad 2018\\Segundo Cuatrimestre\\Tecnología de Programación\\Proyecto\\ProyectoTdP - Chiaravalle, Schimpfle y Le Lan Toussaint\\ProyectoTdP\\src\\ImageIcons\\DESTRUIBLE.png"));
 	
 }
