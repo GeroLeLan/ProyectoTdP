@@ -14,7 +14,8 @@ public class Jugador extends Objeto {
 	}
 	
 	protected void setGrafico() {
-		grafico.setIcon(new ImageIcon("C:\\Users\\nacho\\Documents\\Nacho - Universidad\\Nacho - Universidad 2018\\Segundo Cuatrimestre\\Tecnología de Programación\\Proyecto\\ProyectoTdP - Chiaravalle, Schimpfle y Le Lan Toussaint\\ProyectoTdP\\src\\ImageIcons\\JUGADOR.png"));
+		grafico.setIcon(new ImageIcon(this.getClass().getResource("src/ImageIcons/JUGADOR.png")));
+		System.out.print("H");
 		grafico.setSize(250, 75);
 		grafico.setLocation(pos);
 	}
