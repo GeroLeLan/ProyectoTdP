@@ -65,12 +65,17 @@ public class GUI {
 						if (jugador.getPos().x + 250 + 15 < 1000)
 							jugador.getPos().x += jugador.getVel();
 						break;
+					case KeyEvent.VK_SPACE : //Derecha
+						panel.add(new DestruiblePorTodos(500, 500).getGrafico());
+						break;
+						
 				}
 				
 				jugador.getGrafico().setLocation(jugador.getPos());
 			}
 		});
 	}
+	
 	
 	
 	protected void nivel() {
