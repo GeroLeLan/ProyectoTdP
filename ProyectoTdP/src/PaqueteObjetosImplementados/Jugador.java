@@ -2,8 +2,10 @@ package PaqueteObjetosImplementados;
 
 import javax.swing.ImageIcon;
 
+import PaqueteObjetos.Personaje;
 
-public class Jugador extends Objeto {
+
+public class Jugador extends Personaje {
 	protected int velocidad;
 
 	
@@ -21,6 +23,24 @@ public class Jugador extends Objeto {
 	
 	public int getVel() {
 		return velocidad;
+	}
+
+	@Override
+	protected void movimiento() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void morir() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void colisionar() {
+		// TODO Auto-generated method stub
+		
 	}
 	
 }

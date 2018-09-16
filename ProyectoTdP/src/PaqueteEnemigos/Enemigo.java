@@ -22,4 +22,16 @@ public class Enemigo extends Objeto {
 		grafico.setSize(75, 75);
 		grafico.setLocation(pos);
 	}
+
+	@Override
+	public void morir() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void colisionar() {
+		// TODO Auto-generated method stub
+		
+	}
 }

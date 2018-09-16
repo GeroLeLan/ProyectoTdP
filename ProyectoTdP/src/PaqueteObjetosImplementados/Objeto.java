@@ -26,4 +26,7 @@ public abstract class Objeto {
 		
 		return grafico;
 	}
+	public abstract void morir();
+	public abstract void colisionar();
+	
 }

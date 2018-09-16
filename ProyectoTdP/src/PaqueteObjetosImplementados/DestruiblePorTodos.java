@@ -12,5 +12,17 @@ public class DestruiblePorTodos extends Obstaculo {
 	protected void setGrafico() {
 		grafico.setIcon(new ImageIcon("bin/ImageIcons/DESTRUIBLE.png"));
 	}
+
+	@Override
+	public void morir() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void colisionar() {
+		// TODO Auto-generated method stub
+		
+	}
 	
 }
