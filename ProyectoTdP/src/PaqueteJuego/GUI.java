@@ -73,6 +73,7 @@ public class GUI {
 	}
 	
 	
+	
 	protected void nivel() {
 		JPanel trinchera = new JPanel();
 		trinchera.setBackground(new Color(200, 100, 0));
