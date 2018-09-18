@@ -13,4 +13,16 @@ public class BarricadaEnemigos extends Obstaculo {
 		grafico.setIcon(new ImageIcon("./bin/ImageIcons/BARRICADA.png"));
 	}
 
+	@Override
+	public void morir() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void colisionar() {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

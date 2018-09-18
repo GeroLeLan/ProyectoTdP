@@ -2,7 +2,11 @@ package PaqueteObjetos;
 
 public class BarricadaE extends Obstaculos{
 
-	@Override
+	protected BarricadaE(int x, int y) {
+		super(x, y);
+		// TODO Auto-generated constructor stub
+	}
+
 	public void morir() {
 		// TODO Auto-generated method stub
 		
@@ -10,6 +14,12 @@ public class BarricadaE extends Obstaculos{
 
 	@Override
 	public void colisionar() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	protected void setGrafico() {
 		// TODO Auto-generated method stub
 		
 	}

@@ -1,11 +1,18 @@
 package PaqueteObjetos;
 
 public class DisparoE extends Disparo{
-	public DisparoE(/*creo que deberia recibir el daño y velocidad o algo asi*/) {
-		
+	
+	protected DisparoE(int x, int y) {
+		super(x, y);
+		// TODO Auto-generated constructor stub
 	}
 	public void morir() {
 		// 
+		
+	}
+	@Override
+	protected void setGrafico() {
+		// TODO Auto-generated method stub
 		
 	}
 
