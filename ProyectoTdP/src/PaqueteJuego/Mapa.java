@@ -7,8 +7,8 @@ import TDAListaDE.Position;
 public class Mapa {
 	private int dificultad;
 	private final int maxEnemigos = 20;
-	private final int posXObstaculo1 = 150, posXObstaculo2 = 600, posYObstaculo = 450;
-	protected final int posXJugador = 425, posYJugador = 675;
+	private final int posXObstaculo1 = 150, posXObstaculo2 = 600, posYObstaculo = 440;
+	protected final int posXJugador = 425, posYJugador = 670;
 	private Terna[][] matrizPosiciones;
 	private Juego juego;
 	
@@ -61,9 +61,9 @@ public class Mapa {
 		for (int i = 0; i < 4; i++) {
 			for (int j = 0; j < 5; j++)
 				if (i % 2 == 0)
-					matrizPosiciones[i][j] = new Terna(((j + 1) * 150) - 20, (i + 1) * 60);
+					matrizPosiciones[i][j] = new Terna(((j + 1) * 150) - 20, (i + 1) * 60 - 10);
 				else
-					matrizPosiciones[i][j] = new Terna(((j + 1) * 150) + 20, (i + 1) * 60);
+					matrizPosiciones[i][j] = new Terna(((j + 1) * 150) + 20, (i + 1) * 60 - 10);
 		}
 		crearEnemigos();
 		crearBarricadas();
