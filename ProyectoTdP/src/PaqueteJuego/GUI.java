@@ -4,6 +4,7 @@ import java.awt.EventQueue;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
@@ -56,22 +57,30 @@ public class GUI {
 			@Override
 			public void keyPressed(KeyEvent arg0) {
 				int direction = arg0.getKeyCode();
+				
+				jugador.getGrafico().setSize(75, 90);
+				
 				switch (direction) {
 					case KeyEvent.VK_LEFT : //Izquierda
-						if (jugador.getPos().x - 20 > 0)
+						jugador.getGrafico().setIcon(new ImageIcon("./bin/ImageIcons/Jugador - Izquierda.png"));
+						if (jugador.getPos().x - 5 > 0)
 							jugador.getPos().x -= jugador.getVel();
 						break;
 					case KeyEvent.VK_RIGHT : //Derecha
-						if (jugador.getPos().x + 250 + 15 < 1000)
+						jugador.getGrafico().setIcon(new ImageIcon("./bin/ImageIcons/Jugador - Derecha.png"));
+						if (jugador.getPos().x + 100 < 1000)
 							jugador.getPos().x += jugador.getVel();
 						break;
-					case KeyEvent.VK_SPACE : //Derecha
-						panel.add(new DestruiblePorTodos(500, 500).getGrafico());
-						break;
-						
 				}
 				
 				jugador.getGrafico().setLocation(jugador.getPos());
+			}
+			
+			public void keyReleased(KeyEvent arg0) {
+				int direction = arg0.getKeyCode();
+				
+				if (direction == KeyEvent.VK_LEFT || direction == KeyEvent.VK_RIGHT)
+					jugador.getGrafico().setIcon(new ImageIcon("bin/ImageIcons/Jugador - Estándar.png"));
 			}
 		});
 	}

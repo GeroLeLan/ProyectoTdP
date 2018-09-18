@@ -8,7 +8,7 @@ public class Mapa {
 	private int dificultad;
 	private final int maxEnemigos = 20;
 	private final int posXObstaculo1 = 150, posXObstaculo2 = 600, posYObstaculo = 550;
-	protected final int posXJugador = 350, posYJugador = 850;
+	protected final int posXJugador = 425, posYJugador = 850;
 	private Terna[][] matrizPosiciones;
 	private Juego juego;
 	
