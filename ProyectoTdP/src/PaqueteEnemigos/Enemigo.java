@@ -22,7 +22,8 @@ public class Enemigo extends Objeto {
 		grafico.setSize(75,90);
 		grafico.setLocation(pos);
 	}
-
+	
+	
 	@Override
 	public void morir() {
 		// TODO Auto-generated method stub

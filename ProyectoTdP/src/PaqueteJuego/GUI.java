@@ -41,7 +41,9 @@ public class GUI {
 		frame = new JFrame();
 		frame.setBackground(new Color(0, 0, 0));
 
+
 		frame.setBounds(500, 10, 1000, 825);
+
 
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
