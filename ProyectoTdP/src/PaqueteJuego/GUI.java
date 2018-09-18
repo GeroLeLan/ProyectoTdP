@@ -40,14 +40,18 @@ public class GUI {
 	public GUI() {
 		frame = new JFrame();
 		frame.setBackground(new Color(0, 0, 0));
+<<<<<<< HEAD
 		frame.setBounds(500, 10, 1000, 800);
+=======
+		frame.setBounds(500, 10, 1000, 825);
+>>>>>>> 8cf3d61e12fb891ffe37005916a780afc7dd31ba
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
 	       
 		panel = new JPanel();
 		panel.setBackground(new Color(0, 210, 0));
-		panel.setBounds(0, 0, 1000, 1000);
+		panel.setBounds(0, 0, 1000, 825);
 		frame.getContentPane().add(panel);
 		panel.setLayout(null);
 		
@@ -90,7 +94,7 @@ public class GUI {
 	protected void nivel() {
 		JPanel trinchera = new JPanel();
 		trinchera.setBackground(new Color(200, 100, 0));
-		trinchera.setBounds(0, 775, 1000, 50);
+		trinchera.setBounds(0, 600, 1000, 50);
 		panel.add(trinchera);
 		trinchera.setLayout(null);
 		
