@@ -2,7 +2,7 @@ package PaqueteObjetos;
 
 import PaqueteObjetosImplementados.Objeto;
 
-public abstract class Animado extends Objeto{
+public abstract class Animado extends Objeto {
 	protected Animado(int x, int y) {
 		super(x, y);
 		// TODO Auto-generated constructor stub
