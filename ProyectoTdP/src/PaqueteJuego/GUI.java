@@ -40,11 +40,9 @@ public class GUI {
 	public GUI() {
 		frame = new JFrame();
 		frame.setBackground(new Color(0, 0, 0));
-<<<<<<< HEAD
-		frame.setBounds(500, 10, 1000, 800);
-=======
+
 		frame.setBounds(500, 10, 1000, 825);
->>>>>>> 8cf3d61e12fb891ffe37005916a780afc7dd31ba
+
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
