@@ -16,9 +16,8 @@ public class Jugador extends Personaje {
 	}
 	
 	protected void setGrafico() {
-		grafico.setIcon(new ImageIcon(this.getClass().getResource("src/ImageIcons/JUGADOR.png")));
-		System.out.print("H");
-		grafico.setSize(250, 75);
+		grafico.setIcon(new ImageIcon("./bin/ImageIcons/Jugador - Estándar.png"));
+		grafico.setSize(75, 90);
 		grafico.setLocation(pos);
 	}
 	

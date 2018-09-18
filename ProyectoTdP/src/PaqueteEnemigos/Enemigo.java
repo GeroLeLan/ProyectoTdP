@@ -19,7 +19,7 @@ public class Enemigo extends Objeto {
 	
 	protected void setGrafico() {
 		grafico = intel.getIcono();
-		grafico.setSize(75, 75);
+		grafico.setSize(75,90);
 		grafico.setLocation(pos);
 	}
 

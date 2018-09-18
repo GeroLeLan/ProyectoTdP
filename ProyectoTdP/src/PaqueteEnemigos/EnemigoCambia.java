@@ -11,7 +11,7 @@ public class EnemigoCambia extends Enemigo {
 	
 	//REDEFINIDO:
 	protected void setGrafico() {
-		grafico.setIcon(new ImageIcon("C:\\Users\\nacho\\Documents\\Nacho - Universidad\\Nacho - Universidad 2018\\Segundo Cuatrimestre\\Tecnología de Programación\\Proyecto\\ProyectoTdP - Chiaravalle, Schimpfle y Le Lan Toussaint\\ProyectoTdP\\src\\ImageIcons\\ITAP.png"));
+		grafico.setIcon(new ImageIcon("./bin/ImageIcons/ITAP - Armado.png"));
 		grafico.setSize(75, 75);
 		grafico.setLocation(pos);
 	}

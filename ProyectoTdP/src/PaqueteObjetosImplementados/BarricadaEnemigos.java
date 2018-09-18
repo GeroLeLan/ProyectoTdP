@@ -10,7 +10,7 @@ public class BarricadaEnemigos extends Obstaculo {
 	}
 	
 	protected void setGrafico() {
-		grafico.setIcon(new ImageIcon("C:\\Yo\\Nueva carpeta\\ProyectoTdP\\src\\ImageIcons\\DESTRUIBLE.png"));
+		grafico.setIcon(new ImageIcon("./bin/ImageIcons/BARRICADA.png"));
 	}
 
 	@Override
