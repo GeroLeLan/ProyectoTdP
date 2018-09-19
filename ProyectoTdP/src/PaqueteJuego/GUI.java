@@ -73,7 +73,7 @@ public class GUI {
 		instruccion.setForeground(new Color(225,0,0));
 		instruccion.setFont(new Font("Sitka Text", Font.BOLD, 30));
 		instruccion.setBackground(new Color(225,0,0));
-		instruccion.setBounds((int) (frame.getWidth() * 0.23), (int) (frame.getHeight() * 0.48), 700, 23);
+		instruccion.setBounds((int) (frame.getWidth() * 0.23), (int) (frame.getHeight() * 0.48), (int) (frame.getWidth() * 0.6), 23);
 		
 		nivel(2);
 		
