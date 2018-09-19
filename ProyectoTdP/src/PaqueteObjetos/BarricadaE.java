@@ -7,9 +7,8 @@ public class BarricadaE extends Obstaculos{
 		// TODO Auto-generated constructor stub
 	}
 
-	public void morir() {
-		// TODO Auto-generated method stub
-		
+	public int morir() {
+		return 0;
 	}
 
 	@Override

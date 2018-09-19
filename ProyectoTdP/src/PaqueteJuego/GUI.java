@@ -24,9 +24,10 @@ public class GUI {
 	private Juego juego;
 	private PositionList<Enemigo> listaEnemigos;
 	private Jugador jugador;
+	private int puntaje;
 	
 	private KeyAdapter comienzoConEspacio, botonera;
-	private JLabel instruccion, lvl;
+	private JLabel instruccion, lvl, puntuacion;
 	
 	
 	public static void main(String[] args) {
@@ -67,7 +68,13 @@ public class GUI {
 		lvl.setForeground(new Color(255,255,255));
 		lvl.setFont(new Font("Sitka Text", Font.BOLD, 18));
 		lvl.setBackground(new Color(255,255,255));
-		lvl.setBounds((int) (frame.getWidth() * 0.78), (int) (frame.getHeight() * 0.02), 100, 23);
+		lvl.setBounds((int) (frame.getWidth() * 0.73), (int) (frame.getHeight() * 0.02), 100, 23);
+		
+		puntuacion = new JLabel();
+		puntuacion.setForeground(new Color(255,255,255));
+		puntuacion.setFont(new Font("Sitka Text", Font.BOLD, 18));
+		puntuacion.setBackground(new Color(255,255,255));
+		puntuacion.setBounds((int) (frame.getWidth() * 0.78) + 20, (int) (frame.getHeight() * 0.02), (int) (frame.getWidth() * 0.1), 23);
 		
 		instruccion = new JLabel();
 		instruccion.setForeground(new Color(225,0,0));
@@ -75,7 +82,9 @@ public class GUI {
 		instruccion.setBackground(new Color(225,0,0));
 		instruccion.setBounds((int) (frame.getWidth() * 0.23), (int) (frame.getHeight() * 0.48), (int) (frame.getWidth() * 0.6), 23);
 		
-		nivel(2);
+		puntaje = 0;
+		
+		nivel(1);
 		
 	}
 	
@@ -91,6 +100,9 @@ public class GUI {
 		
 		lvl.setText("Nivel: " + dificultad);
 		panel.add(lvl);
+		
+		puntuacion.setText("Puntaje: " + puntaje);
+		panel.add(puntuacion);
 		
 		juego = new Juego(dificultad);
 		
@@ -164,6 +176,20 @@ public class GUI {
 					
 					if (direction == KeyEvent.VK_LEFT || direction == KeyEvent.VK_RIGHT || direction == KeyEvent.VK_A || direction == KeyEvent.VK_D)
 						jugador.getGrafico().setIcon(new ImageIcon("bin/ImageIcons/Jugador - Estándar.png"));
+					
+					if (direction == KeyEvent.VK_K && !listaEnemigos.isEmpty()) {
+						try {
+							puntaje += listaEnemigos.first().element().morir();
+							panel.add(listaEnemigos.first().element().getGrafico());
+							listaEnemigos.remove(listaEnemigos.first());
+							puntuacion.setText("Puntaje: " + puntaje);
+						}
+						catch (EmptyListException | InvalidPositionException exc) {
+							System.out.println(exc.getMessage() + "\n");
+							exc.printStackTrace();
+						}
+					}
+					
 						
 				}
 			};

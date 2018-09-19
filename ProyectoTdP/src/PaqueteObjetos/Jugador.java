@@ -13,10 +13,8 @@ public class Jugador extends Personaje{
 		
 	}
 
-	@Override
-	public void morir() {
-		// TODO Auto-generated method stub
-		
+	public int morir() {
+		return 0;
 	}
 
 	@Override

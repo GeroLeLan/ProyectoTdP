@@ -1,5 +1,7 @@
 package PaqueteEnemigos;
 
+import javax.swing.ImageIcon;
+
 import PaqueteObjetosImplementados.Objeto;
 import TDAListaDE.Position;
 
@@ -26,10 +28,9 @@ public class Enemigo extends Objeto {
 	}
 	
 	
-	@Override
-	public void morir() {
-		// TODO Auto-generated method stub
-		
+	public int morir() {
+		grafico.setIcon(new ImageIcon("./bin/ImageIcons/Muerto.png"));
+		return intel.getPuntosKill();
 	}
 
 	@Override

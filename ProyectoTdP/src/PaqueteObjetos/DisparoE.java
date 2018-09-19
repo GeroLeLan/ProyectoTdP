@@ -6,10 +6,11 @@ public class DisparoE extends Disparo{
 		super(x, y);
 		// TODO Auto-generated constructor stub
 	}
-	public void morir() {
-		// 
-		
+	
+	public int morir() {
+		return 0;
 	}
+	
 	@Override
 	protected void setGrafico() {
 		// TODO Auto-generated method stub

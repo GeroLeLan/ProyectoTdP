@@ -28,7 +28,7 @@ public abstract class Objeto {
 	}
 	
 	
-	public abstract void morir();
+	public abstract int morir();
 	public abstract void colisionar();
 	
 }

@@ -8,10 +8,8 @@ public class MejoraDaño extends Drop {
 		// TODO Auto-generated constructor stub
 	}
 
-	@Override
-	public void morir() {
-		// TODO Auto-generated method stub
-		
+	public int morir() {
+		return 0;
 	}
 
 	@Override
