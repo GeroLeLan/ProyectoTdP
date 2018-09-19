@@ -7,8 +7,8 @@ import TDAListaDE.Position;
 public class Mapa {
 	private int dificultad;
 	private final int maxEnemigos = 20;
-	private final int posXObstaculo1 = 150, posXObstaculo2 = 600, posYObstaculo = 440;
-	protected final int posXJugador = 425, posYJugador = 670;
+	private final int posXObstaculo1 = 150, posXObstaculo2 = 425, posXObstaculo3 = 700, posYObstaculo = 440;
+	protected final int posXJugador = 450, posYJugador = 670;
 	private Terna[][] matrizPosiciones;
 	private Juego juego;
 	
@@ -57,13 +57,17 @@ public class Mapa {
 	public Mapa (int dif, Juego ju) {
 		dificultad = dif;
 		juego = ju;
+		int x, y;
 		matrizPosiciones = new Terna[4][5];
 		for (int i = 0; i < 4; i++) {
-			for (int j = 0; j < 5; j++)
+			y = (i + 1) * 60 - 10;
+			for (int j = 0; j < 5; j++) {
+				x = (j + 1) * 150;
 				if (i % 2 == 0)
-					matrizPosiciones[i][j] = new Terna(((j + 1) * 150) - 20, (i + 1) * 60 - 10);
+					matrizPosiciones[i][j] = new Terna(x - 20, y);
 				else
-					matrizPosiciones[i][j] = new Terna(((j + 1) * 150) + 20, (i + 1) * 60 - 10);
+					matrizPosiciones[i][j] = new Terna(x + 20, y);
+			}
 		}
 		crearEnemigos();
 		crearBarricadas();
@@ -185,17 +189,21 @@ public class Mapa {
 	private void crearBarricadas() {
 		if (dificultad < 2) {
 			DestruiblePorTodos dest1 = new DestruiblePorTodos(posXObstaculo1, posYObstaculo);
-			DestruiblePorTodos dest2 = new DestruiblePorTodos(posXObstaculo2, posYObstaculo);
+			BarricadaEnemigos barr2 = new BarricadaEnemigos(posXObstaculo2, posYObstaculo);
+			DestruiblePorTodos dest3 = new DestruiblePorTodos(posXObstaculo3, posYObstaculo);
 			
 			juego.agregarObstaculo(0, dest1);
-			juego.agregarObstaculo(1, dest2);
+			juego.agregarObstaculo(1, barr2);
+			juego.agregarObstaculo(2, dest3);
 		}
 		else {
 			BarricadaEnemigos barr1 = new BarricadaEnemigos(posXObstaculo1, posYObstaculo);
 			BarricadaEnemigos barr2 = new BarricadaEnemigos(posXObstaculo2, posYObstaculo);
+			BarricadaEnemigos barr3 = new BarricadaEnemigos(posXObstaculo3, posYObstaculo);
 			
 			juego.agregarObstaculo(0, barr1);
 			juego.agregarObstaculo(1, barr2);
+			juego.agregarObstaculo(2, barr3);
 		}
 	}
 	
