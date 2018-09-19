@@ -16,7 +16,8 @@ import PaqueteEnemigos.*;
 import PaqueteObjetosImplementados.*;
 
 public class GUI {
-	
+
+	private static final int Ymax = java.awt.Toolkit.getDefaultToolkit().getScreenSize().height;;
 	private JFrame frame;
 	private JPanel panel;
 	private Juego juego;
@@ -28,6 +29,7 @@ public class GUI {
 	
 	
 	public static void main(String[] args) {
+		
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -45,13 +47,18 @@ public class GUI {
 	public GUI() throws InterruptedException {
 		frame = new JFrame();
 		frame.setBackground(new Color(0, 0, 0));
-		frame.setBounds(500, 10, 1000, 825);
+		
+
+
+		frame.setBounds(500, 10, (int) (java.awt.Toolkit.getDefaultToolkit().getScreenSize().width*0.6), (int) (java.awt.Toolkit.getDefaultToolkit().getScreenSize().height*0.9));
+
+
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
 		panel = new JPanel();
 		panel.setBackground(new Color(0, 210, 0));
-		panel.setBounds(0, 0, 1000, 800);
+		panel.setBounds(0, 0, frame.getWidth(), frame.getHeight());
 		frame.getContentPane().add(panel);
 		panel.setLayout(null);
 		
@@ -59,13 +66,13 @@ public class GUI {
 		lvl.setForeground(new Color(255,255,255));
 		lvl.setFont(new Font("Sitka Text", Font.BOLD, 18));
 		lvl.setBackground(new Color(255,255,255));
-		lvl.setBounds(850, 8, 100, 23);
+		lvl.setBounds((int) (frame.getWidth() * 0.78), (int) (frame.getHeight() * 0.02), 100, 23);
 		
 		instruccion = new JLabel();
 		instruccion.setForeground(new Color(225,0,0));
 		instruccion.setFont(new Font("Sitka Text", Font.BOLD, 30));
 		instruccion.setBackground(new Color(225,0,0));
-		instruccion.setBounds(200, 350, 700, 23);
+		instruccion.setBounds((int) (frame.getWidth() * 0.23), (int) (frame.getHeight() * 0.48), 700, 23);
 		
 		nivel(1);
 		
@@ -75,8 +82,9 @@ public class GUI {
 	
 	protected void nivel(int dificultad) {
 		JPanel trinchera = new JPanel();
+		
 		trinchera.setBackground(new Color(200, 100, 0));
-		trinchera.setBounds(0, 600, 1000, 50);
+		trinchera.setBounds(0, (int) (Ymax*0.67), frame.getWidth(), 50);
 		panel.add(trinchera);
 		trinchera.setLayout(null);
 		

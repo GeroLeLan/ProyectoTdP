@@ -5,10 +5,13 @@ import PaqueteObjetosImplementados.*;
 import TDAListaDE.Position;
 
 public class Mapa {
+	private final int Xmax =java.awt.Toolkit.getDefaultToolkit().getScreenSize().width;
+	private final int Ymax =java.awt.Toolkit.getDefaultToolkit().getScreenSize().height;
 	private int dificultad;
 	private final int maxEnemigos = 20;
-	private final int posXObstaculo1 = 150, posXObstaculo2 = 425, posXObstaculo3 = 700, posYObstaculo = 440;
-	protected final int posXJugador = 450, posYJugador = 670;
+	//private final int posXObstaculo1 = 150, posXObstaculo2 = 600, posYObstaculo = 450; (esto se ve vien solo en la de chiara )
+	private final int posXObstaculo1 =  (int) (Xmax*0.07),posXObstaculo2 = (int) (Xmax*0.24), posXObstaculo3 = (int) (Xmax*0.42), posYObstaculo = (int) (Ymax*0.5);
+	protected final int posXJugador = (int) (Xmax*0.25), posYJugador = (int) (Ymax*0.73);
 	private Terna[][] matrizPosiciones;
 	private Juego juego;
 	
@@ -60,13 +63,13 @@ public class Mapa {
 		int x, y;
 		matrizPosiciones = new Terna[4][5];
 		for (int i = 0; i < 4; i++) {
-			y = (i + 1) * 60 - 10;
+			y = (i + 1) * (int) (Ymax*0.07);
 			for (int j = 0; j < 5; j++) {
-				x = (j + 1) * 150;
+				x = ((j + 1) * (int) (Xmax*0.094));
 				if (i % 2 == 0)
-					matrizPosiciones[i][j] = new Terna(x - 20, y);
+					matrizPosiciones[i][j] = new Terna(x - 40, y);
 				else
-					matrizPosiciones[i][j] = new Terna(x + 20, y);
+					matrizPosiciones[i][j] = new Terna(x, y);
 			}
 		}
 		crearEnemigos();
@@ -141,7 +144,7 @@ public class Mapa {
 			matrizPosiciones[x][y].setOcupado(true);
 			Enemigo enem = new Enemigo(new ITieneArma(), matrizPosiciones[x][y].getPosX(), matrizPosiciones[x][y].getPosY());
 			Position<Enemigo> pos = juego.agregarEnemigo(enem);
-			enem.setPosEnJuego(pos);
+			enem.setPosEnListaJuego(pos);
 		}
 		
 		for (int i = 0; i < cantAP; i++) {
@@ -152,7 +155,7 @@ public class Mapa {
 			matrizPosiciones[x][y].setOcupado(true);
 			EnemigoCambia enem = new EnemigoCambia(matrizPosiciones[x][y].getPosX(), matrizPosiciones[x][y].getPosY());
 			Position<Enemigo> pos = juego.agregarEnemigo(enem);
-			enem.setPosEnJuego(pos);
+			enem.setPosEnListaJuego(pos);
 		} //Dado que a lo sumo habrá 14 enemigos armados, el proceso de búsqueda de una posición no tardará demasiado.
 		
 		
@@ -175,7 +178,7 @@ public class Mapa {
 					}
 					
 					Position<Enemigo> pos = juego.agregarEnemigo(enem);
-					enem.setPosEnJuego(pos);
+					enem.setPosEnListaJuego(pos);
 					
 					if (cont == cantKB + cantKM + cantKA)
 						quedan = false;
