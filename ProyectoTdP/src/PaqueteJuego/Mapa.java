@@ -5,10 +5,13 @@ import PaqueteObjetosImplementados.*;
 import TDAListaDE.Position;
 
 public class Mapa {
+	private final int Xmax =java.awt.Toolkit.getDefaultToolkit().getScreenSize().width;
+	private final int Ymax =java.awt.Toolkit.getDefaultToolkit().getScreenSize().height;
 	private int dificultad;
 	private final int maxEnemigos = 20;
-	private final int posXObstaculo1 = 150, posXObstaculo2 = 600, posYObstaculo = 450;
-	protected final int posXJugador = 425, posYJugador = 675;
+	//private final int posXObstaculo1 = 150, posXObstaculo2 = 600, posYObstaculo = 450; (esto se ve vien solo en la de chiara )
+	private final int posXObstaculo1 =  (int) (Xmax*0.07), posXObstaculo2 = (int) (Xmax*0.35), posYObstaculo = (int) (Ymax*0.5);
+	protected final int posXJugador = (int) (Xmax*0.5), posYJugador = (int) (Ymax*0.73);
 	private Terna[][] matrizPosiciones;
 	private Juego juego;
 	
@@ -61,9 +64,9 @@ public class Mapa {
 		for (int i = 0; i < 4; i++) {
 			for (int j = 0; j < 5; j++)
 				if (i % 2 == 0)
-					matrizPosiciones[i][j] = new Terna(((j + 1) * 150) - 20, (i + 1) * 60);
+					matrizPosiciones[i][j] = new Terna(((j + 1) * (int) (Xmax*0.1)) - 40, (i + 1) * (int) (Ymax*0.075));
 				else
-					matrizPosiciones[i][j] = new Terna(((j + 1) * 150) + 20, (i + 1) * 60);
+					matrizPosiciones[i][j] = new Terna(((j + 1) * (int) (Xmax*0.1)) + 0, (i + 1) * (int) (Ymax*0.075));
 		}
 		crearEnemigos();
 		crearBarricadas();

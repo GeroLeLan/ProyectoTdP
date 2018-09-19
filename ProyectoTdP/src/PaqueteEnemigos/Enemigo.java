@@ -6,6 +6,8 @@ import TDAListaDE.Position;
 public class Enemigo extends Objeto {
 	protected Inteligencia intel;
 	protected Position<Enemigo> posEnJuego; //Guarda su posición en la lista de enemigos del juego.
+	private final int Xmax =java.awt.Toolkit.getDefaultToolkit().getScreenSize().width;
+	private final int Ymax =java.awt.Toolkit.getDefaultToolkit().getScreenSize().height;
 	
 	public Enemigo (Inteligencia i, int x, int y) {
 		super(x, y);
@@ -19,7 +21,8 @@ public class Enemigo extends Objeto {
 	
 	protected void setGrafico() {
 		grafico = intel.getIcono();
-		grafico.setSize(75,90);
+		//grafico.setSize(75,90);
+		grafico.setSize((int)(Xmax*0.05),(int)(Ymax*0.05));
 		grafico.setLocation(pos);
 	}
 	

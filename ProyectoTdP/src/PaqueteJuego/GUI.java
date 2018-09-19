@@ -6,6 +6,7 @@ import java.awt.event.KeyEvent;
 
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import java.awt.Color;
@@ -15,7 +16,8 @@ import PaqueteEnemigos.*;
 import PaqueteObjetosImplementados.*;
 
 public class GUI {
-	
+
+	private static final int Ymax = java.awt.Toolkit.getDefaultToolkit().getScreenSize().height;;
 	private JFrame frame;
 	private JPanel panel;
 	private Juego juego;
@@ -23,6 +25,7 @@ public class GUI {
 	private Jugador jugador;
 	
 	public static void main(String[] args) {
+		
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -40,9 +43,10 @@ public class GUI {
 	public GUI() {
 		frame = new JFrame();
 		frame.setBackground(new Color(0, 0, 0));
+		
 
 
-		frame.setBounds(500, 10, 1000, 825);
+		frame.setBounds(500, 10, (int) (java.awt.Toolkit.getDefaultToolkit().getScreenSize().width*0.6), (int) (java.awt.Toolkit.getDefaultToolkit().getScreenSize().height*0.9));
 
 
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -93,8 +97,9 @@ public class GUI {
 	
 	protected void nivel() {
 		JPanel trinchera = new JPanel();
+		
 		trinchera.setBackground(new Color(200, 100, 0));
-		trinchera.setBounds(0, 600, 1000, 50);
+		trinchera.setBounds(0, (int) (Ymax*0.67), 1000, 50);
 		panel.add(trinchera);
 		trinchera.setLayout(null);
 		
