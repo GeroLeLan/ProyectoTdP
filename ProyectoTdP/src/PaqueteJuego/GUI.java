@@ -17,7 +17,8 @@ import PaqueteObjetosImplementados.*;
 
 public class GUI {
 
-	private static final int Ymax = java.awt.Toolkit.getDefaultToolkit().getScreenSize().height;;
+	private static final int Ymax = java.awt.Toolkit.getDefaultToolkit().getScreenSize().height;
+	private static final int Xmax = java.awt.Toolkit.getDefaultToolkit().getScreenSize().width;
 	private JFrame frame;
 	private JPanel panel;
 	private Juego juego;
@@ -50,7 +51,7 @@ public class GUI {
 		
 
 
-		frame.setBounds(500, 10, (int) (java.awt.Toolkit.getDefaultToolkit().getScreenSize().width*0.6), (int) (java.awt.Toolkit.getDefaultToolkit().getScreenSize().height*0.9));
+		frame.setBounds((int) (Xmax * 0.21), (int) (Ymax * 0.015), (int) (java.awt.Toolkit.getDefaultToolkit().getScreenSize().width*0.6), (int) (java.awt.Toolkit.getDefaultToolkit().getScreenSize().height*0.9));
 
 
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -74,7 +75,7 @@ public class GUI {
 		instruccion.setBackground(new Color(225,0,0));
 		instruccion.setBounds((int) (frame.getWidth() * 0.23), (int) (frame.getHeight() * 0.48), 700, 23);
 		
-		nivel(1);
+		nivel(2);
 		
 	}
 	
@@ -84,7 +85,7 @@ public class GUI {
 		JPanel trinchera = new JPanel();
 		
 		trinchera.setBackground(new Color(200, 100, 0));
-		trinchera.setBounds(0, (int) (Ymax*0.67), frame.getWidth(), 50);
+		trinchera.setBounds(0, (int) (Ymax*0.67), frame.getWidth(), (int) (Ymax*0.04));
 		panel.add(trinchera);
 		trinchera.setLayout(null);
 		
