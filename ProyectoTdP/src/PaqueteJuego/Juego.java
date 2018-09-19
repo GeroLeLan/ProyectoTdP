@@ -11,10 +11,10 @@ public class Juego {
 	@SuppressWarnings("unused")
 	private Mapa mapa; //Cambiará cuando cambie el nivel.
 	
-	public Juego() {
+	public Juego(int dificultad) {
 		listaEnemigos = new ListaDoblementeEnlazada<Enemigo>();
-		obstaculos = new Obstaculo[2];
-		mapa = new Mapa(2, this);
+		obstaculos = new Obstaculo[3];
+		mapa = new Mapa(dificultad, this);
 	}
 	
 	public Position<Enemigo> agregarEnemigo(Enemigo e){
