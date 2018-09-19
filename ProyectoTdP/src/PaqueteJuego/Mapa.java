@@ -9,7 +9,6 @@ public class Mapa {
 	private final int Ymax =java.awt.Toolkit.getDefaultToolkit().getScreenSize().height;
 	private int dificultad;
 	private final int maxEnemigos = 20;
-	//private final int posXObstaculo1 = 150, posXObstaculo2 = 600, posYObstaculo = 450; (esto se ve vien solo en la de chiara )
 	private final int posXObstaculo1 =  (int) (Xmax*0.07),posXObstaculo2 = (int) (Xmax*0.24), posXObstaculo3 = (int) (Xmax*0.42), posYObstaculo = (int) (Ymax*0.5);
 	protected final int posXJugador = (int) (Xmax*0.25), posYJugador = (int) (Ymax*0.73);
 	private Terna[][] matrizPosiciones;
