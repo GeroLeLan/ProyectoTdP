@@ -7,6 +7,7 @@ public class DestruiblePorTodos extends Obstaculo {
 	public DestruiblePorTodos(int x, int y) {
 		super(x, y);
 		setGrafico();
+		puntosKill = 10;
 	}
 	
 	protected void setGrafico() {
@@ -14,7 +15,7 @@ public class DestruiblePorTodos extends Obstaculo {
 	}
 
 	public int morir() {
-		return 0;
+		return puntosKill;
 	}
 
 	@Override

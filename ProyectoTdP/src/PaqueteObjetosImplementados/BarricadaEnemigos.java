@@ -7,6 +7,7 @@ public class BarricadaEnemigos extends Obstaculo {
 	public BarricadaEnemigos(int x, int y) {
 		super(x, y);
 		setGrafico();
+		puntosKill = 20;
 	}
 	
 	protected void setGrafico() {
@@ -14,7 +15,7 @@ public class BarricadaEnemigos extends Obstaculo {
 	}
 
 	public int morir() {
-		return 0;
+		return puntosKill;
 	}
 
 	@Override
