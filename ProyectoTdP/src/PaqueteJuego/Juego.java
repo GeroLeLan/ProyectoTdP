@@ -33,7 +33,7 @@ public class Juego {
 	}
 	
 	
-	public void agregarObstaculo(int pos, Obstaculo o) { //pos puede valer 0 o 1.
+	public void agregarObstaculo(int pos, Obstaculo o) { //pos puede valer 0, 1 o 2.
 		obstaculos[pos] = o;
 	}
 	public Obstaculo getObstaculo(int pos) {
