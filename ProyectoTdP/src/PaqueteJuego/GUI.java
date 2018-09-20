@@ -68,13 +68,13 @@ public class GUI {
 		lvl.setForeground(new Color(255,255,255));
 		lvl.setFont(new Font("Sitka Text", Font.BOLD, 18));
 		lvl.setBackground(new Color(255,255,255));
-		lvl.setBounds((int) (frame.getWidth() * 0.73), (int) (frame.getHeight() * 0.02), 100, 23);
+		lvl.setBounds((int) (frame.getWidth() * 0.83), (int) (frame.getHeight() * 0.02), 100, 23);
 		
 		puntuacion = new JLabel();
 		puntuacion.setForeground(new Color(255,255,255));
 		puntuacion.setFont(new Font("Sitka Text", Font.BOLD, 18));
 		puntuacion.setBackground(new Color(255,255,255));
-		puntuacion.setBounds((int) (frame.getWidth() * 0.78) + 20, (int) (frame.getHeight() * 0.02), (int) (frame.getWidth() * 0.1), 23);
+		puntuacion.setBounds((int) (frame.getWidth() * 0.01) + 20, (int) (frame.getHeight() * 0.02), (int) (frame.getWidth() * 0.3s), 23);//
 		
 		instruccion = new JLabel();
 		instruccion.setForeground(new Color(225,0,0));
