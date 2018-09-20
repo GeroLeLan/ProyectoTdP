@@ -1,10 +1,17 @@
 package PaqueteJuego;
 
 import TDAListaDE.*;
+
+import java.awt.event.KeyEvent;
+import java.util.Iterator;
+import java.util.Random;
+
 import PaqueteEnemigos.*;
+
 import PaqueteObjetosImplementados.*;
 
 public class Juego {
+	
 	private PositionList<Enemigo> listaEnemigos;
 	private Obstaculo[] obstaculos;
 	private Jugador jugador;
@@ -45,5 +52,13 @@ public class Juego {
 	}
 	public Jugador getJugador() {
 		return jugador;
+	}
+	
+	public void mover(){	
+		for (Position<Enemigo> c : listaEnemigos.positions()) {
+			Random r = new Random();
+			int dir = r.nextInt(4);
+			c.element().mover(dir);
+		}
 	}
 }

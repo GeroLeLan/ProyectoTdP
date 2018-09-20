@@ -16,7 +16,8 @@ import PaqueteEnemigos.*;
 import PaqueteObjetosImplementados.*;
 
 public class GUI {
-
+	private ContadorTiempo tiempo;
+	
 	private static final int Ymax = java.awt.Toolkit.getDefaultToolkit().getScreenSize().height;
 	private static final int Xmax = java.awt.Toolkit.getDefaultToolkit().getScreenSize().width;
 	private JFrame frame;
@@ -74,7 +75,9 @@ public class GUI {
 		puntuacion.setForeground(new Color(255,255,255));
 		puntuacion.setFont(new Font("Sitka Text", Font.BOLD, 18));
 		puntuacion.setBackground(new Color(255,255,255));
+
 		puntuacion.setBounds((int) (frame.getWidth() * 0.08) + 20, (int) (frame.getHeight() * 0.02), (int) (frame.getWidth() * 0.3), 23);
+
 		
 		instruccion = new JLabel();
 		instruccion.setForeground(new Color(225,0,0));
@@ -105,6 +108,8 @@ public class GUI {
 		panel.add(puntuacion);
 		
 		juego = new Juego(dificultad);
+		tiempo = new ContadorTiempo(juego);
+		
 		
 		listaEnemigos = juego.getListaEnems();
 		for (Position<Enemigo> pos : listaEnemigos.positions())
@@ -124,8 +129,10 @@ public class GUI {
 			public void keyReleased(KeyEvent arg0) {
 				int barraEspaciadora = arg0.getKeyCode();
 				
-				if (barraEspaciadora == KeyEvent.VK_SPACE)
+				if (barraEspaciadora == KeyEvent.VK_SPACE) {
 					comenzarJuego();
+				    tiempo.start();
+				}
 			}
 		};
 		

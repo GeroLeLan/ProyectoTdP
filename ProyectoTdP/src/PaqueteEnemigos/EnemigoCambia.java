@@ -4,15 +4,17 @@ import javax.swing.ImageIcon;
 
 public class EnemigoCambia extends Enemigo {
 
-	public EnemigoCambia(int x, int y) {
-		super(new ITieneArma(), x, y);
+	public EnemigoCambia(int v,int x, int y) {
+		super(new ITieneArma(),v, x, y);
 		setGrafico();
 	}
 	
 	//REDEFINIDO:
 	protected void setGrafico() {
-		grafico.setIcon(new ImageIcon("./bin/ImageIcons/ITAP - Armado.png"));
-		grafico.setSize(75, 75);
+		grafico.setSize((int)(Xmax*0.05),(int)(Ymax*0.1));
+		ImageIcon icono = new ImageIcon("./bin/ImageIcons/ITAP - Armado.png");
+		icono.getImage().getScaledInstance(grafico.getWidth(), grafico.getHeight(), java.awt.Image.SCALE_DEFAULT);
+		grafico.setIcon(icono);
 		grafico.setLocation(pos);
 	}
 	
