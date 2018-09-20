@@ -74,7 +74,7 @@ public class GUI {
 		puntuacion.setForeground(new Color(255,255,255));
 		puntuacion.setFont(new Font("Sitka Text", Font.BOLD, 18));
 		puntuacion.setBackground(new Color(255,255,255));
-		puntuacion.setBounds((int) (frame.getWidth() * 0.01) + 20, (int) (frame.getHeight() * 0.02), (int) (frame.getWidth() * 0.3s), 23);//
+		puntuacion.setBounds((int) (frame.getWidth() * 0.01) + 20, (int) (frame.getHeight() * 0.02), (int) (frame.getWidth() * 0.3), 23);//
 		
 		instruccion = new JLabel();
 		instruccion.setForeground(new Color(225,0,0));
