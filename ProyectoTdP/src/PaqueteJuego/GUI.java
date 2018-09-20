@@ -52,7 +52,7 @@ public class GUI {
 		
 
 
-		frame.setBounds((int) (Xmax * 0.21), (int) (Ymax * 0.015), (int) (java.awt.Toolkit.getDefaultToolkit().getScreenSize().width*0.6), (int) (java.awt.Toolkit.getDefaultToolkit().getScreenSize().height*0.9));
+		frame.setBounds((int) (Xmax * 0.21), (int) (Ymax * 0.015), (int) (Xmax*0.6), (int) (Ymax*0.9));
 
 
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -68,19 +68,19 @@ public class GUI {
 		lvl.setForeground(new Color(255,255,255));
 		lvl.setFont(new Font("Sitka Text", Font.BOLD, 18));
 		lvl.setBackground(new Color(255,255,255));
-		lvl.setBounds((int) (frame.getWidth() * 0.73), (int) (frame.getHeight() * 0.02), 100, 23);
+		lvl.setBounds((int) (frame.getWidth() * 0.89), (int) (frame.getHeight() * 0.02), 100, 23);
 		
 		puntuacion = new JLabel();
 		puntuacion.setForeground(new Color(255,255,255));
 		puntuacion.setFont(new Font("Sitka Text", Font.BOLD, 18));
 		puntuacion.setBackground(new Color(255,255,255));
-		puntuacion.setBounds((int) (frame.getWidth() * 0.78) + 20, (int) (frame.getHeight() * 0.02), (int) (frame.getWidth() * 0.1), 23);
+		puntuacion.setBounds((int) (frame.getWidth() * 0.01) + 20, (int) (frame.getHeight() * 0.02), (int) (frame.getWidth() * 0.3), 23);
 		
 		instruccion = new JLabel();
 		instruccion.setForeground(new Color(225,0,0));
-		instruccion.setFont(new Font("Sitka Text", Font.BOLD, 30));
+		instruccion.setFont(new Font("Sitka Text", Font.BOLD, (int) (frame.getWidth() * 0.026)));
 		instruccion.setBackground(new Color(225,0,0));
-		instruccion.setBounds((int) (frame.getWidth() * 0.23), (int) (frame.getHeight() * 0.48), (int) (frame.getWidth() * 0.6), 23);
+		instruccion.setBounds((int) (frame.getWidth() * 0.245), (int) (frame.getHeight() * 0.48), (int) (frame.getWidth() * 0.6), 23);
 		
 		puntaje = 0;
 		
@@ -153,7 +153,7 @@ public class GUI {
 							break;
 						case KeyEvent.VK_RIGHT : //Derecha
 							jugador.getGrafico().setIcon(new ImageIcon("./bin/ImageIcons/Jugador - Derecha.png"));
-							if (jugador.getPos().x + 100 < 1000)
+							if (jugador.getPos().x < frame.getWidth()*0.9)
 								jugador.getPos().x += jugador.getVel();
 							break;
 						case KeyEvent.VK_A : //Izquierda
@@ -163,7 +163,7 @@ public class GUI {
 							break;
 						case KeyEvent.VK_D : //Derecha
 							jugador.getGrafico().setIcon(new ImageIcon("./bin/ImageIcons/Jugador - Derecha.png"));
-							if (jugador.getPos().x + 100 < 1000)
+							if (jugador.getPos().x < frame.getWidth()*0.9)
 								jugador.getPos().x += jugador.getVel();
 							break;
 					}
