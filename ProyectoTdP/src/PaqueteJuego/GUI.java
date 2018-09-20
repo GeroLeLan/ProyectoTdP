@@ -68,13 +68,13 @@ public class GUI {
 		lvl.setForeground(new Color(255,255,255));
 		lvl.setFont(new Font("Sitka Text", Font.BOLD, 18));
 		lvl.setBackground(new Color(255,255,255));
-		lvl.setBounds((int) (frame.getWidth() * 0.89), (int) (frame.getHeight() * 0.02), 100, 23);
+		lvl.setBounds((int) (frame.getWidth() * 0.83), (int) (frame.getHeight() * 0.02), 100, 23);
 		
 		puntuacion = new JLabel();
 		puntuacion.setForeground(new Color(255,255,255));
 		puntuacion.setFont(new Font("Sitka Text", Font.BOLD, 18));
 		puntuacion.setBackground(new Color(255,255,255));
-		puntuacion.setBounds((int) (frame.getWidth() * 0.01) + 20, (int) (frame.getHeight() * 0.02), (int) (frame.getWidth() * 0.3), 23);
+		puntuacion.setBounds((int) (frame.getWidth() * 0.08) + 20, (int) (frame.getHeight() * 0.02), (int) (frame.getWidth() * 0.3), 23);
 		
 		instruccion = new JLabel();
 		instruccion.setForeground(new Color(225,0,0));
@@ -139,33 +139,20 @@ public class GUI {
 			instruccion.setText("");
 			
 			botonera = new KeyAdapter() {
-				@Override
 				public void keyPressed(KeyEvent arg0) {
 					int direction = arg0.getKeyCode();
 					
 					jugador.getGrafico().setSize(75, 90);
 					
-					switch (direction) {
-						case KeyEvent.VK_LEFT : //Izquierda
-							jugador.getGrafico().setIcon(new ImageIcon("./bin/ImageIcons/Jugador - Izquierda.png"));
-							if (jugador.getPos().x - 5 > 0)
-								jugador.getPos().x -= jugador.getVel();
-							break;
-						case KeyEvent.VK_RIGHT : //Derecha
-							jugador.getGrafico().setIcon(new ImageIcon("./bin/ImageIcons/Jugador - Derecha.png"));
-							if (jugador.getPos().x < frame.getWidth()*0.9)
-								jugador.getPos().x += jugador.getVel();
-							break;
-						case KeyEvent.VK_A : //Izquierda
-							jugador.getGrafico().setIcon(new ImageIcon("./bin/ImageIcons/Jugador - Izquierda.png"));
-							if (jugador.getPos().x - 5 > 0)
-								jugador.getPos().x -= jugador.getVel();
-							break;
-						case KeyEvent.VK_D : //Derecha
-							jugador.getGrafico().setIcon(new ImageIcon("./bin/ImageIcons/Jugador - Derecha.png"));
-							if (jugador.getPos().x < frame.getWidth()*0.9)
-								jugador.getPos().x += jugador.getVel();
-							break;
+					if (direction == KeyEvent.VK_LEFT || direction == KeyEvent.VK_A) {
+						jugador.getGrafico().setIcon(new ImageIcon("./bin/ImageIcons/Jugador - Izquierda.png"));
+						if (jugador.getPos().x - 5 > 0)
+							jugador.getPos().x -= jugador.getVel();
+					}
+					if (direction == KeyEvent.VK_RIGHT || direction == KeyEvent.VK_D) {
+						jugador.getGrafico().setIcon(new ImageIcon("./bin/ImageIcons/Jugador - Derecha.png"));
+						if (jugador.getPos().x < frame.getWidth()*0.9)
+							jugador.getPos().x += jugador.getVel();
 					}
 					
 					jugador.getGrafico().setLocation(jugador.getPos());
