@@ -2,16 +2,13 @@ package PaqueteObjetos;
 
 public class Jugador extends Personaje{
 	
-	protected Jugador(int x, int y) {
-		super(x, y);
+	protected Jugador(int v,int x, int y) {
+		super(v, x, y);
 		// TODO Auto-generated constructor stub
 	}
 
 	@Override
-	protected void movimiento() {
-		// TODO Auto-generated method stub
-		
-	}
+	
 
 	public int morir() {
 		return 0;
@@ -25,6 +22,12 @@ public class Jugador extends Personaje{
 
 	@Override
 	protected void setGrafico() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mover(int i) {
 		// TODO Auto-generated method stub
 		
 	}

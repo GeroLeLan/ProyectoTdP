@@ -1,16 +1,19 @@
 package PaqueteEnemigos;
 
-import javax.swing.JLabel;
+import javax.swing.ImageIcon;
 
 public abstract class Inteligencia {
-	protected JLabel icono;
+	protected final int Xmax =java.awt.Toolkit.getDefaultToolkit().getScreenSize().width;
+	protected final int Ymax =java.awt.Toolkit.getDefaultToolkit().getScreenSize().height;
+	protected ImageIcon icono;
 	protected int puntosKill;
 	
 	protected Inteligencia() {
-		icono = new JLabel();
+		icono = new ImageIcon();
+		
 	}
 	
-	public JLabel getIcono() {
+	public ImageIcon getIcono() {
 		return icono;
 	}
 	

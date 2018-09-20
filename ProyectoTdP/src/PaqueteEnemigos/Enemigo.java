@@ -1,18 +1,21 @@
 package PaqueteEnemigos;
 
+import java.awt.Image;
+
 import javax.swing.ImageIcon;
 
+import PaqueteObjetosImplementados.Animado;
 import PaqueteObjetosImplementados.Objeto;
 import TDAListaDE.Position;
 
-public class Enemigo extends Objeto {
+public class Enemigo extends Animado {
 	protected Inteligencia intel;
 	protected Position<Enemigo> posEnListaJuego; //Guarda su posición en la lista de enemigos del juego.
-	private final int Xmax =java.awt.Toolkit.getDefaultToolkit().getScreenSize().width;
-	private final int Ymax =java.awt.Toolkit.getDefaultToolkit().getScreenSize().height;
+	protected final int Xmax =java.awt.Toolkit.getDefaultToolkit().getScreenSize().width;
+	protected final int Ymax =java.awt.Toolkit.getDefaultToolkit().getScreenSize().height;
 	
-	public Enemigo (Inteligencia i, int x, int y) {
-		super(x, y);
+	public Enemigo (Inteligencia i,int velocidad, int x, int y) {
+		super(velocidad, x, y);
 		intel = i;
 		setGrafico();
 	}
@@ -22,14 +25,16 @@ public class Enemigo extends Objeto {
 	}
 	
 	protected void setGrafico() {
-		grafico = intel.getIcono();
-		grafico.setSize((int)(Xmax*0.05),(int)(Ymax*0.07));
+		grafico.setSize((int)(Xmax*0.05),(int)(Ymax*0.1));
+		grafico.setIcon(new ImageIcon(intel.getIcono().getImage().getScaledInstance(grafico.getWidth(), grafico.getHeight(), java.awt.Image.SCALE_DEFAULT)));
 		grafico.setLocation(pos);
 	}
 	
 	
 	public int morir() {
-		grafico.setIcon(new ImageIcon("./bin/ImageIcons/Muerto.png"));
+		ImageIcon iconoOriginal = new ImageIcon("./bin/ImageIcons/ex.gif");
+		ImageIcon iconoEscala = new ImageIcon(iconoOriginal.getImage().getScaledInstance(grafico.getWidth(), grafico.getHeight(), java.awt.Image.SCALE_DEFAULT));
+		grafico.setIcon(iconoEscala); 
 		return intel.getPuntosKill();
 	}
 
@@ -38,4 +43,16 @@ public class Enemigo extends Objeto {
 		// TODO Auto-generated method stub
 		
 	}
+
+	
+		
 }
+
+	
+
+	
+
+	
+	
+	
+

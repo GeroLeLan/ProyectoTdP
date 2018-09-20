@@ -10,7 +10,7 @@ public class Jugador extends Personaje {
 
 	
 	public Jugador(int vel, int x, int y) {
-		super(x, y);
+		super(vel, x, y);
 		velocidad = vel;
 		setGrafico();
 	}
@@ -25,11 +25,7 @@ public class Jugador extends Personaje {
 		return velocidad;
 	}
 
-	@Override
-	protected void movimiento() {
-		// TODO Auto-generated method stub
-		
-	}
+	
 
 	public int morir() {
 		return 0;
@@ -37,6 +33,12 @@ public class Jugador extends Personaje {
 
 	@Override
 	public void colisionar() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mover(int i) {
 		// TODO Auto-generated method stub
 		
 	}

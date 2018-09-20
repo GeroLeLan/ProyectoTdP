@@ -16,7 +16,8 @@ import PaqueteEnemigos.*;
 import PaqueteObjetosImplementados.*;
 
 public class GUI {
-
+	private ContadorTiempo tiempo;
+	
 	private static final int Ymax = java.awt.Toolkit.getDefaultToolkit().getScreenSize().height;
 	private static final int Xmax = java.awt.Toolkit.getDefaultToolkit().getScreenSize().width;
 	private JFrame frame;
@@ -107,6 +108,8 @@ public class GUI {
 		panel.add(puntuacion);
 		
 		juego = new Juego(dificultad);
+		tiempo = new ContadorTiempo(juego);
+		
 		
 		listaEnemigos = juego.getListaEnems();
 		for (Position<Enemigo> pos : listaEnemigos.positions())
@@ -126,8 +129,10 @@ public class GUI {
 			public void keyReleased(KeyEvent arg0) {
 				int barraEspaciadora = arg0.getKeyCode();
 				
-				if (barraEspaciadora == KeyEvent.VK_SPACE)
+				if (barraEspaciadora == KeyEvent.VK_SPACE) {
 					comenzarJuego();
+				    tiempo.start();
+				}
 			}
 		};
 		
