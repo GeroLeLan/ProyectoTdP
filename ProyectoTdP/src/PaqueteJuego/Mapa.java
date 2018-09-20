@@ -9,8 +9,8 @@ public class Mapa {
 	private final int Ymax =java.awt.Toolkit.getDefaultToolkit().getScreenSize().height;
 	private int dificultad;
 	private final int maxEnemigos = 20;
-	private final int posXObstaculo1 =  (int) (Xmax*0.07),posXObstaculo2 = (int) (Xmax*0.24), posXObstaculo3 = (int) (Xmax*0.42), posYObstaculo = (int) (Ymax*0.5);
-	protected final int posXJugador = (int) (Xmax*0.25), posYJugador = (int) (Ymax*0.73);
+	private final int posXObstaculo1 =  (int) (Xmax*0.08), posXObstaculo2 = (int) (Xmax*0.256), posXObstaculo3 = (int) (Xmax*0.43), posYObstaculo = (int) (Ymax*0.5);
+	protected final int posXJugador = (int) (Xmax*0.275), posYJugador = (int) (Ymax*0.73);
 	private Terna[][] matrizPosiciones;
 	private Juego juego;
 	
@@ -64,7 +64,7 @@ public class Mapa {
 		for (int i = 0; i < 4; i++) {
 			y = (i + 1) * (int) (Ymax*0.07);
 			for (int j = 0; j < 5; j++) {
-				x = ((j + 1) * (int) (Xmax*0.094));
+				x = ((j + 1) * (int) (Xmax*0.095));
 				if (i % 2 == 0)
 					matrizPosiciones[i][j] = new Terna(x - 40, y);
 				else
