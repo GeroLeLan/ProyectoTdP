@@ -84,7 +84,7 @@ public class GUI {
 		
 		puntaje = 0;
 		
-		nivel(2);
+		nivel(1);
 		
 	}
 	
