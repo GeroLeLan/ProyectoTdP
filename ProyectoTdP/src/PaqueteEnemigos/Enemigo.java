@@ -14,7 +14,7 @@ public class Enemigo extends Animado {
 	protected final int Xmax =java.awt.Toolkit.getDefaultToolkit().getScreenSize().width;
 	protected final int Ymax =java.awt.Toolkit.getDefaultToolkit().getScreenSize().height;
 	
-	public Enemigo (Inteligencia i,int velocidad, int x, int y) {
+	public Enemigo (Inteligencia i, int velocidad, int x, int y) {
 		super(velocidad, x, y);
 		intel = i;
 		setGrafico();
@@ -34,7 +34,7 @@ public class Enemigo extends Animado {
 
 	protected int morir() {
 
-		ImageIcon iconoOriginal = new ImageIcon("./bin/ImageIcons/cc.gif");
+		ImageIcon iconoOriginal = new ImageIcon("./bin/ImageIcons/Animación - Muerte de Enemigo.gif");
 
 		ImageIcon iconoEscala = new ImageIcon(iconoOriginal.getImage().getScaledInstance(grafico.getWidth(), grafico.getHeight(), java.awt.Image.SCALE_DEFAULT));
 		grafico.setIcon(iconoEscala); 

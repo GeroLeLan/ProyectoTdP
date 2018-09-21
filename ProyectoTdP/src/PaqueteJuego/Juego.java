@@ -53,7 +53,7 @@ public class Juego {
 		return jugador;
 	}
 	
-	public void mover(){	
+	public void mover() {	
 		for (Position<Enemigo> c : listaEnemigos.positions()) {
 			Random r = new Random();
 			int dir = r.nextInt(4);

@@ -1,15 +1,11 @@
 package PaqueteJuego;
 
-
-
-
-
 public class ContadorTiempo extends Thread {
 
 	private Juego elJuego;
 
 	ContadorTiempo(Juego j) {
-		this.elJuego = j;
+		elJuego = j;
 	}
 
 	public void run() {
