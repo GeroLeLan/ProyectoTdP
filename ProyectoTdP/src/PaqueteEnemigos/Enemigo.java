@@ -1,11 +1,11 @@
 package PaqueteEnemigos;
 
-import java.awt.Image;
+
 
 import javax.swing.ImageIcon;
 
 import PaqueteObjetosImplementados.Animado;
-import PaqueteObjetosImplementados.Objeto;
+
 import TDAListaDE.Position;
 
 public class Enemigo extends Animado {

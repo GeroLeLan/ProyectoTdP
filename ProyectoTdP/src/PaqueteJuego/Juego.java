@@ -2,8 +2,7 @@ package PaqueteJuego;
 
 import TDAListaDE.*;
 
-import java.awt.event.KeyEvent;
-import java.util.Iterator;
+
 import java.util.Random;
 
 import PaqueteEnemigos.*;
