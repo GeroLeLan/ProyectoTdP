@@ -16,9 +16,9 @@ public abstract class Animado extends Objeto {
 	//public abstract void mover (int i) ;//no se si deberia ser protected 
 	public void mover(int dir){	
 		switch (dir) {
-			case 0 : //Arriba
-				pos.setLocation(pos.x, pos.y - velocidad);
-				break;
+			//case 0 : //Arriba
+				//pos.setLocation(pos.x, pos.y - velocidad);
+				//break;
 			case 1 : //Abajo
 				pos.setLocation(pos.x, pos.y + velocidad);
 				break;
