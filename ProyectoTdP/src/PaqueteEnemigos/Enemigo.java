@@ -31,13 +31,9 @@ public class Enemigo extends Animado {
 	}
 	
 	
-<<<<<<< HEAD
+
 	protected int morir() {
 		ImageIcon iconoOriginal = new ImageIcon("./bin/ImageIcons/ex.gif");
-=======
-	public int morir() {
-		ImageIcon iconoOriginal = new ImageIcon("./bin/ImageIcons/cc.gif");
->>>>>>> c00047b0a3e295c753c22eef31e666e2eb666b21
 		ImageIcon iconoEscala = new ImageIcon(iconoOriginal.getImage().getScaledInstance(grafico.getWidth(), grafico.getHeight(), java.awt.Image.SCALE_DEFAULT));
 		grafico.setIcon(iconoEscala); 
 		return intel.getPuntosKill();
