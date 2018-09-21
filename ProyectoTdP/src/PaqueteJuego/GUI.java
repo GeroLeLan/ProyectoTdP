@@ -173,7 +173,7 @@ public class GUI {
 					
 					if (direction == KeyEvent.VK_K && !listaEnemigos.isEmpty()) {
 						try {
-							puntaje += listaEnemigos.first().element().morir();
+							puntaje += listaEnemigos.first().element().recibirDaño(1000000);
 							panel.add(listaEnemigos.first().element().getGrafico());
 							listaEnemigos.remove(listaEnemigos.first());
 							puntuacion.setText("Puntaje: " + puntaje);

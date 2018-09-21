@@ -6,7 +6,7 @@ import java.awt.Point;
 public abstract class Objeto {
 	protected int vida;
 	protected JLabel grafico;
-	protected Point pos;
+	protected Point pos;   
 	
 	protected Objeto(int x, int y) {
 		pos = new Point(x, y);
@@ -16,8 +16,7 @@ public abstract class Objeto {
 	public Point getPos() {
 		return pos;
 	}
-	
-	
+		
 	protected abstract void setGrafico();
 	
 	public JLabel getGrafico() {
@@ -28,7 +27,7 @@ public abstract class Objeto {
 	}
 	
 	
-	public abstract int morir();
+	protected abstract int morir();
 	public abstract void colisionar();
 	
 }
