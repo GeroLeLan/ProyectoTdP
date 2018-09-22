@@ -7,6 +7,8 @@ import PaqueteObjetos.Personaje;
 
 public class Jugador extends Personaje {
 	protected int velocidad;
+	private final int Xmax =java.awt.Toolkit.getDefaultToolkit().getScreenSize().width;
+	private final int Ymax =java.awt.Toolkit.getDefaultToolkit().getScreenSize().height;
 
 	
 	public Jugador(int vel, int x, int y) {
@@ -16,8 +18,10 @@ public class Jugador extends Personaje {
 	}
 	
 	protected void setGrafico() {
-		grafico.setIcon(new ImageIcon("./bin/ImageIcons/Jugador - Estándar.png"));
-		grafico.setSize(75, 90);
+		grafico.setSize((int)(Xmax*0.05),(int)(Ymax*0.1));
+		ImageIcon iconoOriginal = new ImageIcon("./bin/ImageIcons/Jugador - Estándar.png");
+		ImageIcon iconoEscala = new ImageIcon(iconoOriginal.getImage().getScaledInstance(grafico.getWidth(), grafico.getHeight(), java.awt.Image.SCALE_DEFAULT));
+		grafico.setIcon(iconoEscala);
 		grafico.setLocation(pos);
 	}
 	

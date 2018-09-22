@@ -149,15 +149,19 @@ public class GUI {
 				public void keyPressed(KeyEvent arg0) {
 					int direction = arg0.getKeyCode();
 					
-					jugador.getGrafico().setSize(75, 90);
+					jugador.getGrafico().setSize((int)(Xmax*0.05),(int)(Ymax*0.1));
 					
 					if (direction == KeyEvent.VK_LEFT || direction == KeyEvent.VK_A) {
-						jugador.getGrafico().setIcon(new ImageIcon("./bin/ImageIcons/Jugador - Izquierda.png"));
+						ImageIcon iconoOriginal = new ImageIcon("./bin/ImageIcons/Jugador - Izquierda.png");
+						ImageIcon iconoEscala = new ImageIcon(iconoOriginal.getImage().getScaledInstance(jugador.getGrafico().getWidth(), jugador.getGrafico().getHeight(), java.awt.Image.SCALE_DEFAULT));
+						jugador.getGrafico().setIcon(iconoEscala);
 						if (jugador.getPos().x - 5 > 0)
 							jugador.getPos().x -= jugador.getVel();
 					}
 					if (direction == KeyEvent.VK_RIGHT || direction == KeyEvent.VK_D) {
-						jugador.getGrafico().setIcon(new ImageIcon("./bin/ImageIcons/Jugador - Derecha.png"));
+						ImageIcon iconoOriginal = new ImageIcon("./bin/ImageIcons/Jugador - Derecha.png");
+						ImageIcon iconoEscala = new ImageIcon(iconoOriginal.getImage().getScaledInstance(jugador.getGrafico().getWidth(), jugador.getGrafico().getHeight(), java.awt.Image.SCALE_DEFAULT));
+						jugador.getGrafico().setIcon(iconoEscala);
 						if (jugador.getPos().x < frame.getWidth()*0.9)
 							jugador.getPos().x += jugador.getVel();
 					}
@@ -168,8 +172,11 @@ public class GUI {
 				public void keyReleased(KeyEvent arg0) {
 					int direction = arg0.getKeyCode();
 					
-					if (direction == KeyEvent.VK_LEFT || direction == KeyEvent.VK_RIGHT || direction == KeyEvent.VK_A || direction == KeyEvent.VK_D)
-						jugador.getGrafico().setIcon(new ImageIcon("bin/ImageIcons/Jugador - Estándar.png"));
+					if (direction == KeyEvent.VK_LEFT || direction == KeyEvent.VK_RIGHT || direction == KeyEvent.VK_A || direction == KeyEvent.VK_D) {
+						ImageIcon iconoOriginal = new ImageIcon("./bin/ImageIcons/Jugador - Estándar.png");
+						ImageIcon iconoEscala = new ImageIcon(iconoOriginal.getImage().getScaledInstance(jugador.getGrafico().getWidth(), jugador.getGrafico().getHeight(), java.awt.Image.SCALE_DEFAULT));
+						jugador.getGrafico().setIcon(iconoEscala);
+					}
 					
 					if (direction == KeyEvent.VK_K && !listaEnemigos.isEmpty()) {
 						try {
