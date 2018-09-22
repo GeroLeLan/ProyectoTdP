@@ -1,18 +1,13 @@
 package PaqueteEnemigos;
 
-
-
 import javax.swing.ImageIcon;
 
 import PaqueteObjetosImplementados.Animado;
-
 import TDAListaDE.Position;
 
 public class Enemigo extends Animado {
 	protected Inteligencia intel;
 	protected Position<Enemigo> posEnListaJuego; //Guarda su posición en la lista de enemigos del juego.
-	protected final int Xmax =java.awt.Toolkit.getDefaultToolkit().getScreenSize().width;
-	protected final int Ymax =java.awt.Toolkit.getDefaultToolkit().getScreenSize().height;
 	
 	public Enemigo (Inteligencia i, int velocidad, int x, int y) {
 		super(velocidad, x, y);

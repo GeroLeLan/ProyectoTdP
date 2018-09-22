@@ -5,7 +5,7 @@ public abstract class Obstaculo extends Objeto { //Permite que el mapa defina lo
 	
 	protected Obstaculo(int x, int y) {
 		super(x, y);
-		grafico.setSize(150, 75);
+		grafico.setSize((int)(Xmax*0.09),(int)(Ymax*0.07));
 		grafico.setLocation(pos);
 	}
 

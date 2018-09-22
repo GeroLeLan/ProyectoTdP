@@ -7,8 +7,6 @@ import PaqueteObjetos.Personaje;
 
 public class Jugador extends Personaje {
 	protected int velocidad;
-	private final int Xmax =java.awt.Toolkit.getDefaultToolkit().getScreenSize().width;
-	private final int Ymax =java.awt.Toolkit.getDefaultToolkit().getScreenSize().height;
 
 	
 	public Jugador(int vel, int x, int y) {
