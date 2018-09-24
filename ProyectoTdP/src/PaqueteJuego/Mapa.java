@@ -1,8 +1,12 @@
 package PaqueteJuego;
 
+import java.util.Random;
+
 import PaqueteEnemigos.*;
 import PaqueteObjetosImplementados.*;
+import TDAListaDE.ListaDoblementeEnlazada;
 import TDAListaDE.Position;
+import TDAListaDE.PositionList;
 
 public class Mapa {
 	private final int Xmax =java.awt.Toolkit.getDefaultToolkit().getScreenSize().width;
@@ -78,6 +82,7 @@ public class Mapa {
 	}
 	
 	private void crearEnemigos() {
+		//generarEnemigo();
 		int cantArmados, cantAP, cantKA, cantKB, cantKM, x = 0, y = 0;
 		
 		if (dificultad < 2) {
@@ -189,6 +194,43 @@ public class Mapa {
 	}
 	
 	
+	private void generarEnemigo() {
+		Random r=new Random(), r2=new Random();
+		PositionList<Enemigo> listado = new ListaDoblementeEnlazada<Enemigo>();
+		Inteligencia muchisimos, muchos, algunos = new IKB(), pocos = new IKM();
+		if (dificultad == 1) {
+			muchisimos = new ITieneArma();
+			muchos = new IKA();
+		}
+		else {
+			muchisimos = new IKA();
+			muchos = new ITieneArma();
+		}
+		
+		int contEnems = 0, enemigoActual, enemigoArmado, i = 0, j = 0;
+		while (contEnems < maxEnemigos) {
+			enemigoActual = r.nextInt(100);
+			if (enemigoActual>=50) {
+				enemigoArmado = r2.nextInt(10);
+				if (enemigoArmado >= 4) //PROBLEMA.
+					listado.addLast(new Enemigo(muchisimos.clone(),vel, matrizPosiciones[i][j].getPosX(), matrizPosiciones[i][j].getPosY()));
+				else
+					listado.addLast(new EnemigoCambia(vel, matrizPosiciones[i][j].getPosX(), matrizPosiciones[i][j].getPosY()));
+			}
+			else {
+				if (enemigoActual>=25)
+					listado.addLast(new Enemigo(muchos.clone(),vel, matrizPosiciones[i][j].getPosX(), matrizPosiciones[i][j].getPosY()));
+				else {
+					if (enemigoActual>=15)
+						listado.addLast(new Enemigo(algunos.clone(),vel, matrizPosiciones[i][j].getPosX(), matrizPosiciones[i][j].getPosY()));
+					else
+						listado.addLast(new Enemigo(pocos.clone(),vel, matrizPosiciones[i][j].getPosX(), matrizPosiciones[i][j].getPosY()));
+				}
+			}
+		}
+		
+	}
+
 	private void crearBarricadas() {
 		if (dificultad < 2) {
 			DestruiblePorTodos dest1 = new DestruiblePorTodos(posXObstaculo1, posYObstaculo);
