@@ -11,7 +11,9 @@ public class BarricadaEnemigos extends Obstaculo {
 	}
 	
 	protected void setGrafico() {
-		grafico.setIcon(new ImageIcon("./bin/ImageIcons/BARRICADA.png"));
+		ImageIcon iconoOriginal = new ImageIcon("./bin/ImageIcons/BARRICADA.png");
+		ImageIcon iconoEscala = new ImageIcon(iconoOriginal.getImage().getScaledInstance(grafico.getWidth(), grafico.getHeight(), java.awt.Image.SCALE_DEFAULT));
+		grafico.setIcon(iconoEscala);
 	}
 
 	public int morir() {

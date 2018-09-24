@@ -12,13 +12,15 @@ public abstract class Animado extends Objeto {
 		this.velocidad = velocidad;
 	}
 	public int recibirDaño(int d) {
-		vida-=d;
-		if(vida<=0) {
+		vida -= d;
+		if(vida <= 0) {
 			return morir();
-		}else
+		}
+		else
 			return 0;
 	}
 	protected int fuerzaK;//es el daño que produce al chocar con algo (yo propongo cambiarlo a fuerzaI o fuerza solo (gero))
+	
 	//public abstract void mover (int i) ;//no se si deberia ser protected 
 	public void mover(int dir){	
 		switch (dir) {

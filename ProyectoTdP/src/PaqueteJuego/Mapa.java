@@ -17,7 +17,7 @@ public class Mapa {
 	protected final int posXJugador = (int) (Xmax*0.275), posYJugador = (int) (Ymax*0.73);
 	private Terna[][] matrizPosiciones;
 	private Juego juego;
-	private final int vel=5; 
+	private final int vel = 2; 
 	
 	/* A LOOK INSIDE MY HEAD:
 	 * A ver. Hay una matriz que determina si una posición de las iniciales está o no ocupada, y cuáles son sus valores x,y en el frame.

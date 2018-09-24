@@ -1,21 +1,17 @@
 package PaqueteJuego;
 
-
-
-
-
 public class ContadorTiempo extends Thread {
 
 	private Juego elJuego;
 
 	ContadorTiempo(Juego j) {
-		this.elJuego = j;
+		elJuego = j;
 	}
 
 	public void run() {
 		while(true){
 			try {
-				Thread.sleep(20);
+				Thread.sleep(50);
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
