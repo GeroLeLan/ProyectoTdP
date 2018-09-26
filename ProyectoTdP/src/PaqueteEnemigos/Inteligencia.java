@@ -18,4 +18,8 @@ public abstract class Inteligencia {
 	public int getPuntosKill() {
 		return puntosKill;
 	}
+	
+	public Inteligencia clone() {
+		return null;
+	}
 }
