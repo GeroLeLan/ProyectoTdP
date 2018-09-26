@@ -50,9 +50,8 @@ public class GUI {
 	public GUI() throws InterruptedException {
 		frame = new JFrame();
 		frame.setBackground(new Color(0, 0, 0));
+		frame.setResizable(false);
 		
-
-
 		frame.setBounds((int) (Xmax * 0.21), (int) (Ymax * 0.015), (int) (Xmax*0.6), (int) (Ymax*0.9));
 
 

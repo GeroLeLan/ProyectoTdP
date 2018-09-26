@@ -11,7 +11,7 @@ public class ContadorTiempo extends Thread {
 	public void run() {
 		while(true){
 			try {
-				Thread.sleep(50);
+				Thread.sleep(5);
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}

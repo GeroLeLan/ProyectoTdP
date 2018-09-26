@@ -192,8 +192,7 @@ public class Mapa {
 		}
 		
 	}
-	
-	
+	/*
 	private void generarEnemigo() {
 		Random r=new Random(), r2=new Random();
 		PositionList<Enemigo> listado = new ListaDoblementeEnlazada<Enemigo>();
@@ -230,7 +229,7 @@ public class Mapa {
 		}
 		
 	}
-
+*/
 	private void crearBarricadas() {
 		if (dificultad < 2) {
 			DestruiblePorTodos dest1 = new DestruiblePorTodos(posXObstaculo1, posYObstaculo);
