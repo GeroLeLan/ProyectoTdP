@@ -6,14 +6,14 @@ import TDAListaDE.*;
 import java.util.Random;
 
 import PaqueteEnemigos.*;
-
+import PaqueteObjetos.Personaje;
 import PaqueteObjetosImplementados.*;
 
 public class Juego {
 	
 	private PositionList<Enemigo> listaEnemigos;
 	private Obstaculo[] obstaculos;
-	private Jugador jugador;
+	private Personaje jugador;
 	@SuppressWarnings("unused")
 	private Mapa mapa; //Cambiará cuando cambie el nivel.
 	
@@ -46,10 +46,10 @@ public class Juego {
 		return obstaculos[pos];
 	}
 	
-	public void setJugador(Jugador j) {
+	public void setJugador(Personaje j) {
 		jugador = j;
 	}
-	public Jugador getJugador() {
+	public Personaje getPersonaje() {
 		return jugador;
 	}
 	

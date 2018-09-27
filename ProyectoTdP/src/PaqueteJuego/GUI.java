@@ -1,20 +1,13 @@
 package PaqueteJuego;
 
-import java.awt.EventQueue;
-import java.awt.Font;
-import java.awt.Image;
-import java.awt.Point;
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
-import java.awt.Color;
+import java.awt.*;
+import java.awt.event.*;
 
-import javax.swing.ImageIcon;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
+import javax.swing.*;
 
 import TDAListaDE.*;
 import PaqueteEnemigos.*;
+import PaqueteObjetos.Personaje;
 import PaqueteObjetosImplementados.*;
 
 public class GUI {
@@ -26,7 +19,7 @@ public class GUI {
 	private JPanel panel;
 	private Juego juego;
 	private PositionList<Enemigo> listaEnemigos;
-	private Jugador jugador;
+	private Personaje jugador;
 	private int puntaje;
 	private int frameWidth, frameHeight;
 	
@@ -51,6 +44,8 @@ public class GUI {
 	
 	
 	public GUI() throws InterruptedException {
+		super();
+		
 		frame = new JFrame();
 		frame.setBackground(new Color(0, 0, 0));
 		frame.setResizable(false);
@@ -92,7 +87,7 @@ public class GUI {
 		
 		puntaje = 0;
 		
-		nivel(2);
+		nivel(1);
 		
 	}
 	
@@ -122,9 +117,9 @@ public class GUI {
 		
 		panel.add(grafico(juego.getObstaculo(0)));
 		panel.add(grafico(juego.getObstaculo(1)));
-		panel.add(grafico(juego.getObstaculo(0)));
+		panel.add(grafico(juego.getObstaculo(2)));
 
-		jugador = juego.getJugador();
+		jugador = juego.getPersonaje();
 		panel.add(grafico(jugador));
 		
 		instruccion.setText("PRESIONE ESPACIO PARA COMENZAR");
@@ -135,7 +130,12 @@ public class GUI {
 				int barraEspaciadora = arg0.getKeyCode();
 				
 				if (barraEspaciadora == KeyEvent.VK_SPACE) {
-					comenzarJuego();
+					try {
+						comenzarJuego();
+					}
+					catch (InterruptedException e) {
+						e.printStackTrace();
+					}
 				    tiempo.start();
 				}
 			}
@@ -146,71 +146,27 @@ public class GUI {
 	
 	
 	
-		private void comenzarJuego() {
+		private void comenzarJuego() throws InterruptedException {
 			frame.removeKeyListener(comienzoConEspacio);
 			instruccion.setText("");
 			
-			botonera = new KeyAdapter() {
-				public void keyPressed(KeyEvent arg0) {
-					int direction = arg0.getKeyCode();
-					
-					if (direction == KeyEvent.VK_LEFT || direction == KeyEvent.VK_A) {
-						ImageIcon iconoOriginal = new ImageIcon("./bin/ImageIcons/Jugador - Izquierda.png");
-						ImageIcon iconoEscala = new ImageIcon(escalarImagen(iconoOriginal));
-						grafico(jugador).setIcon(iconoEscala);
-						if (posicion(jugador).x - 5 > 0)
-							posicion(jugador).x -= jugador.getVel();
-					}
-					if (direction == KeyEvent.VK_RIGHT || direction == KeyEvent.VK_D) {
-						ImageIcon iconoOriginal = new ImageIcon("./bin/ImageIcons/Jugador - Derecha.png");
-						ImageIcon iconoEscala = new ImageIcon(escalarImagen(iconoOriginal));
-						grafico(jugador).setIcon(iconoEscala);
-						if (posicion(jugador).x < frameWidth * 0.9)
-							posicion(jugador).x += jugador.getVel();
-					}
-					
-					grafico(jugador).setLocation(posicion(jugador));
-				}
-				
-				public void keyReleased(KeyEvent arg0) {
-					int direction = arg0.getKeyCode();
-					
-					if (direction == KeyEvent.VK_LEFT || direction == KeyEvent.VK_RIGHT || direction == KeyEvent.VK_A || direction == KeyEvent.VK_D) {
-						ImageIcon iconoOriginal = new ImageIcon("./bin/ImageIcons/Jugador - Estándar.png");
-						ImageIcon iconoEscala = new ImageIcon(escalarImagen(iconoOriginal));
-						grafico(jugador).setIcon(iconoEscala);
-					}
-					
-					if (direction == KeyEvent.VK_K && !listaEnemigos.isEmpty()) {
-						try {
-							Enemigo e = listaEnemigos.first().element();
-							puntaje += e.recibirDaño(1000000);
-							panel.add(grafico(e));
-							listaEnemigos.remove(listaEnemigos.first());
-							puntuacion.setText("Puntaje: " + puntaje);
-						}
-						catch (EmptyListException | InvalidPositionException exc) {
-							System.out.println(exc.getMessage() + "\n");
-							exc.printStackTrace();
-						}
-					}
-					
-						
-				}
-			};
+			botonera = new AccionTeclado(this);
 			
 			frame.addKeyListener(botonera);
 		}
 		
-		
-		
-		private Image escalarImagen(ImageIcon original) {
-			return original.getImage().getScaledInstance(grafico(jugador).getWidth(), grafico(jugador).getHeight(), java.awt.Image.SCALE_DEFAULT);
-		}
-		private JLabel grafico(Objeto o) {
+		public JLabel grafico(Objeto o) {
 			return o.getGrafico();
 		}
-		private Point posicion(Objeto o) {
-			return o.getPos();
-		}
+		
+		public Personaje getPersonaje() { return jugador; }
+		public PositionList<Enemigo> getListaEnemigos() { return listaEnemigos;	}
+		public int getFrameWidth() { return frameWidth;	}
+		public int getFrameHeight() { return frameHeight; }
+		public JPanel getPanel() { return panel; }
+		
+		public JLabel getPuntuacion() { return puntuacion; }
+		public void setPuntuacion(JLabel p) { puntuacion = p; }
+		public int getPuntaje() { return puntaje; }
+		public void setPuntaje(int p) {	puntaje = p; }
 }

@@ -3,6 +3,7 @@ package PaqueteJuego;
 //import java.util.Random;
 
 import PaqueteEnemigos.*;
+import PaqueteObjetos.Personaje;
 import PaqueteObjetosImplementados.*;
 //import TDAListaDE.ListaDoblementeEnlazada;
 import TDAListaDE.Position;
@@ -217,7 +218,7 @@ public class Mapa {
 	}
 	
 	private void crearJugador() {
-		Jugador jugador = new Jugador(7, posXJugador, posYJugador);
+		Personaje jugador = new Jugador(7, posXJugador, posYJugador);
 		juego.setJugador(jugador);
 	}
 }
