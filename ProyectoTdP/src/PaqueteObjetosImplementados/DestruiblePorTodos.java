@@ -12,7 +12,7 @@ public class DestruiblePorTodos extends Obstaculo {
 	
 	protected void setGrafico() {
 		ImageIcon iconoOriginal = new ImageIcon("./bin/ImageIcons/DESTRUIBLE.png");
-		ImageIcon iconoEscala = new ImageIcon(iconoOriginal.getImage().getScaledInstance(grafico.getWidth(), grafico.getHeight(), java.awt.Image.SCALE_DEFAULT));
+		ImageIcon iconoEscala = new ImageIcon(escalarGrafico(iconoOriginal));
 		grafico.setIcon(iconoEscala);
 	}
 

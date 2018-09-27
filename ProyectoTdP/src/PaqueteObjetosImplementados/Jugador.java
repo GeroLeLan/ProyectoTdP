@@ -18,7 +18,7 @@ public class Jugador extends Personaje {
 	protected void setGrafico() {
 		grafico.setSize((int)(Xmax*0.05),(int)(Ymax*0.1));
 		ImageIcon iconoOriginal = new ImageIcon("./bin/ImageIcons/Jugador - Estándar.png");
-		ImageIcon iconoEscala = new ImageIcon(iconoOriginal.getImage().getScaledInstance(grafico.getWidth(), grafico.getHeight(), java.awt.Image.SCALE_DEFAULT));
+		ImageIcon iconoEscala = new ImageIcon(escalarGrafico(iconoOriginal));
 		grafico.setIcon(iconoEscala);
 		grafico.setLocation(pos);
 	}

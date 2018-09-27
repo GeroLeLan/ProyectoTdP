@@ -12,9 +12,9 @@ public class EnemigoCambia extends Enemigo {
 	//REDEFINIDO:
 	protected void setGrafico() {
 		grafico.setSize((int)(Xmax*0.05),(int)(Ymax*0.1));
-		ImageIcon icono = new ImageIcon("./bin/ImageIcons/ITAP - Armado.png");
-		icono.getImage().getScaledInstance(grafico.getWidth(), grafico.getHeight(), java.awt.Image.SCALE_DEFAULT);
-		grafico.setIcon(icono);
+		ImageIcon iconoOriginal = new ImageIcon("./bin/ImageIcons/ITAP - Armado.png");
+		ImageIcon iconoEscala = new ImageIcon(escalarGrafico(iconoOriginal));
+		grafico.setIcon(iconoEscala);
 		grafico.setLocation(pos);
 	}
 	

@@ -2,6 +2,8 @@ package PaqueteJuego;
 
 import java.awt.EventQueue;
 import java.awt.Font;
+import java.awt.Image;
+import java.awt.Point;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.Color;
@@ -26,6 +28,7 @@ public class GUI {
 	private PositionList<Enemigo> listaEnemigos;
 	private Jugador jugador;
 	private int puntaje;
+	private int frameWidth, frameHeight;
 	
 	private KeyAdapter comienzoConEspacio, botonera;
 	private JLabel instruccion, lvl, puntuacion;
@@ -52,7 +55,10 @@ public class GUI {
 		frame.setBackground(new Color(0, 0, 0));
 		frame.setResizable(false);
 		
-		frame.setBounds((int) (Xmax * 0.21), (int) (Ymax * 0.015), (int) (Xmax*0.6), (int) (Ymax*0.9));
+		frameWidth = (int) (Xmax*0.6);
+		frameHeight = (int) (Ymax*0.9);
+		
+		frame.setBounds((int) (Xmax * 0.21), (int) (Ymax * 0.015), frameWidth, frameHeight);
 
 
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -60,7 +66,7 @@ public class GUI {
 		
 		panel = new JPanel();
 		panel.setBackground(new Color(0, 210, 0));
-		panel.setBounds(0, 0, frame.getWidth(), frame.getHeight());
+		panel.setBounds(0, 0, frameWidth, frameHeight);
 		frame.getContentPane().add(panel);
 		panel.setLayout(null);
 		
@@ -68,21 +74,21 @@ public class GUI {
 		lvl.setForeground(new Color(255,255,255));
 		lvl.setFont(new Font("Sitka Text", Font.BOLD, 18));
 		lvl.setBackground(new Color(255,255,255));
-		lvl.setBounds((int) (frame.getWidth() * 0.83), (int) (frame.getHeight() * 0.02), 100, 23);
+		lvl.setBounds((int) (frameWidth * 0.83), (int) (frameHeight * 0.02), 100, 23);
 		
 		puntuacion = new JLabel();
 		puntuacion.setForeground(new Color(255,255,255));
 		puntuacion.setFont(new Font("Sitka Text", Font.BOLD, 18));
 		puntuacion.setBackground(new Color(255,255,255));
 
-		puntuacion.setBounds((int) (frame.getWidth() * 0.08) + 20, (int) (frame.getHeight() * 0.02), (int) (frame.getWidth() * 0.3), 23);
+		puntuacion.setBounds((int) (frameWidth * 0.08) + 20, (int) (frameHeight * 0.02), (int) (frameWidth * 0.3), 23);
 
 		
 		instruccion = new JLabel();
 		instruccion.setForeground(new Color(225,0,0));
-		instruccion.setFont(new Font("Sitka Text", Font.BOLD, (int) (frame.getWidth() * 0.026)));
+		instruccion.setFont(new Font("Sitka Text", Font.BOLD, (int) (frameWidth * 0.026)));
 		instruccion.setBackground(new Color(225,0,0));
-		instruccion.setBounds((int) (frame.getWidth() * 0.245), (int) (frame.getHeight() * 0.48), (int) (frame.getWidth() * 0.6), 23);
+		instruccion.setBounds((int) (frameWidth * 0.245), (int) (frameHeight * 0.48), (int) (frameWidth * 0.6), 23);
 		
 		puntaje = 0;
 		
@@ -92,11 +98,11 @@ public class GUI {
 	
 	
 	
-	protected void nivel(int dificultad) {
+	private void nivel(int dificultad) {
 		JPanel trinchera = new JPanel();
 		
 		trinchera.setBackground(new Color(200, 100, 0));
-		trinchera.setBounds(0, (int) (Ymax*0.67), frame.getWidth(), (int) (Ymax*0.04));
+		trinchera.setBounds(0, (int) (Ymax*0.67), frameWidth, (int) (Ymax*0.04));
 		panel.add(trinchera);
 		trinchera.setLayout(null);
 		
@@ -119,7 +125,7 @@ public class GUI {
 		panel.add(juego.getObstaculo(2).getGrafico());
 
 		jugador = juego.getJugador();
-		panel.add(jugador.getGrafico());
+		panel.add(grafico(jugador));
 		
 		instruccion.setText("PRESIONE ESPACIO PARA COMENZAR");
 		panel.add(instruccion);
@@ -140,7 +146,7 @@ public class GUI {
 	
 	
 	
-		protected void comenzarJuego() {
+		private void comenzarJuego() {
 			frame.removeKeyListener(comienzoConEspacio);
 			instruccion.setText("");
 			
@@ -148,24 +154,22 @@ public class GUI {
 				public void keyPressed(KeyEvent arg0) {
 					int direction = arg0.getKeyCode();
 					
-					jugador.getGrafico().setSize((int)(Xmax*0.05),(int)(Ymax*0.1));
-					
 					if (direction == KeyEvent.VK_LEFT || direction == KeyEvent.VK_A) {
 						ImageIcon iconoOriginal = new ImageIcon("./bin/ImageIcons/Jugador - Izquierda.png");
-						ImageIcon iconoEscala = new ImageIcon(iconoOriginal.getImage().getScaledInstance(jugador.getGrafico().getWidth(), jugador.getGrafico().getHeight(), java.awt.Image.SCALE_DEFAULT));
-						jugador.getGrafico().setIcon(iconoEscala);
-						if (jugador.getPos().x - 5 > 0)
-							jugador.getPos().x -= jugador.getVel();
+						ImageIcon iconoEscala = new ImageIcon(escalarImagen(iconoOriginal));
+						grafico(jugador).setIcon(iconoEscala);
+						if (posicion(jugador).x - 5 > 0)
+							posicion(jugador).x -= jugador.getVel();
 					}
 					if (direction == KeyEvent.VK_RIGHT || direction == KeyEvent.VK_D) {
 						ImageIcon iconoOriginal = new ImageIcon("./bin/ImageIcons/Jugador - Derecha.png");
-						ImageIcon iconoEscala = new ImageIcon(iconoOriginal.getImage().getScaledInstance(jugador.getGrafico().getWidth(), jugador.getGrafico().getHeight(), java.awt.Image.SCALE_DEFAULT));
-						jugador.getGrafico().setIcon(iconoEscala);
-						if (jugador.getPos().x < frame.getWidth()*0.9)
-							jugador.getPos().x += jugador.getVel();
+						ImageIcon iconoEscala = new ImageIcon(escalarImagen(iconoOriginal));
+						grafico(jugador).setIcon(iconoEscala);
+						if (posicion(jugador).x < frameWidth * 0.9)
+							posicion(jugador).x += jugador.getVel();
 					}
 					
-					jugador.getGrafico().setLocation(jugador.getPos());
+					grafico(jugador).setLocation(posicion(jugador));
 				}
 				
 				public void keyReleased(KeyEvent arg0) {
@@ -173,14 +177,15 @@ public class GUI {
 					
 					if (direction == KeyEvent.VK_LEFT || direction == KeyEvent.VK_RIGHT || direction == KeyEvent.VK_A || direction == KeyEvent.VK_D) {
 						ImageIcon iconoOriginal = new ImageIcon("./bin/ImageIcons/Jugador - Estándar.png");
-						ImageIcon iconoEscala = new ImageIcon(iconoOriginal.getImage().getScaledInstance(jugador.getGrafico().getWidth(), jugador.getGrafico().getHeight(), java.awt.Image.SCALE_DEFAULT));
-						jugador.getGrafico().setIcon(iconoEscala);
+						ImageIcon iconoEscala = new ImageIcon(escalarImagen(iconoOriginal));
+						grafico(jugador).setIcon(iconoEscala);
 					}
 					
 					if (direction == KeyEvent.VK_K && !listaEnemigos.isEmpty()) {
 						try {
-							puntaje += listaEnemigos.first().element().recibirDaño(1000000);
-							panel.add(listaEnemigos.first().element().getGrafico());
+							Enemigo e = listaEnemigos.first().element();
+							puntaje += e.recibirDaño(1000000);
+							panel.add(grafico(e));
 							listaEnemigos.remove(listaEnemigos.first());
 							puntuacion.setText("Puntaje: " + puntaje);
 						}
@@ -195,5 +200,17 @@ public class GUI {
 			};
 			
 			frame.addKeyListener(botonera);
+		}
+		
+		
+		
+		private Image escalarImagen(ImageIcon original) {
+			return original.getImage().getScaledInstance(grafico(jugador).getWidth(), grafico(jugador).getHeight(), java.awt.Image.SCALE_DEFAULT);
+		}
+		private JLabel grafico(Objeto o) {
+			return o.getGrafico();
+		}
+		private Point posicion(Objeto o) {
+			return o.getPos();
 		}
 }

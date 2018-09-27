@@ -1,6 +1,9 @@
 package PaqueteObjetosImplementados;
 
+import javax.swing.ImageIcon;
 import javax.swing.JLabel;
+
+import java.awt.Image;
 import java.awt.Point;
 
 public abstract class Objeto {
@@ -33,4 +36,8 @@ public abstract class Objeto {
 	protected abstract int morir();
 	public abstract void colisionar();
 	
+	
+	protected Image escalarGrafico(ImageIcon original) {
+		return original.getImage().getScaledInstance(grafico.getWidth(), grafico.getHeight(), java.awt.Image.SCALE_DEFAULT);
+	}
 }
