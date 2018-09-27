@@ -118,11 +118,11 @@ public class GUI {
 		
 		listaEnemigos = juego.getListaEnems();
 		for (Position<Enemigo> pos : listaEnemigos.positions())
-			panel.add(pos.element().getGrafico());
+			panel.add(grafico(pos.element()));
 		
-		panel.add(juego.getObstaculo(0).getGrafico());
-		panel.add(juego.getObstaculo(1).getGrafico());
-		panel.add(juego.getObstaculo(2).getGrafico());
+		panel.add(grafico(juego.getObstaculo(0)));
+		panel.add(grafico(juego.getObstaculo(1)));
+		panel.add(grafico(juego.getObstaculo(0)));
 
 		jugador = juego.getJugador();
 		panel.add(grafico(jugador));

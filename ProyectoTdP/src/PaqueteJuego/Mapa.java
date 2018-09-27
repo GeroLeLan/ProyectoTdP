@@ -82,7 +82,6 @@ public class Mapa {
 	}
 	
 	private void crearEnemigos() {
-		//generarEnemigo();
 		int cantArmados, cantAP, cantKA, cantKB, cantKM, x = 0, y = 0;
 		
 		if (dificultad < 2) {
@@ -147,7 +146,7 @@ public class Mapa {
 				y = new java.util.Random().nextInt(5);
 			} while (matrizPosiciones[x][y].getOcupado()); //Deja de buscar cuando encuentra una posición vacía.
 			matrizPosiciones[x][y].setOcupado(true);
-			Enemigo enem = new Enemigo(new ITieneArma(),vel, matrizPosiciones[x][y].getPosX(), matrizPosiciones[x][y].getPosY());
+			Enemigo enem = crearEnemigo(new ITieneArma(), x, y);
 			Position<Enemigo> pos = juego.agregarEnemigo(enem);
 			enem.setPosEnListaJuego(pos);
 		}
@@ -174,12 +173,12 @@ public class Mapa {
 					Enemigo enem;
 					
 					if (cont <= cantKB)
-						enem = new Enemigo(new IKB(),vel, matrizPosiciones[i][j].getPosX(), matrizPosiciones[i][j].getPosY());
+						enem = crearEnemigo(new IKB(), i, j);
 					else {
 						if (cont <= cantKB + cantKM)
-							enem = new Enemigo(new IKM(),vel, matrizPosiciones[i][j].getPosX(), matrizPosiciones[i][j].getPosY());
+							enem = crearEnemigo(new IKM(), i, j);
 						else
-							enem = new Enemigo(new IKA(),vel, matrizPosiciones[i][j].getPosX(), matrizPosiciones[i][j].getPosY());
+							enem = crearEnemigo(new IKA(), i, j);
 					}
 					
 					Position<Enemigo> pos = juego.agregarEnemigo(enem);
@@ -192,44 +191,10 @@ public class Mapa {
 		}
 		
 	}
-	/*
-	private void generarEnemigo() {
-		Random r=new Random(), r2=new Random();
-		PositionList<Enemigo> listado = new ListaDoblementeEnlazada<Enemigo>();
-		Inteligencia muchisimos, muchos, algunos = new IKB(), pocos = new IKM();
-		if (dificultad == 1) {
-			muchisimos = new ITieneArma();
-			muchos = new IKA();
-		}
-		else {
-			muchisimos = new IKA();
-			muchos = new ITieneArma();
-		}
-		
-		int contEnems = 0, enemigoActual, enemigoArmado, i = 0, j = 0;
-		while (contEnems < maxEnemigos) {
-			enemigoActual = r.nextInt(100);
-			if (enemigoActual>=50) {
-				enemigoArmado = r2.nextInt(10);
-				if (enemigoArmado >= 4) //PROBLEMA.
-					listado.addLast(new Enemigo(muchisimos.clone(),vel, matrizPosiciones[i][j].getPosX(), matrizPosiciones[i][j].getPosY()));
-				else
-					listado.addLast(new EnemigoCambia(vel, matrizPosiciones[i][j].getPosX(), matrizPosiciones[i][j].getPosY()));
-			}
-			else {
-				if (enemigoActual>=25)
-					listado.addLast(new Enemigo(muchos.clone(),vel, matrizPosiciones[i][j].getPosX(), matrizPosiciones[i][j].getPosY()));
-				else {
-					if (enemigoActual>=15)
-						listado.addLast(new Enemigo(algunos.clone(),vel, matrizPosiciones[i][j].getPosX(), matrizPosiciones[i][j].getPosY()));
-					else
-						listado.addLast(new Enemigo(pocos.clone(),vel, matrizPosiciones[i][j].getPosX(), matrizPosiciones[i][j].getPosY()));
-				}
-			}
-		}
-		
+	public Enemigo crearEnemigo(Inteligencia in,int i,int j) {
+		return new Enemigo(in, vel, matrizPosiciones[i][j].getPosX(), matrizPosiciones[i][j].getPosY());
 	}
-*/
+	
 	private void crearBarricadas() {
 		if (dificultad < 2) {
 			DestruiblePorTodos dest1 = new DestruiblePorTodos(posXObstaculo1, posYObstaculo);
