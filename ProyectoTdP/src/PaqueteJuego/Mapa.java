@@ -1,12 +1,12 @@
 package PaqueteJuego;
 
-import java.util.Random;
+//import java.util.Random;
 
 import PaqueteEnemigos.*;
 import PaqueteObjetosImplementados.*;
-import TDAListaDE.ListaDoblementeEnlazada;
+//import TDAListaDE.ListaDoblementeEnlazada;
 import TDAListaDE.Position;
-import TDAListaDE.PositionList;
+//import TDAListaDE.PositionList;
 
 public class Mapa {
 	private final int Xmax =java.awt.Toolkit.getDefaultToolkit().getScreenSize().width;
