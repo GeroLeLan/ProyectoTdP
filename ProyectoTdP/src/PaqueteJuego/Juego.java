@@ -53,11 +53,11 @@ public class Juego {
 		return jugador;
 	}
 	
-	public void mover() {	
-		for (Position<Enemigo> c : listaEnemigos.positions()) {
+	public void moverEnemigos() {	
+		for (Position<Enemigo> enem : listaEnemigos.positions()) {
 			Random r = new Random();
 			int dir = r.nextInt(4);
-			c.element().mover(dir);
+			enem.element().mover(dir);
 		}
 	}
 }

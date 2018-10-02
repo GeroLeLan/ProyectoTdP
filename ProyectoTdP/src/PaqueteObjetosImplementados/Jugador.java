@@ -6,8 +6,6 @@ import PaqueteObjetos.Personaje;
 
 
 public class Jugador extends Personaje {
-	protected int velocidad;
-
 	
 	public Jugador(int vel, int x, int y) {
 		super(vel, x, y);
@@ -34,11 +32,4 @@ public class Jugador extends Personaje {
 		// TODO Auto-generated method stub
 		
 	}
-
-	@Override
-	public void mover(int i) {
-		// TODO Auto-generated method stub
-		
-	}
-	
 }

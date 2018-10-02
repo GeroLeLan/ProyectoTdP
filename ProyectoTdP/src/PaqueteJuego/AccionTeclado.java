@@ -1,7 +1,6 @@
 package PaqueteJuego;
 
 import java.awt.Image;
-import java.awt.Point;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
@@ -25,23 +24,7 @@ public class AccionTeclado extends KeyAdapter {
 	
 	public void keyPressed(KeyEvent arg0) {
 		int direction = arg0.getKeyCode();
-		
-		if (direction == KeyEvent.VK_LEFT || direction == KeyEvent.VK_A) {
-			ImageIcon iconoOriginal = new ImageIcon("./bin/ImageIcons/Jugador - Izquierda.png");
-			ImageIcon iconoEscala = new ImageIcon(escalarImagen(iconoOriginal, personaje));
-			gui.grafico(personaje).setIcon(iconoEscala);
-			if (posicion(personaje).x - 5 > 0)
-				posicion(personaje).x -= personaje.getVel();
-		}
-		if (direction == KeyEvent.VK_RIGHT || direction == KeyEvent.VK_D) {
-			ImageIcon iconoOriginal = new ImageIcon("./bin/ImageIcons/Jugador - Derecha.png");
-			ImageIcon iconoEscala = new ImageIcon(escalarImagen(iconoOriginal, personaje));
-			gui.grafico(personaje).setIcon(iconoEscala);
-			if (posicion(personaje).x < gui.getFrameWidth() * 0.9)
-				posicion(personaje).x += personaje.getVel();
-		}
-		
-		gui.grafico(personaje).setLocation(posicion(personaje));
+		personaje.mover(direction);
 	}
 	
 	public void keyReleased(KeyEvent arg0) {
@@ -73,8 +56,5 @@ public class AccionTeclado extends KeyAdapter {
 	
 	private Image escalarImagen(ImageIcon original, Objeto o) {
 		return original.getImage().getScaledInstance(gui.grafico(o).getWidth(), gui.grafico(o).getHeight(), java.awt.Image.SCALE_DEFAULT);
-	}
-	private Point posicion(Objeto o) {
-		return o.getPos();
 	}
 }
