@@ -37,10 +37,6 @@ public class Enemigo extends Animado {
 	@Override
 	public void colisionar() {
 		// TODO Auto-generated method stub
-		
-		
-			//DARLE LA POSIBILIDAD AL PROCESADOR DE HACER MAS DE UNA COSA AL MISMO TIEMPO: PROCESOS CONCURRENTES.
-			//PARALELISMO: EJECUCION SIMULTANEA DE VARIOS PROCESADORES.
 	}
 	
 	public void mover(int dir){
