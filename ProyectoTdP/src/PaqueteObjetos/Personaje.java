@@ -11,7 +11,7 @@ public abstract class Personaje extends Animado {
 	
 	protected Personaje(int v, int x, int y) {
 		super(v, x, y);
-		// TODO Auto-generated constructor stub
+		vida = 600;
 	}
 
 	public int getVel() {

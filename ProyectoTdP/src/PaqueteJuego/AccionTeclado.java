@@ -24,7 +24,8 @@ public class AccionTeclado extends KeyAdapter {
 	
 	public void keyPressed(KeyEvent arg0) {
 		int direction = arg0.getKeyCode();
-		personaje.mover(direction);
+		if (direction != KeyEvent.VK_K)
+			personaje.mover(direction);
 	}
 	
 	public void keyReleased(KeyEvent arg0) {
@@ -39,10 +40,12 @@ public class AccionTeclado extends KeyAdapter {
 		if (direction == KeyEvent.VK_K && !gui.getListaEnemigos().isEmpty()) {
 			try {
 				Enemigo e = gui.getListaEnemigos().first().element();
-				gui.setPuntaje(gui.getPuntaje() + e.recibirDaño(1000000));
-				gui.getPanel().add(gui.grafico(e));
-				gui.getListaEnemigos().remove(gui.getListaEnemigos().first());
-				gui.getPuntuacion().setText("Puntaje: " + gui.getPuntaje());
+				gui.setPuntaje(gui.getPuntaje() + e.recibirDaño(10));
+				if (e.getVida() <= 0) {
+					gui.getPanel().add(gui.grafico(e));
+					gui.getListaEnemigos().remove(gui.getListaEnemigos().first());
+					gui.getPuntuacion().setText("Puntaje: " + gui.getPuntaje());
+				}
 			}
 			catch (EmptyListException | InvalidPositionException exc) {
 				System.out.println(exc.getMessage() + "\n");

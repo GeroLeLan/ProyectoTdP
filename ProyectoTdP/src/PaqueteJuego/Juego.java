@@ -53,11 +53,18 @@ public class Juego {
 		return jugador;
 	}
 	
-	public void moverEnemigos() {	
+	public void moverEnemigos() {
+		Random r = new Random();
 		for (Position<Enemigo> enem : listaEnemigos.positions()) {
-			Random r = new Random();
-			int dir = r.nextInt(4);
-			enem.element().mover(dir);
+			if (enem.element().getMoviendo()) {
+				int dir = r.nextInt(90);
+				enem.element().mover(dir);
+			}
+			else {
+				int chance = r.nextInt(250);
+				if (chance <= 6)
+					enem.element().setMoviendo(true);
+			}
 		}
 	}
 }

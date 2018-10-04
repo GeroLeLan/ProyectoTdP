@@ -8,11 +8,15 @@ import TDAListaDE.Position;
 public class Enemigo extends Animado {
 	protected Inteligencia intel;
 	protected Position<Enemigo> posEnListaJuego; //Guarda su posición en la lista de enemigos del juego.
+	protected final int vidaInicial = 100;
+	protected boolean moviendo;
 	
-	public Enemigo (Inteligencia i, int velocidad, int x, int y) {
-		super(velocidad, x, y);
+	public Enemigo (Inteligencia i, int x, int y) {
+		super(i.getVelocidad(), x, y);
+		vida = vidaInicial;
 		intel = i;
 		setGrafico();
+		moviendo = intel.debeMoverse();
 	}
 	
 	public void setPosEnListaJuego(Position<Enemigo> posJ) {
@@ -25,8 +29,6 @@ public class Enemigo extends Animado {
 		grafico.setLocation(pos);
 	}
 	
-	
-
 	protected int morir() {
 		ImageIcon iconoOriginal = new ImageIcon("./bin/ImageIcons/Animación - Muerte de Enemigo.gif");
 		ImageIcon iconoEscala = new ImageIcon(escalarGrafico(iconoOriginal));
@@ -39,37 +41,17 @@ public class Enemigo extends Animado {
 		// TODO Auto-generated method stub
 	}
 	
-	public void mover(int dir){
-		switch (dir) {
-			case 1:
-				pos.setLocation(pos.x, pos.y + velocidad);
-				if (pos.y > Ymax * 0.9)
-					pos.y = 0;
-				break;
-			case 2:
-				pos.setLocation(pos.x - velocidad, pos.y);
-				if (pos.x < 0)
-					pos.x = (int) (Xmax * 0.6);
-				break;
-			case 3:
-				pos.setLocation(pos.x + velocidad, pos.y);
-				if (pos.x > Xmax * 0.585)
-					pos.x = (int) (Xmax * 0.01);
-				break;
-		}
-		
+	public void mover(int dir) {
+		intel.mover(dir, pos);
 		grafico.setLocation(pos);
 	}
-
+	
+	public boolean getMoviendo() {
+		return moviendo;
+	}
+	public void setMoviendo(boolean m) {
+		moviendo = m;
+	}
 	
 		
 }
-
-	
-
-	
-
-	
-	
-	
-

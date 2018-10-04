@@ -16,7 +16,8 @@ public class GUI {
 	private static final int Ymax = java.awt.Toolkit.getDefaultToolkit().getScreenSize().height;
 	private static final int Xmax = java.awt.Toolkit.getDefaultToolkit().getScreenSize().width;
 	private JFrame frame;
-	private JPanel panel;
+	private Container panel;
+	private JLabel fondo;
 	private Juego juego;
 	private PositionList<Enemigo> listaEnemigos;
 	private Personaje jugador;
@@ -54,15 +55,19 @@ public class GUI {
 		frameHeight = (int) (Ymax*0.9);
 		
 		frame.setBounds((int) (Xmax * 0.21), (int) (Ymax * 0.015), frameWidth, frameHeight);
-
-
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.getContentPane().setLayout(null);
 		
-		panel = new JPanel();
-		panel.setBackground(new Color(0, 210, 0));
+		fondo = new JLabel();
+		fondo.setSize(frameWidth, frameHeight);
+		ImageIcon iconoOriginal = new ImageIcon("./bin/ImageIcons/Gif de Fondo.gif");
+		ImageIcon iconoEscala = new ImageIcon(iconoOriginal.getImage().getScaledInstance(frameWidth, frameHeight, java.awt.Image.SCALE_DEFAULT));
+		fondo.setIcon(iconoEscala);
+		
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setContentPane(fondo);
+		frame.getContentPane().setLayout(new BorderLayout());
+		
+		panel = frame.getContentPane();
 		panel.setBounds(0, 0, frameWidth, frameHeight);
-		frame.getContentPane().add(panel);
 		panel.setLayout(null);
 		
 		lvl = new JLabel();
@@ -83,7 +88,7 @@ public class GUI {
 		instruccion.setForeground(new Color(225,0,0));
 		instruccion.setFont(new Font("Sitka Text", Font.BOLD, (int) (frameWidth * 0.026)));
 		instruccion.setBackground(new Color(225,0,0));
-		instruccion.setBounds((int) (frameWidth * 0.245), (int) (frameHeight * 0.48), (int) (frameWidth * 0.6), 23);
+		instruccion.setBounds((int) (frameWidth * 0.245), (int) (frameHeight * 0.46), (int) (frameWidth * 0.6), 23);
 		
 		puntaje = 0;
 		
@@ -94,13 +99,6 @@ public class GUI {
 	
 	
 	private void nivel(int dificultad) {
-		JPanel trinchera = new JPanel();
-		
-		trinchera.setBackground(new Color(200, 100, 0));
-		trinchera.setBounds(0, (int) (Ymax*0.67), frameWidth, (int) (Ymax*0.04));
-		panel.add(trinchera);
-		trinchera.setLayout(null);
-		
 		lvl.setText("Nivel: " + dificultad);
 		panel.add(lvl);
 		
@@ -163,7 +161,7 @@ public class GUI {
 		public PositionList<Enemigo> getListaEnemigos() { return listaEnemigos;	}
 		public int getFrameWidth() { return frameWidth;	}
 		public int getFrameHeight() { return frameHeight; }
-		public JPanel getPanel() { return panel; }
+		public Container getPanel() { return panel; }
 		
 		public JLabel getPuntuacion() { return puntuacion; }
 		public void setPuntuacion(JLabel p) { puntuacion = p; }

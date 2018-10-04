@@ -1,0 +1,5 @@
+Hay una sola Thread de disparos.
+
+Cada vez que se dispara, se crea un nuevo disparo y se lo inserta en una lista de disparos existentes. Cuando el disparo colisiona, se lo elimina de la lista.
+El disparo (sea del tipo que sea) responde a las instrucciones de la Thread, que cada muy poco tiempo le ejecutará "mover()" (haciendo un for-each en la lista).
+Según el tipo dinámico del disparo, se mueve hacia arriba o abajo.

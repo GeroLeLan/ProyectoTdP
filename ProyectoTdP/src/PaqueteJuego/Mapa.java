@@ -1,13 +1,9 @@
 package PaqueteJuego;
 
-//import java.util.Random;
-
 import PaqueteEnemigos.*;
 import PaqueteObjetos.Personaje;
 import PaqueteObjetosImplementados.*;
-//import TDAListaDE.ListaDoblementeEnlazada;
 import TDAListaDE.Position;
-//import TDAListaDE.PositionList;
 
 public class Mapa {
 	private final int Xmax =java.awt.Toolkit.getDefaultToolkit().getScreenSize().width;
@@ -18,7 +14,6 @@ public class Mapa {
 	protected final int posXJugador = (int) (Xmax*0.275), posYJugador = (int) (Ymax*0.73);
 	private Terna[][] matrizPosiciones;
 	private Juego juego;
-	private final int vel = 2; 
 	
 	/* A LOOK INSIDE MY HEAD:
 	 * A ver. Hay una matriz que determina si una posición de las iniciales está o no ocupada, y cuáles son sus valores x,y en el frame.
@@ -158,7 +153,7 @@ public class Mapa {
 				y = new java.util.Random().nextInt(5);
 			} while (matrizPosiciones[x][y].getOcupado()); //Deja de buscar cuando encuentra una posición vacía.
 			matrizPosiciones[x][y].setOcupado(true);
-			EnemigoCambia enem = new EnemigoCambia(vel, matrizPosiciones[x][y].getPosX(), matrizPosiciones[x][y].getPosY());
+			EnemigoCambia enem = new EnemigoCambia(matrizPosiciones[x][y].getPosX(), matrizPosiciones[x][y].getPosY());
 			Position<Enemigo> pos = juego.agregarEnemigo(enem);
 			enem.setPosEnListaJuego(pos);
 		} //Dado que a lo sumo habrá 14 enemigos armados, el proceso de búsqueda de una posición no tardará demasiado.
@@ -193,7 +188,7 @@ public class Mapa {
 		
 	}
 	public Enemigo crearEnemigo(Inteligencia in,int i,int j) {
-		return new Enemigo(in, vel, matrizPosiciones[i][j].getPosX(), matrizPosiciones[i][j].getPosY());
+		return new Enemigo(in, matrizPosiciones[i][j].getPosX(), matrizPosiciones[i][j].getPosY());
 	}
 	
 	private void crearBarricadas() {

@@ -1,9 +1,7 @@
 package PaqueteObjetosImplementados;
 
 import javax.swing.ImageIcon;
-
 import PaqueteObjetos.Personaje;
-
 
 public class Jugador extends Personaje {
 	
@@ -20,9 +18,7 @@ public class Jugador extends Personaje {
 		grafico.setIcon(iconoEscala);
 		grafico.setLocation(pos);
 	}
-
 	
-
 	public int morir() {
 		return 0;
 	}
