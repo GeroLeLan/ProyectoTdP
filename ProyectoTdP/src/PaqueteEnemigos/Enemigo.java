@@ -1,5 +1,7 @@
 package PaqueteEnemigos;
 
+import java.util.Random;
+
 import javax.swing.ImageIcon;
 
 import PaqueteObjetosImplementados.Animado;
@@ -16,7 +18,7 @@ public class Enemigo extends Animado {
 		vida = vidaInicial;
 		intel = i;
 		setGrafico();
-		moviendo = intel.debeMoverse();
+		moviendo = intel.iniciaConMovimiento();
 	}
 	
 	public void setPosEnListaJuego(Position<Enemigo> posJ) {
@@ -42,16 +44,23 @@ public class Enemigo extends Animado {
 	}
 	
 	public void mover(int dir) {
-		intel.mover(dir, pos);
+		if (moviendo)
+			intel.mover(pos);
+		else {
+			Random r = new Random();
+			int chance = r.nextInt(250);
+			if (chance <= 6)
+				moviendo = true;
+		}
 		grafico.setLocation(pos);
 	}
 	
-	public boolean getMoviendo() {
-		return moviendo;
+	public int recibirDaño(int d) {
+		vida -= d;
+		intel.cambiarInteligencia(vida, this);
+		if(vida <= 0)
+			return morir();
+		return 0;
 	}
-	public void setMoviendo(boolean m) {
-		moviendo = m;
-	}
-	
 		
 }

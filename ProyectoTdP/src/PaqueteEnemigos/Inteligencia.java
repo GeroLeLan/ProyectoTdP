@@ -2,6 +2,7 @@ package PaqueteEnemigos;
 
 import java.awt.Point;
 import javax.swing.ImageIcon;
+import PaqueteObjetos.Personaje;
 
 public abstract class Inteligencia {
 	protected static final int Ymax = java.awt.Toolkit.getDefaultToolkit().getScreenSize().height;
@@ -9,9 +10,11 @@ public abstract class Inteligencia {
 	protected ImageIcon icono;
 	protected int puntosKill;
 	protected int velocidad;
+	protected Personaje personajeJuego;
 	
-	protected Inteligencia() {
+	protected Inteligencia(Personaje p) {
 		icono = new ImageIcon();
+		personajeJuego = p;
 	}
 	
 	public ImageIcon getIcono() {
@@ -26,11 +29,13 @@ public abstract class Inteligencia {
 		return null;
 	}
 	
-	public abstract void mover(int dir, Point pos);
+	public abstract void mover(Point pos);
 	
 	public int getVelocidad() {
 		return velocidad;
 	}
 	
-	public abstract boolean debeMoverse();
+	public abstract boolean iniciaConMovimiento();
+	
+	public void cambiarInteligencia(int vida, Enemigo enem) { } //Lo redefinirán las inteligencias que cambien.
 }

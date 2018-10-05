@@ -1,20 +1,27 @@
 package PaqueteEnemigos;
 
 import java.awt.Point;
+import java.util.Random;
+
 import javax.swing.ImageIcon;
+
+import PaqueteObjetos.Personaje;
 
 public class IKA extends Inteligencia {
 	private int vecesMovido;
 	
-	public IKA() {
-		super();
+	public IKA(Personaje p) {
+		super(p);
 		icono = new ImageIcon("./bin/ImageIcons/IKA.png");
 		puntosKill = 20;
 		velocidad = 1;
 		vecesMovido = 1;
 	}
 	
-	public void mover(int dir, Point pos) {
+	public void mover(Point pos) {
+		Random r = new Random();
+		int dir = r.nextInt(90);
+		
 		for (int i = 0; i < vecesMovido; i++) {
 			if (dir < 40) {
 				pos.setLocation(pos.x, pos.y + velocidad);
@@ -38,7 +45,7 @@ public class IKA extends Inteligencia {
 			vecesMovido++;
 	}
 	
-	public boolean debeMoverse() {
+	public boolean iniciaConMovimiento() {
 		return false;
 	}
 }

@@ -35,4 +35,11 @@ public abstract class Personaje extends Animado {
 		}
 		grafico.setLocation(pos);
 	}
+	
+	public int recibirDaño(int d) {
+		vida -= d;
+		if(vida <= 0)
+			return morir();
+		return 0;
+	}
 }

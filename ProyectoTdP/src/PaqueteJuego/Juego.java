@@ -1,10 +1,6 @@
 package PaqueteJuego;
 
 import TDAListaDE.*;
-
-
-import java.util.Random;
-
 import PaqueteEnemigos.*;
 import PaqueteObjetos.Personaje;
 import PaqueteObjetosImplementados.*;
@@ -54,17 +50,7 @@ public class Juego {
 	}
 	
 	public void moverEnemigos() {
-		Random r = new Random();
-		for (Position<Enemigo> enem : listaEnemigos.positions()) {
-			if (enem.element().getMoviendo()) {
-				int dir = r.nextInt(90);
-				enem.element().mover(dir);
-			}
-			else {
-				int chance = r.nextInt(250);
-				if (chance <= 6)
-					enem.element().setMoviendo(true);
-			}
-		}
+		for (Position<Enemigo> enem : listaEnemigos.positions())
+			enem.element().mover(0); //El método mover de los Enemigos está definido para recibir un entero en la clase Animado. Quizás debamos cambiar eso.
 	}
 }

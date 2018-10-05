@@ -1,17 +1,24 @@
 package PaqueteEnemigos;
 
 import java.awt.Point;
+import java.util.Random;
+
 import javax.swing.ImageIcon;
 
+import PaqueteObjetos.Personaje;
+
 public class ITieneArma extends Inteligencia {
-	public ITieneArma() {
-		super();
+	public ITieneArma(Personaje p) {
+		super(p);
 		icono = new ImageIcon("./bin/ImageIcons/ITieneArma.png");
 		puntosKill = 15;
 		velocidad = 3;
 	}
 	
-	public void mover(int dir, Point pos) {
+	public void mover(Point pos) {
+		Random r = new Random();
+		int dir = r.nextInt(90);
+		
 		if (dir > 45) {
 			pos.setLocation(pos.x - velocidad, pos.y);
 			if (pos.x < 0)
@@ -24,7 +31,7 @@ public class ITieneArma extends Inteligencia {
 		}
 	}
 	
-	public boolean debeMoverse() {
+	public boolean iniciaConMovimiento() {
 		return true;
 	}
 }

@@ -25,7 +25,7 @@ public class GUI {
 	private int frameWidth, frameHeight;
 	
 	private KeyAdapter comienzoConEspacio, botonera;
-	private JLabel instruccion, lvl, puntuacion;
+	private JLabel instruccion, lvl, puntuacion, nombrePersonaje;
 	
 	
 	public static void main(String[] args) {
@@ -92,6 +92,11 @@ public class GUI {
 		
 		puntaje = 0;
 		
+		nombrePersonaje = new JLabel();
+		nombrePersonaje.setForeground(new Color(225,255,255));
+		nombrePersonaje.setFont(new Font("Sitka Text", Font.BOLD, (int) (frameWidth * 0.026)));
+		nombrePersonaje.setBackground(new Color(225,0,0));
+		
 		nivel(1);
 		
 	}
@@ -107,7 +112,6 @@ public class GUI {
 		
 		juego = new Juego(dificultad);
 		tiempo = new ContadorTiempo(juego);
-		
 		
 		listaEnemigos = juego.getListaEnems();
 		for (Position<Enemigo> pos : listaEnemigos.positions())
@@ -129,6 +133,18 @@ public class GUI {
 				
 				if (barraEspaciadora == KeyEvent.VK_SPACE) {
 					try {
+						String nombre = "";
+						boolean valido = false;
+						while (!valido) {
+							nombre = JOptionPane.showInputDialog(null, "Ingrese un Nombre para el Personaje:");
+							if (nombre != null && !nombre.equals("") && nombre.length() <= 8)
+								valido = true;
+							else
+								JOptionPane.showMessageDialog(null, "Debe ingresarse un nombre de longitud mayor que 0 y menor o igual que 8.", "Ingreso Inválido", JOptionPane.ERROR_MESSAGE);
+						}
+						nombrePersonaje.setBounds((int) (frameWidth * 0.5 - nombre.length() * 10), (int) (frameHeight * 0.02), (int) (frameWidth * 0.6), 23);
+						nombrePersonaje.setText(nombre.toUpperCase());
+						panel.add(nombrePersonaje);
 						comenzarJuego();
 					}
 					catch (InterruptedException e) {
