@@ -1,7 +1,6 @@
 package PaqueteObjetosImplementados;
 
 import javax.swing.ImageIcon;
-import PaqueteObjetos.Personaje;
 
 public class Jugador extends Personaje {
 	
@@ -22,8 +21,7 @@ public class Jugador extends Personaje {
 	public int morir() {
 		return 0;
 	}
-
-	@Override
+	
 	public void colisionar() {
 		// TODO Auto-generated method stub
 		

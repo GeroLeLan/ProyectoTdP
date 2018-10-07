@@ -1,7 +1,6 @@
 package PaqueteJuego;
 
 import PaqueteEnemigos.*;
-import PaqueteObjetos.Personaje;
 import PaqueteObjetosImplementados.*;
 import TDAListaDE.Position;
 

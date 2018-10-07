@@ -5,7 +5,7 @@ import java.util.Random;
 
 import javax.swing.ImageIcon;
 
-import PaqueteObjetos.Personaje;
+import PaqueteObjetosImplementados.Personaje;
 
 public class IKA extends Inteligencia {
 	private int vecesMovido;

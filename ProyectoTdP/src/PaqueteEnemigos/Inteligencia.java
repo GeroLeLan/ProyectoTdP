@@ -2,7 +2,8 @@ package PaqueteEnemigos;
 
 import java.awt.Point;
 import javax.swing.ImageIcon;
-import PaqueteObjetos.Personaje;
+
+import PaqueteObjetosImplementados.Personaje;
 
 public abstract class Inteligencia {
 	protected static final int Ymax = java.awt.Toolkit.getDefaultToolkit().getScreenSize().height;

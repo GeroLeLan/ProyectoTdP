@@ -2,6 +2,9 @@ package PaqueteObjetosImplementados;
 
 import javax.swing.ImageIcon;
 
+import PaqueteObjetos.Disparo;
+import PaqueteObjetos.DisparoEnemigo;
+
 public class DestruiblePorTodos extends Obstaculo {
 
 	public DestruiblePorTodos(int x, int y) {
@@ -24,6 +27,20 @@ public class DestruiblePorTodos extends Obstaculo {
 	public void colisionar() {
 		// TODO Auto-generated method stub
 		
+	}
+
+	public int recibirDaño(int d, Disparo disp) {
+		vida -= d;
+		if (vida <= 0)
+			return morir();
+		return 0;
+	}
+	
+	public int recibirDisparo(DisparoEnemigo dispEnem) {
+		vida -= dispEnem.getDaño();
+		if (vida <= 0)
+			return morir();
+		return 0;
 	}
 	
 }

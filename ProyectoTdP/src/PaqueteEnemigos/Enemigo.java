@@ -4,6 +4,7 @@ import java.util.Random;
 
 import javax.swing.ImageIcon;
 
+import PaqueteColisionadores.Colisionador;
 import PaqueteObjetosImplementados.Animado;
 import TDAListaDE.Position;
 
@@ -62,5 +63,8 @@ public class Enemigo extends Animado {
 			return morir();
 		return 0;
 	}
-		
+	
+	public int serChocado(Colisionador c) {
+		return c.chocarEnemigo(this);
+	}
 }

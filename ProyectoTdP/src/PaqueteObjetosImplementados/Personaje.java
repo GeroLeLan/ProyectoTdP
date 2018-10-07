@@ -1,17 +1,19 @@
-package PaqueteObjetos;
+package PaqueteObjetosImplementados;
 
 import java.awt.event.KeyEvent;
 
 import javax.swing.ImageIcon;
 
-import PaqueteObjetosImplementados.Animado;
+import PaqueteColisionadores.Colisionador;
+import PaqueteObjetos.Arma;
+import PaqueteObjetos.Drop;
 
 public abstract class Personaje extends Animado {
 	protected Arma arma;
 	
 	protected Personaje(int v, int x, int y) {
 		super(v, x, y);
-		vida = 600;
+		vida = 200;
 	}
 
 	public int getVel() {
@@ -41,5 +43,11 @@ public abstract class Personaje extends Animado {
 		if(vida <= 0)
 			return morir();
 		return 0;
+	}
+	
+	public void mejorar(Drop drop) {}
+	
+	public int serChocado(Colisionador c) {
+		return c.chocarPersonaje(this);
 	}
 }
