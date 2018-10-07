@@ -7,7 +7,6 @@ import javax.swing.*;
 
 import TDAListaDE.*;
 import PaqueteEnemigos.*;
-import PaqueteObjetos.Personaje;
 import PaqueteObjetosImplementados.*;
 
 public class GUI {

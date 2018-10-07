@@ -1,8 +1,8 @@
 package PaqueteObjetos;
 
-public class DisparoE extends Disparo{
+public class DisparoEnemigo extends Disparo {
 	
-	protected DisparoE(int x, int y) {
+	protected DisparoEnemigo(int x, int y) {
 		super(x, y);
 		// TODO Auto-generated constructor stub
 	}
@@ -11,7 +11,6 @@ public class DisparoE extends Disparo{
 		return 0;
 	}
 	
-	@Override
 	protected void setGrafico() {
 		// TODO Auto-generated method stub
 		

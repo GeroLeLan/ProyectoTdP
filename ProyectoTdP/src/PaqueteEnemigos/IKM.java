@@ -3,7 +3,7 @@ package PaqueteEnemigos;
 import java.awt.Point;
 import javax.swing.ImageIcon;
 
-import PaqueteObjetos.Personaje;
+import PaqueteObjetosImplementados.Personaje;
 
 public class IKM extends Inteligencia {
 	private Inteligencia intelActual;

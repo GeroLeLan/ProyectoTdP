@@ -3,14 +3,14 @@ package PaqueteEnemigos;
 import java.awt.Point;
 import javax.swing.ImageIcon;
 
-import PaqueteObjetos.Personaje;
+import PaqueteObjetosImplementados.Personaje;
 
 public class IKB extends Inteligencia {
 	public IKB(Personaje p) {
 		super(p);
 		icono = new ImageIcon("./bin/ImageIcons/IKB.png");
 		puntosKill = 30;
-		velocidad = 4;
+		velocidad = 5;
 	}
 
 	public void mover(Point pos) {

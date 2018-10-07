@@ -2,7 +2,6 @@ package PaqueteJuego;
 
 import TDAListaDE.*;
 import PaqueteEnemigos.*;
-import PaqueteObjetos.Personaje;
 import PaqueteObjetosImplementados.*;
 
 public class Juego {

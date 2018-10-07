@@ -7,8 +7,8 @@ import java.awt.event.KeyEvent;
 import javax.swing.ImageIcon;
 
 import PaqueteEnemigos.Enemigo;
-import PaqueteObjetos.Personaje;
 import PaqueteObjetosImplementados.Objeto;
+import PaqueteObjetosImplementados.Personaje;
 import TDAListaDE.EmptyListException;
 import TDAListaDE.InvalidPositionException;
 

@@ -1,6 +1,7 @@
 package PaqueteObjetosImplementados;
 
 import javax.swing.ImageIcon;
+import PaqueteObjetos.DisparoEnemigo;
 
 public class BarricadaEnemigos extends Obstaculo {
 	
@@ -15,15 +16,17 @@ public class BarricadaEnemigos extends Obstaculo {
 		ImageIcon iconoEscala = new ImageIcon(escalarGrafico(iconoOriginal));
 		grafico.setIcon(iconoEscala);
 	}
-
+	
 	public int morir() {
 		return puntosKill;
 	}
-
-	@Override
+	
 	public void colisionar() {
-		// TODO Auto-generated method stub
-		
+		// TODO Auto-generated method stub	
+	}
+	
+	public int recibirDisparo(DisparoEnemigo dispEnem) { //El disparo del Enemigo no le hace nada a este tipo de obstáculos.
+		return 0;
 	}
 
 }
