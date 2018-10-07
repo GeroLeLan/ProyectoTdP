@@ -21,6 +21,8 @@ public class IKB extends Inteligencia {
 				pos.setLocation(pos.x - velocidad, pos.y);
 		}
 		pos.setLocation(pos.x, pos.y + velocidad);
+		if (pos.y > Ymax * 0.9)
+			pos.y = 0;
 	}
 	
 	public boolean iniciaConMovimiento() {
