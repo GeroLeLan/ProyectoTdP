@@ -5,6 +5,7 @@ import java.util.Random;
 
 import javax.swing.ImageIcon;
 
+import PaqueteObjetos.Disparo;
 import PaqueteObjetosImplementados.Personaje;
 
 public class IKA extends Inteligencia {
@@ -47,5 +48,10 @@ public class IKA extends Inteligencia {
 	
 	public boolean iniciaConMovimiento() {
 		return false;
+	}
+
+
+	public Disparo disparar(Point pos) {
+		return null;
 	}
 }

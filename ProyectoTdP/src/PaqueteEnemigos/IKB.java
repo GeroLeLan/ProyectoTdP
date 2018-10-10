@@ -3,6 +3,7 @@ package PaqueteEnemigos;
 import java.awt.Point;
 import javax.swing.ImageIcon;
 
+import PaqueteObjetos.Disparo;
 import PaqueteObjetosImplementados.Personaje;
 
 public class IKB extends Inteligencia {
@@ -27,5 +28,10 @@ public class IKB extends Inteligencia {
 	
 	public boolean iniciaConMovimiento() {
 		return false;
+	}
+
+	@Override
+	public Disparo disparar(Point pos) {
+		return null;
 	}
 }

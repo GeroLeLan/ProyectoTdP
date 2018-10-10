@@ -3,6 +3,8 @@ package PaqueteEnemigos;
 import java.awt.Point;
 import javax.swing.ImageIcon;
 
+import PaqueteObjetos.Disparo;
+import PaqueteObjetos.DisparoEnemigo;
 import PaqueteObjetosImplementados.Personaje;
 
 public class IKM extends Inteligencia {
@@ -27,5 +29,10 @@ public class IKM extends Inteligencia {
 	
 	public boolean iniciaConMovimiento() {
 		return false;
+	}
+
+	@Override
+	public Disparo disparar(Point pos) {
+		return null;
 	}
 }

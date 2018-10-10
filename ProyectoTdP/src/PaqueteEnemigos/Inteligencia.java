@@ -3,6 +3,7 @@ package PaqueteEnemigos;
 import java.awt.Point;
 import javax.swing.ImageIcon;
 
+import PaqueteObjetos.Disparo;
 import PaqueteObjetosImplementados.Personaje;
 
 public abstract class Inteligencia {
@@ -21,15 +22,12 @@ public abstract class Inteligencia {
 	public ImageIcon getIcono() {
 		return icono;
 	}
-	
 	public int getPuntosKill() {
 		return puntosKill;
 	}
-	
 	public Inteligencia clone() {
 		return null;
 	}
-	
 	public abstract void mover(Point pos);
 	
 	public int getVelocidad() {
@@ -39,4 +37,6 @@ public abstract class Inteligencia {
 	public abstract boolean iniciaConMovimiento();
 	
 	public void cambiarInteligencia(int vida, Enemigo enem) { } //Lo redefinirán las inteligencias que cambien.
+
+	abstract public Disparo disparar(Point pos) ;
 }

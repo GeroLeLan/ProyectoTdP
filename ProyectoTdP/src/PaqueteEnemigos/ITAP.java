@@ -3,13 +3,17 @@ package PaqueteEnemigos;
 import java.awt.Point;
 import javax.swing.ImageIcon;
 
+import PaqueteObjetos.Disparo;
+import PaqueteObjetos.DisparoEnemigo;
 import PaqueteObjetosImplementados.Personaje;
 
 public class ITAP extends Inteligencia {
 	private Inteligencia intelActual;
+	private boolean tieneArma;
 	
 	public ITAP(Personaje p) {
 		super(p);
+		tieneArma=true;
 		icono = new ImageIcon("./bin/ImageIcons/ITAP - Armado.png");
 		puntosKill = 20;
 		velocidad = 1;
@@ -25,10 +29,18 @@ public class ITAP extends Inteligencia {
 			intelActual = new IKB(personajeJuego);
 			icono = new ImageIcon("./bin/ImageIcons/ITAP - Desarmado.png");
 			enem.setGrafico();
+			tieneArma=false;
 		}
 	}
 	
-	public boolean iniciaConMovimiento() {
+	public boolean iniciaConMovimiento() {x
 		return true;
+	}
+
+	@Override
+	public Disparo disparar(Point pos) {
+		if(tieneArma)
+			 return new DisparoEnemigo(pos.x,pos.y);
+		return null;
 	}
 }

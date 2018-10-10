@@ -5,6 +5,7 @@ import java.util.Random;
 import javax.swing.ImageIcon;
 
 import PaqueteColisionadores.Colisionador;
+import PaqueteObjetos.Disparo;
 import PaqueteObjetosImplementados.Animado;
 import TDAListaDE.Position;
 
@@ -66,5 +67,10 @@ public class Enemigo extends Animado {
 	
 	public int serChocado(Colisionador c) {
 		return c.chocarEnemigo(this);
+	}
+
+	public Disparo disparar() {
+		
+		return intel.disparar(pos);
 	}
 }

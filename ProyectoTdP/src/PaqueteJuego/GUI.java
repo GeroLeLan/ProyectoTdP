@@ -11,6 +11,7 @@ import PaqueteObjetosImplementados.*;
 
 public class GUI {
 	private ContadorTiempo tiempo;
+	private ContadorTDisparo tiempoDisparo;
 	
 	private static final int Ymax = java.awt.Toolkit.getDefaultToolkit().getScreenSize().height;
 	private static final int Xmax = java.awt.Toolkit.getDefaultToolkit().getScreenSize().width;
@@ -109,8 +110,9 @@ public class GUI {
 		puntuacion.setText("Puntaje: " + puntaje);
 		panel.add(puntuacion);
 		
-		juego = new Juego(dificultad);
+		juego = new Juego(dificultad,this);
 		tiempo = new ContadorTiempo(juego);
+		tiempoDisparo= new ContadorTDisparo(juego);
 		
 		listaEnemigos = juego.getListaEnems();
 		for (Position<Enemigo> pos : listaEnemigos.positions())
@@ -150,6 +152,7 @@ public class GUI {
 						e.printStackTrace();
 					}
 				    tiempo.start();
+				    tiempoDisparo.start();
 				}
 			}
 		};
@@ -158,7 +161,7 @@ public class GUI {
 	}
 	
 	
-	
+		
 		private void comenzarJuego() throws InterruptedException {
 			frame.removeKeyListener(comienzoConEspacio);
 			instruccion.setText("");

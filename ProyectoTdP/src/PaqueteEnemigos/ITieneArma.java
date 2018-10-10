@@ -5,6 +5,8 @@ import java.util.Random;
 
 import javax.swing.ImageIcon;
 
+import PaqueteObjetos.Disparo;
+import PaqueteObjetos.DisparoEnemigo;
 import PaqueteObjetosImplementados.Personaje;
 
 public class ITieneArma extends Inteligencia {
@@ -33,5 +35,9 @@ public class ITieneArma extends Inteligencia {
 	
 	public boolean iniciaConMovimiento() {
 		return true;
+	}
+	@Override
+	public Disparo disparar(Point pos) {
+		return new DisparoEnemigo(pos.x,pos.y);
 	}
 }
