@@ -69,9 +69,11 @@ public class Juego {
 				else {
 					obj.element().mover();
 					Rectangle rectanguloObj = obj.element().getGrafico().getBounds();
+					setearBordes(rectanguloObj);
 					for (Position<Objeto> pos : listaObjetos.positions()) {
 						if (pos.element() != obj.element()) {
 							Rectangle rectanguloPos = pos.element().getGrafico().getBounds();
+							setearBordes(rectanguloPos);
 							if (rectanguloObj.intersects(rectanguloPos)) {
 								int puntos = gui.getPuntaje() + obj.element().colisionar(pos.element());
 								if (puntos < 0)
@@ -117,5 +119,9 @@ public class Juego {
 			gui.getVida().setBackground(new Color(255,255,255));
 		}
 		gui.getVida().setText("Vida: " + personaje.getVida());;
+	}
+	
+	private void setearBordes(Rectangle re) {
+		re.setBounds(re.x, (int) (re.y * 1.8), (int) (re.getWidth() * 0.8), (int) (re.getHeight() * 0.7));
 	}
 }
