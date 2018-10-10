@@ -46,7 +46,7 @@ public class Enemigo extends Animado {
 			intel.mover(pos);
 		else {
 			Random r = new Random();
-			int chance = r.nextInt(250);
+			int chance = r.nextInt(550);
 			if (chance <= 6)
 				moviendo = true;
 		}
