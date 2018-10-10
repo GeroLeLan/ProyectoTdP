@@ -3,6 +3,7 @@ package PaqueteObjetos;
 import javax.swing.ImageIcon;
 
 public class DisparoEnemigo extends Disparo {
+<<<<<<< HEAD
 	
 	public DisparoEnemigo(int x, int y) {
 		super(x, y);
@@ -28,4 +29,11 @@ public class DisparoEnemigo extends Disparo {
 		grafico.setLocation(pos);
 	}
 
+=======
+	protected DisparoEnemigo(int x, int y) {
+		super(x, y);
+	}
+	
+	//DEBE REDEFINIR A mover().
+>>>>>>> 3d9c1112bc17bf89a881453e8bd8f7bd21b7b5ad
 }

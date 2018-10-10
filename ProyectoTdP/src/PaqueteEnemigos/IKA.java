@@ -9,7 +9,7 @@ import PaqueteObjetos.Disparo;
 import PaqueteObjetosImplementados.Personaje;
 
 public class IKA extends Inteligencia {
-	private int vecesMovido;
+	private int vecesMovido; //Permite que el movimiento acelere al principio.
 	
 	public IKA(Personaje p) {
 		super(p);

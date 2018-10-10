@@ -17,6 +17,6 @@ public class ColisionadorEnemigo extends Colisionador {
 	
 	public int chocarPersonaje(Personaje personaje) {
 		miEnemigo.recibirDaño(100);
-		return personaje.recibirDaño(30); //Quizás estaría bueno que al recibir daño perdieras 5 puntos, o algo así. (Nacho)
+		return personaje.recibirDaño(30);
 	}
 }

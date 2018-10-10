@@ -16,7 +16,9 @@ public class ContadorTiempo extends Thread {
 			catch (InterruptedException e) {
 				e.printStackTrace();
 			}
-			elJuego.moverEnemigos();
+			if (elJuego.getPersonaje().getVida() <= 0)
+				break;
+			elJuego.moverObjetos();
 		}
 	}
 }

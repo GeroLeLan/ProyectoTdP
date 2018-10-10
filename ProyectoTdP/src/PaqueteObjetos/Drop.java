@@ -1,6 +1,8 @@
 package PaqueteObjetos;
 
 import PaqueteColisionadores.Colisionador;
+import PaqueteColisionadores.ColisionadorDrop;
+import PaqueteObjetosImplementados.Objeto;
 
 public abstract class Drop extends Intangible {
 
@@ -11,6 +13,10 @@ public abstract class Drop extends Intangible {
 	
 	public int serChocado(Colisionador c) {
 		return 0;
+	}
+	
+	public int colisionar(Objeto o) {
+		return o.serChocado(new ColisionadorDrop(this));
 	}
 
 }
