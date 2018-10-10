@@ -33,7 +33,7 @@ public class ITAP extends Inteligencia {
 		}
 	}
 	
-	public boolean iniciaConMovimiento() {x
+	public boolean iniciaConMovimiento() {
 		return true;
 	}
 

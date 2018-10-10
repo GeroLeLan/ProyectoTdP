@@ -16,26 +16,19 @@ public class Juego {
 	private GUI gui;
 	private int frecuencia =0;//camabiar en un futuro cercano 
 	private PositionList<Enemigo> listaEnemigos;
-<<<<<<< HEAD
 	private PositionList<Disparo> listaDisparos;
-=======
 	private PositionList<Objeto> listaObjetos;
->>>>>>> 3d9c1112bc17bf89a881453e8bd8f7bd21b7b5ad
 	private Obstaculo[] obstaculos;
 	private Personaje personaje;
-	private GUI gui;
 	@SuppressWarnings("unused")
 	private Mapa mapa; //Cambiará cuando cambie el nivel.
 	
 	public Juego(int dificultad, GUI g) {
-<<<<<<< HEAD
 		gui=g;
 		listaEnemigos = new ListaDoblementeEnlazada<Enemigo>();
 		listaDisparos = new ListaDoblementeEnlazada<Disparo>();
-=======
 		listaEnemigos = new ListaDoblementeEnlazada<Enemigo>();
 		listaObjetos = new ListaDoblementeEnlazada<Objeto>();
->>>>>>> 3d9c1112bc17bf89a881453e8bd8f7bd21b7b5ad
 		obstaculos = new Obstaculo[3];
 		gui = g;
 		mapa = new Mapa(dificultad, this);
@@ -135,11 +128,9 @@ public class Juego {
 		}
 		gui.getVida().setText("Vida: " + personaje.getVida());;
 	}
-	
-<<<<<<< HEAD
-	public void moverEnemigos() {
+		public void moverEnemigos() {
 		for (Position<Enemigo> enem : listaEnemigos.positions()) {
-		enem.element().mover(0); //El método mover de los Enemigos está definido para recibir un entero en la clase Animado. Quizás debamos cambiar eso.
+		enem.element().mover(); //El método mover de los Enemigos está definido para recibir un entero en la clase Animado. Quizás debamos cambiar eso.
 		frecuencia++;
 		if(frecuencia==97) {
 			Disparo dis =enem.element().disparar();
@@ -166,10 +157,10 @@ public class Juego {
 					e.printStackTrace();
 				}
 		}
+		}
 		
-=======
+
 	private void setearBordes(Rectangle re) {
 		re.setBounds(re.x, (int) (re.y * 1.8), (int) (re.getWidth() * 0.8), (int) (re.getHeight() * 0.7));
->>>>>>> 3d9c1112bc17bf89a881453e8bd8f7bd21b7b5ad
 	}
 }

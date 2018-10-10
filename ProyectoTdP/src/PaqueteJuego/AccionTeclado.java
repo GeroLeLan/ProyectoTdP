@@ -80,7 +80,7 @@ public class AccionTeclado extends KeyAdapter {
 			}
 		}		
 		if (o.getVida() > 0) {
-			gui.setPuntaje(gui.getPuntaje() + o.recibirDisparo(new Disparo(0,0)));
+			gui.setPuntaje(gui.getPuntaje() + o.recibirDisparo(new Disparo(0,0)));// esto lo pudiste hacer porque hiciste el disparo concreto pero si lo haces concreto me cagas un metodo abstracto que tengo ahi despues hay que ver como hacemos 
 			gui.getPuntuacion().setText("Puntaje: " + gui.getPuntaje());
 		}
 	}

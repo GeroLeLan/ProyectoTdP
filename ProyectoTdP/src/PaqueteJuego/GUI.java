@@ -115,11 +115,11 @@ public class GUI {
 		puntuacion.setText("Puntaje: " + puntaje);
 		panel.add(puntuacion);
 		
-<<<<<<< HEAD
-		juego = new Juego(dificultad,this);
-=======
+
+		
+
 		juego = new Juego(dificultad, this);
->>>>>>> 3d9c1112bc17bf89a881453e8bd8f7bd21b7b5ad
+
 		tiempo = new ContadorTiempo(juego);
 		tiempoDisparo= new ContadorTDisparo(juego);
 		
