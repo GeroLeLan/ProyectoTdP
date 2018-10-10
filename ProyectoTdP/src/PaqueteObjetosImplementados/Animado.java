@@ -15,8 +15,6 @@ public abstract class Animado extends Objeto {
 	}
 	public abstract int recibirDaño(int d);
 	
-	public abstract void mover(int dir);
-	
 	public int getVida() {
 		return vida;
 	}

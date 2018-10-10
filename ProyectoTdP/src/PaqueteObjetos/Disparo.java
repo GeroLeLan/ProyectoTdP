@@ -1,14 +1,17 @@
 package PaqueteObjetos;
 
 import PaqueteColisionadores.Colisionador;
+import PaqueteColisionadores.ColisionadorDisparo;
+import PaqueteObjetosImplementados.Objeto;
 import PaqueteObjetosImplementados.Obstaculo;
 
-public abstract class Disparo extends Intangible {
+public class Disparo extends Intangible {
 	protected int daño;
 	protected int velocidad;
 	
-	protected Disparo(int x, int y) {
+	public Disparo(int x, int y) {
 		super(x, y);
+		daño = 200;
 	}
 	
 	public int getDaño() {
@@ -22,4 +25,16 @@ public abstract class Disparo extends Intangible {
 	public int serChocado(Colisionador c) {
 		return 0;
 	}
+	
+	public int colisionar(Objeto o) {
+		return o.serChocado(new ColisionadorDisparo(this));
+	}
+	
+	protected void setGrafico() {}
+	
+	protected int morir() {
+		return 0;
+	}
+	
+	//DEBE REDEFINIR A mover().
 }

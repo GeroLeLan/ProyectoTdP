@@ -214,6 +214,6 @@ public class Mapa {
 	
 	private void crearJugador() {
 		jugador = new Jugador(7, posXJugador, posYJugador);
-		juego.setJugador(jugador);
+		juego.setPersonaje(jugador);
 	}
 }

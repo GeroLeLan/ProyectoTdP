@@ -24,7 +24,7 @@ public class GUI {
 	private int frameWidth, frameHeight;
 	
 	private KeyAdapter comienzoConEspacio, botonera;
-	private JLabel instruccion, lvl, puntuacion, nombrePersonaje;
+	private JLabel instruccion, lvl, puntuacion, nombrePersonaje, vida;
 	
 	
 	public static void main(String[] args) {
@@ -75,11 +75,16 @@ public class GUI {
 		lvl.setBackground(new Color(255,255,255));
 		lvl.setBounds((int) (frameWidth * 0.83), (int) (frameHeight * 0.02), 100, 23);
 		
+		vida = new JLabel();
+		vida.setForeground(new Color(255,255,255));
+		vida.setFont(new Font("Sitka Text", Font.BOLD, 18));
+		vida.setBackground(new Color(255,255,255));
+		vida.setBounds((int) (frameWidth * 0.08) + 20, (int) (frameHeight * 0.05), (int) (frameWidth * 0.3), 23);
+		
 		puntuacion = new JLabel();
 		puntuacion.setForeground(new Color(255,255,255));
 		puntuacion.setFont(new Font("Sitka Text", Font.BOLD, 18));
 		puntuacion.setBackground(new Color(255,255,255));
-
 		puntuacion.setBounds((int) (frameWidth * 0.08) + 20, (int) (frameHeight * 0.02), (int) (frameWidth * 0.3), 23);
 
 		
@@ -92,11 +97,11 @@ public class GUI {
 		puntaje = 0;
 		
 		nombrePersonaje = new JLabel();
-		nombrePersonaje.setForeground(new Color(225,255,255));
+		nombrePersonaje.setForeground(new Color(255,255,255));
 		nombrePersonaje.setFont(new Font("Sitka Text", Font.BOLD, (int) (frameWidth * 0.026)));
-		nombrePersonaje.setBackground(new Color(225,0,0));
+		nombrePersonaje.setBackground(new Color(255,0,0));
 		
-		nivel(1);
+		nivel(2);
 		
 	}
 	
@@ -109,7 +114,7 @@ public class GUI {
 		puntuacion.setText("Puntaje: " + puntaje);
 		panel.add(puntuacion);
 		
-		juego = new Juego(dificultad);
+		juego = new Juego(dificultad, this);
 		tiempo = new ContadorTiempo(juego);
 		
 		listaEnemigos = juego.getListaEnems();
@@ -122,6 +127,9 @@ public class GUI {
 
 		jugador = juego.getPersonaje();
 		panel.add(grafico(jugador));
+		
+		vida.setText("Vida: " + jugador.getVida());
+		panel.add(vida);
 		
 		instruccion.setText("PRESIONE ESPACIO PARA COMENZAR");
 		panel.add(instruccion);
@@ -141,7 +149,7 @@ public class GUI {
 							else
 								JOptionPane.showMessageDialog(null, "Debe ingresarse un nombre de longitud mayor que 0 y menor o igual que 8.", "Ingreso Inválido", JOptionPane.ERROR_MESSAGE);
 						}
-						nombrePersonaje.setBounds((int) (frameWidth * 0.5 - nombre.length() * 10), (int) (frameHeight * 0.02), (int) (frameWidth * 0.6), 23);
+						nombrePersonaje.setBounds((int) (frameWidth * 0.5 - nombre.length() * 10), (int) (frameHeight * 0.02), (int) (frameWidth * 0.6), 25);
 						nombrePersonaje.setText(nombre.toUpperCase());
 						panel.add(nombrePersonaje);
 						comenzarJuego();
@@ -163,7 +171,7 @@ public class GUI {
 			frame.removeKeyListener(comienzoConEspacio);
 			instruccion.setText("");
 			
-			botonera = new AccionTeclado(this);
+			botonera = new AccionTeclado(this, juego);
 			
 			frame.addKeyListener(botonera);
 		}
@@ -179,7 +187,9 @@ public class GUI {
 		public Container getPanel() { return panel; }
 		
 		public JLabel getPuntuacion() { return puntuacion; }
-		public void setPuntuacion(JLabel p) { puntuacion = p; }
+		public JLabel getVida() { return vida; }
+		public JLabel getNombrePersonaje() { return nombrePersonaje; }
+		public JLabel getLvl() { return lvl; }
 		public int getPuntaje() { return puntaje; }
 		public void setPuntaje(int p) {	puntaje = p; }
 }

@@ -13,7 +13,6 @@ public abstract class Personaje extends Animado {
 	
 	protected Personaje(int v, int x, int y) {
 		super(v, x, y);
-		vida = 200;
 	}
 
 	public int getVel() {
@@ -42,10 +41,14 @@ public abstract class Personaje extends Animado {
 		vida -= d;
 		if(vida <= 0)
 			return morir();
-		return 0;
+		return -5;
 	}
 	
 	public void mejorar(Drop drop) {}
+	
+	public int colisionar(Objeto o) {
+		return 0;
+	}
 	
 	public int serChocado(Colisionador c) {
 		return c.chocarPersonaje(this);

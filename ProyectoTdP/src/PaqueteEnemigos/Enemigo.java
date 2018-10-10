@@ -5,7 +5,9 @@ import java.util.Random;
 import javax.swing.ImageIcon;
 
 import PaqueteColisionadores.Colisionador;
+import PaqueteColisionadores.ColisionadorEnemigo;
 import PaqueteObjetosImplementados.Animado;
+import PaqueteObjetosImplementados.Objeto;
 import TDAListaDE.Position;
 
 public class Enemigo extends Animado {
@@ -38,13 +40,8 @@ public class Enemigo extends Animado {
 		grafico.setIcon(iconoEscala);
 		return intel.getPuntosKill();
 	}
-
-	@Override
-	public void colisionar() {
-		// TODO Auto-generated method stub
-	}
 	
-	public void mover(int dir) {
+	public void mover() {
 		if (moviendo)
 			intel.mover(pos);
 		else {
@@ -66,5 +63,8 @@ public class Enemigo extends Animado {
 	
 	public int serChocado(Colisionador c) {
 		return c.chocarEnemigo(this);
+	}
+	public int colisionar(Objeto o) {
+		return o.serChocado(new ColisionadorEnemigo(this));
 	}
 }

@@ -39,8 +39,13 @@ public abstract class Objeto {
 	
 	
 	protected abstract int morir();
-	public abstract void colisionar();
 	
+	public abstract int colisionar(Objeto o);
+	
+	/* El objetivo de este método es poder mover a todos los objetos usando hilos.
+	 * Los objetos que tenga un movimiento lo redefinirán. Los que no, simplemente no harán nada.
+	 * */
+	public void mover() {}
 	
 	protected Image escalarGrafico(ImageIcon original) {
 		return original.getImage().getScaledInstance(grafico.getWidth(), grafico.getHeight(), java.awt.Image.SCALE_DEFAULT);

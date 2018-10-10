@@ -11,12 +11,14 @@ public class ContadorTiempo extends Thread {
 	public void run() {
 		while(true){
 			try {
-				Thread.sleep(400);
+				Thread.sleep(250);
 			}
 			catch (InterruptedException e) {
 				e.printStackTrace();
 			}
-			elJuego.moverEnemigos();
+			if (elJuego.getPersonaje().getVida() <= 0)
+				break;
+			elJuego.moverObjetos();
 		}
 	}
 }
