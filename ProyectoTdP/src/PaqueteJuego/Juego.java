@@ -98,11 +98,9 @@ public class Juego {
 				}
 			else {
 				frecuencia++;
-<<<<<<< HEAD
+
 				if(frecuencia == 29) {
-=======
-				if(frecuencia == 59) {
->>>>>>> fb99eba33ee07c51505146a6903428833e8d0e65
+
 					Disparo dis = enem.element().disparar();
 					if(dis != null) {
 						listaDisparos.addLast(dis);

@@ -8,11 +8,9 @@ import PaqueteObjetosImplementados.Obstaculo;
 
 public class DisparoEnemigo extends Disparo {
 	public DisparoEnemigo(int x, int y) {
-<<<<<<< HEAD
-		super(x+30, y+10);
-=======
+
 		super(x + 30, y + 15);
->>>>>>> fb99eba33ee07c51505146a6903428833e8d0e65
+
 		setGrafico();
 		grafico.setIcon(new ImageIcon("./bin/ImageIcons/dispEnemigo2.gif"));
 	}
