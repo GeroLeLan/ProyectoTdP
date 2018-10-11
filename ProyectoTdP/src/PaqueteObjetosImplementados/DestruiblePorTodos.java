@@ -2,12 +2,15 @@ package PaqueteObjetosImplementados;
 
 import javax.swing.ImageIcon;
 
+import PaqueteObjetos.Disparo;
+import PaqueteObjetos.DisparoEnemigo;
+
 public class DestruiblePorTodos extends Obstaculo {
 
 	public DestruiblePorTodos(int x, int y) {
 		super(x, y);
 		setGrafico();
-		puntosKill = 10;
+		puntosKill = 40;
 	}
 	
 	protected void setGrafico() {
@@ -16,14 +19,18 @@ public class DestruiblePorTodos extends Obstaculo {
 		grafico.setIcon(iconoEscala);
 	}
 
-	public int morir() {
-		return puntosKill;
+	public int recibirDaño(int d, Disparo disp) {
+		vida -= d;
+		if (vida <= 0)
+			return morir();
+		return 0;
 	}
-
-	@Override
-	public void colisionar() {
-		// TODO Auto-generated method stub
-		
+	
+	public int recibirDisparo(DisparoEnemigo dispEnem) {
+		vida -= dispEnem.getDaño();
+		if (vida <= 0)
+			return morir();
+		return 0;
 	}
 	
 }

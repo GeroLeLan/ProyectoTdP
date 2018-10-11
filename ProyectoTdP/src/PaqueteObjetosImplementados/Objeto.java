@@ -3,6 +3,8 @@ package PaqueteObjetosImplementados;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
+import PaqueteColisionadores.Colisionador;
+
 import java.awt.Image;
 import java.awt.Point;
 
@@ -22,6 +24,9 @@ public abstract class Objeto {
 	public Point getPos() {
 		return pos;
 	}
+	public int getVida() {
+		return vida;
+	}
 		
 	protected abstract void setGrafico();
 	
@@ -34,10 +39,17 @@ public abstract class Objeto {
 	
 	
 	protected abstract int morir();
-	public abstract void colisionar();
 	
+	public abstract int colisionar(Objeto o);
+	
+	/* El objetivo de este método es poder mover a todos los objetos usando hilos.
+	 * Los objetos que tenga un movimiento lo redefinirán. Los que no, simplemente no harán nada.
+	 * */
+	public void mover() {}
 	
 	protected Image escalarGrafico(ImageIcon original) {
 		return original.getImage().getScaledInstance(grafico.getWidth(), grafico.getHeight(), java.awt.Image.SCALE_DEFAULT);
 	}
+	
+	public abstract int serChocado(Colisionador c); //Debe retornar un entero para manejar los puntajes.
 }

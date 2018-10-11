@@ -1,80 +1,88 @@
 package PaqueteJuego;
 
 import java.awt.Image;
-import java.awt.Point;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
 import javax.swing.ImageIcon;
 
 import PaqueteEnemigos.Enemigo;
-import PaqueteObjetos.Personaje;
+import PaqueteObjetos.Disparo;
 import PaqueteObjetosImplementados.Objeto;
+import PaqueteObjetosImplementados.Obstaculo;
+import PaqueteObjetosImplementados.Personaje;
 import TDAListaDE.EmptyListException;
 import TDAListaDE.InvalidPositionException;
 
 public class AccionTeclado extends KeyAdapter {
 	private GUI gui;
+	private Juego juego;
 	private Personaje personaje;
 	
-	public AccionTeclado(GUI g) {
+	public AccionTeclado(GUI g, Juego j) {
 		super();
 		gui = g;
 		personaje = gui.getPersonaje();
+		juego = j;
 	}
 	
 	public void keyPressed(KeyEvent arg0) {
-		int direction = arg0.getKeyCode();
-		
-		if (direction == KeyEvent.VK_LEFT || direction == KeyEvent.VK_A) {
-			ImageIcon iconoOriginal = new ImageIcon("./bin/ImageIcons/Jugador - Izquierda.png");
-			ImageIcon iconoEscala = new ImageIcon(escalarImagen(iconoOriginal, personaje));
-			gui.grafico(personaje).setIcon(iconoEscala);
-			if (posicion(personaje).x - 5 > 0)
-				posicion(personaje).x -= personaje.getVel();
-		}
-		if (direction == KeyEvent.VK_RIGHT || direction == KeyEvent.VK_D) {
-			ImageIcon iconoOriginal = new ImageIcon("./bin/ImageIcons/Jugador - Derecha.png");
-			ImageIcon iconoEscala = new ImageIcon(escalarImagen(iconoOriginal, personaje));
-			gui.grafico(personaje).setIcon(iconoEscala);
-			if (posicion(personaje).x < gui.getFrameWidth() * 0.9)
-				posicion(personaje).x += personaje.getVel();
-		}
-		
-		gui.grafico(personaje).setLocation(posicion(personaje));
+		int direccion = arg0.getKeyCode();
+		if (personaje.getVida() > 0)
+			personaje.mover(direccion);
 	}
 	
 	public void keyReleased(KeyEvent arg0) {
-		int direction = arg0.getKeyCode();
-		
-		if (direction == KeyEvent.VK_LEFT || direction == KeyEvent.VK_RIGHT || direction == KeyEvent.VK_A || direction == KeyEvent.VK_D) {
-			ImageIcon iconoOriginal = new ImageIcon("./bin/ImageIcons/Jugador - Estándar.png");
-			ImageIcon iconoEscala = new ImageIcon(escalarImagen(iconoOriginal, personaje));
-			gui.grafico(personaje).setIcon(iconoEscala);
+		int comando = arg0.getKeyCode();
+		if (personaje.getVida() > 0) {
+			if (comando == KeyEvent.VK_LEFT || comando == KeyEvent.VK_RIGHT || comando == KeyEvent.VK_A || comando == KeyEvent.VK_D)
+					acomodarJugador();
+			if (comando == KeyEvent.VK_K && !gui.getListaEnemigos().isEmpty())
+					dañarEnemigo();
+			if (comando == KeyEvent.VK_C)
+					dañarObstaculo();
 		}
-		
-		if (direction == KeyEvent.VK_K && !gui.getListaEnemigos().isEmpty()) {
-			try {
-				Enemigo e = gui.getListaEnemigos().first().element();
-				gui.setPuntaje(gui.getPuntaje() + e.recibirDaño(1000000));
-				gui.getPanel().add(gui.grafico(e));
-				gui.getListaEnemigos().remove(gui.getListaEnemigos().first());
-				gui.getPuntuacion().setText("Puntaje: " + gui.getPuntaje());
-			}
-			catch (EmptyListException | InvalidPositionException exc) {
-				System.out.println(exc.getMessage() + "\n");
-				exc.printStackTrace();
-			}
-		}
-		
-			
 	}
 	
 	
 	private Image escalarImagen(ImageIcon original, Objeto o) {
 		return original.getImage().getScaledInstance(gui.grafico(o).getWidth(), gui.grafico(o).getHeight(), java.awt.Image.SCALE_DEFAULT);
 	}
-	private Point posicion(Objeto o) {
-		return o.getPos();
+	
+	private void acomodarJugador() {
+		ImageIcon iconoOriginal = new ImageIcon("./bin/ImageIcons/Jugador - Estándar.png");
+		ImageIcon iconoEscala = new ImageIcon(escalarImagen(iconoOriginal, personaje));
+		gui.grafico(personaje).setIcon(iconoEscala);
 	}
+	
+	private void dañarEnemigo() {
+		try {
+			Enemigo e = gui.getListaEnemigos().first().element();
+			gui.setPuntaje(gui.getPuntaje() + e.recibirDaño(10));
+			if (e.getVida() <= 0) {
+				gui.getPanel().add(gui.grafico(e));
+				gui.getListaEnemigos().remove(gui.getListaEnemigos().first());
+				gui.getPuntuacion().setText("Puntaje: " + gui.getPuntaje());
+			}
+		}
+		catch (EmptyListException | InvalidPositionException exc) {
+			System.out.println(exc.getMessage() + "\n");
+			exc.printStackTrace();
+		}
+	}
+	
+	private void dañarObstaculo() {
+		Obstaculo o = juego.getObstaculo(0);
+		if (o.getVida() < 0) {
+			o = juego.getObstaculo(1);
+			if (o.getVida() < 0) {
+				o = juego.getObstaculo(2);
+			}
+		}		
+		if (o.getVida() > 0) {
+			gui.setPuntaje(gui.getPuntaje() + o.recibirDisparo(new Disparo(0,0)));// esto lo pudiste hacer porque hiciste el disparo concreto pero si lo haces concreto me cagas un metodo abstracto que tengo ahi despues hay que ver como hacemos 
+			gui.getPuntuacion().setText("Puntaje: " + gui.getPuntaje());
+		}
+	}
+	
 }
