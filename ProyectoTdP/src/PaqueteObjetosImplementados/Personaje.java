@@ -6,10 +6,7 @@ import javax.swing.ImageIcon;
 
 import PaqueteColisionadores.Colisionador;
 import PaqueteObjetos.Arma;
-<<<<<<< HEAD
-=======
 import PaqueteObjetos.Disparo;
->>>>>>> dd3bba543e7ea215949fc855fc96016e284f2929
 import PaqueteObjetos.Drop;
 
 public abstract class Personaje extends Animado {
@@ -57,11 +54,8 @@ public abstract class Personaje extends Animado {
 	public int serChocado(Colisionador c) {
 		return c.chocarPersonaje(this);
 	}
-<<<<<<< HEAD
-=======
 	
 	public Disparo disparar() {
 		return new Disparo((int) (pos.x + grafico.getWidth() * 0.6), pos.y);
 	}
->>>>>>> dd3bba543e7ea215949fc855fc96016e284f2929
 }

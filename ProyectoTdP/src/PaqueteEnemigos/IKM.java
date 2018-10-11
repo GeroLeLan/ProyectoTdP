@@ -4,11 +4,7 @@ import java.awt.Point;
 import javax.swing.ImageIcon;
 
 import PaqueteObjetos.Disparo;
-<<<<<<< HEAD
-import PaqueteObjetos.DisparoEnemigo;
-=======
 //import PaqueteObjetos.DisparoEnemigo;
->>>>>>> dd3bba543e7ea215949fc855fc96016e284f2929
 import PaqueteObjetosImplementados.Personaje;
 
 public class IKM extends Inteligencia {
@@ -35,10 +31,6 @@ public class IKM extends Inteligencia {
 		return false;
 	}
 
-<<<<<<< HEAD
-	@Override
-=======
->>>>>>> dd3bba543e7ea215949fc855fc96016e284f2929
 	public Disparo disparar(Point pos) {
 		return null;
 	}

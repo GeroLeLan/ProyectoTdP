@@ -102,11 +102,7 @@ public class GUI {
 		nombrePersonaje.setFont(new Font("Sitka Text", Font.BOLD, (int) (frameWidth * 0.026)));
 		nombrePersonaje.setBackground(new Color(255,0,0));
 		
-<<<<<<< HEAD
-		nivel(2);
-=======
 		nivel(1);
->>>>>>> dd3bba543e7ea215949fc855fc96016e284f2929
 		
 	}
 	

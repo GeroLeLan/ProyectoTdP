@@ -70,14 +70,8 @@ public class Enemigo extends Animado {
 
 
 	public Disparo disparar() {
-<<<<<<< HEAD
-		
-		return intel.disparar(pos);
-		}
-=======
 		return intel.disparar(pos);
 	}
->>>>>>> dd3bba543e7ea215949fc855fc96016e284f2929
 
 	public int colisionar(Objeto o) {
 		return o.serChocado(new ColisionadorEnemigo(this));

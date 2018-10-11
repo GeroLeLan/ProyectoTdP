@@ -49,12 +49,7 @@ public class IKA extends Inteligencia {
 	public boolean iniciaConMovimiento() {
 		return false;
 	}
-<<<<<<< HEAD
-
-
-=======
 	
->>>>>>> dd3bba543e7ea215949fc855fc96016e284f2929
 	public Disparo disparar(Point pos) {
 		return null;
 	}
