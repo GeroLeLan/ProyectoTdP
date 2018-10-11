@@ -41,6 +41,11 @@ public class AccionTeclado extends KeyAdapter {
 					dañarEnemigo();
 			if (comando == KeyEvent.VK_C)
 					dañarObstaculo();
+<<<<<<< HEAD
+=======
+			if (comando == KeyEvent.VK_SPACE)
+				personajeDispara();
+>>>>>>> dd3bba543e7ea215949fc855fc96016e284f2929
 		}
 	}
 	
@@ -73,16 +78,34 @@ public class AccionTeclado extends KeyAdapter {
 	
 	private void dañarObstaculo() {
 		Obstaculo o = juego.getObstaculo(0);
+<<<<<<< HEAD
 		if (o.getVida() < 0) {
 			o = juego.getObstaculo(1);
 			if (o.getVida() < 0) {
+=======
+		if (o.getVida() <= 0) {
+			o = juego.getObstaculo(1);
+			if (o.getVida() <= 0) {
+>>>>>>> dd3bba543e7ea215949fc855fc96016e284f2929
 				o = juego.getObstaculo(2);
 			}
 		}		
 		if (o.getVida() > 0) {
+<<<<<<< HEAD
 			gui.setPuntaje(gui.getPuntaje() + o.recibirDisparo(new Disparo(0,0)));// esto lo pudiste hacer porque hiciste el disparo concreto pero si lo haces concreto me cagas un metodo abstracto que tengo ahi despues hay que ver como hacemos 
 			gui.getPuntuacion().setText("Puntaje: " + gui.getPuntaje());
 		}
+=======
+			gui.setPuntaje(gui.getPuntaje() + o.recibirDisparo(new Disparo(0,0)));
+			gui.getPuntuacion().setText("Puntaje: " + gui.getPuntaje());
+		}
+	}
+	
+	private void personajeDispara() {
+		Disparo dis = personaje.disparar();
+		juego.getListaDisp().addLast(dis);
+		gui.getPanel().add(dis.getGrafico());
+>>>>>>> dd3bba543e7ea215949fc855fc96016e284f2929
 	}
 	
 }

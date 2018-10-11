@@ -36,8 +36,14 @@ public class ITieneArma extends Inteligencia {
 	public boolean iniciaConMovimiento() {
 		return true;
 	}
+<<<<<<< HEAD
 	@Override
 	public Disparo disparar(Point pos) {
 		return new DisparoEnemigo(pos.x,pos.y);
+=======
+	
+	public Disparo disparar(Point pos) {
+		return new DisparoEnemigo(pos.x, pos.y);
+>>>>>>> dd3bba543e7ea215949fc855fc96016e284f2929
 	}
 }
