@@ -23,6 +23,7 @@ public class GUI {
 	private Personaje jugador;
 	private int puntaje;
 	private int frameWidth, frameHeight;
+	private String nombre;
 	
 	private KeyAdapter comienzoConEspacio, botonera;
 	private JLabel instruccion, lvl, puntuacion, nombrePersonaje, vida;
@@ -96,6 +97,7 @@ public class GUI {
 		instruccion.setBounds((int) (frameWidth * 0.245), (int) (frameHeight * 0.46), (int) (frameWidth * 0.6), 23);
 		
 		puntaje = 0;
+		nombre = "";
 		
 		nombrePersonaje = new JLabel();
 		nombrePersonaje.setForeground(new Color(255,255,255));
@@ -146,17 +148,18 @@ public class GUI {
 				
 				if (barraEspaciadora == KeyEvent.VK_SPACE) {
 					try {
-						String nombre = "";
-						boolean valido = false;
-						while (!valido) {
-							nombre = JOptionPane.showInputDialog(null, "Ingrese un Nombre para el Personaje:");
-							if (nombre != null && !nombre.equals("") && nombre.length() <= 8)
-								valido = true;
-							else
-								JOptionPane.showMessageDialog(null, "Debe ingresarse un nombre de longitud mayor que 0 y menor o igual que 8.", "Ingreso Inválido", JOptionPane.ERROR_MESSAGE);
+						if (nombre.equals("")) { //Contempla qué nivel se está creando.
+							boolean valido = false;
+							while (!valido) {
+								nombre = JOptionPane.showInputDialog(null, "Ingrese un Nombre para el Personaje:");
+								if (nombre != null && !nombre.equals("") && nombre.length() <= 8)
+									valido = true;
+								else
+									JOptionPane.showMessageDialog(null, "Debe ingresarse un nombre de longitud mayor que 0 y menor o igual que 8.", "Ingreso Inválido", JOptionPane.ERROR_MESSAGE);
+							}
+							nombrePersonaje.setBounds((int) (frameWidth * 0.5 - nombre.length() * 10), (int) (frameHeight * 0.02), (int) (frameWidth * 0.6), 25);
+							nombrePersonaje.setText(nombre.toUpperCase());
 						}
-						nombrePersonaje.setBounds((int) (frameWidth * 0.5 - nombre.length() * 10), (int) (frameHeight * 0.02), (int) (frameWidth * 0.6), 25);
-						nombrePersonaje.setText(nombre.toUpperCase());
 						panel.add(nombrePersonaje);
 						comenzarJuego();
 					}
