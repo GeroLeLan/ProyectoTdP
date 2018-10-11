@@ -138,15 +138,25 @@ public class Juego {
 	
 	public void disparosEnemigos() {
 		for (Position<Enemigo> enem : listaEnemigos.positions()) {
-			frecuencia++;
-			if(frecuencia == 97) {
-				Disparo dis = enem.element().disparar();
-				if(dis != null) {
-					listaDisparos.addLast(dis);
-					gui.getPanel().add(dis.getGrafico());
+			if (enem.element().getVida() <= 0)
+				try {
+					listaEnemigos.remove(enem);
 				}
-				frecuencia = 0;
-			}	
+				catch (InvalidPositionException e) {
+					System.out.println("Problema con la lista.");
+					e.printStackTrace();
+				}
+			else {
+				frecuencia++;
+				if(frecuencia == 97) {
+					Disparo dis = enem.element().disparar();
+					if(dis != null) {
+						listaDisparos.addLast(dis);
+						gui.getPanel().add(dis.getGrafico());
+					}
+					frecuencia = 0;
+				}
+			}
 		}
 	}
 
@@ -159,6 +169,7 @@ public class Juego {
 					listaDisparos.remove(dis);
 				}
 				catch (InvalidPositionException e) {
+					System.out.println("Problema con la lista.");
 					e.printStackTrace();
 				}
 			}
@@ -169,7 +180,7 @@ public class Juego {
 >>>>>>> dd3bba543e7ea215949fc855fc96016e284f2929
 	
 	private void actualizarVida() {
-		if (personaje.getVida() <= 20) {
+		if (personaje.getVida() <= 30) {
 			if (personaje.getVida() <= 0) {
 				ImageIcon iconoOriginal = new ImageIcon("./bin/ImageIcons/Diablo III - You Have Died.jpg");
 				ImageIcon iconoEscala = new ImageIcon(iconoOriginal.getImage().getScaledInstance(gui.getFrameWidth(), gui.getFrameHeight(), java.awt.Image.SCALE_DEFAULT));

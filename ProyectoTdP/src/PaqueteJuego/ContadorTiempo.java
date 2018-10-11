@@ -12,10 +12,14 @@ public class ContadorTiempo extends Thread {
 		while(true){
 			try {
 <<<<<<< HEAD
+<<<<<<< HEAD
 				Thread.sleep(200);
 =======
 				Thread.sleep(400);
 >>>>>>> dd3bba543e7ea215949fc855fc96016e284f2929
+=======
+				Thread.sleep(200);
+>>>>>>> 8fc116ba32714da5363e4fe5c49159eb26886d37
 			}
 			catch (InterruptedException e) {
 				e.printStackTrace();

@@ -63,7 +63,7 @@ public class AccionTeclado extends KeyAdapter {
 	private void dañarEnemigo() {
 		try {
 			Enemigo e = gui.getListaEnemigos().first().element();
-			gui.setPuntaje(gui.getPuntaje() + e.recibirDaño(10));
+			gui.setPuntaje(gui.getPuntaje() + e.recibirDaño(100));
 			if (e.getVida() <= 0) {
 				gui.getPanel().add(gui.grafico(e));
 				gui.getListaEnemigos().remove(gui.getListaEnemigos().first());

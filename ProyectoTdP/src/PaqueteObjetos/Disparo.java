@@ -87,9 +87,9 @@ public class Disparo extends Intangible {
 	}
 	
 	public void mover() {
-		pos.setLocation(pos.x, pos.y - 2);
+		pos.setLocation(pos.x, pos.y - 4);
 		if(pos.y <= 0)
-			borrable=true;
+			morir();
 		grafico.setLocation(pos);
 	}
 >>>>>>> dd3bba543e7ea215949fc855fc96016e284f2929

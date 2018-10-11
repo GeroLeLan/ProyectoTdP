@@ -50,7 +50,7 @@ public class DisparoEnemigo extends Disparo {
 	public void mover() {
 		pos.setLocation(pos.x, pos.y + 2);
 		if(pos.y > Ymax)
-			borrable=true;
+			morir();
 		grafico.setLocation(pos);
 	}
 	
