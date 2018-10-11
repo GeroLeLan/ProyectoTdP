@@ -8,13 +8,13 @@ import PaqueteObjetosImplementados.Obstaculo;
 
 public class DisparoEnemigo extends Disparo {
 	public DisparoEnemigo(int x, int y) {
-		super(x, y);
+		super(x + 30, y + 15);
 		setGrafico();
 		grafico.setIcon(new ImageIcon("./bin/ImageIcons/Disparo - Enemigo.png"));
 	}
 
 	public void mover() {
-		pos.setLocation(pos.x, pos.y + 2);
+		pos.setLocation(pos.x, pos.y + 5);
 		if(pos.y > Ymax)
 			morir();
 		grafico.setLocation(pos);

@@ -98,7 +98,7 @@ public class Juego {
 				}
 			else {
 				frecuencia++;
-				if(frecuencia == 97) {
+				if(frecuencia == 59) {
 					Disparo dis = enem.element().disparar();
 					if(dis != null) {
 						listaDisparos.addLast(dis);
@@ -130,20 +130,8 @@ public class Juego {
 	
 	private void actualizarVida() {
 		if (personaje.getVida() <= 30) {
-			if (personaje.getVida() <= 0) {
-				ImageIcon iconoOriginal = new ImageIcon("./bin/ImageIcons/Diablo III - You Have Died.jpg");
-				ImageIcon iconoEscala = new ImageIcon(iconoOriginal.getImage().getScaledInstance(gui.getFrameWidth(), gui.getFrameHeight(), java.awt.Image.SCALE_DEFAULT));
-				JLabel nuevoFondo = new JLabel();
-				nuevoFondo.setSize(gui.getFrameWidth(), gui.getFrameHeight());
-				nuevoFondo.setIcon(iconoEscala);
-				gui.getPanel().removeAll();
-				gui.getPanel().add(personaje.getGrafico());
-				gui.getPanel().add(gui.getPuntuacion());
-				gui.getPanel().add(gui.getLvl());
-				gui.getPanel().add(gui.getNombrePersonaje());
-				gui.getPanel().add(gui.getVida());
-				gui.getPanel().add(nuevoFondo);
-			}
+			if (personaje.getVida() <= 0)
+				cambiarFondo("./bin/ImageIcons/Diablo III - You Have Died.jpg");
 			else {
 				gui.getVida().setForeground(new Color(255,0,0));
 				gui.getVida().setBackground(new Color(255,0,0));
@@ -155,6 +143,20 @@ public class Juego {
 		}
 		gui.getVida().setText("Vida: " + personaje.getVida());;
 	}
+		private void cambiarFondo(String ruta) {
+			ImageIcon iconoOriginal = new ImageIcon(ruta);
+			ImageIcon iconoEscala = new ImageIcon(iconoOriginal.getImage().getScaledInstance(gui.getFrameWidth(), gui.getFrameHeight(), java.awt.Image.SCALE_DEFAULT));
+			JLabel nuevoFondo = new JLabel();
+			nuevoFondo.setSize(gui.getFrameWidth(), gui.getFrameHeight());
+			nuevoFondo.setIcon(iconoEscala);
+			gui.getPanel().removeAll();
+			gui.getPanel().add(personaje.getGrafico());
+			gui.getPanel().add(gui.getPuntuacion());
+			gui.getPanel().add(gui.getLvl());
+			gui.getPanel().add(gui.getNombrePersonaje());
+			gui.getPanel().add(gui.getVida());
+			gui.getPanel().add(nuevoFondo);
+		}
 	
 	
 	private void colisionesEntreObjetos(Objeto obj) {
@@ -174,7 +176,7 @@ public class Juego {
 			}
 		}
 	}
-	private void setearBordes(Rectangle re) {
-		re.setBounds(re.x, (int) (re.y * 2), (int) (re.getWidth() * 0.8), (int) (re.getHeight() * 0.7));
-	}
+		private void setearBordes(Rectangle re) {
+			re.setBounds(re.x, (int) (re.y * 2), (int) (re.getWidth() * 0.8), (int) (re.getHeight() * 0.7));
+		}
 }
