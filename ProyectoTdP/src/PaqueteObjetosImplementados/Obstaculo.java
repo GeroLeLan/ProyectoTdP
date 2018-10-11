@@ -13,16 +13,17 @@ public abstract class Obstaculo extends Objeto { //Permite que el mapa defina lo
 		super(x, y);
 		grafico.setSize((int)(Xmax*0.09),(int)(Ymax*0.07));
 		grafico.setLocation(pos);
-		vida = 150;
+		vida = 50;
 	}
 	
 	public int recibirDisparo(Disparo dispPer) {
 		vida -= dispPer.getDaño();
+		dispPer.morir();
 		if (vida <= 0)
 			return morir();
 		return 0;
 	}
-	public abstract int recibirDisparo(DisparoEnemigo dispEnem);
+	public abstract int recibirDisparo(DisparoEnemigo dispEnem); //Método sobrecargado para diferenciar si debe hacerle daño el DisparoEnemigo o no.
 	
 	public int serChocado(Colisionador c) {
 		return c.chocarObstaculo(this);

@@ -1,23 +1,24 @@
 package PaqueteObjetos;
 
+import javax.swing.ImageIcon;
+
 import PaqueteColisionadores.Colisionador;
-import PaqueteColisionadores.ColisionadorDisparo;
+import PaqueteColisionadores.ColisionadorDisparoPersonaje;
 import PaqueteObjetosImplementados.Objeto;
 import PaqueteObjetosImplementados.Obstaculo;
 
 
-public abstract class Disparo extends Intangible {
+public class Disparo extends Intangible {
 	protected boolean borrable;
 	protected int daño;
 	protected int velocidad;
 	
 	public Disparo(int x, int y) {
 		super(x, y);
-
-		borrable=false;
-
-		daño = 200;
-
+		borrable = false;
+		daño = 10;
+		setGrafico();
+		grafico.setIcon(new ImageIcon("./bin/ImageIcons/Disparo - Personaje.png"));
 	}
 	
 	public int getDaño() {
@@ -33,21 +34,28 @@ public abstract class Disparo extends Intangible {
 	public int serChocado(Colisionador c) {
 		return 0;
 	}
-
-
-	abstract public void avanzar() ;
-
 	
 	public int colisionar(Objeto o) {
-		return o.serChocado(new ColisionadorDisparo(this));
+		return o.serChocado(new ColisionadorDisparoPersonaje(this));
 	}
 	
-	protected void setGrafico() {}
+	protected void setGrafico() {
+		grafico.setVisible(true);
+		grafico.setSize((int)(Xmax*0.01),(int) (Ymax*0.03));
+		grafico.setLocation(pos);
+	}
 	
-	protected int morir() {
+	public int morir() {
+		grafico.setVisible(false);
+		borrable = true;
 		return 0;
 	}
 	
-	//DEBE REDEFINIR A mover().
+	public void mover() {
+		pos.setLocation(pos.x, pos.y - 2);
+		if(pos.y <= 0)
+			borrable=true;
+		grafico.setLocation(pos);
+	}
 
 }

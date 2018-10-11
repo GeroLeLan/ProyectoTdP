@@ -29,8 +29,7 @@ public class IKB extends Inteligencia {
 	public boolean iniciaConMovimiento() {
 		return false;
 	}
-
-	@Override
+	
 	public Disparo disparar(Point pos) {
 		return null;
 	}

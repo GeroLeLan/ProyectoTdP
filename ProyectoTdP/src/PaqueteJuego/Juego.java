@@ -9,12 +9,12 @@ import javax.swing.JLabel;
 import TDAListaDE.*;
 import PaqueteEnemigos.*;
 import PaqueteObjetos.Disparo;
-import PaqueteObjetos.DisparoEnemigo;
+//import PaqueteObjetos.DisparoEnemigo;
 import PaqueteObjetosImplementados.*;
 
 public class Juego {
 	private GUI gui;
-	private int frecuencia =0;//camabiar en un futuro cercano 
+	private int frecuencia = 0; //Determina cada cuánto dispara un enemigo.
 	private PositionList<Enemigo> listaEnemigos;
 	private PositionList<Disparo> listaDisparos;
 	private PositionList<Objeto> listaObjetos;
@@ -24,7 +24,6 @@ public class Juego {
 	private Mapa mapa; //Cambiará cuando cambie el nivel.
 	
 	public Juego(int dificultad, GUI g) {
-		gui=g;
 		listaEnemigos = new ListaDoblementeEnlazada<Enemigo>();
 		listaDisparos = new ListaDoblementeEnlazada<Disparo>();
 		listaEnemigos = new ListaDoblementeEnlazada<Enemigo>();
@@ -76,21 +75,7 @@ public class Juego {
 					listaObjetos.remove(obj);
 				else {
 					obj.element().mover();
-					Rectangle rectanguloObj = obj.element().getGrafico().getBounds();
-					setearBordes(rectanguloObj);
-					for (Position<Objeto> pos : listaObjetos.positions()) {
-						if (pos.element() != obj.element()) {
-							Rectangle rectanguloPos = pos.element().getGrafico().getBounds();
-							setearBordes(rectanguloPos);
-							if (rectanguloObj.intersects(rectanguloPos)) {
-								int puntos = gui.getPuntaje() + obj.element().colisionar(pos.element());
-								if (puntos < 0)
-									puntos = 0;
-								gui.setPuntaje(puntos);
-								gui.getPuntuacion().setText("Puntaje: " + puntos);
-							}
-						}
-					}
+					colisionesEntreObjetos(obj.element());
 					actualizarVida();
 				}
 			}
@@ -100,6 +85,37 @@ public class Juego {
 			exc.printStackTrace();
 		}
 	}
+	
+	public void disparosEnemigos() {
+		for (Position<Enemigo> enem : listaEnemigos.positions()) {
+			frecuencia++;
+			if(frecuencia == 97) {
+				Disparo dis = enem.element().disparar();
+				if(dis != null) {
+					listaDisparos.addLast(dis);
+					gui.getPanel().add(dis.getGrafico());
+				}
+				frecuencia = 0;
+			}	
+		}
+	}
+
+	public void moverDisparos() {
+		for (Position<Disparo> dis : listaDisparos.positions()) {
+			dis.element().mover();
+			colisionesEntreObjetos(dis.element());
+			if(dis.element().soyBorrable()) {
+				try {
+					listaDisparos.remove(dis);
+				}
+				catch (InvalidPositionException e) {
+					e.printStackTrace();
+				}
+			}
+			actualizarVida();
+		}
+	}
+	
 	
 	private void actualizarVida() {
 		if (personaje.getVida() <= 20) {
@@ -128,39 +144,26 @@ public class Juego {
 		}
 		gui.getVida().setText("Vida: " + personaje.getVida());;
 	}
-		public void moverEnemigos() {
-		for (Position<Enemigo> enem : listaEnemigos.positions()) {
-		enem.element().mover(); //El método mover de los Enemigos está definido para recibir un entero en la clase Animado. Quizás debamos cambiar eso.
-		frecuencia++;
-		if(frecuencia==97) {
-			Disparo dis =enem.element().disparar();
-			//Disparo dis=new DisparoEnemigo(enem.element().getPos().x,enem.element().getPos().y);
-			if(dis!=null) {
-			listaDisparos.addLast(dis);
-			gui.getPanel().add(dis.getGrafico());
+	
+	
+	private void colisionesEntreObjetos(Objeto obj) {
+		Rectangle rectanguloObj = obj.getGrafico().getBounds();
+		setearBordes(rectanguloObj);
+		for (Position<Objeto> pos : listaObjetos.positions()) {
+			if (pos.element() != obj) {
+				Rectangle rectanguloPos = pos.element().getGrafico().getBounds();
+				setearBordes(rectanguloPos);
+				if (rectanguloObj.intersects(rectanguloPos)) {
+					int puntos = gui.getPuntaje() + obj.colisionar(pos.element());
+					if (puntos < 0)
+						puntos = 0;
+					gui.setPuntaje(puntos);
+					gui.getPuntuacion().setText("Puntaje: " + puntos);
+				}
 			}
-			frecuencia=0;
-		}
-			
 		}
 	}
-
-	public void moverMoverDisparos() {
-		for (Position<Disparo> dis : listaDisparos.positions()) {
-			
-			dis.element().avanzar();
-			if(dis.element().soyBorrable())
-				try {
-					listaDisparos.remove(dis);
-				} catch (InvalidPositionException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-		}
-		}
-		
-
 	private void setearBordes(Rectangle re) {
-		re.setBounds(re.x, (int) (re.y * 1.8), (int) (re.getWidth() * 0.8), (int) (re.getHeight() * 0.7));
+		re.setBounds(re.x, (int) (re.y * 2), (int) (re.getWidth() * 0.8), (int) (re.getHeight() * 0.7));
 	}
 }

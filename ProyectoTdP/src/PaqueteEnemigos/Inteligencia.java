@@ -38,5 +38,5 @@ public abstract class Inteligencia {
 	
 	public void cambiarInteligencia(int vida, Enemigo enem) { } //Lo redefinirán las inteligencias que cambien.
 
-	abstract public Disparo disparar(Point pos) ;
+	abstract public Disparo disparar(Point pos);
 }

@@ -16,7 +16,9 @@ public class ContadorTDisparo extends Thread {
 			catch (InterruptedException e) {
 				e.printStackTrace();
 			}
-			elJuego.moverMoverDisparos();
+			if (elJuego.getPersonaje().getVida() <= 0)
+				break;
+			elJuego.moverDisparos();
 		}
 	}
 }
