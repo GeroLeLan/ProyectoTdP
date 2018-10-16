@@ -18,7 +18,7 @@ public class Disparo extends Intangible {
 		borrable = false;
 		daño = 10;
 		setGrafico();
-		grafico.setIcon(new ImageIcon("./bin/ImageIcons/Disparo - Personaje.png"));
+		grafico.setIcon(new ImageIcon("./bin/ImageIcons/dispEnemigo.gif"));
 	}
 	
 	public int getDaño() {
@@ -52,7 +52,7 @@ public class Disparo extends Intangible {
 	}
 	
 	public void mover() {
-		pos.setLocation(pos.x, pos.y - 4);
+		pos.setLocation(pos.x, pos.y - 6);
 		if(pos.y <= 0)
 			morir();
 		grafico.setLocation(pos);

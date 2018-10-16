@@ -11,7 +11,7 @@ public class ContadorTDisparo extends Thread {
 	public void run() {
 		while(true){
 			try {
-				Thread.sleep(11);
+				Thread.sleep(4);
 			}
 			catch (InterruptedException e) {
 				e.printStackTrace();
