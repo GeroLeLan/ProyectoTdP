@@ -1,14 +1,21 @@
 package PaqueteObjetos;
 
+import javax.swing.ImageIcon;
+
+import PaqueteObjetosImplementados.Personaje;
+
 public class SuperMisil extends Temporales{
 
-	protected SuperMisil(int x, int y) {
+	public SuperMisil(int x, int y) {
 		super(x, y);
-		// TODO Auto-generated constructor stub
+		grafico.setIcon(new ImageIcon("./bin/ImageIcons/200w.gif"));
+		setGrafico();
 	}
 
+
+
 	@Override
-	protected void setGrafico() {
+	public void mejorar(Personaje personaje) {
 		// TODO Auto-generated method stub
 		
 	}

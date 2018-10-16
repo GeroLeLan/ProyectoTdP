@@ -1,5 +1,7 @@
 package PaqueteObjetos;
 
+import PaqueteObjetosImplementados.Personaje;
+
 public class Congelar extends Temporales{
 
 	protected Congelar(int x, int y) {
@@ -9,6 +11,12 @@ public class Congelar extends Temporales{
 
 	@Override
 	protected void setGrafico() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mejorar(Personaje personaje) {
 		// TODO Auto-generated method stub
 		
 	}

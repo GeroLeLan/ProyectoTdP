@@ -1,7 +1,9 @@
 package PaqueteJuego;
 
 import java.awt.Color;
+import java.awt.Point;
 import java.awt.Rectangle;
+import java.util.Random;
 
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
@@ -9,6 +11,9 @@ import javax.swing.JLabel;
 import TDAListaDE.*;
 import PaqueteEnemigos.*;
 import PaqueteObjetos.Disparo;
+import PaqueteObjetos.Drop;
+import PaqueteObjetos.MejoraDaño;
+import PaqueteObjetos.SuperMisil;
 //import PaqueteObjetos.DisparoEnemigo;
 import PaqueteObjetosImplementados.*;
 
@@ -16,6 +21,7 @@ public class Juego {
 	private GUI gui;
 	private int frecuencia = 0; //Determina cada cuánto dispara un enemigo.
 	private PositionList<Enemigo> listaEnemigos;
+	private PositionList<Drop> listaDrops;
 	private PositionList<Disparo> listaDisparos;
 	private PositionList<Objeto> listaObjetos;
 	private Obstaculo[] obstaculos;
@@ -25,6 +31,7 @@ public class Juego {
 	
 	public Juego(int dificultad, GUI g) {
 		listaEnemigos = new ListaDoblementeEnlazada<Enemigo>();
+		listaDrops = new ListaDoblementeEnlazada<Drop>();
 		listaDisparos = new ListaDoblementeEnlazada<Disparo>();
 		listaEnemigos = new ListaDoblementeEnlazada<Enemigo>();
 		listaObjetos = new ListaDoblementeEnlazada<Objeto>();
@@ -90,7 +97,17 @@ public class Juego {
 		for (Position<Enemigo> enem : listaEnemigos.positions()) {
 			if (enem.element().getVida() <= 0)
 				try {
+					Point pos=enem.element().getPos();
 					listaEnemigos.remove(enem);
+					Random r=new Random();
+					Drop d;
+					if(r.nextInt(10)>5) {
+						d=new MejoraDaño(pos.x,pos.y);
+					}else {
+						d=new SuperMisil(pos.x,pos.y);
+					}
+					listaDrops.addLast(d);
+					gui.getPanel().add(d.getGrafico());
 				}
 				catch (InvalidPositionException e) {
 					System.out.println("Problema con la lista.");
@@ -99,7 +116,7 @@ public class Juego {
 			else {
 				frecuencia++;
 
-				if(frecuencia == 29) {
+				if(frecuencia == 39) {
 
 					Disparo dis = enem.element().disparar();
 					if(dis != null) {
@@ -127,7 +144,21 @@ public class Juego {
 			}
 			actualizarVida();
 		}
-	}
+		for (Position<Drop> dro : listaDrops.positions()) {
+			dro.element().mover();
+			colisionesEntreObjetos(dro.element());
+		if(dro.element().soyBorrable()) {
+			try {
+				listaDrops.remove(dro);
+			}
+			catch (InvalidPositionException e) {
+				System.out.println("Problema con la lista.");
+				e.printStackTrace();
+			}
+		}
+		}
+		}
+	
 	
 	
 	private void actualizarVida() {

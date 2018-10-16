@@ -38,6 +38,6 @@ public class ITieneArma extends Inteligencia {
 	}
 	
 	public Disparo disparar(Point pos) {
-		return new DisparoEnemigo(pos.x, pos.y);
+		return new DisparoEnemigo(pos.x, pos.y,10);
 	}
 }
