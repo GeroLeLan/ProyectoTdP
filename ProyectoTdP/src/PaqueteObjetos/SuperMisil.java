@@ -8,7 +8,7 @@ public class SuperMisil extends Temporales{
 
 	public SuperMisil(int x, int y) {
 		super(x, y);
-		grafico.setIcon(new ImageIcon("./bin/ImageIcons/200w.gif"));
+		grafico.setIcon(new ImageIcon("./bin/ImageIcons/turtleSupermisil.gif"));
 		setGrafico();
 	}
 

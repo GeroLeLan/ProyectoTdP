@@ -42,8 +42,10 @@ public abstract class Drop extends Intangible {
 		}
 		grafico.setLocation(pos);
 	}
-	public ImageIcon getIcono() {
-		return icono;
+	public int morir() {
+		grafico.setVisible(false);
+		borrable = true;
+		return 0;
 	}
 	public boolean soyBorrable() {
 		return borrable;

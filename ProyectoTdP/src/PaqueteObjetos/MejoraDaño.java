@@ -2,6 +2,7 @@ package PaqueteObjetos;
 
 import javax.swing.ImageIcon;
 
+import PaqueteArmas.ArmaMejorada;
 import PaqueteObjetosImplementados.Personaje;
 
 public class MejoraDaño extends Drop {
@@ -9,7 +10,7 @@ public class MejoraDaño extends Drop {
 	
 	public MejoraDaño(int x, int y) {
 		super(x, y);
-		grafico.setIcon(new ImageIcon("./bin/ImageIcons/turtle.gif"));
+		grafico.setIcon(new ImageIcon("./bin/ImageIcons/turtleMejoraDaño.gif"));
 		setGrafico();
 		
 	}

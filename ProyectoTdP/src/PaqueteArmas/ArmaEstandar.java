@@ -1,6 +1,5 @@
-package PaqueteObjetosImplementados;
+package PaqueteArmas;
 
-import PaqueteObjetos.Arma;
 import PaqueteObjetos.Disparo;
 import PaqueteObjetos.DisparoPersonaje;
 

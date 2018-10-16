@@ -1,4 +1,6 @@
-package PaqueteObjetos;
+package PaqueteArmas;
+
+import PaqueteObjetos.Disparo;
 
 abstract public class Arma {
 	protected int daño; 
