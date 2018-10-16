@@ -8,6 +8,7 @@ import PaqueteObjetosImplementados.Personaje;
 
 public class ITAP extends Inteligencia {
 	private Inteligencia intelActual;
+	private boolean cambio;
 	
 	public ITAP(Personaje p) {
 		super(p);
@@ -15,6 +16,7 @@ public class ITAP extends Inteligencia {
 		puntosKill = 20;
 		velocidad = 1;
 		intelActual = new ITieneArma(p);
+		cambio = false;
 	}
 	
 	public void mover(Point pos) {
@@ -22,10 +24,11 @@ public class ITAP extends Inteligencia {
 	}
 	
 	public void cambiarInteligencia(int vida, Enemigo enem) {
-		if (vida <= 20) {
+		if (!cambio && vida <= 20) {
 			intelActual = new IKB(personajeJuego);
 			icono = new ImageIcon("./bin/ImageIcons/ITAP - Desarmado.png");
 			enem.setGrafico();
+			cambio = true;
 		}
 	}
 	

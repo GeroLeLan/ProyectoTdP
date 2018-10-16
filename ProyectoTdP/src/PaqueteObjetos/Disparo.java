@@ -13,10 +13,10 @@ public class Disparo extends Intangible {
 	protected int daño;
 	protected int velocidad;
 	
-	public Disparo(int x, int y) {
+	public Disparo(int x, int y,int d) {
 		super(x, y);
 		borrable = false;
-		daño = 10;
+		daño=d;
 		setGrafico();
 		grafico.setIcon(new ImageIcon("./bin/ImageIcons/dispEnemigo.gif"));
 	}

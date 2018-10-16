@@ -1,21 +1,26 @@
 package PaqueteObjetos;
 
+import javax.swing.ImageIcon;
+
+import PaqueteObjetosImplementados.Personaje;
+
 public class MejoraDaño extends Drop {
 	
 	
-	protected MejoraDaño(int x, int y) {
+	public MejoraDaño(int x, int y) {
 		super(x, y);
-		// TODO Auto-generated constructor stub
+		grafico.setIcon(new ImageIcon("./bin/ImageIcons/turtle.gif"));
+		setGrafico();
+		
 	}
 
 	public int morir() {
 		return 0;
 	}
-
 	@Override
-	protected void setGrafico() {
-		// TODO Auto-generated method stub
-		
+	public void mejorar(Personaje personaje) {
+		System.out.println("hola mejora daño");
+		personaje.setArma(new ArmaMejorada());
 	}
 	
 }

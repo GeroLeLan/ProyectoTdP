@@ -82,7 +82,7 @@ public class AccionTeclado extends KeyAdapter {
 			}
 		}		
 		if (o.getVida() > 0) {
-			gui.setPuntaje(gui.getPuntaje() + o.recibirDisparo(new Disparo(0,0)));
+			gui.setPuntaje(gui.getPuntaje() + o.recibirDisparo(new Disparo(0,0,10)));
 			gui.getPuntuacion().setText("Puntaje: " + gui.getPuntaje());
 		}
 	}

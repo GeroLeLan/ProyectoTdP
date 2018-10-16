@@ -1,5 +1,7 @@
 package PaqueteObjetos;
 
+import PaqueteObjetosImplementados.Personaje;
+
 public class MejoraRoF extends MejoraArma{
 	
 	protected MejoraRoF(int x, int y) {
@@ -13,6 +15,12 @@ public class MejoraRoF extends MejoraArma{
 
 	@Override
 	protected void setGrafico() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mejorar(Personaje personaje) {
 		// TODO Auto-generated method stub
 		
 	}

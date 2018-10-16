@@ -17,7 +17,9 @@ public class ColisionadorDrop extends Colisionador {
 	public int chocarObstaculo(Obstaculo obstaculo) { return 0;	}
 	
 	public int chocarPersonaje(Personaje personaje) {
-		personaje.mejorar(miDrop);
+		//personaje.mejorar(miDrop);
+		miDrop.mejorar(personaje);
+		
 		return 15; //Creo que estaría bueno que agarrar un Drop te sume puntos. (Nacho)
 	}
 	

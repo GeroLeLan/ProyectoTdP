@@ -14,6 +14,7 @@ public abstract class Personaje extends Animado {
 	
 	protected Personaje(int v, int x, int y) {
 		super(v, x, y);
+		arma=new ArmaEstandar();
 	}
 
 	public int getVel() {
@@ -45,7 +46,9 @@ public abstract class Personaje extends Animado {
 		return -5;
 	}
 	
-	public void mejorar(Drop drop) {}
+	public void mejorar(Drop drop) {
+		drop.mejorar(this);
+	}
 	
 	public int colisionar(Objeto o) {
 		return 0;
@@ -56,6 +59,13 @@ public abstract class Personaje extends Animado {
 	}
 	
 	public Disparo disparar() {
-		return new Disparo((int) (pos.x + grafico.getWidth() * 0.6), pos.y);
+		return arma.disparar((int) (pos.x + grafico.getWidth() * 0.6), pos.y);//new Disparo((int) (pos.x + grafico.getWidth() * 0.6), pos.y);
 	}
+
+	public void setArma(Arma ar) {
+		arma=ar;
+	}
+	
+
 }
+
