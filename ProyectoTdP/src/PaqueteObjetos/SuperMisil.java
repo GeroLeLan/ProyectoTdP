@@ -2,6 +2,7 @@ package PaqueteObjetos;
 
 import javax.swing.ImageIcon;
 
+import PaqueteArmas.ArmaSupermisil;
 import PaqueteObjetosImplementados.Personaje;
 
 public class SuperMisil extends Temporales{
@@ -14,10 +15,17 @@ public class SuperMisil extends Temporales{
 
 
 
-	@Override
+	
 	public void mejorar(Personaje personaje) {
-		// TODO Auto-generated method stub
+		//personaje.setArma(new ArmaSupermisil()); 
 		
+	}
+
+	@Override
+	public int morir() {
+		grafico.setVisible(false);
+		borrable = true;
+		return 0;
 	}
 	
 }

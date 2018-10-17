@@ -23,8 +23,8 @@ public class ColisionadorEnemigo extends Colisionador {
 			return personaje.recibirDaño(30);
 		}else {
 			miEnemigo.recibirDaño(100);
-			personaje.setEscudo(false);
-			return personaje.recibirDaño(0);
+			personaje.chocoEscudo();
+			return 0;
 		}
 	}
 

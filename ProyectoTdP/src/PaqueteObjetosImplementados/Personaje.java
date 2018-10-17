@@ -13,7 +13,7 @@ import PaqueteObjetos.Drop;
 public abstract class Personaje extends Animado {
 	protected Arma arma;
 	protected boolean escudo;
-	
+	protected int cantEsc;
 	protected Personaje(int v, int x, int y) {
 		super(v, x, y);
 		arma=new ArmaEstandar();
@@ -73,10 +73,17 @@ public abstract class Personaje extends Animado {
 	}
 	public void setEscudo(boolean esc) {
 		escudo=esc;
+		cantEsc=3;
 	}
 	public boolean getEscudo() {
 		return escudo;
 	}
+	public void chocoEscudo() {
+		cantEsc--;
+		if(cantEsc==0)	
+			escudo=false;
+	}
+	
 
 }
 

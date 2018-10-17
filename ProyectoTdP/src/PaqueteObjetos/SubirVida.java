@@ -17,4 +17,12 @@ public class SubirVida extends Drop{
 		
 	}
 
+
+	@Override
+	public int morir() {
+		grafico.setVisible(false);
+		borrable = true;
+		return 0;
+	}
+
 }

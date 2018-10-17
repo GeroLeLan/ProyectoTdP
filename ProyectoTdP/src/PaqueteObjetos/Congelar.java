@@ -20,5 +20,11 @@ public class Congelar extends Temporales{
 		// TODO Auto-generated method stub
 		
 	}
+
+	@Override
+	public int morir() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
 	
 }

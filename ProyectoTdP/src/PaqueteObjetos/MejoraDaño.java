@@ -16,8 +16,11 @@ public class MejoraDaño extends Drop {
 	}
 
 	public int morir() {
+		grafico.setVisible(false);
+		borrable = true;
 		return 0;
 	}
+	
 	@Override
 	public void mejorar(Personaje personaje) {
 		System.out.println("hola mejora daño");

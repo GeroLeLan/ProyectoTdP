@@ -21,7 +21,10 @@ private DisparoEnemigo miDisparo;
 	public int chocarPersonaje(Personaje personaje) {
 		if (!miDisparo.soyBorrable()) {
 			miDisparo.morir();
-			return personaje.recibirDaño(miDisparo.getDaño());
+			if(!personaje.getEscudo())
+				return personaje.recibirDaño(miDisparo.getDaño());
+			else
+				personaje.chocoEscudo();
 		}
 		return 0;
 	}

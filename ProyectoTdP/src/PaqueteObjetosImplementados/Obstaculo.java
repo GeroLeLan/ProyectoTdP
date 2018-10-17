@@ -1,10 +1,7 @@
 package PaqueteObjetosImplementados;
 
-import java.awt.Image;
 
 import javax.swing.ImageIcon;
-import javax.swing.JLabel;
-
 import PaqueteColisionadores.Colisionador;
 import PaqueteObjetos.Disparo;
 import PaqueteObjetos.DisparoEnemigo;
