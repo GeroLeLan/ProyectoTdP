@@ -7,15 +7,12 @@ import PaqueteObjetosImplementados.Objeto;
 import PaqueteObjetosImplementados.Obstaculo;
 
 public class DisparoEnemigo extends Disparo {
-<<<<<<< HEAD
-	public DisparoEnemigo(int x, int y) {
-		super(x+30, y+10);
-=======
+
 	public DisparoEnemigo(int x, int y,int d) {
 
 		super(x + 30, y + 15,d);
 
->>>>>>> 6c8ac22eacaaf15be989a03ccc8976d64f8c6d42
+
 		setGrafico();
 		grafico.setIcon(new ImageIcon("./bin/ImageIcons/dispEnemigo2.gif"));
 	}
