@@ -189,7 +189,9 @@ public class GUI {
 		public JLabel grafico(Objeto o) {
 			return o.getGrafico();
 		}
-		
+		public ContadorTiempo getTiempo() {
+			return tiempo;
+		}
 		public Personaje getPersonaje() { return jugador; }
 		public PositionList<Enemigo> getListaEnemigos() { return listaEnemigos;	}
 		public int getFrameWidth() { return frameWidth;	}

@@ -4,15 +4,17 @@ import javax.swing.ImageIcon;
 
 import PaqueteColisionadores.Colisionador;
 import PaqueteColisionadores.ColisionadorDrop;
+import PaqueteJuego.GUI;
 import PaqueteObjetosImplementados.Objeto;
 import PaqueteObjetosImplementados.Personaje;
 
 public abstract class Drop extends Intangible {
 	protected boolean  borrable;
 	protected ImageIcon icono;
-	protected Drop(int x, int y) {
+	protected GUI gui;
+	protected Drop(int x, int y,GUI g) {
 		super(x, y);
-		
+		gui=g;
 
 		
 		setGrafico();

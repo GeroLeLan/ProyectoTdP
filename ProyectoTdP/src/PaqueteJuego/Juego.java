@@ -10,6 +10,7 @@ import javax.swing.JLabel;
 
 import TDAListaDE.*;
 import PaqueteEnemigos.*;
+import PaqueteObjetos.Congelar;
 import PaqueteObjetos.Disparo;
 import PaqueteObjetos.Drop;
 import PaqueteObjetos.EscudoK;
@@ -103,17 +104,17 @@ public class Juego {
 					listaEnemigos.remove(enem);
 					Random r=new Random();
 					Drop d;
-					int num=r.nextInt(10);//despues vemos bien la frecuencia
+					int num=r.nextInt(20);//despues vemos bien la frecuencia
 					if(num>7) {
-						d=new MejoraDaño(pos.x,pos.y);
+						d=new Congelar(pos.x,pos.y,gui);
 					}else {
 						if(num>5)
-							d=new SuperMisil(pos.x,pos.y);
+							d=new SuperMisil(pos.x,pos.y,gui);
 						else
 							if(num>3)
-								d=new EscudoK(pos.x,pos.y);
+								d=new EscudoK(pos.x,pos.y,gui);
 							else
-								d=new SubirVida(pos.x,pos.y);
+								d=new SubirVida(pos.x,pos.y,gui);
 					}
 					listaDrops.addLast(d);
 					gui.getPanel().add(d.getGrafico());

@@ -2,12 +2,13 @@ package PaqueteObjetos;
 
 import javax.swing.ImageIcon;
 
+import PaqueteJuego.GUI;
 import PaqueteObjetosImplementados.Personaje;
 
 public class EscudoK extends Drop{
 	
-	public EscudoK(int x, int y) {
-		super(x, y);
+	public EscudoK(int x, int y,GUI gui) {
+		super(x, y,gui);
 		
 		grafico.setIcon(new ImageIcon("./bin/ImageIcons/turtleEscudo.gif"));
 	}

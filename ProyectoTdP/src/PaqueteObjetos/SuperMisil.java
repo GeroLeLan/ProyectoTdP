@@ -3,12 +3,13 @@ package PaqueteObjetos;
 import javax.swing.ImageIcon;
 
 import PaqueteArmas.ArmaSupermisil;
+import PaqueteJuego.GUI;
 import PaqueteObjetosImplementados.Personaje;
 
 public class SuperMisil extends Temporales{
 
-	public SuperMisil(int x, int y) {
-		super(x, y);
+	public SuperMisil(int x, int y,GUI gui) {
+		super(x, y,gui);
 		grafico.setIcon(new ImageIcon("./bin/ImageIcons/turtleSupermisil.gif"));
 		setGrafico();
 	}
