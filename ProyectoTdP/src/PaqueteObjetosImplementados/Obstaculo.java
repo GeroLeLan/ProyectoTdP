@@ -1,9 +1,7 @@
 package PaqueteObjetosImplementados;
 
-import java.awt.Image;
 
 import javax.swing.ImageIcon;
-
 import PaqueteColisionadores.Colisionador;
 import PaqueteObjetos.Disparo;
 import PaqueteObjetos.DisparoEnemigo;
@@ -32,11 +30,10 @@ public abstract class Obstaculo extends Objeto { //Permite que el mapa defina lo
 	}
 	
 	protected int morir() {
-		ImageIcon iconoOriginal = new ImageIcon("./bin/ImageIcons/obstaculoDestruido1.gif");
-		//grafico.setIcon( new ImageIcon(escalarGrafico(iconoOriginal)));
-		ImageIcon iconoEscala= new ImageIcon(iconoOriginal.getImage().getScaledInstance((int) (grafico.getWidth()*0.7), (int) (grafico.getHeight()*1.4), java.awt.Image.SCALE_DEFAULT));
-		//ImageIcon esc
-		grafico.setIcon( iconoEscala);
+		ImageIcon iconoOriginal = new ImageIcon("./bin/ImageIcons/obstaculoDestruido.gif");
+		//ImageIcon iconoEscala= new ImageIcon(iconoOriginal.getImage().getScaledInstance((int) (iconoOriginal.getIconWidth()), (int) (iconoOriginal.getIconHeight()), java.awt.Image.SCALE_DEFAULT));
+	//	grafico.setSize(iconoOriginal.getIconWidth(),iconoOriginal.getIconWidth());
+		grafico.setIcon( iconoOriginal);
 		return puntosKill;
 	}
 	

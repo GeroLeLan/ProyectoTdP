@@ -4,17 +4,20 @@ import java.awt.event.KeyEvent;
 
 import javax.swing.ImageIcon;
 
+import PaqueteArmas.Arma;
+import PaqueteArmas.ArmaEstandar;
 import PaqueteColisionadores.Colisionador;
-import PaqueteObjetos.Arma;
 import PaqueteObjetos.Disparo;
 import PaqueteObjetos.Drop;
 
 public abstract class Personaje extends Animado {
 	protected Arma arma;
-	
+	protected boolean escudo;
+	protected int cantEsc;
 	protected Personaje(int v, int x, int y) {
 		super(v, x, y);
 		arma=new ArmaEstandar();
+		escudo=false;
 	}
 
 	public int getVel() {
@@ -45,6 +48,9 @@ public abstract class Personaje extends Animado {
 			return morir();
 		return -5;
 	}
+	public void mejorarVida() {
+		vida+=100;
+	}
 	
 	public void mejorar(Drop drop) {
 		drop.mejorar(this);
@@ -64,6 +70,18 @@ public abstract class Personaje extends Animado {
 
 	public void setArma(Arma ar) {
 		arma=ar;
+	}
+	public void setEscudo(boolean esc) {
+		escudo=esc;
+		cantEsc=3;
+	}
+	public boolean getEscudo() {
+		return escudo;
+	}
+	public void chocoEscudo() {
+		cantEsc--;
+		if(cantEsc==0)	
+			escudo=false;
 	}
 	
 

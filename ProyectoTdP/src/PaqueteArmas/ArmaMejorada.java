@@ -1,4 +1,8 @@
-package PaqueteObjetos;
+package PaqueteArmas;
+
+import PaqueteArmas.Arma;
+import PaqueteObjetos.Disparo;
+import PaqueteObjetos.DisparoPersonaje;
 
 public class ArmaMejorada extends Arma {
 

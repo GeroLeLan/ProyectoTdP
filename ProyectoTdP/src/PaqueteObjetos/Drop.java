@@ -42,9 +42,8 @@ public abstract class Drop extends Intangible {
 		}
 		grafico.setLocation(pos);
 	}
-	public ImageIcon getIcono() {
-		return icono;
-	}
+	abstract public int morir();  //se redefine en cada tipo de drop
+		
 	public boolean soyBorrable() {
 		return borrable;
 	}

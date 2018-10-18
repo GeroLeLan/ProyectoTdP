@@ -2,24 +2,21 @@ package PaqueteObjetos;
 
 import javax.swing.ImageIcon;
 
-import PaqueteArmas.ArmaSupermisil;
 import PaqueteObjetosImplementados.Personaje;
 
-public class SuperMisil extends Temporales{
+public class SubirVida extends Drop{
 
-	public SuperMisil(int x, int y) {
+	public SubirVida(int x, int y) {
 		super(x, y);
-		grafico.setIcon(new ImageIcon("./bin/ImageIcons/turtleSupermisil.gif"));
-		setGrafico();
+		grafico.setIcon(new ImageIcon("./bin/ImageIcons/turtleVida.gif"));
 	}
-
-
 
 	
 	public void mejorar(Personaje personaje) {
-		//personaje.setArma(new ArmaSupermisil()); 
+		personaje.mejorarVida();
 		
 	}
+
 
 	@Override
 	public int morir() {
@@ -27,5 +24,5 @@ public class SuperMisil extends Temporales{
 		borrable = true;
 		return 0;
 	}
-	
+
 }

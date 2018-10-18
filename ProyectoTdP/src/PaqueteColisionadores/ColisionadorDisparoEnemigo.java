@@ -2,6 +2,7 @@ package PaqueteColisionadores;
 
 import PaqueteEnemigos.Enemigo;
 import PaqueteObjetos.DisparoEnemigo;
+import PaqueteObjetos.Drop;
 import PaqueteObjetosImplementados.Obstaculo;
 import PaqueteObjetosImplementados.Personaje;
 
@@ -20,7 +21,10 @@ private DisparoEnemigo miDisparo;
 	public int chocarPersonaje(Personaje personaje) {
 		if (!miDisparo.soyBorrable()) {
 			miDisparo.morir();
-			return personaje.recibirDaño(miDisparo.getDaño());
+			if(!personaje.getEscudo())
+				return personaje.recibirDaño(miDisparo.getDaño());
+			else
+				personaje.chocoEscudo();
 		}
 		return 0;
 	}
@@ -30,5 +34,10 @@ private DisparoEnemigo miDisparo;
 			return miDisparo.dañarObstaculo(obstaculo);
 		return 0;
 		
+	}
+
+	
+	public int chocarDrop(Drop drop) {
+		return 0;
 	}
 }
