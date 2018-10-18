@@ -1,11 +1,12 @@
 package PaqueteObjetos;
 
+import PaqueteJuego.GUI;
 import PaqueteObjetosImplementados.Personaje;
 
 public class Congelar extends Temporales{
 
-	protected Congelar(int x, int y) {
-		super(x, y);
+	protected Congelar(int x, int y,GUI gui) {
+		super(x, y,gui);
 		// TODO Auto-generated constructor stub
 	}
 

@@ -4,24 +4,22 @@ import javax.swing.ImageIcon;
 
 import PaqueteColisionadores.Colisionador;
 import PaqueteColisionadores.ColisionadorDrop;
+import PaqueteJuego.GUI;
 import PaqueteObjetosImplementados.Objeto;
 import PaqueteObjetosImplementados.Personaje;
 
 public abstract class Drop extends Intangible {
 	protected boolean  borrable;
 	protected ImageIcon icono;
-	protected Drop(int x, int y) {
+	protected GUI gui;
+	protected Drop(int x, int y,GUI gui) {
 		super(x, y);
-		
-
-		
+		this.gui=gui;		
 		setGrafico();
 		borrable=false;
 	}
 	protected void setGrafico() {
-		System.out.println("hola set grafico");
 		grafico.setSize((int)(Xmax*0.05),(int)(Ymax*0.1));
-		//grafico.setIcon(new ImageIcon(escalarGrafico(intel.getIcono())));
 		grafico.setVisible(true);
 		grafico.setLocation(pos);
 	}

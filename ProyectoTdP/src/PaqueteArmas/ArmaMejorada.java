@@ -14,7 +14,6 @@ public class ArmaMejorada extends Arma {
 	@Override
 
 	public Disparo disparar(int x,int y) {
-		System.out.println("hola disparo mejorado disparar");
 		return new DisparoPersonaje(x,y, daño);
 		 
 	}

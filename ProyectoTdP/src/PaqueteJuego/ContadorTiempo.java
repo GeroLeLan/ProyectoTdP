@@ -1,5 +1,7 @@
 package PaqueteJuego;
 
+import javax.swing.ImageIcon;
+
 public class ContadorTiempo extends Thread {
 
 	private Juego elJuego;
@@ -23,6 +25,10 @@ public class ContadorTiempo extends Thread {
 				break;
 			elJuego.moverObjetos();
 			elJuego.disparosEnemigos();
+			
+			if(elJuego.getPersonaje().getEscudo()==false) {
+				elJuego.getGui().actualizarIconoEscudo();
 		}
+	}
 	}
 }

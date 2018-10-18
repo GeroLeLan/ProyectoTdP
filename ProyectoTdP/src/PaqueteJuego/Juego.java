@@ -105,15 +105,15 @@ public class Juego {
 					Drop d;
 					int num=r.nextInt(10);//despues vemos bien la frecuencia
 					if(num>7) {
-						d=new MejoraDaño(pos.x,pos.y);
+						d=new MejoraDaño(pos.x,pos.y,gui);
 					}else {
 						if(num>5)
-							d=new SuperMisil(pos.x,pos.y);
+							d=new SuperMisil(pos.x,pos.y,gui);
 						else
 							if(num>3)
-								d=new EscudoK(pos.x,pos.y);
+								d=new EscudoK(pos.x,pos.y,gui);
 							else
-								d=new SubirVida(pos.x,pos.y);
+								d=new SubirVida(pos.x,pos.y,gui);
 					}
 					listaDrops.addLast(d);
 					gui.getPanel().add(d.getGrafico());
@@ -220,5 +220,8 @@ public class Juego {
 	}
 		private void setearBordes(Rectangle re) {
 			re.setBounds(re.x, (int) (re.y * 2), (int) (re.getWidth() * 0.8), (int) (re.getHeight() * 0.7));
+		}
+		public GUI getGui() {
+			return gui;
 		}
 }

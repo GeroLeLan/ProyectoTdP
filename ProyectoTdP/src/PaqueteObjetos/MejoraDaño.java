@@ -3,13 +3,14 @@ package PaqueteObjetos;
 import javax.swing.ImageIcon;
 
 import PaqueteArmas.ArmaMejorada;
+import PaqueteJuego.GUI;
 import PaqueteObjetosImplementados.Personaje;
 
 public class MejoraDaño extends Drop {
 	
 	
-	public MejoraDaño(int x, int y) {
-		super(x, y);
+	public MejoraDaño(int x, int y,GUI gui) {
+		super(x, y,gui);
 		grafico.setIcon(new ImageIcon("./bin/ImageIcons/turtleMejoraDaño.gif"));
 		setGrafico();
 		
@@ -23,8 +24,8 @@ public class MejoraDaño extends Drop {
 	
 	@Override
 	public void mejorar(Personaje personaje) {
-		System.out.println("hola mejora daño");
 		personaje.setArma(new ArmaMejorada());
+		gui.mostrarIconoDrop(1,  new ImageIcon("./bin/ImageIcons/iconoDropDaño_Habilitado.png"));
 	}
 	
 }
