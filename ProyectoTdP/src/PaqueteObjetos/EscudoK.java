@@ -9,7 +9,6 @@ public class EscudoK extends Drop{
 	
 	public EscudoK(int x, int y,GUI gui) {
 		super(x, y, gui);
-		
 		grafico.setIcon(new ImageIcon("./bin/ImageIcons/turtleEscudo.gif"));
 	}
 

@@ -10,6 +10,7 @@ import javax.swing.JLabel;
 
 import TDAListaDE.*;
 import PaqueteEnemigos.*;
+import PaqueteObjetos.Congelar;
 import PaqueteObjetos.Disparo;
 import PaqueteObjetos.Drop;
 import PaqueteObjetos.EscudoK;
@@ -103,10 +104,14 @@ public class Juego {
 					listaEnemigos.remove(enem);
 					Random r=new Random();
 					Drop d;
-					int num=r.nextInt(10);//despues vemos bien la frecuencia
-					if(num>7) {
+					int num=r.nextInt(20);//despues vemos bien la frecuencia
+					if(num>8) 
+
 						d=new MejoraDaño(pos.x,pos.y,gui);
-					}else {
+					else
+						if(num>6)
+						d=new Congelar(pos.x,pos.y,gui);
+					else {
 						if(num>5)
 							d=new SuperMisil(pos.x,pos.y,gui);
 						else
@@ -124,8 +129,7 @@ public class Juego {
 				}
 			else {
 				frecuencia++;
-
-				if(frecuencia == 39) {
+				if(frecuencia == 59) {
 
 					Disparo dis = enem.element().disparar();
 					if(dis != null) {

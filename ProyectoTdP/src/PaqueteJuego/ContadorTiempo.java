@@ -5,18 +5,22 @@ import javax.swing.ImageIcon;
 public class ContadorTiempo extends Thread {
 
 	private Juego elJuego;
-
+	private boolean parar;
+	private int cuanto;
 	ContadorTiempo(Juego j) {
 		elJuego = j;
+		parar=false;
+		cuanto=0;
 	}
 
 	public void run() {
 		while(true){
 			try {
-
-				Thread.sleep(100);
-
-	
+				if(parar) {
+					Thread.sleep(cuanto);
+					parar=false;
+				}
+				Thread.sleep(70);
 			}
 			catch (InterruptedException e) {
 				e.printStackTrace();
@@ -30,5 +34,11 @@ public class ContadorTiempo extends Thread {
 				elJuego.getGui().actualizarIconoEscudo();
 		}
 	}
+
+	}
+	public void wait (int i) {
+		parar=true;
+		cuanto=i;
+
 	}
 }

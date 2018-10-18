@@ -1,9 +1,9 @@
 package PaqueteJuego;
 
-public class ContadorTDisparo extends Thread {
+public class ContadorTemporales extends Thread {
 	private Juego elJuego;
 
-	ContadorTDisparo(Juego j) {
+	ContadorTemporales(Juego j) {
 		elJuego = j;
 	}
 

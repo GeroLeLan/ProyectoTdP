@@ -12,6 +12,7 @@ public abstract class Drop extends Intangible {
 	protected boolean  borrable;
 	protected ImageIcon icono;
 	protected GUI gui;
+
 	protected Drop(int x, int y,GUI gui) {
 		super(x, y);
 		this.gui=gui;		

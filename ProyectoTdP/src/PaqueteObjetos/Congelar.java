@@ -1,31 +1,30 @@
 package PaqueteObjetos;
 
+
+import javax.swing.ImageIcon;
 import PaqueteJuego.GUI;
 import PaqueteObjetosImplementados.Personaje;
 
 public class Congelar extends Temporales{
 
-	protected Congelar(int x, int y,GUI gui) {
+
+	public Congelar(int x, int y,GUI gui) {
 		super(x, y,gui);
-		// TODO Auto-generated constructor stub
+		grafico.setIcon(new ImageIcon("./bin/ImageIcons/turtleCongelar.gif"));
+				
 	}
 
-	@Override
-	protected void setGrafico() {
-		// TODO Auto-generated method stub
-		
+	public int morir() {
+		grafico.setVisible(false);
+		borrable = true;
+		return 0;
 	}
-
+	
 	@Override
 	public void mejorar(Personaje personaje) {
-		// TODO Auto-generated method stub
+	
+			gui.getTiempo().wait(3000);
 		
-	}
-
-	@Override
-	public int morir() {
-		// TODO Auto-generated method stub
-		return 0;
 	}
 	
 }
