@@ -6,11 +6,11 @@ import java.awt.event.KeyEvent;
 
 import javax.swing.ImageIcon;
 
+import PaqueteDisparos.Disparo;
 import PaqueteEnemigos.Enemigo;
-import PaqueteObjetos.Disparo;
-import PaqueteObjetosImplementados.Objeto;
-import PaqueteObjetosImplementados.Obstaculo;
-import PaqueteObjetosImplementados.Personaje;
+import PaqueteGenericos.Objeto;
+import PaqueteObstaculos.Obstaculo;
+import PaquetePersonajes.Personaje;
 import TDAListaDE.EmptyListException;
 import TDAListaDE.InvalidPositionException;
 

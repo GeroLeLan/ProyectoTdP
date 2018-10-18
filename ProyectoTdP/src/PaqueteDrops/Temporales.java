@@ -1,4 +1,4 @@
-package PaqueteObjetos;
+package PaqueteDrops;
 
 public abstract class Temporales extends Drop {
 	protected Temporales(int x, int y) {
@@ -6,7 +6,6 @@ public abstract class Temporales extends Drop {
 		// TODO Auto-generated constructor stub
 	}
 	protected int tiempo;
-	abstract public int morir();
 		
 		
 	

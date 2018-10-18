@@ -8,16 +8,14 @@ import java.util.Random;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
+import PaqueteDisparos.Disparo;
+import PaqueteDrops.GeneradorDrops;
+import PaqueteDrops.Drop;
 import TDAListaDE.*;
 import PaqueteEnemigos.*;
-import PaqueteObjetos.Disparo;
-import PaqueteObjetos.Drop;
-import PaqueteObjetos.EscudoK;
-import PaqueteObjetos.MejoraDaño;
-import PaqueteObjetos.SubirVida;
-import PaqueteObjetos.SuperMisil;
-//import PaqueteObjetos.DisparoEnemigo;
-import PaqueteObjetosImplementados.*;
+import PaqueteGenericos.Objeto;
+import PaqueteObstaculos.*;
+import PaquetePersonajes.Personaje;
 
 public class Juego {
 	private GUI gui;
@@ -97,36 +95,28 @@ public class Juego {
 	
 	public void disparosEnemigos() {
 		for (Position<Enemigo> enem : listaEnemigos.positions()) {
-			if (enem.element().getVida() <= 0)
+			if (enem.element().getVida() <= 0) {
 				try {
 					Point pos=enem.element().getPos();
 					listaEnemigos.remove(enem);
-					Random r=new Random();
-					Drop d;
-					int num=r.nextInt(10);//despues vemos bien la frecuencia
-					if(num>7) {
-						d=new MejoraDaño(pos.x,pos.y);
-					}else {
-						if(num>5)
-							d=new SuperMisil(pos.x,pos.y);
-						else
-							if(num>3)
-								d=new EscudoK(pos.x,pos.y);
-							else
-								d=new SubirVida(pos.x,pos.y);
+					Random r = new Random();
+					if (r.nextInt(10) < 3) {
+						GeneradorDrops gd = new GeneradorDrops(pos.x, pos.y);
+						Drop d = gd.generarDrop();
+						listaDrops.addLast(d);
+						gui.getPanel().add(d.getGrafico());
 					}
-					listaDrops.addLast(d);
-					gui.getPanel().add(d.getGrafico());
+					
 				}
 				catch (InvalidPositionException e) {
 					System.out.println("Problema con la lista.");
 					e.printStackTrace();
 				}
+			}
+			
 			else {
 				frecuencia++;
-
-				if(frecuencia == 39) {
-
+				if(frecuencia == 37) {
 					Disparo dis = enem.element().disparar();
 					if(dis != null) {
 						listaDisparos.addLast(dis);
@@ -138,7 +128,7 @@ public class Juego {
 		}
 	}
 
-	public void moverDisparos() {
+	public void moverDisparosyDrops() {
 		for (Position<Disparo> dis : listaDisparos.positions()) {
 			dis.element().mover();
 			colisionesEntreObjetos(dis.element());
@@ -156,17 +146,17 @@ public class Juego {
 		for (Position<Drop> dro : listaDrops.positions()) {
 			dro.element().mover();
 			colisionesEntreObjetos(dro.element());
-		if(dro.element().soyBorrable()) {
-			try {
-				listaDrops.remove(dro);
+			if(dro.element().soyBorrable()) {
+				try {
+					listaDrops.remove(dro);
+				}
+				catch (InvalidPositionException e) {
+					System.out.println("Problema con la lista.");
+					e.printStackTrace();
+				}
 			}
-			catch (InvalidPositionException e) {
-				System.out.println("Problema con la lista.");
-				e.printStackTrace();
-			}
 		}
-		}
-		}
+	}
 	
 	
 	

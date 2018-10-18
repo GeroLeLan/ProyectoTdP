@@ -3,8 +3,8 @@ package PaqueteEnemigos;
 import java.awt.Point;
 import javax.swing.ImageIcon;
 
-import PaqueteObjetos.Disparo;
-import PaqueteObjetosImplementados.Personaje;
+import PaqueteDisparos.Disparo;
+import PaquetePersonajes.Personaje;
 
 public class ITAP extends Inteligencia {
 	private Inteligencia intelActual;

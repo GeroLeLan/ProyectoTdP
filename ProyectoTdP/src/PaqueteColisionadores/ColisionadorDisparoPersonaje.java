@@ -1,10 +1,10 @@
 package PaqueteColisionadores;
 
+import PaqueteDisparos.Disparo;
+import PaqueteDrops.Drop;
 import PaqueteEnemigos.Enemigo;
-import PaqueteObjetos.Disparo;
-import PaqueteObjetos.Drop;
-import PaqueteObjetosImplementados.Obstaculo;
-import PaqueteObjetosImplementados.Personaje;
+import PaqueteObstaculos.Obstaculo;
+import PaquetePersonajes.Personaje;
 
 public class ColisionadorDisparoPersonaje extends Colisionador {
 	private Disparo miDisparo;

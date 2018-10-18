@@ -3,9 +3,8 @@ package PaqueteEnemigos;
 import java.awt.Point;
 import javax.swing.ImageIcon;
 
-import PaqueteObjetos.Disparo;
-//import PaqueteObjetos.DisparoEnemigo;
-import PaqueteObjetosImplementados.Personaje;
+import PaqueteDisparos.Disparo;
+import PaquetePersonajes.Personaje;
 
 public class IKM extends Inteligencia {
 	private Inteligencia intelActual;

@@ -1,6 +1,6 @@
-package PaqueteObjetos;
+package PaqueteDrops;
 
-import PaqueteObjetosImplementados.Personaje;
+import PaquetePersonajes.Personaje;
 
 public class Congelar extends Temporales{
 
@@ -12,7 +12,6 @@ public class Congelar extends Temporales{
 	@Override
 	protected void setGrafico() {
 		// TODO Auto-generated method stub
-		
 	}
 
 	@Override
@@ -20,11 +19,10 @@ public class Congelar extends Temporales{
 		// TODO Auto-generated method stub
 		
 	}
-
-	@Override
-	public int morir() {
-		// TODO Auto-generated method stub
-		return 0;
+	
+	
+	public Drop clone() {
+		return new Congelar(pos.x, pos.y);
 	}
 	
 }

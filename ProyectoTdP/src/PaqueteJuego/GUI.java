@@ -7,7 +7,8 @@ import javax.swing.*;
 
 import TDAListaDE.*;
 import PaqueteEnemigos.*;
-import PaqueteObjetosImplementados.*;
+import PaqueteGenericos.Objeto;
+import PaquetePersonajes.Personaje;
 
 public class GUI {
 	private ContadorTiempo tiempo;
@@ -118,8 +119,6 @@ public class GUI {
 		panel.add(puntuacion);
 		
 
-		
-
 		juego = new Juego(dificultad, this);
 
 		tiempo = new ContadorTiempo(juego);
@@ -148,7 +147,7 @@ public class GUI {
 				
 				if (barraEspaciadora == KeyEvent.VK_SPACE) {
 					try {
-						if (nombre.equals("")) { //Contempla qué nivel se está creando.
+						if (nombre.equals("")) { //Contempla qué nivel se está creando. Si el nivel es superior a 1, este paso no se ejecutará.
 							boolean valido = false;
 							while (!valido) {
 								nombre = JOptionPane.showInputDialog(null, "Ingrese un Nombre para el Personaje:");
@@ -159,6 +158,11 @@ public class GUI {
 							}
 							nombrePersonaje.setBounds((int) (frameWidth * 0.5 - nombre.length() * 10), (int) (frameHeight * 0.02), (int) (frameWidth * 0.6), 25);
 							nombrePersonaje.setText(nombre.toUpperCase());
+							
+							/*
+							 * MOSTRAR HIGH SCORES.
+							 */
+							
 						}
 						panel.add(nombrePersonaje);
 						comenzarJuego();

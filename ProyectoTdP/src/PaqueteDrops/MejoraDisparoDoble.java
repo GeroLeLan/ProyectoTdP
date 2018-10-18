@@ -1,10 +1,22 @@
-package PaqueteObjetos;
+package PaqueteDrops;
 
-public abstract class MejoraArma extends Drop{
+import PaquetePersonajes.Personaje;
 
-	protected MejoraArma(int x, int y) {
+public class MejoraDisparoDoble extends Drop {
+
+	protected MejoraDisparoDoble(int x, int y) {
 		super(x, y);
 		// TODO Auto-generated constructor stub
+	}
+
+	public void mejorar(Personaje personaje) {
+		// TODO Auto-generated method stub
+		
+	}
+	
+	
+	public Drop clone() {
+		return new MejoraDisparoDoble(pos.x, pos.y);
 	}
 	
 }

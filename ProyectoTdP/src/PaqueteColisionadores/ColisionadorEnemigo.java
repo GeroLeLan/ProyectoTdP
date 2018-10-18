@@ -1,9 +1,9 @@
 package PaqueteColisionadores;
 
+import PaqueteDrops.Drop;
 import PaqueteEnemigos.Enemigo;
-import PaqueteObjetos.Drop;
-import PaqueteObjetosImplementados.Obstaculo;
-import PaqueteObjetosImplementados.Personaje;
+import PaqueteObstaculos.Obstaculo;
+import PaquetePersonajes.Personaje;
 
 public class ColisionadorEnemigo extends Colisionador {
 	private Enemigo miEnemigo;
@@ -18,7 +18,6 @@ public class ColisionadorEnemigo extends Colisionador {
 	
 	public int chocarPersonaje(Personaje personaje) {
 		if(!personaje.getEscudo()) {
-			System.out.print(personaje.getEscudo());
 			miEnemigo.recibirDaño(100);
 			return personaje.recibirDaño(30);
 		}else {

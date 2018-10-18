@@ -5,9 +5,9 @@ import java.util.Random;
 
 import javax.swing.ImageIcon;
 
-import PaqueteObjetos.Disparo;
-import PaqueteObjetos.DisparoEnemigo;
-import PaqueteObjetosImplementados.Personaje;
+import PaqueteDisparos.Disparo;
+import PaqueteDisparos.DisparoEnemigo;
+import PaquetePersonajes.Personaje;
 
 public class ITieneArma extends Inteligencia {
 	public ITieneArma(Personaje p) {

@@ -5,8 +5,8 @@ import java.util.Random;
 
 import javax.swing.ImageIcon;
 
-import PaqueteObjetos.Disparo;
-import PaqueteObjetosImplementados.Personaje;
+import PaqueteDisparos.Disparo;
+import PaquetePersonajes.Personaje;
 
 public class IKA extends Inteligencia {
 	private int vecesMovido; //Permite que el movimiento acelere al principio.

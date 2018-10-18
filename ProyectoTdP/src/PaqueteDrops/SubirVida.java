@@ -1,8 +1,8 @@
-package PaqueteObjetos;
+package PaqueteDrops;
 
 import javax.swing.ImageIcon;
 
-import PaqueteObjetosImplementados.Personaje;
+import PaquetePersonajes.Personaje;
 
 public class SubirVida extends Drop{
 
@@ -13,16 +13,12 @@ public class SubirVida extends Drop{
 
 	
 	public void mejorar(Personaje personaje) {
-		personaje.mejorarVida();
-		
+		personaje.modificarVida(20);	
 	}
-
-
-	@Override
-	public int morir() {
-		grafico.setVisible(false);
-		borrable = true;
-		return 0;
+	
+	
+	public Drop clone() {
+		return new SubirVida(pos.x, pos.y);
 	}
 
 }

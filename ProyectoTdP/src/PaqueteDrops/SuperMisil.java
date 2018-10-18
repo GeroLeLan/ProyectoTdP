@@ -1,9 +1,8 @@
-package PaqueteObjetos;
+package PaqueteDrops;
 
 import javax.swing.ImageIcon;
 
-import PaqueteArmas.ArmaSupermisil;
-import PaqueteObjetosImplementados.Personaje;
+import PaquetePersonajes.Personaje;
 
 public class SuperMisil extends Temporales{
 
@@ -12,20 +11,14 @@ public class SuperMisil extends Temporales{
 		grafico.setIcon(new ImageIcon("./bin/ImageIcons/turtleSupermisil.gif"));
 		setGrafico();
 	}
-
-
-
 	
 	public void mejorar(Personaje personaje) {
 		//personaje.setArma(new ArmaSupermisil()); 
-		
 	}
-
-	@Override
-	public int morir() {
-		grafico.setVisible(false);
-		borrable = true;
-		return 0;
+	
+	
+	public Drop clone() {
+		return new SuperMisil(pos.x, pos.y);
 	}
 	
 }
