@@ -1,23 +1,23 @@
 package PaqueteJuego;
 
-public class ContadorTDisparo extends Thread {
+public class ContadorTemporales extends Thread {
 	private Juego elJuego;
 
-	ContadorTDisparo(Juego j) {
+	ContadorTemporales(Juego j) {
 		elJuego = j;
 	}
 
 	public void run() {
 		while(true){
 			try {
-				Thread.sleep(11);
+				Thread.sleep(4);
 			}
 			catch (InterruptedException e) {
 				e.printStackTrace();
 			}
 			if (elJuego.getPersonaje().getVida() <= 0)
 				break;
-			elJuego.moverDisparosYDrops();
+			elJuego.moverDisparos();
 		}
 	}
 }

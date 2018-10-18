@@ -1,13 +1,13 @@
 package PaqueteDrops;
 
 import javax.swing.ImageIcon;
-
+import PaqueteJuego.GUI;
 import PaquetePersonajes.Personaje;
 
-public class Escudo extends Drop{
+public class Escudo extends Drop {
 	
-	public Escudo(int x, int y) {
-		super(x, y);
+	public Escudo(int x, int y, GUI gui) {
+		super(x, y, gui);
 		grafico.setIcon(new ImageIcon("./bin/ImageIcons/turtleEscudo.gif"));
 	}
 	
@@ -17,7 +17,7 @@ public class Escudo extends Drop{
 	
 	
 	public Drop clone() {
-		return new Escudo(pos.x, pos.y);
+		return new Escudo(pos.x, pos.y, gui);
 	}
 
 }

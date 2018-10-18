@@ -101,7 +101,7 @@ public class Juego {
 					listaEnemigos.remove(enem);
 					Random r = new Random();
 					if (r.nextInt(10) < 3) {
-						GeneradorDrops gd = new GeneradorDrops(pos.x, pos.y);
+						GeneradorDrops gd = new GeneradorDrops(pos.x, pos.y, gui);
 						Drop d = gd.generarDrop();
 						listaDrops.addLast(d);
 						gui.getPanel().add(d.getGrafico());
@@ -128,7 +128,7 @@ public class Juego {
 		}
 	}
 
-	public void moverDisparosyDrops() {
+	public void moverDisparosYDrops() {
 		for (Position<Disparo> dis : listaDisparos.positions()) {
 			dis.element().mover();
 			colisionesEntreObjetos(dis.element());
@@ -210,5 +210,8 @@ public class Juego {
 	}
 		private void setearBordes(Rectangle re) {
 			re.setBounds(re.x, (int) (re.y * 2), (int) (re.getWidth() * 0.8), (int) (re.getHeight() * 0.7));
+		}
+		public GUI getGui() {
+			return gui;
 		}
 }

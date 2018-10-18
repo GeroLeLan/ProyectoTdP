@@ -2,16 +2,18 @@ package PaqueteDrops;
 
 import java.util.Random;
 
+import PaqueteJuego.GUI;
+
 public class GeneradorDrops {
 	Drop muchos, varios, algunos, limitados, escasos, pocos;
 	
-	public GeneradorDrops(int x, int y) {
-		muchos = new SuperMisil(x, y);
-		varios = new SubirVida(x, y);
-		algunos = new Congelar(x, y);
-		limitados = new Escudo(x, y);
-		escasos = new MejoraDisparoDoble(x, y);
-		pocos = new MejoraDaño(x, y);
+	public GeneradorDrops(int x, int y, GUI gui) {
+		muchos = new SuperMisil(x, y, gui);
+		varios = new SubirVida(x, y, gui);
+		algunos = new Congelar(x, y, gui);
+		limitados = new Escudo(x, y, gui);
+		escasos = new MejoraDisparoDoble(x, y, gui);
+		pocos = new MejoraDaño(x, y, gui);
 	}
 	
 	public Drop generarDrop() {

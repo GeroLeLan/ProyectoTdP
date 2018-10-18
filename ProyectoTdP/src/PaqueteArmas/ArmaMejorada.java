@@ -11,7 +11,6 @@ public class ArmaMejorada extends Arma {
 	}
 	
 	public Disparo disparar(int x,int y) {
-		System.out.println("hola disparo mejorado disparar");
 		return new Disparo(x,y, daño);
 		 
 	}
