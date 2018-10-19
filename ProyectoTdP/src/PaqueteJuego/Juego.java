@@ -13,22 +13,11 @@ import PaqueteDrops.GeneradorDrops;
 import PaqueteDrops.Drop;
 import TDAListaDE.*;
 import PaqueteEnemigos.*;
-<<<<<<< HEAD
-import PaqueteObjetos.Congelar;
-import PaqueteObjetos.Disparo;
-import PaqueteObjetos.Drop;
-import PaqueteObjetos.EscudoK;
-import PaqueteObjetos.MejoraArma;
-import PaqueteObjetos.MejoraDaño;
-import PaqueteObjetos.SubirVida;
-import PaqueteObjetos.SuperMisil;
-//import PaqueteObjetos.DisparoEnemigo;
-import PaqueteObjetosImplementados.*;
-=======
+
 import PaqueteGenericos.Objeto;
 import PaqueteObstaculos.*;
 import PaquetePersonajes.Personaje;
->>>>>>> 1c09ce1f2121ab38be223e0bfdfd160a2389b17e
+
 
 public class Juego {
 	private GUI gui;
@@ -112,27 +101,7 @@ public class Juego {
 				try {
 					Point pos=enem.element().getPos();
 					listaEnemigos.remove(enem);
-<<<<<<< HEAD
-					Random r=new Random();
-					Drop d;
-					int num=r.nextInt(150);//despues vemos bien la frecuencia
-					if(num >10)
-						d=new Congelar(pos.x,pos.y,gui);
-					else
-						if(num>7) {
-							d=new MejoraDaño(pos.x,pos.y,gui);
-						}else {
-							if(num>5)
-								d=new SuperMisil(pos.x,pos.y,gui);
-							else
-								if(num>3)
-									d=new EscudoK(pos.x,pos.y,gui);
-								else
-									d=new SubirVida(pos.x,pos.y,gui);
-						}
-					listaDrops.addLast(d);
-					gui.getPanel().add(d.getGrafico());
-=======
+
 					Random r = new Random();
 					if (r.nextInt(10) < 3) {
 						GeneradorDrops gd = new GeneradorDrops(pos.x, pos.y, gui);
@@ -141,7 +110,6 @@ public class Juego {
 						gui.getPanel().add(d.getGrafico());
 					}
 					
->>>>>>> 1c09ce1f2121ab38be223e0bfdfd160a2389b17e
 				}
 				catch (InvalidPositionException e) {
 					System.out.println("Problema con la lista.");

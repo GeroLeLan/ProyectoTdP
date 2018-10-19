@@ -15,11 +15,9 @@ public abstract class Drop extends Objeto {
 	
 	protected Drop(int x, int y, GUI gui) {
 		super(x, y);
-<<<<<<< HEAD:ProyectoTdP/src/PaqueteObjetos/Drop.java
-		gui=g;
-=======
+
 		this.gui = gui;
->>>>>>> 1c09ce1f2121ab38be223e0bfdfd160a2389b17e:ProyectoTdP/src/PaqueteDrops/Drop.java
+
 		setGrafico();
 		borrable = false;
 	}
