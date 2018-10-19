@@ -13,9 +13,11 @@ import PaqueteDrops.GeneradorDrops;
 import PaqueteDrops.Drop;
 import TDAListaDE.*;
 import PaqueteEnemigos.*;
+
 import PaqueteGenericos.Objeto;
 import PaqueteObstaculos.*;
 import PaquetePersonajes.Personaje;
+
 
 public class Juego {
 	private GUI gui;

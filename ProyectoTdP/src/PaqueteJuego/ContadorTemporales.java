@@ -17,7 +17,7 @@ public class ContadorTemporales extends Thread {
 			}
 			if (elJuego.getPersonaje().getVida() <= 0)
 				break;
-			elJuego.moverDisparos();
+			elJuego.moverDisparosYDrops();
 		}
 	}
 }

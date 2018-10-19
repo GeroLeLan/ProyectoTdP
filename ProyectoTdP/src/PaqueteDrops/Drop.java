@@ -15,7 +15,9 @@ public abstract class Drop extends Objeto {
 	
 	protected Drop(int x, int y, GUI gui) {
 		super(x, y);
+
 		this.gui = gui;
+
 		setGrafico();
 		borrable = false;
 	}

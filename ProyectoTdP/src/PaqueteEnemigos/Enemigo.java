@@ -10,6 +10,7 @@ import PaqueteGenericos.Objeto;
 
 public class Enemigo extends Animado {
 	protected Inteligencia intel;
+	protected Inteligencia meme;
 	protected final int vidaInicial = 100;
 	protected boolean moviendo, murioPorChocar;
 	
@@ -47,6 +48,7 @@ public class Enemigo extends Animado {
 	}
 	
 	public int recibirDaño(int d) {
+		
 		vida -= d;
 		intel.cambiarInteligencia(vida, this);
 		if(vida <= 0)
@@ -71,5 +73,17 @@ public class Enemigo extends Animado {
 	}
 	public boolean getMurioChocando() {
 		return murioPorChocar;
+	}
+
+	public void frenar(int i) {			
+		if(meme==null) {
+			Memento memento= intel.crearMemento();
+			meme=memento.getIntel();}
+			intel=new InteligenciaCongelada(null,this);
+	}
+
+	public void recuperarIntel() {
+		intel=meme;
+		meme=null;
 	}
 }
