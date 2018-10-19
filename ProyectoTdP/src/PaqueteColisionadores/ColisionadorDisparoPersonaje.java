@@ -17,6 +17,7 @@ public class ColisionadorDisparoPersonaje extends Colisionador {
 	public int chocarEnemigo(Enemigo enemigo) {
 		if (!miDisparo.soyBorrable()) {
 			miDisparo.morir();
+			enemigo.setMurioChocando(false);
 			return enemigo.recibirDaño(miDisparo.getDaño());
 		}
 		return 0;

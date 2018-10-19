@@ -4,7 +4,6 @@ import PaqueteEnemigos.*;
 import PaqueteObstaculos.*;
 import PaquetePersonajes.Jugador;
 import PaquetePersonajes.Personaje;
-import TDAListaDE.Position;
 
 public class Mapa {
 	private final int Xmax =java.awt.Toolkit.getDefaultToolkit().getScreenSize().width;
@@ -145,8 +144,7 @@ public class Mapa {
 			} while (matrizPosiciones[x][y].getOcupado()); //Deja de buscar cuando encuentra una posición vacía.
 			matrizPosiciones[x][y].setOcupado(true);
 			Enemigo enem = crearEnemigo(new ITieneArma(jugador), x, y);
-			Position<Enemigo> pos = juego.agregarEnemigo(enem);
-			enem.setPosEnListaJuego(pos);
+			juego.agregarEnemigo(enem);
 		}
 		
 		for (int i = 0; i < cantAP; i++) {
@@ -156,8 +154,7 @@ public class Mapa {
 			} while (matrizPosiciones[x][y].getOcupado()); //Deja de buscar cuando encuentra una posición vacía.
 			matrizPosiciones[x][y].setOcupado(true);
 			Enemigo enem = crearEnemigo(new ITAP(jugador), x, y);
-			Position<Enemigo> pos = juego.agregarEnemigo(enem);
-			enem.setPosEnListaJuego(pos);
+			juego.agregarEnemigo(enem);
 		} //Dado que a lo sumo habrá 14 enemigos armados, el proceso de búsqueda de una posición no tardará demasiado.
 		
 		
@@ -179,8 +176,7 @@ public class Mapa {
 							enem = crearEnemigo(new IKA(jugador), i, j);
 					}
 					
-					Position<Enemigo> pos = juego.agregarEnemigo(enem);
-					enem.setPosEnListaJuego(pos);
+					juego.agregarEnemigo(enem);
 					
 					if (cont == cantKB + cantKM + cantKA)
 						quedan = false;

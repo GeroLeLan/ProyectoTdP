@@ -7,16 +7,16 @@ import PaqueteJuego.GUI;
 public class GeneradorDrops {
 	Drop muchos, varios, algunos, limitados, escasos, pocos;
 	
-	public GeneradorDrops(int x, int y, GUI gui) {
-		muchos = new SuperMisil(x, y, gui);
-		varios = new SubirVida(x, y, gui);
-		algunos = new Congelar(x, y, gui);
-		limitados = new Escudo(x, y, gui);
-		escasos = new MejoraDisparoDoble(x, y, gui);
-		pocos = new MejoraDaño(x, y, gui);
+	public GeneradorDrops(GUI gui) {
+		muchos = new SuperMisil(0, 0, gui);
+		varios = new SubirVida(0, 0, gui);
+		algunos = new Congelar(0, 0, gui);
+		limitados = new Escudo(0, 0, gui);
+		escasos = new MejoraDisparoDoble(0, 0, gui);
+		pocos = new MejoraDaño(0, 0, gui);
 	}
 	
-	public Drop generarDrop() {
+	public Drop generarDrop(int x, int y) {
 		Random r = new Random();
 		int eleccion = r.nextInt(105);
 		Drop clon;
@@ -42,6 +42,7 @@ public class GeneradorDrops {
 			}
 		}
 		
+		clon.setPos(x, y);
 		return clon;
 	}
 }

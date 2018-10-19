@@ -55,4 +55,9 @@ public abstract class Drop extends Objeto {
 	}
 	
 	public abstract Drop clone(); //Clonador para el Generador.
+	
+	public void setPos(int x, int y) {
+		pos.x = x;
+		pos.y = y;
+	}
 }

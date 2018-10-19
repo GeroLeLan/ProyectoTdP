@@ -17,11 +17,11 @@ public class ColisionadorEnemigo extends Colisionador {
 	public int chocarObstaculo(Obstaculo obstaculo) { return 0;	}
 	
 	public int chocarPersonaje(Personaje personaje) {
-		if(!personaje.getEscudo()) {
-			miEnemigo.recibirDaño(100);
+		miEnemigo.setMurioChocando(true);
+		miEnemigo.recibirDaño(100);
+		if(!personaje.getEscudo())
 			return personaje.recibirDaño(30);
-		}else {
-			miEnemigo.recibirDaño(100);
+		else {
 			personaje.chocoEscudo();
 			return 0;
 		}

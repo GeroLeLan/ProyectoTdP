@@ -26,6 +26,7 @@ public class Juego {
 	private PositionList<Objeto> listaObjetos;
 	private Obstaculo[] obstaculos;
 	private Personaje personaje;
+	private GeneradorDrops gd;
 	@SuppressWarnings("unused")
 	private Mapa mapa; //Cambiará cuando cambie el nivel.
 	
@@ -38,19 +39,12 @@ public class Juego {
 		obstaculos = new Obstaculo[3];
 		gui = g;
 		mapa = new Mapa(dificultad, this);
+		gd = new GeneradorDrops(gui);
 	}
 	
-	public Position<Enemigo> agregarEnemigo(Enemigo e){
-		try {
-			listaEnemigos.addLast(e);
-			listaObjetos.addLast(e);
-			return listaEnemigos.last();
-		}
-		catch (EmptyListException exc) {
-			System.out.println("Problema con la lista.");
-			exc.printStackTrace();
-			return null;
-		}
+	public void agregarEnemigo(Enemigo e){
+		listaEnemigos.addLast(e);
+		listaObjetos.addLast(e);
 	}
 	public PositionList<Enemigo> getListaEnems() {
 		return listaEnemigos;
@@ -97,14 +91,15 @@ public class Juego {
 		for (Position<Enemigo> enem : listaEnemigos.positions()) {
 			if (enem.element().getVida() <= 0) {
 				try {
-					Point pos=enem.element().getPos();
 					listaEnemigos.remove(enem);
-					Random r = new Random();
-					if (r.nextInt(10) < 3) {
-						GeneradorDrops gd = new GeneradorDrops(pos.x, pos.y, gui);
-						Drop d = gd.generarDrop();
-						listaDrops.addLast(d);
-						gui.getPanel().add(d.getGrafico());
+					if (!enem.element().getMurioChocando()) { //Si el Enemigo muere al colisionar con el Personaje, no se crearán drops.
+						Point pos=enem.element().getPos();
+						Random r = new Random();
+						if (r.nextInt(10) < 10) {
+							Drop d = gd.generarDrop(pos.x, pos.y);
+							listaDrops.addLast(d);
+							gui.getPanel().add(d.getGrafico());
+						}
 					}
 					
 				}
