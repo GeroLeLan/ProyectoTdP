@@ -14,6 +14,7 @@ import PaqueteObjetos.Congelar;
 import PaqueteObjetos.Disparo;
 import PaqueteObjetos.Drop;
 import PaqueteObjetos.EscudoK;
+import PaqueteObjetos.MejoraArma;
 import PaqueteObjetos.MejoraDaño;
 import PaqueteObjetos.SubirVida;
 import PaqueteObjetos.SuperMisil;
@@ -104,18 +105,21 @@ public class Juego {
 					listaEnemigos.remove(enem);
 					Random r=new Random();
 					Drop d;
-					int num=r.nextInt(20);//despues vemos bien la frecuencia
-					if(num>7) {
+					int num=r.nextInt(150);//despues vemos bien la frecuencia
+					if(num >10)
 						d=new Congelar(pos.x,pos.y,gui);
-					}else {
-						if(num>5)
-							d=new SuperMisil(pos.x,pos.y,gui);
-						else
-							if(num>3)
-								d=new EscudoK(pos.x,pos.y,gui);
+					else
+						if(num>7) {
+							d=new MejoraDaño(pos.x,pos.y,gui);
+						}else {
+							if(num>5)
+								d=new SuperMisil(pos.x,pos.y,gui);
 							else
-								d=new SubirVida(pos.x,pos.y,gui);
-					}
+								if(num>3)
+									d=new EscudoK(pos.x,pos.y,gui);
+								else
+									d=new SubirVida(pos.x,pos.y,gui);
+						}
 					listaDrops.addLast(d);
 					gui.getPanel().add(d.getGrafico());
 				}

@@ -2,9 +2,10 @@ package PaqueteObjetos;
 
 import javax.swing.ImageIcon;
 
-
+import PaqueteEnemigos.Enemigo;
 import PaqueteJuego.GUI;
 import PaqueteObjetosImplementados.Personaje;
+import TDAListaDE.Position;
 
 public class Congelar extends Temporales{
 
@@ -23,9 +24,12 @@ public class Congelar extends Temporales{
 	
 	@Override
 	public void mejorar(Personaje personaje) {
-	
-			gui.getTiempo().wait(3000);
+		for (Position<Enemigo> en : gui.getListaEnemigos().positions()) {
+			en.element().frenar(3000);
+		}
+			
+			}
+
 		
 	}
 	
-}

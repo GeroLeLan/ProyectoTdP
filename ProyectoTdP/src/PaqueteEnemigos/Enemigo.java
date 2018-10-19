@@ -11,10 +11,12 @@ import PaqueteColisionadores.ColisionadorEnemigo;
 
 import PaqueteObjetosImplementados.Animado;
 import PaqueteObjetosImplementados.Objeto;
+import PaqueteObjetosImplementados.Personaje;
 import TDAListaDE.Position;
 
 public class Enemigo extends Animado {
 	protected Inteligencia intel;
+	protected Inteligencia meme;
 	protected Position<Enemigo> posEnListaJuego; //Guarda su posición en la lista de enemigos del juego.
 	protected final int vidaInicial = 100;
 	protected boolean moviendo;
@@ -57,6 +59,7 @@ public class Enemigo extends Animado {
 	}
 	
 	public int recibirDaño(int d) {
+		
 		vida -= d;
 		intel.cambiarInteligencia(vida, this);
 		if(vida <= 0)
@@ -76,5 +79,17 @@ public class Enemigo extends Animado {
 	public int colisionar(Objeto o) {
 		return o.serChocado(new ColisionadorEnemigo(this));
 
+	}
+
+	public void frenar(int i) {			
+		if(meme==null) {
+			Memento memento= intel.crearMemento();
+			meme=memento.getIntel();}
+			intel=new InteligenciaCongelada(null,this);
+	}
+
+	public void recuperarIntel() {
+		intel=meme;
+		meme=null;
 	}
 }

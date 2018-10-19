@@ -3,20 +3,18 @@ package PaqueteJuego;
 public class ContadorTiempo extends Thread {
 
 	private Juego elJuego;
-	private boolean parar;
 	private int cuanto;
 	ContadorTiempo(Juego j) {
 		elJuego = j;
-		parar=false;
 		cuanto=0;
 	}
 
 	public void run() {
 		while(true){
 			try {
-				if(parar) {
+				if(cuanto!=0) {
 					Thread.sleep(cuanto);
-					parar=false;
+					cuanto=0;
 				}
 				Thread.sleep(70);
 			}
@@ -30,7 +28,13 @@ public class ContadorTiempo extends Thread {
 		}
 	}
 	public void wait (int i) {
-		parar=true;
+		//parar=true;
+		try {
+			Thread.sleep(i);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		cuanto=i;
 	}
 }

@@ -15,8 +15,6 @@ public abstract class Drop extends Intangible {
 	protected Drop(int x, int y,GUI g) {
 		super(x, y);
 		gui=g;
-
-		
 		setGrafico();
 		borrable=false;
 	}
