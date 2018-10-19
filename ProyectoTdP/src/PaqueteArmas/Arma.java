@@ -1,11 +1,11 @@
 package PaqueteArmas;
 
-import PaqueteObjetos.Disparo;
+import PaqueteDisparos.Disparo;
 
 abstract public class Arma {
 	protected int daño; 
-	public Arma () {
-	}
+	
+	public Arma () {}
 	abstract public Disparo disparar(int x,int y);
 
 }

@@ -1,8 +1,8 @@
-package PaqueteObjetosImplementados;
+package PaqueteObstaculos;
 
 import javax.swing.ImageIcon;
 
-import PaqueteObjetos.DisparoEnemigo;
+import PaqueteDisparos.DisparoEnemigo;
 
 public class DestruiblePorTodos extends Obstaculo {
 

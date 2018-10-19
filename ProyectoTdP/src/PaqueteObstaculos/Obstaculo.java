@@ -1,10 +1,11 @@
-package PaqueteObjetosImplementados;
+package PaqueteObstaculos;
 
 
 import javax.swing.ImageIcon;
 import PaqueteColisionadores.Colisionador;
-import PaqueteObjetos.Disparo;
-import PaqueteObjetos.DisparoEnemigo;
+import PaqueteDisparos.Disparo;
+import PaqueteDisparos.DisparoEnemigo;
+import PaqueteGenericos.Objeto;
 
 public abstract class Obstaculo extends Objeto { //Permite que el mapa defina los tipos de Obstáculo en el nivel (basándose en la dificultad del nivel), y no la GUI.
 	protected int puntosKill;

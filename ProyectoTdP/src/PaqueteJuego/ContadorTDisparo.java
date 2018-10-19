@@ -10,14 +10,14 @@ public class ContadorTDisparo extends Thread {
 	public void run() {
 		while(true){
 			try {
-				Thread.sleep(4);
+				Thread.sleep(11);
 			}
 			catch (InterruptedException e) {
 				e.printStackTrace();
 			}
 			if (elJuego.getPersonaje().getVida() <= 0)
 				break;
-			elJuego.moverDisparos();
+			elJuego.moverDisparosYDrops();
 		}
 	}
 }

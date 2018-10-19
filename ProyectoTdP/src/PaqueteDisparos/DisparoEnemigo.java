@@ -1,10 +1,10 @@
-package PaqueteObjetos;
+package PaqueteDisparos;
 
 import javax.swing.ImageIcon;
 
 import PaqueteColisionadores.ColisionadorDisparoEnemigo;
-import PaqueteObjetosImplementados.Objeto;
-import PaqueteObjetosImplementados.Obstaculo;
+import PaqueteGenericos.Objeto;
+import PaqueteObstaculos.Obstaculo;
 
 public class DisparoEnemigo extends Disparo {
 

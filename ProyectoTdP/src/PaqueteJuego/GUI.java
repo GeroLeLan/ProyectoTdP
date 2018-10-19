@@ -7,7 +7,8 @@ import javax.swing.*;
 
 import TDAListaDE.*;
 import PaqueteEnemigos.*;
-import PaqueteObjetosImplementados.*;
+import PaqueteGenericos.Objeto;
+import PaquetePersonajes.Personaje;
 
 public class GUI {
 	private ContadorTiempo tiempo;
@@ -18,6 +19,7 @@ public class GUI {
 	private JFrame frame;
 	private Container panel;
 	private JLabel fondo;
+	private JLabel drops[];
 	private Juego juego;
 	private PositionList<Enemigo> listaEnemigos;
 	private Personaje jugador;
@@ -89,6 +91,25 @@ public class GUI {
 		puntuacion.setBackground(new Color(255,255,255));
 		puntuacion.setBounds((int) (frameWidth * 0.08) + 20, (int) (frameHeight * 0.02), (int) (frameWidth * 0.3), 23);
 
+		System.out.println("!");
+		String a="Deshabilitado";
+		drops=new JLabel[4];
+		
+		for(int i = 0; i < drops.length; i++)
+			drops[i] = new JLabel();
+		drops[0].setIcon(new ImageIcon("./bin/ImageIcons/iconoDropEscudo_"+a+".png"));
+		drops[1].setIcon(new ImageIcon("./bin/ImageIcons/iconoDropDaño_"+a+".png"));
+		drops[2].setIcon(new ImageIcon("./bin/ImageIcons/iconoDropSupermisil_"+a+".png"));
+		drops[3].setIcon(new ImageIcon("./bin/ImageIcons/iconoDropCongelar_"+a+".png"));
+		
+		for(int i=0;i<drops.length;i++)
+			drops[i].setSize(drops[i].getIcon().getIconHeight(), drops[i].getIcon().getIconWidth());
+		
+		drops[0].setBounds((int) (frameWidth * 0.001) + 10, (int) (frameHeight * 0.01), 100, 50);
+		drops[1].setBounds((int) (frameWidth * 0.001) + 10, (int) (frameHeight * 0.08), 100, 50);
+		drops[2].setBounds((int) (frameWidth * 0.001) + 10, (int) (frameHeight * 0.15), 100, 50);
+		drops[3].setBounds((int) (frameWidth * 0.001) + 10, (int) (frameHeight * 0.22), 100, 50);
+		
 		
 		instruccion = new JLabel();
 		instruccion.setForeground(new Color(225,0,0));
@@ -117,8 +138,8 @@ public class GUI {
 		puntuacion.setText("Puntaje: " + puntaje);
 		panel.add(puntuacion);
 		
-
-		
+		for(int i = 0; i < drops.length; i++)
+			panel.add(drops[i]);
 
 		juego = new Juego(dificultad, this);
 
@@ -148,7 +169,7 @@ public class GUI {
 				
 				if (barraEspaciadora == KeyEvent.VK_SPACE) {
 					try {
-						if (nombre.equals("")) { //Contempla qué nivel se está creando.
+						if (nombre.equals("")) { //Contempla qué nivel se está creando. Si el nivel es superior a 1, este paso no se ejecutará.
 							boolean valido = false;
 							while (!valido) {
 								nombre = JOptionPane.showInputDialog(null, "Ingrese un Nombre para el Personaje:");
@@ -159,6 +180,11 @@ public class GUI {
 							}
 							nombrePersonaje.setBounds((int) (frameWidth * 0.5 - nombre.length() * 10), (int) (frameHeight * 0.02), (int) (frameWidth * 0.6), 25);
 							nombrePersonaje.setText(nombre.toUpperCase());
+							
+							/*
+							 * MOSTRAR HIGH SCORES.
+							 */
+							
 						}
 						panel.add(nombrePersonaje);
 						comenzarJuego();
@@ -204,4 +230,13 @@ public class GUI {
 		public JLabel getLvl() { return lvl; }
 		public int getPuntaje() { return puntaje; }
 		public void setPuntaje(int p) {	puntaje = p; }
+		
+		public void mostrarIconoDrop(int tipo,ImageIcon image) {;
+			drops[tipo].setIcon(image);
+		}
+		public void actualizarIconoEscudo() {
+			mostrarIconoDrop(0, new ImageIcon("./bin/ImageIcons/iconoDropEscudo_Deshabilitado.png"));
+		}
+		
+		
 }

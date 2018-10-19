@@ -5,13 +5,17 @@ import java.util.Random;
 import javax.swing.ImageIcon;
 
 import PaqueteColisionadores.Colisionador;
-import PaqueteObjetos.Disparo;
-
 import PaqueteColisionadores.ColisionadorEnemigo;
+<<<<<<< HEAD
 
 import PaqueteObjetosImplementados.Animado;
 import PaqueteObjetosImplementados.Objeto;
 import PaqueteObjetosImplementados.Personaje;
+=======
+import PaqueteDisparos.Disparo;
+import PaqueteGenericos.Animado;
+import PaqueteGenericos.Objeto;
+>>>>>>> 1c09ce1f2121ab38be223e0bfdfd160a2389b17e
 import TDAListaDE.Position;
 
 public class Enemigo extends Animado {

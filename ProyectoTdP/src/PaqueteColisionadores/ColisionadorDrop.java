@@ -1,9 +1,9 @@
 package PaqueteColisionadores;
 
+import PaqueteDrops.Drop;
 import PaqueteEnemigos.Enemigo;
-import PaqueteObjetos.Drop;
-import PaqueteObjetosImplementados.Obstaculo;
-import PaqueteObjetosImplementados.Personaje;
+import PaqueteObstaculos.Obstaculo;
+import PaquetePersonajes.Personaje;
 
 public class ColisionadorDrop extends Colisionador {
 	private Drop miDrop;
@@ -17,11 +17,10 @@ public class ColisionadorDrop extends Colisionador {
 	public int chocarObstaculo(Obstaculo obstaculo) { return 0;	}
 	
 	public int chocarPersonaje(Personaje personaje) {
-		//personaje.mejorar(miDrop);
 		if (!miDrop.soyBorrable()) {
 			miDrop.mejorar(personaje);
 			miDrop.morir();
-			return 15; //Creo que estaría bueno que agarrar un Drop te sume puntos. (Nacho)
+			return 15;
 		}
 		return 0;
 	}

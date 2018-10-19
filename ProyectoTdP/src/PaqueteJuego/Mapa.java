@@ -1,7 +1,9 @@
 package PaqueteJuego;
 
 import PaqueteEnemigos.*;
-import PaqueteObjetosImplementados.*;
+import PaqueteObstaculos.*;
+import PaquetePersonajes.Jugador;
+import PaquetePersonajes.Personaje;
 import TDAListaDE.Position;
 
 public class Mapa {
