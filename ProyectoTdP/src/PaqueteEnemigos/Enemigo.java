@@ -75,15 +75,16 @@ public class Enemigo extends Animado {
 		return murioPorChocar;
 	}
 
-	public void frenar(int i) {			
-		if(meme==null) {
-			Memento memento= intel.crearMemento();
-			meme=memento.getIntel();}
-			intel=new InteligenciaCongelada(null,this);
+	public void frenar() {			
+		if(meme == null) {
+			Memento memento = intel.crearMemento();
+			meme = memento.getIntel();
+		}
+		intel = new InteligenciaCongelada(null,this);
 	}
 
 	public void recuperarIntel() {
-		intel=meme;
-		meme=null;
+		intel = meme;
+		meme = null;
 	}
 }

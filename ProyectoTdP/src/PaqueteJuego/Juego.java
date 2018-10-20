@@ -1,34 +1,22 @@
 package PaqueteJuego;
 
-import java.awt.Color;
-import java.awt.Point;
-import java.awt.Rectangle;
-import java.util.Random;
-
-import javax.swing.ImageIcon;
-import javax.swing.JLabel;
-
 import PaqueteDisparos.Disparo;
-import PaqueteDrops.GeneradorDrops;
 import PaqueteDrops.Drop;
 import TDAListaDE.*;
 import PaqueteEnemigos.*;
-
 import PaqueteGenericos.Objeto;
 import PaqueteObstaculos.*;
 import PaquetePersonajes.Personaje;
 
-
 public class Juego {
 	private GUI gui;
-	private int frecuencia = 0; //Determina cada cuánto dispara un enemigo.
 	private PositionList<Enemigo> listaEnemigos;
 	private PositionList<Drop> listaDrops;
 	private PositionList<Disparo> listaDisparos;
 	private PositionList<Objeto> listaObjetos;
 	private Obstaculo[] obstaculos;
 	private Personaje personaje;
-	private GeneradorDrops gd;
+	private MovimientosAutomaticos movedor;
 	@SuppressWarnings("unused")
 	private Mapa mapa; //Cambiará cuando cambie el nivel.
 	
@@ -41,12 +29,24 @@ public class Juego {
 		obstaculos = new Obstaculo[3];
 		gui = g;
 		mapa = new Mapa(dificultad, this);
-		gd = new GeneradorDrops(gui);
+		movedor = new MovimientosAutomaticos(listaObjetos, listaEnemigos, listaDisparos, listaDrops, gui, personaje);
 	}
 	
 	public void agregarEnemigo(Enemigo e){
 		listaEnemigos.addLast(e);
 		listaObjetos.addLast(e);
+	}
+	public void agregarObstaculo(int pos, Obstaculo o) { //pos puede valer 0, 1 o 2.
+		obstaculos[pos] = o;
+		listaObjetos.addLast(o);
+	}
+	public void setPersonaje(Personaje p) {
+		personaje = p;
+		listaObjetos.addLast(p);
+	}
+	
+	public PositionList<Objeto> getListaObjetos() {
+		return listaObjetos;
 	}
 	public PositionList<Enemigo> getListaEnems() {
 		return listaEnemigos;
@@ -54,161 +54,23 @@ public class Juego {
 	public PositionList<Disparo> getListaDisp() {
 		return listaDisparos;
 	}
-	
-	public void agregarObstaculo(int pos, Obstaculo o) { //pos puede valer 0, 1 o 2.
-		obstaculos[pos] = o;
-		listaObjetos.addLast(o);
-	}
 	public Obstaculo getObstaculo(int pos) {
 		return obstaculos[pos];
 	}
-	
-	public void setPersonaje(Personaje p) {
-		personaje = p;
-		listaObjetos.addLast(p);
+	public GUI getGui() {
+		return gui;
 	}
 	public Personaje getPersonaje() {
 		return personaje;
 	}
 	
 	public void moverObjetos() {
-		try {
-			for (Position<Objeto> obj: listaObjetos.positions()) {
-				if (obj.element().getVida() <= 0)
-					listaObjetos.remove(obj);
-				else {
-					obj.element().mover();
-					colisionesEntreObjetos(obj.element());
-					actualizarVida();
-				}
-			}
-		}
-		catch (InvalidPositionException exc) {
-			System.out.println("Problema con la lista.");
-			exc.printStackTrace();
-		}
+		movedor.moverObjetos();
 	}
-	
 	public void disparosEnemigos() {
-		for (Position<Enemigo> enem : listaEnemigos.positions()) {
-			if (enem.element().getVida() <= 0) {
-				try {
-					listaEnemigos.remove(enem);
-					if (!enem.element().getMurioChocando()) { //Si el Enemigo muere al colisionar con el Personaje, no se crearán drops.
-						Point pos=enem.element().getPos();
-						Random r = new Random();
-						if (r.nextInt(10) < 10) {
-							Drop d = gd.generarDrop(pos.x, pos.y);
-							listaDrops.addLast(d);
-							gui.getPanel().add(d.getGrafico());
-						}
-					}
-					
-				}
-				catch (InvalidPositionException e) {
-					System.out.println("Problema con la lista.");
-					e.printStackTrace();
-				}
-			}
-			
-			else {
-				frecuencia++;
-				if(frecuencia == 37) {
-					Disparo dis = enem.element().disparar();
-					if(dis != null) {
-						listaDisparos.addLast(dis);
-						gui.getPanel().add(dis.getGrafico());
-					}
-					frecuencia = 0;
-				}
-			}
-		}
+		movedor.disparosEnemigos();
 	}
-
 	public void moverDisparosYDrops() {
-		for (Position<Disparo> dis : listaDisparos.positions()) {
-			dis.element().mover();
-			colisionesEntreObjetos(dis.element());
-			if(dis.element().soyBorrable()) {
-				try {
-					listaDisparos.remove(dis);
-				}
-				catch (InvalidPositionException e) {
-					System.out.println("Problema con la lista.");
-					e.printStackTrace();
-				}
-			}
-			actualizarVida();
-		}
-		for (Position<Drop> dro : listaDrops.positions()) {
-			dro.element().mover();
-			colisionesEntreObjetos(dro.element());
-			if(dro.element().soyBorrable()) {
-				try {
-					listaDrops.remove(dro);
-				}
-				catch (InvalidPositionException e) {
-					System.out.println("Problema con la lista.");
-					e.printStackTrace();
-				}
-			}
-		}
+		movedor.moverDisparosYDrops();
 	}
-	
-	
-	
-	private void actualizarVida() {
-		if (personaje.getVida() <= 30) {
-			if (personaje.getVida() <= 0)
-				cambiarFondo("./bin/ImageIcons/Diablo III - You Have Died.jpg");
-			else {
-				gui.getVida().setForeground(new Color(255,0,0));
-				gui.getVida().setBackground(new Color(255,0,0));
-			}
-		}
-		else { //Contempla que se agarre un drop que sume vida.
-			gui.getVida().setForeground(new Color(255,255,255));
-			gui.getVida().setBackground(new Color(255,255,255));
-		}
-		gui.getVida().setText("Vida: " + personaje.getVida());;
-	}
-		private void cambiarFondo(String ruta) {
-			ImageIcon iconoOriginal = new ImageIcon(ruta);
-			ImageIcon iconoEscala = new ImageIcon(iconoOriginal.getImage().getScaledInstance(gui.getFrameWidth(), gui.getFrameHeight(), java.awt.Image.SCALE_DEFAULT));
-			JLabel nuevoFondo = new JLabel();
-			nuevoFondo.setSize(gui.getFrameWidth(), gui.getFrameHeight());
-			nuevoFondo.setIcon(iconoEscala);
-			gui.getPanel().removeAll();
-			gui.getPanel().add(personaje.getGrafico());
-			gui.getPanel().add(gui.getPuntuacion());
-			gui.getPanel().add(gui.getLvl());
-			gui.getPanel().add(gui.getNombrePersonaje());
-			gui.getPanel().add(gui.getVida());
-			gui.getPanel().add(nuevoFondo);
-		}
-	
-	
-	private void colisionesEntreObjetos(Objeto obj) {
-		Rectangle rectanguloObj = obj.getGrafico().getBounds();
-		setearBordes(rectanguloObj);
-		for (Position<Objeto> pos : listaObjetos.positions()) {
-			if (pos.element() != obj) {
-				Rectangle rectanguloPos = pos.element().getGrafico().getBounds();
-				setearBordes(rectanguloPos);
-				if (rectanguloObj.intersects(rectanguloPos)) {
-					int puntos = gui.getPuntaje() + obj.colisionar(pos.element());
-					if (puntos < 0)
-						puntos = 0;
-					gui.setPuntaje(puntos);
-					gui.getPuntuacion().setText("Puntaje: " + puntos);
-				}
-			}
-		}
-	}
-		private void setearBordes(Rectangle re) {
-			re.setBounds(re.x, (int) (re.y * 2), (int) (re.getWidth() * 0.8), (int) (re.getHeight() * 0.7));
-		}
-		public GUI getGui() {
-			return gui;
-		}
 }

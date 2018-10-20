@@ -10,8 +10,6 @@ import TDAListaDE.Position;
 import PaquetePersonajes.Personaje;
 import javax.swing.ImageIcon;
 
-
-
 public class Congelar extends Temporales{
 	public Congelar(int x, int y, GUI gui) {
 		super(x, y, gui);
@@ -25,15 +23,10 @@ public class Congelar extends Temporales{
 	}
 	
 	public void mejorar(Personaje personaje) {
-
 		for (Position<Enemigo> en : gui.getListaEnemigos().positions()) {
-			en.element().frenar(3000);
+			en.element().frenar();
 		}
-			
 	}
-
-		
-
 
 	public Drop clone() {
 		return new Congelar(pos.x, pos.y, gui);

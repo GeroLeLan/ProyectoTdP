@@ -3,6 +3,10 @@ package PaqueteJuego;
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
+
+import PaqueteContadores.Contador;
+import PaqueteContadores.ContadorTDisparo;
+import PaqueteContadores.ContadorTiempo;
 import TDAListaDE.*;
 import PaqueteEnemigos.*;
 import PaqueteGenericos.Objeto;
@@ -134,8 +138,8 @@ public class GUI {
 						e.printStackTrace();
 					}
 					
-				    tiempo.start();
-				    tiempoDisparo.start();
+					tiempo.start();
+					tiempoDisparo.start();
 				}
 			}
 		};
@@ -155,7 +159,8 @@ public class GUI {
 		}
 		
 		public JLabel grafico(Objeto o) { return o.getGrafico(); }
-		public ContadorTiempo getTiempo() { return tiempo; }
+		public Contador getTiempo() { return tiempo; }
+		public Contador getTDisparo() { return tiempoDisparo; }
 		public Personaje getPersonaje() { return jugador; }
 		public PositionList<Enemigo> getListaEnemigos() { return listaEnemigos;	}
 		public int getFrameWidth() { return frameWidth;	}

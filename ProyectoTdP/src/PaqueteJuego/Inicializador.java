@@ -7,7 +7,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
-public class Inicializador {
+class Inicializador {
 	private int frameWidth, frameHeight;
 	
 	public Inicializador(int fW, int fH) {
@@ -92,13 +92,14 @@ public class Inicializador {
 	
 	public String obtenerNombre(JLabel nombrePersonaje) {
 		String nombre = "";
-		boolean valido = false;
+		boolean valido = false, contieneEspacio;
 		while (!valido) {
 			nombre = JOptionPane.showInputDialog(null, "Ingrese un Nombre para el Personaje:");
-			if (nombre != null && !nombre.equals("") && nombre.length() <= 8)
+			contieneEspacio = nombre.contains(" ") ? true : false;
+			if (nombre != null && !nombre.equals("") && nombre.length() <= 8 && !contieneEspacio)
 				valido = true;
 			else
-				JOptionPane.showMessageDialog(null, "Debe ingresarse un nombre de longitud mayor que 0 y menor o igual que 8.", "Ingreso Inválido", JOptionPane.ERROR_MESSAGE);
+				JOptionPane.showMessageDialog(null, "Debe ingresarse un nombre sin espacios y de longitud mayor que 0 y menor o igual que 8.", "Ingreso Inválido", JOptionPane.ERROR_MESSAGE);
 		}
 		nombrePersonaje.setBounds((int) (frameWidth * 0.5 - nombre.length() * 10), (int) (frameHeight * 0.02), (int) (frameWidth * 0.6), 25);
 		nombre = nombre.toUpperCase();

@@ -1,29 +1,25 @@
-package PaqueteJuego;
+package PaqueteContadores;
 
-public class ContadorTiempo extends Thread {
-	private Juego elJuego;
+import PaqueteJuego.Juego;
+
+public class ContadorTiempo extends Contador {
 	
-	ContadorTiempo(Juego j) {
-		elJuego = j;
-
+	public ContadorTiempo(Juego j) {
+		super(j);
 	}
 
 	public void run() {
 		while(true) {
 			try {
-				
 				Thread.sleep(100);
 			}
 			catch (InterruptedException e) {
 				e.printStackTrace();
 			}
-			
-			if (elJuego.getPersonaje().getVida() <= 0)
-				break;
 			elJuego.moverObjetos();
 			elJuego.disparosEnemigos();
 			
-			if(elJuego.getPersonaje().getEscudo() == false)
+			if (elJuego.getPersonaje().getEscudo() == false)
 				elJuego.getGui().actualizarIconoEscudo();
 		}
 	}
