@@ -16,7 +16,7 @@ public class Disparo extends Objeto {
 	public Disparo(int x, int y,int d) {
 		super(x, y);
 		borrable = false;
-		daño=d;
+		daño = d;
 		setGrafico();
 		grafico.setIcon(new ImageIcon("./bin/ImageIcons/dispEnemigo.gif"));
 	}

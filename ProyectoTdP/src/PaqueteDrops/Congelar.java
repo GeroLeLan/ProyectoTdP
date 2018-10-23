@@ -26,6 +26,7 @@ public class Congelar extends Temporales{
 		for (Position<Enemigo> en : gui.getListaEnemigos().positions()) {
 			en.element().frenar();
 		}
+		gui.mostrarIconoDrop(3,  new ImageIcon("./bin/ImageIcons/iconoDropCongelar_Habilitado.png"));
 	}
 
 	public Drop clone() {

@@ -63,6 +63,7 @@ class FinDelJuego {
 		
 		
 		private void actualizarVida() {
+			gui.getVida().setText("Vida: " + personaje.getVida());
 			if (personaje.getVida() <= 30) {
 				if (personaje.getVida() <= 0) { //Perder el Juego.
 					cambiarFondo("./bin/ImageIcons/Diablo III - You Have Died.jpg");
@@ -77,7 +78,6 @@ class FinDelJuego {
 				gui.getVida().setForeground(new Color(255,255,255));
 				gui.getVida().setBackground(new Color(255,255,255));
 			}
-			gui.getVida().setText("Vida: " + personaje.getVida());;
 		}
 		
 		

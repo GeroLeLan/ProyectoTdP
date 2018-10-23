@@ -70,7 +70,7 @@ class Inicializador {
 	
 	public JLabel[] setearDrops() {
 		String d = "Deshabilitado";
-		JLabel[] drops = new JLabel[4];
+		JLabel[] drops = new JLabel[5];
 		
 		for(int i = 0; i < drops.length; i++)
 			drops[i] = new JLabel();
@@ -78,6 +78,7 @@ class Inicializador {
 		drops[1].setIcon(new ImageIcon("./bin/ImageIcons/iconoDropDaño_"+d+".png"));
 		drops[2].setIcon(new ImageIcon("./bin/ImageIcons/iconoDropSupermisil_"+d+".png"));
 		drops[3].setIcon(new ImageIcon("./bin/ImageIcons/iconoDropCongelar_"+d+".png"));
+		drops[4].setIcon(new ImageIcon("./bin/ImageIcons/iconoDropPerforador_"+d+".png"));
 		
 		for(int i = 0;i<drops.length;i++)
 			drops[i].setSize(drops[i].getIcon().getIconHeight(), drops[i].getIcon().getIconWidth());
@@ -86,6 +87,7 @@ class Inicializador {
 		drops[1].setBounds((int) (frameWidth * 0.001) + 10, (int) (frameHeight * 0.08), 100, 50);
 		drops[2].setBounds((int) (frameWidth * 0.001) + 10, (int) (frameHeight * 0.15), 100, 50);
 		drops[3].setBounds((int) (frameWidth * 0.001) + 10, (int) (frameHeight * 0.22), 100, 50);
+		drops[4].setBounds((int) (frameWidth * 0.001) + 10, (int) (frameHeight * 0.29), 100, 50);
 		
 		return drops;
 	}

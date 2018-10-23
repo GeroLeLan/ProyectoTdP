@@ -2,7 +2,7 @@ package PaqueteDrops;
 
 import javax.swing.ImageIcon;
 
-import PaqueteArmas.ArmaMejorada;
+import PaqueteArmas.ArmaMejoraDaño;
 import PaquetePersonajes.Personaje;
 import PaqueteJuego.GUI;
 
@@ -14,7 +14,7 @@ public class MejoraDaño extends Drop {
 	}
 	
 	public void mejorar(Personaje personaje) {
-		personaje.setArma(new ArmaMejorada());
+		personaje.setArma(new ArmaMejoraDaño());
 		gui.mostrarIconoDrop(1,  new ImageIcon("./bin/ImageIcons/iconoDropDaño_Habilitado.png"));
 	}
 	

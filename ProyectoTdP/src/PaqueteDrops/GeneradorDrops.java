@@ -12,7 +12,7 @@ public class GeneradorDrops {
 		varios = new SubirVida(0, 0, gui);
 		algunos = new Congelar(0, 0, gui);
 		limitados = new Escudo(0, 0, gui);
-		escasos = new MejoraDisparoDoble(0, 0, gui);
+		escasos = new MejoraDisparoPerforador(0, 0, gui);
 		pocos = new MejoraDaño(0, 0, gui);
 	}
 	
