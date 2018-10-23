@@ -19,6 +19,7 @@ public class ContadorTiempo extends Thread {
 				if(parar) {
 					Thread.sleep(cuanto);
 					parar=false;
+					elJuego.getGui().mostrarIconoDrop(3, new ImageIcon("./bin/ImageIcons/iconoDropCongelar_Deshabilitado.png"));
 				}
 				Thread.sleep(70);
 			}
@@ -30,12 +31,13 @@ public class ContadorTiempo extends Thread {
 			elJuego.moverObjetos();
 			elJuego.disparosEnemigos();
 			
-			if(elJuego.getPersonaje().getEscudo()==false) {
-				elJuego.getGui().actualizarIconoEscudo();
+			
+			
+			elJuego.getGui().actualizarIconos();
 		}
 	}
 
-	}
+	
 	public void wait (int i) {
 		parar=true;
 		cuanto=i;

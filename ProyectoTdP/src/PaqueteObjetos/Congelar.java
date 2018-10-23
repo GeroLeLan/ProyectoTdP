@@ -20,10 +20,10 @@ public class Congelar extends Temporales{
 		return 0;
 	}
 	
-	@Override
-	public void mejorar(Personaje personaje) {
 	
-			gui.getTiempo().wait(3000);
+	public void mejorar(Personaje personaje) {
+		gui.getTiempo().wait(3000);
+		gui.mostrarIconoDrop(3, new ImageIcon("./bin/ImageIcons/iconoDropCongelar_Habilitado.png"));
 		
 	}
 	
