@@ -20,7 +20,6 @@ public class InteligenciaCongelada extends Inteligencia {
 	public void mover(Point pos) {
 		CantTurnos--;
 		if(CantTurnos==0) {
-			
 			enemigo.recuperarIntel();
 		}
 	}

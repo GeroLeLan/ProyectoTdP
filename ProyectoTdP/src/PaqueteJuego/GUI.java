@@ -176,8 +176,18 @@ public class GUI {
 		public void mostrarIconoDrop(int tipo,ImageIcon image) {
 			drops[tipo].setIcon(image);
 		}
+		private int cant=0;
 		public void actualizarIconos() {
 			if(jugador.getEscudo()==false)
 				mostrarIconoDrop(0, new ImageIcon("./bin/ImageIcons/iconoDropEscudo_Deshabilitado.png"));
+			if(jugador.getCongelarPoder()) {
+				cant++;
+			}
+			if(cant==30) {
+				mostrarIconoDrop(3, new ImageIcon("./bin/ImageIcons/iconoDropCongelar_Deshabilitado.png"));
+				cant=0;
+				jugador.setCongelarPoder(false);
+			}
+				
 		}
 }

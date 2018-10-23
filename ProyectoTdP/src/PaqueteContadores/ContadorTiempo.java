@@ -18,7 +18,6 @@ public class ContadorTiempo extends Contador {
 			}
 			elJuego.moverObjetos();
 			elJuego.disparosEnemigos();
-			
 			elJuego.getGui().actualizarIconos();
 		}
 	}

@@ -15,11 +15,13 @@ import PaqueteGenericos.Objeto;
 public abstract class Personaje extends Animado {
 	protected Arma arma;
 	protected boolean escudo;
+	protected boolean congeladoPoder;
 	protected int cantEsc;
 	protected Personaje(int v, int x, int y) {
 		super(v, x, y);
 		arma=new ArmaEstandar();
 		escudo=false;
+		congeladoPoder=false;
 	}
 
 	public int getVel() {
@@ -85,6 +87,12 @@ public abstract class Personaje extends Animado {
 		cantEsc--;
 		if(cantEsc == 0)	
 			escudo = false;
+	}
+	public void setCongelarPoder(boolean cong) {
+		congeladoPoder=cong;
+	}
+	public boolean getCongelarPoder() {
+		return congeladoPoder;
 	}
 	
 

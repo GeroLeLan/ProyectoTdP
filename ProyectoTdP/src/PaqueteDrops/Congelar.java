@@ -27,6 +27,7 @@ public class Congelar extends Temporales{
 			en.element().frenar();
 		}
 		gui.mostrarIconoDrop(3,  new ImageIcon("./bin/ImageIcons/iconoDropCongelar_Habilitado.png"));
+		personaje.setCongelarPoder(true);
 	}
 
 	public Drop clone() {
