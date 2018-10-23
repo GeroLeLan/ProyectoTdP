@@ -8,11 +8,11 @@ public class GeneradorDrops {
 	Drop muchos, varios, algunos, limitados, escasos, pocos;
 	
 	public GeneradorDrops(GUI gui) {
-		escasos = new SuperMisil(0, 0, gui);
+		muchos = new SuperMisil(0, 0, gui);
 		varios = new SubirVida(0, 0, gui);
 		algunos = new Congelar(0, 0, gui);
 		limitados = new Escudo(0, 0, gui);
-		muchos = new MejoraDisparoPerforador(0, 0, gui);
+		escasos = new MejoraDisparoPerforador(0, 0, gui);
 		pocos = new MejoraDaño(0, 0, gui);
 	}
 	
