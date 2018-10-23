@@ -9,5 +9,9 @@ abstract public class Arma {
 		daño = 10; 
 	}
 	
+	public int getDaño() {
+		return daño;
+	}
+	
 	abstract public Disparo disparar(int x, int y);
 }
