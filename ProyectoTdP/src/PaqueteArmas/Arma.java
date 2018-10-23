@@ -2,6 +2,7 @@ package PaqueteArmas;
 
 import PaqueteDisparos.Disparo;
 
+
 abstract public class Arma {
 	protected int daño; 
 	
@@ -14,4 +15,8 @@ abstract public class Arma {
 	}
 	
 	abstract public Disparo disparar(int x, int y);
+
+	public MementoArma crearMemento() {
+		return new MementoArma(this);
+	}
 }

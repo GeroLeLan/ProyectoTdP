@@ -1,9 +1,8 @@
 package PaqueteEnemigos;
 
-public class Memento {
+public class MementoInteligencia {
 	Inteligencia intel;
-	Enemigo enem;
-	public Memento(Inteligencia in) {
+	public MementoInteligencia(Inteligencia in) {
 		intel=in;
 	}
 	public Inteligencia getIntel() {

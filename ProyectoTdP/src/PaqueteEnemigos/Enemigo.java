@@ -77,7 +77,7 @@ public class Enemigo extends Animado {
 
 	public void frenar() {			
 		if(meme == null) {
-			Memento memento = intel.crearMemento();
+			MementoInteligencia memento = intel.crearMemento();
 			meme = memento.getIntel();
 		}
 		intel = new InteligenciaCongelada(null,this);

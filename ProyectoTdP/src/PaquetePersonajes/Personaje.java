@@ -6,6 +6,7 @@ import javax.swing.ImageIcon;
 
 import PaqueteArmas.Arma;
 import PaqueteArmas.ArmaEstandar;
+import PaqueteArmas.MementoArma;
 import PaqueteColisionadores.Colisionador;
 import PaqueteDisparos.Disparo;
 import PaqueteDrops.Drop;
@@ -16,8 +17,12 @@ public abstract class Personaje extends Animado {
 	protected Arma arma;
 	protected boolean escudo;
 	protected int cantEsc;
+	protected MementoArma meme;
+	private int cant;
 	protected Personaje(int v, int x, int y) {
 		super(v, x, y);
+		cant=0;
+		meme=null;
 		arma=new ArmaEstandar();
 		escudo=false;
 	}
@@ -85,6 +90,22 @@ public abstract class Personaje extends Animado {
 		cantEsc--;
 		if(cantEsc == 0)	
 			escudo = false;
+	}
+	public void cambiarAarmaTemporal(Arma a) {			
+		if(meme == null) {
+			 meme = arma.crearMemento();
+		}
+		arma =a;
+		cant++;
+	}
+
+	public void recuperarArma() {
+		if(cant==1) {
+			arma=meme.getArma();
+			meme=null;
+			cant=0;
+		}else
+			cant--;
 	}
 	
 
