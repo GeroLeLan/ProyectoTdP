@@ -1,22 +1,26 @@
 package PaqueteContadores;
 
-import PaqueteJuego.Juego;
 
-public class ContadorTemporales extends Contador {
+import PaqueteDrops.Temporales;
 
-	public ContadorTemporales(Juego j) {
-		super(j);
+
+public class ContadorTemporales extends Thread {
+	private Temporales drop;
+	public ContadorTemporales(Temporales d) {
+		super();
+		drop=d;
 	}
 
 	public void run() {
 		while(true){
 			try {
-				Thread.sleep(4);
+				Thread.sleep(4000);
+				drop.terminar();
 			}
 			catch (InterruptedException e) {
 				e.printStackTrace();
 			}
-			elJuego.moverDisparosYDrops();
+			
 		}
 	}
-}
+} 

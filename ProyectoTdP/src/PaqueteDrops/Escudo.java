@@ -13,6 +13,7 @@ public class Escudo extends Drop {
 	
 	public void mejorar(Personaje personaje) {
 		personaje.setEscudo(true);
+		gui.mostrarIconoDrop(0, new ImageIcon("./bin/ImageIcons/iconoDropEscudo_Habilitado.png"));
 	}
 	
 	

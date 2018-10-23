@@ -18,9 +18,7 @@ public class ContadorTiempo extends Contador {
 			}
 			elJuego.moverObjetos();
 			elJuego.disparosEnemigos();
-			
-			if (elJuego.getPersonaje().getEscudo() == false)
-				elJuego.getGui().actualizarIconoEscudo();
+			elJuego.getGui().actualizarIconos();
 		}
 	}
 	
