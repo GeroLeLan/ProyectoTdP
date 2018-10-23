@@ -1,8 +1,8 @@
-package PaqueteObjetosImplementados;
+package PaqueteObstaculos;
 
 import javax.swing.ImageIcon;
 
-import PaqueteObjetos.DisparoEnemigo;
+import PaqueteDisparos.DisparoEnemigo;
 
 public class DestruiblePorTodos extends Obstaculo {
 
@@ -19,8 +19,8 @@ public class DestruiblePorTodos extends Obstaculo {
 	}
 	
 	public int recibirDisparo(DisparoEnemigo dispEnem) {
-		dispEnem.morir();
 		vida -= dispEnem.getDaño();
+		dispEnem.morir();
 		if (vida <= 0)
 			morir(); //Si un enemigo destruye al Obstáculo, no se suman puntos.
 		return 0;

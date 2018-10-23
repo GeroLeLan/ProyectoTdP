@@ -1,23 +1,18 @@
 package PaqueteEnemigos;
 
 import java.util.Random;
-
 import javax.swing.ImageIcon;
-
 import PaqueteColisionadores.Colisionador;
-import PaqueteObjetos.Disparo;
-
 import PaqueteColisionadores.ColisionadorEnemigo;
-
-import PaqueteObjetosImplementados.Animado;
-import PaqueteObjetosImplementados.Objeto;
-import TDAListaDE.Position;
+import PaqueteDisparos.Disparo;
+import PaqueteGenericos.Animado;
+import PaqueteGenericos.Objeto;
 
 public class Enemigo extends Animado {
 	protected Inteligencia intel;
-	protected Position<Enemigo> posEnListaJuego; //Guarda su posición en la lista de enemigos del juego.
+	protected Inteligencia meme;
 	protected final int vidaInicial = 100;
-	protected boolean moviendo;
+	protected boolean moviendo, murioPorChocar;
 	
 	public Enemigo (Inteligencia i, int x, int y) {
 		super(i.getVelocidad(), x, y);
@@ -25,10 +20,6 @@ public class Enemigo extends Animado {
 		intel = i;
 		setGrafico();
 		moviendo = intel.iniciaConMovimiento();
-	}
-	
-	public void setPosEnListaJuego(Position<Enemigo> posJ) {
-		posEnListaJuego = posJ;
 	}
 	
 	protected void setGrafico() {
@@ -57,6 +48,7 @@ public class Enemigo extends Animado {
 	}
 	
 	public int recibirDaño(int d) {
+		
 		vida -= d;
 		intel.cambiarInteligencia(vida, this);
 		if(vida <= 0)
@@ -67,14 +59,32 @@ public class Enemigo extends Animado {
 	public int serChocado(Colisionador c) {
 		return c.chocarEnemigo(this);
 	}
-
-
+	
 	public Disparo disparar() {
 		return intel.disparar(pos);
 	}
-
+	
 	public int colisionar(Objeto o) {
 		return o.serChocado(new ColisionadorEnemigo(this));
+	}
+	
+	public void setMurioChocando(boolean muerte) {
+		murioPorChocar = muerte;
+	}
+	public boolean getMurioChocando() {
+		return murioPorChocar;
+	}
 
+	public void frenar() {			
+		if(meme == null) {
+			Memento memento = intel.crearMemento();
+			meme = memento.getIntel();
+		}
+		intel = new InteligenciaCongelada(null,this);
+	}
+
+	public void recuperarIntel() {
+		intel = meme;
+		meme = null;
 	}
 }

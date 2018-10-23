@@ -1,12 +1,13 @@
-package PaqueteObjetosImplementados;
+package PaqueteObstaculos;
 
 
 import javax.swing.ImageIcon;
 import PaqueteColisionadores.Colisionador;
-import PaqueteObjetos.Disparo;
-import PaqueteObjetos.DisparoEnemigo;
+import PaqueteDisparos.Disparo;
+import PaqueteDisparos.DisparoEnemigo;
+import PaqueteGenericos.Objeto;
 
-public abstract class Obstaculo extends Objeto { //Permite que el mapa defina los tipos de Obstáculo en el nivel (basándose en la dificultad del nivel), y no la GUI.
+public abstract class Obstaculo extends Objeto {
 	protected int puntosKill;
 	
 	protected Obstaculo(int x, int y) {
@@ -31,9 +32,8 @@ public abstract class Obstaculo extends Objeto { //Permite que el mapa defina lo
 	
 	protected int morir() {
 		ImageIcon iconoOriginal = new ImageIcon("./bin/ImageIcons/obstaculoDestruido.gif");
-		//ImageIcon iconoEscala= new ImageIcon(iconoOriginal.getImage().getScaledInstance((int) (iconoOriginal.getIconWidth()), (int) (iconoOriginal.getIconHeight()), java.awt.Image.SCALE_DEFAULT));
-	//	grafico.setSize(iconoOriginal.getIconWidth(),iconoOriginal.getIconWidth());
-		grafico.setIcon( iconoOriginal);
+		ImageIcon iconoEscala = new ImageIcon(escalarGrafico(iconoOriginal));
+		grafico.setIcon(iconoEscala);
 		return puntosKill;
 	}
 	

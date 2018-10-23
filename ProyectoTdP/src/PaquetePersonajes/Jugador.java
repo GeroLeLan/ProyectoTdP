@@ -1,4 +1,4 @@
-package PaqueteObjetosImplementados;
+package PaquetePersonajes;
 
 import javax.swing.ImageIcon;
 
@@ -7,7 +7,7 @@ public class Jugador extends Personaje {
 	public Jugador(int vel, int x, int y) {
 		super(vel, x, y);
 		velocidad = vel;
-		vida = 100; //Si hacemos más de un Jugador, quizás estaría bueno que cada uno arranque con una vida distinta.
+		vida = 100;
 		setGrafico();
 	}
 	

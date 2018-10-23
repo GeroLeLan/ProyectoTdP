@@ -2,30 +2,32 @@ package PaqueteJuego;
 
 import java.awt.*;
 import java.awt.event.*;
-
 import javax.swing.*;
 
+import PaqueteContadores.Contador;
+import PaqueteContadores.ContadorTDisparo;
+import PaqueteContadores.ContadorTiempo;
 import TDAListaDE.*;
 import PaqueteEnemigos.*;
-import PaqueteObjetosImplementados.*;
+import PaqueteGenericos.Objeto;
+import PaquetePersonajes.Personaje;
 
 public class GUI {
 	private ContadorTiempo tiempo;
 	private ContadorTDisparo tiempoDisparo;
-	
 	private static final int Ymax = java.awt.Toolkit.getDefaultToolkit().getScreenSize().height;
 	private static final int Xmax = java.awt.Toolkit.getDefaultToolkit().getScreenSize().width;
 	private JFrame frame;
 	private Container panel;
 	private JLabel fondo;
-	private JLabel drops[];
+	private JLabel[] drops, highScores;
 	private Juego juego;
 	private PositionList<Enemigo> listaEnemigos;
 	private Personaje jugador;
 	private int puntaje;
 	private int frameWidth, frameHeight;
 	private String nombre;
-	
+	private Inicializador inicializador;
 	private KeyAdapter comienzoConEspacio, botonera;
 	private JLabel instruccion, lvl, puntuacion, nombrePersonaje, vida;
 	
@@ -58,11 +60,15 @@ public class GUI {
 		
 		frame.setBounds((int) (Xmax * 0.21), (int) (Ymax * 0.015), frameWidth, frameHeight);
 		
-		fondo = new JLabel();
-		fondo.setSize(frameWidth, frameHeight);
-		ImageIcon iconoOriginal = new ImageIcon("./bin/ImageIcons/Gif de Fondo.gif");
-		ImageIcon iconoEscala = new ImageIcon(iconoOriginal.getImage().getScaledInstance(frameWidth, frameHeight, java.awt.Image.SCALE_DEFAULT));
-		fondo.setIcon(iconoEscala);
+		inicializador = new Inicializador(frameWidth, frameHeight);
+		lvl = inicializador.setearLvl();
+		vida = inicializador.setearVida();
+		puntuacion = inicializador.setearPuntuacion();
+		instruccion = inicializador.setearInstruccion();
+		nombrePersonaje = inicializador.setearNombrePersonaje();
+		fondo = inicializador.setearFondo();
+		drops = inicializador.setearDrops();
+		highScores = inicializador.setearHighScores();
 		
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setContentPane(fondo);
@@ -72,77 +78,29 @@ public class GUI {
 		panel.setBounds(0, 0, frameWidth, frameHeight);
 		panel.setLayout(null);
 		
-		lvl = new JLabel();
-		lvl.setForeground(new Color(255,255,255));
-		lvl.setFont(new Font("Sitka Text", Font.BOLD, 18));
-		lvl.setBackground(new Color(255,255,255));
-		lvl.setBounds((int) (frameWidth * 0.83), (int) (frameHeight * 0.02), 100, 23);
-		
-		vida = new JLabel();
-		vida.setForeground(new Color(255,255,255));
-		vida.setFont(new Font("Sitka Text", Font.BOLD, 18));
-		vida.setBackground(new Color(255,255,255));
-		vida.setBounds((int) (frameWidth * 0.08) + 20, (int) (frameHeight * 0.05), (int) (frameWidth * 0.3), 23);
-		
-		puntuacion = new JLabel();
-		puntuacion.setForeground(new Color(255,255,255));
-		puntuacion.setFont(new Font("Sitka Text", Font.BOLD, 18));
-		puntuacion.setBackground(new Color(255,255,255));
-		puntuacion.setBounds((int) (frameWidth * 0.08) + 20, (int) (frameHeight * 0.02), (int) (frameWidth * 0.3), 23);
-
-		System.out.println("!");
-		String a="Deshabilitado";
-		String b="Habilitado";
-		drops=new JLabel[4];
-		
-		for(int i=0;i<drops.length;i++)drops[i]=new JLabel();
-		drops[0].setIcon(new ImageIcon("./bin/ImageIcons/iconoDropEscudo_"+a+".png"));
-		drops[1].setIcon(new ImageIcon("./bin/ImageIcons/iconoDropDaño_"+a+".png"));
-		drops[2].setIcon(new ImageIcon("./bin/ImageIcons/iconoDropSupermisil_"+a+".png"));
-		//drops[3].setIcon(new ImageIcon("./bin/ImageIcons/iconoDropVida Deshabilitado.png"));
-		drops[3].setIcon(new ImageIcon("./bin/ImageIcons/iconoDropCongelar_"+a+".png"));
-		
-		for(int i=0;i<drops.length;i++)
-			drops[i].setSize(drops[i].getIcon().getIconHeight(), drops[i].getIcon().getIconWidth());
-		
-		drops[0].setBounds((int) (frameWidth * 0.001) + 10, (int) (frameHeight * 0.01), 100, 50);
-		drops[1].setBounds((int) (frameWidth * 0.001) + 10, (int) (frameHeight * 0.08), 100, 50);
-		drops[2].setBounds((int) (frameWidth * 0.001) + 10, (int) (frameHeight * 0.15), 100, 50);
-		drops[3].setBounds((int) (frameWidth * 0.001) + 10, (int) (frameHeight * 0.22), 100, 50);
-		
-		
-		instruccion = new JLabel();
-		instruccion.setForeground(new Color(225,0,0));
-		instruccion.setFont(new Font("Sitka Text", Font.BOLD, (int) (frameWidth * 0.026)));
-		instruccion.setBackground(new Color(225,0,0));
-		instruccion.setBounds((int) (frameWidth * 0.245), (int) (frameHeight * 0.46), (int) (frameWidth * 0.6), 23);
-		
 		puntaje = 0;
 		nombre = "";
-		
-		nombrePersonaje = new JLabel();
-		nombrePersonaje.setForeground(new Color(255,255,255));
-		nombrePersonaje.setFont(new Font("Sitka Text", Font.BOLD, (int) (frameWidth * 0.026)));
-		nombrePersonaje.setBackground(new Color(255,0,0));
 		
 		nivel(1);
 		
 	}
 	
 	
-	
 	private void nivel(int dificultad) {
+		if (dificultad == 1) {
+			for(int i = 0; i < highScores.length; i++)
+				panel.add(highScores[i]);
+		}
+		
 		lvl.setText("Nivel: " + dificultad);
 		panel.add(lvl);
 		
 		puntuacion.setText("Puntaje: " + puntaje);
 		panel.add(puntuacion);
 		
-		for(int i=0;i<drops.length;i++) {
+		for(int i = 0; i < drops.length; i++)
 			panel.add(drops[i]);
-		}
 		
-
 		juego = new Juego(dificultad, this);
 
 		tiempo = new ContadorTiempo(juego);
@@ -171,36 +129,27 @@ public class GUI {
 				
 				if (barraEspaciadora == KeyEvent.VK_SPACE) {
 					try {
-						if (nombre.equals("")) { //Contempla qué nivel se está creando.
-							boolean valido = false;
-							while (!valido) {
-								nombre = JOptionPane.showInputDialog(null, "Ingrese un Nombre para el Personaje:");
-								if (nombre != null && !nombre.equals("") && nombre.length() <= 8)
-									valido = true;
-								else
-									JOptionPane.showMessageDialog(null, "Debe ingresarse un nombre de longitud mayor que 0 y menor o igual que 8.", "Ingreso Inválido", JOptionPane.ERROR_MESSAGE);
-							}
-							nombrePersonaje.setBounds((int) (frameWidth * 0.5 - nombre.length() * 10), (int) (frameHeight * 0.02), (int) (frameWidth * 0.6), 25);
-							nombrePersonaje.setText(nombre.toUpperCase());
-						}
+						if (nombre.equals(""))
+							nombre = inicializador.obtenerNombre(nombrePersonaje);
 						panel.add(nombrePersonaje);
 						comenzarJuego();
 					}
 					catch (InterruptedException e) {
 						e.printStackTrace();
 					}
-				    tiempo.start();
-				    tiempoDisparo.start();
+					
+					tiempo.start();
+					tiempoDisparo.start();
 				}
 			}
 		};
 		
 		frame.addKeyListener(comienzoConEspacio);
 	}
-	
-	
 		
 		private void comenzarJuego() throws InterruptedException {
+			for(int i = 0; i < highScores.length; i++)
+				highScores[i].setVisible(false);
 			frame.removeKeyListener(comienzoConEspacio);
 			instruccion.setText("");
 			
@@ -209,18 +158,14 @@ public class GUI {
 			frame.addKeyListener(botonera);
 		}
 		
-		public JLabel grafico(Objeto o) {
-			return o.getGrafico();
-		}
-		public ContadorTiempo getTiempo() {
-			return tiempo;
-		}
+		public JLabel grafico(Objeto o) { return o.getGrafico(); }
+		public Contador getTiempo() { return tiempo; }
+		public Contador getTDisparo() { return tiempoDisparo; }
 		public Personaje getPersonaje() { return jugador; }
 		public PositionList<Enemigo> getListaEnemigos() { return listaEnemigos;	}
 		public int getFrameWidth() { return frameWidth;	}
 		public int getFrameHeight() { return frameHeight; }
 		public Container getPanel() { return panel; }
-		
 		public JLabel getPuntuacion() { return puntuacion; }
 		public JLabel getVida() { return vida; }
 		public JLabel getNombrePersonaje() { return nombrePersonaje; }
@@ -229,7 +174,6 @@ public class GUI {
 		public void setPuntaje(int p) {	puntaje = p; }
 		
 		public void mostrarIconoDrop(int tipo,ImageIcon image) {
-			System.out.print("icno");
 			drops[tipo].setIcon(image);
 		}
 		public void actualizarIconos() {
@@ -238,6 +182,4 @@ public class GUI {
 			//if(tiempo.getState()!=RUNNABLE)
 				//mostrarIconoDrop(3, new ImageIcon("./bin/ImageIcons/iconoDropCongelar_Deshabilitado.png"));
 		}
-		
-		
 }

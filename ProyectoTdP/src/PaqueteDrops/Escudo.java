@@ -1,27 +1,24 @@
-package PaqueteObjetos;
+package PaqueteDrops;
 
 import javax.swing.ImageIcon;
-
 import PaqueteJuego.GUI;
-import PaqueteObjetosImplementados.Personaje;
+import PaquetePersonajes.Personaje;
 
-public class EscudoK extends Drop{
+public class Escudo extends Drop {
 	
-	public EscudoK(int x, int y,GUI gui) {
+	public Escudo(int x, int y, GUI gui) {
 		super(x, y, gui);
 		grafico.setIcon(new ImageIcon("./bin/ImageIcons/turtleEscudo.gif"));
 	}
-
+	
 	public void mejorar(Personaje personaje) {
 		personaje.setEscudo(true);
 		gui.mostrarIconoDrop(0, new ImageIcon("./bin/ImageIcons/iconoDropEscudo_Habilitado.png"));
 	}
-
 	
-	public int morir() {
-		grafico.setVisible(false);
-		borrable = true;
-		return 0;
+	
+	public Drop clone() {
+		return new Escudo(pos.x, pos.y, gui);
 	}
 
 }

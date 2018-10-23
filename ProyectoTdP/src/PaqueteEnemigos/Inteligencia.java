@@ -3,16 +3,17 @@ package PaqueteEnemigos;
 import java.awt.Point;
 import javax.swing.ImageIcon;
 
-import PaqueteObjetos.Disparo;
-import PaqueteObjetosImplementados.Personaje;
+import PaqueteDisparos.Disparo;
+import PaquetePersonajes.Personaje;
 
 public abstract class Inteligencia {
-	protected static final int Ymax = java.awt.Toolkit.getDefaultToolkit().getScreenSize().height;
-	protected static final int Xmax = java.awt.Toolkit.getDefaultToolkit().getScreenSize().width;
+	protected static int Ymax = java.awt.Toolkit.getDefaultToolkit().getScreenSize().height;
+	protected static int Xmax = java.awt.Toolkit.getDefaultToolkit().getScreenSize().width;
 	protected ImageIcon icono;
 	protected int puntosKill;
 	protected int velocidad;
 	protected Personaje personajeJuego;
+	protected Memento meme;
 	
 	protected Inteligencia(Personaje p) {
 		icono = new ImageIcon();
@@ -39,4 +40,7 @@ public abstract class Inteligencia {
 	public void cambiarInteligencia(int vida, Enemigo enem) { } //Lo redefinirán las inteligencias que cambien.
 
 	abstract public Disparo disparar(Point pos);
+	public Memento  crearMemento() {
+		return meme=new Memento(this);
+	}
 }

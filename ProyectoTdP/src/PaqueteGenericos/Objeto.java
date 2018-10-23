@@ -1,4 +1,4 @@
-package PaqueteObjetosImplementados;
+package PaqueteGenericos;
 
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
@@ -33,7 +33,6 @@ public abstract class Objeto {
 	public JLabel getGrafico() {
 		if(grafico == null)
 			grafico = new JLabel();
-		
 		return grafico;
 	}
 	

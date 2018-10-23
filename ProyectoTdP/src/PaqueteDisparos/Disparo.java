@@ -1,14 +1,14 @@
-package PaqueteObjetos;
+package PaqueteDisparos;
 
 import javax.swing.ImageIcon;
 
 import PaqueteColisionadores.Colisionador;
 import PaqueteColisionadores.ColisionadorDisparoPersonaje;
-import PaqueteObjetosImplementados.Objeto;
-import PaqueteObjetosImplementados.Obstaculo;
+import PaqueteGenericos.Objeto;
+import PaqueteObstaculos.Obstaculo;
 
 
-public class Disparo extends Intangible {
+public class Disparo extends Objeto {
 	protected boolean borrable;
 	protected int daño;
 	protected int velocidad;

@@ -2,8 +2,14 @@ package PaqueteObjetos;
 
 
 import javax.swing.ImageIcon;
+
+import PaqueteDrops.Drop;
+import PaqueteDrops.Temporales;
+import PaqueteEnemigos.Enemigo;
 import PaqueteJuego.GUI;
-import PaqueteObjetosImplementados.Personaje;
+import PaquetePersonajes.Personaje;
+import TDAListaDE.Position;
+
 
 public class Congelar extends Temporales{
 
@@ -22,9 +28,16 @@ public class Congelar extends Temporales{
 	
 	
 	public void mejorar(Personaje personaje) {
-		gui.getTiempo().wait(3000);
+		for(Position<Enemigo> en:gui.getListaEnemigos().positions()) {
+			en.element().frenar();
+		}
 		gui.mostrarIconoDrop(3, new ImageIcon("./bin/ImageIcons/iconoDropCongelar_Habilitado.png"));
 		
+	}
+
+	
+	public Drop clone() {
+		return new Congelar(pos.x,pos.y,gui);
 	}
 	
 }

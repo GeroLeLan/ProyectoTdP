@@ -1,6 +1,6 @@
 package TDAListaDE;
 
-public class DNode<E> implements Position<E> {
+class DNode<E> implements Position<E> {
 	E elemento;
 	DNode<E> siguiente;
 	DNode<E> anterior;

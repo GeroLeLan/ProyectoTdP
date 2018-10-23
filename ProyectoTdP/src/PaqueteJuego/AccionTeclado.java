@@ -6,15 +6,14 @@ import java.awt.event.KeyEvent;
 
 import javax.swing.ImageIcon;
 
+import PaqueteDisparos.Disparo;
 import PaqueteEnemigos.Enemigo;
-import PaqueteObjetos.Disparo;
-import PaqueteObjetosImplementados.Objeto;
-import PaqueteObjetosImplementados.Obstaculo;
-import PaqueteObjetosImplementados.Personaje;
+import PaqueteGenericos.Objeto;
+import PaqueteObstaculos.Obstaculo;
+import PaquetePersonajes.Personaje;
 import TDAListaDE.EmptyListException;
-import TDAListaDE.InvalidPositionException;
 
-public class AccionTeclado extends KeyAdapter {
+class AccionTeclado extends KeyAdapter {
 	private GUI gui;
 	private Juego juego;
 	private Personaje personaje;
@@ -63,11 +62,10 @@ public class AccionTeclado extends KeyAdapter {
 			gui.setPuntaje(gui.getPuntaje() + e.recibirDaño(100));
 			if (e.getVida() <= 0) {
 				gui.getPanel().add(gui.grafico(e));
-				gui.getListaEnemigos().remove(gui.getListaEnemigos().first());
 				gui.getPuntuacion().setText("Puntaje: " + gui.getPuntaje());
 			}
 		}
-		catch (EmptyListException | InvalidPositionException exc) {
+		catch (EmptyListException exc) {
 			System.out.println(exc.getMessage() + "\n");
 			exc.printStackTrace();
 		}
