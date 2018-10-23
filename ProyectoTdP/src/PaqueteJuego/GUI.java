@@ -71,12 +71,7 @@ public class GUI {
 		highScores = inicializador.setearHighScores();
 		
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.setContentPane(fondo);
-		frame.getContentPane().setLayout(new BorderLayout());
-		
-		panel = frame.getContentPane();
-		panel.setBounds(0, 0, frameWidth, frameHeight);
-		panel.setLayout(null);
+		setearFondoYPanel(fondo);
 		
 		puntaje = 0;
 		nombre = "";
@@ -178,5 +173,14 @@ public class GUI {
 		}
 		public void actualizarIconoEscudo() {
 			mostrarIconoDrop(0, new ImageIcon("./bin/ImageIcons/iconoDropEscudo_Deshabilitado.png"));
+		}
+		
+		public void setearFondoYPanel(JLabel nuevoFondo) {
+			frame.setContentPane(nuevoFondo);
+			frame.getContentPane().setLayout(new BorderLayout());
+			frame.setVisible(true);
+			panel = frame.getContentPane();
+			panel.setBounds(0, 0, frameWidth, frameHeight);
+			panel.setLayout(null);
 		}
 }
