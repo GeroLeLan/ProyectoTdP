@@ -3,10 +3,9 @@ package PaqueteArmas;
 import PaqueteArmas.Arma;
 import PaqueteDisparos.Disparo;
 
-public class ArmaMejorada extends Arma {
+public class ArmaMejoraDaño extends Arma {
 
-	public ArmaMejorada() {
-		super();
+	public ArmaMejoraDaño() {
 		daño = 100;
 	}
 	
