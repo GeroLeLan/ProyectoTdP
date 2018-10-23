@@ -24,7 +24,7 @@ class FinDelJuego {
 			actualizarVida();
 	}
 	
-		@SuppressWarnings("deprecation")
+		
 		private void ganar() {
 			cambiarFondo("./bin/ImageIcons/You Win.jpg");
 			try {
@@ -58,17 +58,15 @@ class FinDelJuego {
 				System.out.println("Error al leer el archivo de High Scores.");
 				exc.printStackTrace();
 			}
-			gui.getTDisparo().stop();
-			gui.getTiempo().stop();
+			pararThreads();
 		}
 		
-		@SuppressWarnings("deprecation")
+		
 		private void actualizarVida() {
 			if (personaje.getVida() <= 30) {
 				if (personaje.getVida() <= 0) { //Perder el Juego.
 					cambiarFondo("./bin/ImageIcons/Diablo III - You Have Died.jpg");
-					gui.getTDisparo().stop();
-					gui.getTiempo().stop();
+					pararThreads();
 				}
 				else {
 					gui.getVida().setForeground(new Color(255,0,0));
@@ -122,5 +120,11 @@ class FinDelJuego {
 					System.out.println("Error al sobreescribir el archivo de High Scores.");
 					exc.printStackTrace();
 				}
+			}
+			
+			@SuppressWarnings("deprecation")
+			private void pararThreads() {
+				gui.getTDisparo().stop();
+				gui.getTiempo().stop();
 			}
 }
