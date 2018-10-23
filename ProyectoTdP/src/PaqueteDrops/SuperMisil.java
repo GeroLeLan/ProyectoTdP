@@ -19,9 +19,16 @@ public class SuperMisil extends Temporales {
 	}
 	
 	public void mejorar(Personaje personaje) {
+
 		personaje.cambiarAarmaTemporal(new ArmaSupermisil());
 		p=personaje;
 		tiempo.start();
+
+		personaje.setArma(new ArmaSupermisil());
+		gui.mostrarIconoDrop(2,  new ImageIcon("./bin/ImageIcons/iconoDropSupermisil_Habilitado.png"));
+		gui.mostrarIconoDrop(1,  new ImageIcon("./bin/ImageIcons/iconoDropDaño_Deshabilitado.png"));
+		gui.mostrarIconoDrop(4,  new ImageIcon("./bin/ImageIcons/iconoDropPerforador_Deshabilitado.png"));
+
 	}
 	
 	

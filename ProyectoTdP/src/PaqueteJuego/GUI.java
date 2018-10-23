@@ -179,7 +179,5 @@ public class GUI {
 		public void actualizarIconos() {
 			if(jugador.getEscudo()==false)
 				mostrarIconoDrop(0, new ImageIcon("./bin/ImageIcons/iconoDropEscudo_Deshabilitado.png"));
-			//if(tiempo.getState()!=RUNNABLE)
-				//mostrarIconoDrop(3, new ImageIcon("./bin/ImageIcons/iconoDropCongelar_Deshabilitado.png"));
 		}
 }
