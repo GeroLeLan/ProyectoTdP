@@ -10,7 +10,7 @@ import TDAListaDE.Position;
 import PaquetePersonajes.Personaje;
 import javax.swing.ImageIcon;
 
-public class Congelar extends Temporales{
+public class Congelar extends Drop{
 	public Congelar(int x, int y, GUI gui) {
 		super(x, y, gui);
 		grafico.setIcon(new ImageIcon("./bin/ImageIcons/turtleCongelar.gif"));

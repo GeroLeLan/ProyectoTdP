@@ -13,7 +13,7 @@ public abstract class Inteligencia {
 	protected int puntosKill;
 	protected int velocidad;
 	protected Personaje personajeJuego;
-	protected Memento meme;
+	protected MementoInteligencia meme;
 	
 	protected Inteligencia(Personaje p) {
 		icono = new ImageIcon();
@@ -40,7 +40,7 @@ public abstract class Inteligencia {
 	public void cambiarInteligencia(int vida, Enemigo enem) { } //Lo redefinirán las inteligencias que cambien.
 
 	abstract public Disparo disparar(Point pos);
-	public Memento  crearMemento() {
-		return meme=new Memento(this);
+	public MementoInteligencia  crearMemento() {
+		return meme=new MementoInteligencia(this);
 	}
 }

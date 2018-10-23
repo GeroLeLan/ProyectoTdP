@@ -1,9 +1,11 @@
 package PaqueteArmas;
 
+
 import PaqueteDisparos.Disparo;
 import PaqueteDisparos.MegaDisparo;
 
 public class ArmaSupermisil extends Arma{
+
 	public ArmaSupermisil() {
 		daño=20;
 	}
