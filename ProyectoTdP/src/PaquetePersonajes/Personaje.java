@@ -73,6 +73,7 @@ public abstract class Personaje extends Animado {
 	public void setArma(Arma ar) {
 		arma = ar;
 	}
+	
 	public void setEscudo(boolean esc) {
 		escudo = esc;
 		cantEsc = 3;

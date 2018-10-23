@@ -17,6 +17,7 @@ public class MejoraDisparoPerforador extends Drop {
 	public void mejorar(Personaje personaje) {
 		personaje.setArma(new ArmaDisparoPerforador());
 		gui.mostrarIconoDrop(4,  new ImageIcon("./bin/ImageIcons/iconoDropPerforador_Habilitado.png"));
+
 	}
 	
 	
