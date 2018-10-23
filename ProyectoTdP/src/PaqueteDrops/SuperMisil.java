@@ -2,6 +2,8 @@ package PaqueteDrops;
 
 import javax.swing.ImageIcon;
 
+
+import PaqueteArmas.ArmaSupermisil;
 import PaquetePersonajes.Personaje;
 import PaqueteJuego.GUI;
 
@@ -14,7 +16,7 @@ public class SuperMisil extends Temporales {
 	}
 	
 	public void mejorar(Personaje personaje) {
-		
+		personaje.setArma(new ArmaSupermisil());
 	}
 	
 	
