@@ -1,5 +1,6 @@
 package PaqueteJuego;
 
+import java.awt.Color;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
@@ -13,6 +14,7 @@ class Ganador {
 	public Ganador(GUI g) {
 		gui = g;
 		ganar();
+		setearColores();
 	}
 	
 	private void ganar() {
@@ -74,4 +76,21 @@ class Ganador {
 				exc.printStackTrace();
 			}
 		}
+	
+	
+	private void setearColores() {
+		Color color = new Color(0, 0, 0);
+		
+		gui.getVida().setForeground(color);
+		gui.getVida().setBackground(color);
+		
+		gui.getNombrePersonaje().setForeground(color);
+		gui.getNombrePersonaje().setBackground(color);
+		
+		gui.getLvl().setForeground(color);
+		gui.getLvl().setBackground(color);
+		
+		gui.getPuntuacion().setForeground(color);
+		gui.getPuntuacion().setBackground(color);
+	}
 }
