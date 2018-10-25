@@ -8,6 +8,8 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 
+import PaqueteArmas.ArmaDeVictoria;
+
 class Ganador {
 	private GUI gui;
 	
@@ -15,6 +17,7 @@ class Ganador {
 		gui = g;
 		ganar();
 		setearColores();
+		gui.getPersonaje().setArma(new ArmaDeVictoria());
 	}
 	
 	private void ganar() {
