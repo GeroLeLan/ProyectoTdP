@@ -8,4 +8,8 @@ public class MementoArma {
 	public Arma getArma() {
 		return arma;
 	}
+	public void setArma(Arma ar) {
+		arma=ar;
+		
+	}
 }

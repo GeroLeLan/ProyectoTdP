@@ -121,7 +121,7 @@ class Inicializador {
 		for (int i = 0; i < 6; i++) {
 			highScores[i] = new JLabel();
 			highScores[i].setForeground(new Color(0,0,0));
-			highScores[i].setFont(new Font("Sitka Text", Font.BOLD, 18));
+			highScores[i].setFont(new Font("Sitka Text", Font.BOLD, 16));
 			highScores[i].setBackground(new Color(0,0,0));
 			highScores[i].setBounds((int) (frameWidth * 0.65), (int) (frameHeight * 0.56) + i * 19, (int) (frameWidth * 0.25), (int) (frameHeight * 0.25));
 		}

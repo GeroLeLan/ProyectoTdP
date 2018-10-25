@@ -11,4 +11,6 @@ public class ArmaEstandar extends Arma {
 	public Disparo disparar(int x,int y) {
 		return new Disparo(x, y, daño);
 	}
+
+	public void cambiarImagenGUI() { }
 }

@@ -18,7 +18,7 @@ class FinDelJuego {
 	
 	public void chequearVictoria(PositionList<Objeto> listaObjetos) {
 		if (listaObjetos.size() == 1) { //La lista de Objetos sólo contiene al Personaje.
-			cambiarFondo("./bin/ImageIcons/You Win - Agradecimientos 3.jpeg");
+			cambiarFondo("./bin/ImageIcons/You Win - Agradecimientos.jpeg");
 			new Ganador(gui);
 			pararThreads();
 		}

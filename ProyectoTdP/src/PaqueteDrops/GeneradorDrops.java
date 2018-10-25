@@ -9,11 +9,11 @@ public class GeneradorDrops {
 	
 	public GeneradorDrops(GUI gui) {
 		muchos = new SuperMisil(0, 0, gui);
-		varios = new SubirVida(0, 0, gui);
-		algunos = new Congelar(0, 0, gui);
+		pocos = new SubirVida(0, 0, gui);
+		escasos = new Congelar(0, 0, gui);
 		limitados = new Escudo(0, 0, gui);
-		escasos = new MejoraDisparoPerforador(0, 0, gui);
-		pocos = new MejoraDaño(0, 0, gui);
+		varios = new MejoraDisparoPerforador(0, 0, gui);
+		algunos = new MejoraDaño(0, 0, gui);
 	}
 	
 	public Drop generarDrop(int x, int y) {
