@@ -33,14 +33,11 @@ public class DisparoPerforador extends Disparo {
 	}
 	
 	private boolean pertenece(Objeto o) {
-		boolean esta = false;
 		for (Position<Objeto> pos : objetosColisionados.positions()) {
-			if (pos.element() ==  o) {
-				esta = true;
-				break;
-			}
+			if (pos.element() ==  o)
+				return true;
 		}
-		return esta;
+		return false;
 	}
 	
 	
