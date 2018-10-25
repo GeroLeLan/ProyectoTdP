@@ -87,8 +87,10 @@ class AccionTeclado extends KeyAdapter {
 	
 	private void personajeDispara() {
 		Disparo dis = personaje.disparar();
-		juego.getListaDisp().addLast(dis);
-		gui.getPanel().add(dis.getGrafico());
+		if (dis != null) {
+			juego.getListaDisp().addLast(dis);
+			gui.getPanel().add(dis.getGrafico());
+		}
 	}
 	
 }
