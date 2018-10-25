@@ -3,7 +3,6 @@ package PaqueteJuego;
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
-
 import PaqueteContadores.Contador;
 import PaqueteContadores.ContadorTDisparo;
 import PaqueteContadores.ContadorTiempo;
@@ -29,7 +28,7 @@ public class GUI {
 	private String nombre;
 	private Inicializador inicializador;
 	private KeyAdapter comienzoConEspacio, botonera;
-	private JLabel instruccion, lvl, puntuacion, nombrePersonaje, vida;
+	private JLabel instruccion, lvl, puntuacion, nombrePersonaje, vida, iconoVida;
 	
 	
 	public static void main(String[] args) {
@@ -69,6 +68,7 @@ public class GUI {
 		fondo = inicializador.setearFondo();
 		drops = inicializador.setearDrops();
 		highScores = inicializador.setearHighScores();
+		iconoVida = inicializador.setearIconoVida();
 		
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setContentPane(fondo);
@@ -175,6 +175,12 @@ public class GUI {
 		
 		public void mostrarIconoDrop(int tipo,ImageIcon image) {
 			drops[tipo].setIcon(image);
+		}
+		public void mostrarIconoVida() {
+			panel.add(iconoVida);
+		}
+		public void sacarIconoVida() {
+			panel.remove(iconoVida);
 		}
 		private int cant=0;
 		public void actualizarIconos() {

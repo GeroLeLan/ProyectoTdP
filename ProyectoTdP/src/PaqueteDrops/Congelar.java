@@ -1,12 +1,8 @@
 package PaqueteDrops;
 
-
 import PaqueteEnemigos.Enemigo;
 import PaqueteJuego.GUI;
-
 import TDAListaDE.Position;
-
-
 import PaquetePersonajes.Personaje;
 import javax.swing.ImageIcon;
 

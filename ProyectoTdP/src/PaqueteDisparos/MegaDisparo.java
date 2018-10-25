@@ -7,7 +7,7 @@ public class MegaDisparo extends Disparo {
 	public MegaDisparo(int x, int y, int d) {
 		super(x, y, d*2);
 		setGrafico();
-		grafico.setIcon(new ImageIcon("./bin/ImageIcons/MegaDisparo.jpg"));
+		grafico.setIcon(new ImageIcon("./bin/ImageIcons/Megadisparo.gif"));
 	}
 	protected void setGrafico() {
 		grafico.setVisible(true);

@@ -1,5 +1,7 @@
 package PaqueteDisparos;
 
+import javax.swing.ImageIcon;
+
 import PaqueteColisionadores.ColisionadorDisparoPersonaje;
 import PaqueteGenericos.Objeto;
 import TDAListaDE.ListaDoblementeEnlazada;

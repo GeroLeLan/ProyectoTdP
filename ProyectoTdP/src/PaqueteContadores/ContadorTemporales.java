@@ -1,8 +1,6 @@
 package PaqueteContadores;
 
-
 import PaqueteDrops.Temporales;
-
 
 public class ContadorTemporales extends Thread {
 	private Temporales drop;

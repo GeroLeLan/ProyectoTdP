@@ -14,7 +14,7 @@ public class DisparoEnemigo extends Disparo {
 
 
 		setGrafico();
-		grafico.setIcon(new ImageIcon("./bin/ImageIcons/dispEnemigo2.gif"));
+		grafico.setIcon(new ImageIcon("./bin/ImageIcons/dispEnemigo3.gif"));
 	}
 
 	public void mover() {

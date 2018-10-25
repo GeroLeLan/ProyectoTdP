@@ -1,9 +1,7 @@
 package PaquetePersonajes;
 
 import java.awt.event.KeyEvent;
-
 import javax.swing.ImageIcon;
-
 import PaqueteArmas.Arma;
 import PaqueteArmas.ArmaEstandar;
 import PaqueteArmas.MementoArma;
@@ -116,7 +114,5 @@ public abstract class Personaje extends Animado {
 		}else
 			cant--;
 	}
-	
-
 }
 

@@ -30,8 +30,7 @@ public class SuperMisil extends Temporales {
 		gui.mostrarIconoDrop(4,  new ImageIcon("./bin/ImageIcons/iconoDropPerforador_Deshabilitado.png"));
 
 	}
-	
-	
+		
 	public Drop clone() {
 		return new SuperMisil(pos.x, pos.y, gui);
 	}
@@ -43,7 +42,7 @@ public class SuperMisil extends Temporales {
 	}
 	@SuppressWarnings("deprecation")
 	public void terminar() {
-		// aca karina hace lo que salga el iconito de la pantalla 
+		gui.mostrarIconoDrop(2,  new ImageIcon("./bin/ImageIcons/iconoDropSupermisil_Deshabilitado.png"));
 		p.recuperarArma();
 		tiempo.stop();
 	}

@@ -9,8 +9,5 @@ public abstract class Temporales extends Drop {
 		super(x, y, gui);
 	}
 
-	abstract public void terminar() ;
-		
-		
-	
+	abstract public void terminar() ;	
 }
