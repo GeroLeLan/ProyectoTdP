@@ -9,12 +9,9 @@ import PaqueteObstaculos.Obstaculo;
 public class DisparoEnemigo extends Disparo {
 
 	public DisparoEnemigo(int x, int y,int d) {
-
 		super(x + 30, y + 15,d);
-
-
 		setGrafico();
-		grafico.setIcon(new ImageIcon("./bin/ImageIcons/dispEnemigo3.gif"));
+		grafico.setIcon(new ImageIcon("./bin/ImageIcons/dispEnemigo.gif"));
 	}
 
 	public void mover() {

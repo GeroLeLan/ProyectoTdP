@@ -4,6 +4,7 @@ import javax.swing.ImageIcon;
 
 import PaqueteArmas.Arma;
 import PaqueteDisparos.Disparo;
+import PaqueteDisparos.DisparoInstaKill;
 import PaqueteJuego.GUI;
 
 public class ArmaMejoraDaño extends Arma {
@@ -17,7 +18,7 @@ public class ArmaMejoraDaño extends Arma {
 	}
 	
 	public Disparo disparar(int x,int y) {
-		return new Disparo(x,y, daño);
+		return new DisparoInstaKill(x,y, daño);
 	}
 
 	public void cambiarImagenGUI() {
