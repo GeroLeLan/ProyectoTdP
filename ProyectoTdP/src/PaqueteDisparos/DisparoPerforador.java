@@ -14,6 +14,7 @@ public class DisparoPerforador extends Disparo {
 	public DisparoPerforador(int x, int y, int d) {
 		super(x, y, d);
 		grafico.setIcon(new ImageIcon("./bin/ImageIcons/Perforador.gif"));
+		grafico.setSize(grafico.getIcon().getIconWidth(),grafico.getIcon().getIconHeight());
 		objetosColisionados = new ListaDoblementeEnlazada<Objeto>();
 	}
 	
