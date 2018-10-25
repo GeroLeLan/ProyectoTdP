@@ -98,6 +98,12 @@ class Inicializador {
 		iconoVida.setBounds((int) (frameWidth * 0.001) + 10, (int) (frameHeight * 0.79), 100, 100);
 		return iconoVida;
 	}
+	public JLabel setearIconoEscudo() {
+		JLabel iconoEscudo=new JLabel();	
+		iconoEscudo.setSize(60,60);
+		iconoEscudo.setBounds((int) (frameWidth * 0.001) + 15, (int) (frameHeight * 0.69), 100, 100);
+		return iconoEscudo;
+	}
 	public String obtenerNombre(JLabel nombrePersonaje) {
 		String nombre = "";
 		boolean valido = false, contieneEspacio;

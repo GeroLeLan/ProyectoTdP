@@ -28,7 +28,7 @@ public class GUI {
 	private String nombre;
 	private Inicializador inicializador;
 	private KeyAdapter comienzoConEspacio, botonera;
-	private JLabel instruccion, lvl, puntuacion, nombrePersonaje, vida, iconoVida;
+	private JLabel instruccion, lvl, puntuacion, nombrePersonaje, vida, iconoVida,iconoEscudo;
 	
 	
 	public static void main(String[] args) {
@@ -69,6 +69,7 @@ public class GUI {
 		drops = inicializador.setearDrops();
 		highScores = inicializador.setearHighScores();
 		iconoVida = inicializador.setearIconoVida();
+		iconoEscudo=inicializador.setearIconoEscudo();
 		
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setearFondoYPanel(fondo);
@@ -177,10 +178,25 @@ public class GUI {
 		public void sacarIconoVida() {
 			panel.remove(iconoVida);
 		}
+		public void mostrarIconoEscudo(String esc) {
+			iconoEscudo.setIcon(new ImageIcon("./bin/ImageIcons/escudo_"+esc+".png"));
+			panel.add(iconoEscudo);
+		}
 		private int cant=0;
 		public void actualizarIconos() {
-			if(jugador.getEscudo()==false)
+			if(jugador.getEscudo().getEscudo()==false) {
 				mostrarIconoDrop(0, new ImageIcon("./bin/ImageIcons/iconoDropEscudo_Deshabilitado.png"));
+				panel.remove(iconoEscudo);
+			}
+			if(jugador.getEscudo().getEscudo()&&jugador.getEscudo().getCantEsc()==3) {
+				mostrarIconoEscudo("3");
+			}
+			if(jugador.getEscudo().getEscudo()&&jugador.getEscudo().getCantEsc()==2) {
+				mostrarIconoEscudo("2");
+			}
+			if(jugador.getEscudo().getEscudo()&&jugador.getEscudo().getCantEsc()==1) {
+				mostrarIconoEscudo("1");
+			}
 			if(jugador.getCongelarPoder()) {
 				cant++;
 			}
@@ -188,8 +204,7 @@ public class GUI {
 				mostrarIconoDrop(3, new ImageIcon("./bin/ImageIcons/iconoDropCongelar_Deshabilitado.png"));
 				cant=0;
 				jugador.setCongelarPoder(false);
-			}
-				
+			}	
 		}
 		
 		public void setearFondoYPanel(JLabel nuevoFondo) {

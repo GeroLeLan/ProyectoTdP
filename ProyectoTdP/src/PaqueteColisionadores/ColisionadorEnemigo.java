@@ -19,10 +19,10 @@ public class ColisionadorEnemigo extends Colisionador {
 	public int chocarPersonaje(Personaje personaje) {
 		miEnemigo.setMurioChocando(true);
 		miEnemigo.recibirDaño(100);
-		if(!personaje.getEscudo())
+		if(!personaje.getEscudo().getEscudo())
 			return personaje.recibirDaño(30);
 		else {
-			personaje.chocoEscudo();
+			personaje.getEscudo().chocoEscudo();
 			return 0;
 		}
 	}

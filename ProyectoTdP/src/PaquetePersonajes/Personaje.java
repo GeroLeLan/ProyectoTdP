@@ -13,18 +13,17 @@ import PaqueteGenericos.Objeto;
 
 public abstract class Personaje extends Animado {
 	protected Arma arma;
-	protected boolean escudo;
+	protected EscudoPersonaje escudo;
 	protected boolean congeladoPoder;
-	protected int cantEsc;
 	protected MementoArma meme;
-	private int cant;
+	protected int cant;
 	protected Personaje(int v, int x, int y) {
 		super(v, x, y);
 		cant=0;
 		meme=null;
 		arma=new ArmaEstandar();
-		escudo=false;
 		congeladoPoder=false;
+		escudo=new EscudoPersonaje();
 	}
 
 	public int getVel() {
@@ -78,20 +77,9 @@ public abstract class Personaje extends Animado {
 	public void setArma(Arma ar) {
 		arma = ar;
 	}
-	
-	public void setEscudo(boolean esc) {
-		escudo = esc;
-		cantEsc = 3;
-	}
-	public boolean getEscudo() {
+	public EscudoPersonaje getEscudo() {
 		return escudo;
 	}
-	public void chocoEscudo() {
-		cantEsc--;
-		if(cantEsc == 0)	
-			escudo = false;
-	}
-
 	public void setCongelarPoder(boolean cong) {
 		congeladoPoder=cong;
 	}
