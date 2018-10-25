@@ -2,7 +2,6 @@ package PaqueteDrops;
 
 import javax.swing.ImageIcon;
 import PaqueteJuego.GUI;
-import PaquetePersonajes.EscudoPersonaje;
 import PaquetePersonajes.Personaje;
 
 public class Escudo extends Drop {

@@ -14,10 +14,7 @@ public class MejoraDaño extends Drop {
 	}
 	
 	public void mejorar(Personaje personaje) {
-		personaje.setArma(new ArmaMejoraDaño());
-		gui.mostrarIconoDrop(1,  new ImageIcon("./bin/ImageIcons/iconoDropDaño_Habilitado.png"));
-		gui.mostrarIconoDrop(2,  new ImageIcon("./bin/ImageIcons/iconoDropSupermisil_Deshabilitado.png"));
-		gui.mostrarIconoDrop(4,  new ImageIcon("./bin/ImageIcons/iconoDropPerforador_Deshabilitado.png"));
+		personaje.setArma(new ArmaMejoraDaño(gui));
 	}
 	
 	

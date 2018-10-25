@@ -16,7 +16,6 @@ public class InteligenciaCongelada extends Inteligencia {
 		CantTurnos=30;
 	}
 
-	@Override
 	public void mover(Point pos) {
 		CantTurnos--;
 		if(CantTurnos==0) {
@@ -24,12 +23,10 @@ public class InteligenciaCongelada extends Inteligencia {
 		}
 	}
 
-	@Override
 	public boolean iniciaConMovimiento() {
 		return false;
 	}
 
-	@Override
 	public Disparo disparar(Point pos) {
 		return null;
 	}

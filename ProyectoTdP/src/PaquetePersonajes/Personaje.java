@@ -16,10 +16,11 @@ public abstract class Personaje extends Animado {
 	protected EscudoPersonaje escudo;
 	protected boolean congeladoPoder;
 	protected MementoArma meme;
-	protected int cant;
+	private int cantTemporales;
+
 	protected Personaje(int v, int x, int y) {
 		super(v, x, y);
-		cant=0;
+		cantTemporales = 0;
 		meme=null;
 		arma=new ArmaEstandar();
 		congeladoPoder=false;
@@ -75,7 +76,11 @@ public abstract class Personaje extends Animado {
 	}
 
 	public void setArma(Arma ar) {
+		if(meme!=null) {
+			meme=new MementoArma(ar);
+		}
 		arma = ar;
+		arma.cambiarImagenGUI();
 	}
 	public EscudoPersonaje getEscudo() {
 		return escudo;
@@ -88,19 +93,19 @@ public abstract class Personaje extends Animado {
 	}
 	public void cambiarAarmaTemporal(Arma a) {			
 		if(meme == null) {
-			 meme = arma.crearMemento();
+			 meme = new MementoArma(arma);
 		}
-		arma =a;
-		cant++;
+		arma = a;
+		arma.cambiarImagenGUI();
+		cantTemporales++;
 	}
 
 	public void recuperarArma() {
-		if(cant==1) {
-			arma=meme.getArma();
+		if(cantTemporales==1) {
+			setArma(meme.getArma());
 			meme=null;
-			cant=0;
+			cantTemporales=0;
 		}else
-			cant--;
+			cantTemporales--;
 	}
 }
-
