@@ -4,8 +4,7 @@ public class EscudoPersonaje {
 	protected boolean escudo=false;
 	protected int cantEsc;
 	
-	public EscudoPersonaje() {
-	}
+	public EscudoPersonaje() {}
 	
 	public void setEscudo(boolean esc) {
 		escudo = esc;

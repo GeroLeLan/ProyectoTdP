@@ -48,6 +48,7 @@ class Inicializador {
 		instruccion.setFont(new Font("Sitka Text", Font.BOLD, (int) (frameWidth * 0.026)));
 		instruccion.setBackground(new Color(225,0,0));
 		instruccion.setBounds((int) (frameWidth * 0.245), (int) (frameHeight * 0.46), (int) (frameWidth * 0.6), 23);
+		instruccion.setText("PRESIONE ESPACIO PARA COMENZAR");
 		return instruccion;
 	}
 	

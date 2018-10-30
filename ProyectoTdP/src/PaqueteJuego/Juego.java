@@ -20,7 +20,7 @@ public class Juego {
 	@SuppressWarnings("unused")
 	private Mapa mapa; //Cambiará cuando cambie el nivel.
 	
-	public Juego(int dificultad, GUI g) {
+	public Juego(int numeroNivel, GUI g, int vidaPersonaje) {
 		listaEnemigos = new ListaDoblementeEnlazada<Enemigo>();
 		listaDrops = new ListaDoblementeEnlazada<Drop>();
 		listaDisparos = new ListaDoblementeEnlazada<Disparo>();
@@ -28,8 +28,8 @@ public class Juego {
 		listaObjetos = new ListaDoblementeEnlazada<Objeto>();
 		obstaculos = new Obstaculo[3];
 		gui = g;
-		mapa = new Mapa(dificultad, this);
-		movedor = new MovimientosAutomaticos(listaObjetos, listaEnemigos, listaDisparos, listaDrops, gui, personaje);
+		mapa = new Mapa(numeroNivel, this, vidaPersonaje);
+		movedor = new MovimientosAutomaticos(listaObjetos, listaEnemigos, listaDisparos, listaDrops, gui, personaje, numeroNivel);
 	}
 	
 	public void agregarEnemigo(Enemigo e){
@@ -54,6 +54,10 @@ public class Juego {
 	public PositionList<Disparo> getListaDisp() {
 		return listaDisparos;
 	}
+	public PositionList<Drop> getListaDrops() {
+		return listaDrops;
+	}
+	
 	public Obstaculo getObstaculo(int pos) {
 		return obstaculos[pos];
 	}

@@ -58,7 +58,7 @@ public class Mapa {
 	/** Con una dificultad del primer nivel (menor o igual que 1) se crean ciertos enemigos.
 	 *  Con una del segundo nivel (mayor o igual que 2) se crean otros enemigos.
 	 */
-	public Mapa (int dif, Juego ju) {
+	public Mapa (int dif, Juego ju, int vidaPer) {
 		dificultad = dif;
 		juego = ju;
 		int x, y;
@@ -73,7 +73,7 @@ public class Mapa {
 					matrizPosiciones[i][j] = new Terna(x, y);
 			}
 		}
-		crearJugador();
+		crearJugador(vidaPer);
 		crearEnemigos();
 		crearBarricadas();
 	}
@@ -210,8 +210,8 @@ public class Mapa {
 		}
 	}
 	
-	private void crearJugador() {
-		jugador = new Jugador(7, posXJugador, posYJugador);
+	private void crearJugador(int vidaPer) {
+		jugador = new Jugador(7, posXJugador, posYJugador, vidaPer);
 		juego.setPersonaje(jugador);
 	}
 }

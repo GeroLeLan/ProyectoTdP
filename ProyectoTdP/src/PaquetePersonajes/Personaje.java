@@ -105,7 +105,8 @@ public abstract class Personaje extends Animado {
 			setArma(meme.getArma());
 			meme=null;
 			cantTemporales=0;
-		}else
+		}
+		else
 			cantTemporales--;
 	}
 }

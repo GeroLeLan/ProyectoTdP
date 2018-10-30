@@ -4,10 +4,10 @@ import javax.swing.ImageIcon;
 
 public class Jugador extends Personaje {
 	
-	public Jugador(int vel, int x, int y) {
+	public Jugador(int vel, int x, int y, int vid) {
 		super(vel, x, y);
 		velocidad = vel;
-		vida = 100;
+		vida = vid;
 		setGrafico();
 	}
 	

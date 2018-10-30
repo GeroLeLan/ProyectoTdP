@@ -1,7 +1,8 @@
 package PaqueteJuego;
 
 import java.awt.*;
-import java.awt.event.*;
+import java.awt.event.KeyAdapter;
+
 import javax.swing.*;
 import PaqueteContadores.Contador;
 import PaqueteContadores.ContadorTDisparo;
@@ -18,17 +19,15 @@ public class GUI {
 	private static final int Xmax = java.awt.Toolkit.getDefaultToolkit().getScreenSize().width;
 	private JFrame frame;
 	private Container panel;
-	private JLabel fondo;
 	private JLabel[] drops, highScores;
-	private Juego juego;
 	private PositionList<Enemigo> listaEnemigos;
 	private Personaje jugador;
-	private int puntaje;
-	private int frameWidth, frameHeight;
+	private int puntaje, nivelActual, cant = 0, frameWidth, frameHeight;
 	private String nombre;
 	private Inicializador inicializador;
-	private KeyAdapter comienzoConEspacio, botonera;
-	private JLabel instruccion, lvl, puntuacion, nombrePersonaje, vida, iconoVida,iconoEscudo;
+	private JLabel fondo, instruccion, lvl, puntuacion, nombrePersonaje, vida, iconoVida, iconoEscudo;
+	private Juego juego;
+	private KeyAdapter botonera;
 	
 	
 	public static void main(String[] args) {
@@ -48,8 +47,6 @@ public class GUI {
 	
 	
 	public GUI() throws InterruptedException {
-		super();
-		
 		frame = new JFrame();
 		frame.setBackground(new Color(0, 0, 0));
 		frame.setResizable(false);
@@ -76,143 +73,99 @@ public class GUI {
 		
 		puntaje = 0;
 		nombre = "";
+		nivelActual = 1;
 		
-		nivel(1);
+		nombrePersonaje.setText(nombre);
 		
+		new Nivel(nivelActual, this, 100);
+	}
+		
+	public JLabel grafico(Objeto o) { return o.getGrafico(); }
+	
+	void setTiempo(ContadorTiempo t) { tiempo = t; }
+	public Contador getTiempo() { return tiempo; }
+	void setTiempoDisparo(ContadorTDisparo t) { tiempoDisparo = t; }
+	public Contador getTDisparo() { return tiempoDisparo; }
+	
+	void setPersonaje(Personaje p) { jugador = p; }
+	public Personaje getPersonaje() { return jugador; }
+	
+	void setListaEnemigos(PositionList<Enemigo> lE) { listaEnemigos = lE; }
+	public PositionList<Enemigo> getListaEnemigos() { return listaEnemigos;	}
+	
+	public int getFrameWidth() { return frameWidth;	}
+	public int getFrameHeight() { return frameHeight; }
+	
+	public JFrame getFrame() { return frame; }
+	public Container getPanel() { return panel; }
+	
+	public JLabel[] getDrops() { return drops; }
+	public JLabel[] getHighScores() { return highScores; }
+	
+	public JLabel getPuntuacion() { return puntuacion; }
+	public JLabel getVida() { return vida; }
+	public JLabel getNombrePersonaje() { return nombrePersonaje; }
+	public JLabel getLvl() { return lvl; }
+	public JLabel getInstruccion() { return instruccion; }
+	
+	public int getPuntaje() { return puntaje; }
+	public void setPuntaje(int p) {	puntaje = p; }
+	
+	void setNombre(String n) { nombre = n; }
+	public String getNombre() { return nombre; }
+	
+	public Inicializador getInicializador() { return inicializador; }
+	
+	void setJuego(Juego j) { juego = j; }
+	public Juego getJuego() { return juego; }
+	
+	void setBotonera(KeyAdapter b) { botonera = b; }
+	
+	public void mostrarIconoDrop(int tipo, ImageIcon image) { drops[tipo].setIcon(image); }
+	public void mostrarIconoVida() { panel.add(iconoVida); }
+	public void sacarIconoVida() { panel.remove(iconoVida); }
+	public void mostrarIconoEscudo(String esc) {
+		iconoEscudo.setIcon(new ImageIcon("./bin/ImageIcons/escudo_"+esc+".png"));
+		panel.add(iconoEscudo);
 	}
 	
 	
-	private void nivel(int dificultad) {
-		if (dificultad == 1) {
-			for(int i = 0; i < highScores.length; i++)
-				panel.add(highScores[i]);
+	public void actualizarIconos() {
+		if (jugador.getEscudo().getEscudo() == false) {
+			mostrarIconoDrop(0, new ImageIcon("./bin/ImageIcons/iconoDropEscudo_Deshabilitado.png"));
+			panel.remove(iconoEscudo);
 		}
-		
-		lvl.setText("Nivel: " + dificultad);
-		panel.add(lvl);
-		
-		puntuacion.setText("Puntaje: " + puntaje);
-		panel.add(puntuacion);
-		
-		for(int i = 0; i < drops.length; i++)
-			panel.add(drops[i]);
-		
-		juego = new Juego(dificultad, this);
-
-		tiempo = new ContadorTiempo(juego);
-		tiempoDisparo= new ContadorTDisparo(juego);
-		
-		listaEnemigos = juego.getListaEnems();
-		for (Position<Enemigo> pos : listaEnemigos.positions())
-			panel.add(grafico(pos.element()));
-		
-		panel.add(grafico(juego.getObstaculo(0)));
-		panel.add(grafico(juego.getObstaculo(1)));
-		panel.add(grafico(juego.getObstaculo(2)));
-
-		jugador = juego.getPersonaje();
-		panel.add(grafico(jugador));
-		
-		vida.setText("Vida: " + jugador.getVida());
-		panel.add(vida);
-		
-		instruccion.setText("PRESIONE ESPACIO PARA COMENZAR");
-		panel.add(instruccion);
-		
-		comienzoConEspacio = new KeyAdapter() {
-			public void keyReleased(KeyEvent arg0) {
-				int barraEspaciadora = arg0.getKeyCode();
-				
-				if (barraEspaciadora == KeyEvent.VK_SPACE) {
-					try {
-						if (nombre.equals(""))
-							nombre = inicializador.obtenerNombre(nombrePersonaje);
-						panel.add(nombrePersonaje);
-						comenzarJuego();
-					}
-					catch (InterruptedException e) {
-						e.printStackTrace();
-					}
-					
-					tiempo.start();
-					tiempoDisparo.start();
-				}
-			}
-		};
-		
-		frame.addKeyListener(comienzoConEspacio);
+		if(jugador.getEscudo().getEscudo() && jugador.getEscudo().getCantEsc() == 3)
+			mostrarIconoEscudo("3");
+		if(jugador.getEscudo().getEscudo() && jugador.getEscudo().getCantEsc() == 2)
+			mostrarIconoEscudo("2");
+		if(jugador.getEscudo().getEscudo() && jugador.getEscudo().getCantEsc() == 1)
+			mostrarIconoEscudo("1");
+		if(jugador.getCongelarPoder())
+			cant++;
+		if(cant == 30) {
+			mostrarIconoDrop(3, new ImageIcon("./bin/ImageIcons/iconoDropCongelar_Deshabilitado.png"));
+			cant=0;
+			jugador.setCongelarPoder(false);
+		}	
 	}
-		
-		private void comenzarJuego() throws InterruptedException {
-			for(int i = 0; i < highScores.length; i++)
-				highScores[i].setVisible(false);
-			frame.removeKeyListener(comienzoConEspacio);
-			instruccion.setText("");
-			
-			botonera = new AccionTeclado(this, juego);
-			
-			frame.addKeyListener(botonera);
-		}
-		
-		public JLabel grafico(Objeto o) { return o.getGrafico(); }
-		public Contador getTiempo() { return tiempo; }
-		public Contador getTDisparo() { return tiempoDisparo; }
-		public Personaje getPersonaje() { return jugador; }
-		public PositionList<Enemigo> getListaEnemigos() { return listaEnemigos;	}
-		public int getFrameWidth() { return frameWidth;	}
-		public int getFrameHeight() { return frameHeight; }
-		public Container getPanel() { return panel; }
-		public JLabel getPuntuacion() { return puntuacion; }
-		public JLabel getVida() { return vida; }
-		public JLabel getNombrePersonaje() { return nombrePersonaje; }
-		public JLabel getLvl() { return lvl; }
-		public int getPuntaje() { return puntaje; }
-		public void setPuntaje(int p) {	puntaje = p; }
-		
-		public void mostrarIconoDrop(int tipo,ImageIcon image) {
-			drops[tipo].setIcon(image);
-		}
-		public void mostrarIconoVida() {
-			panel.add(iconoVida);
-		}
-		public void sacarIconoVida() {
-			panel.remove(iconoVida);
-		}
-		public void mostrarIconoEscudo(String esc) {
-			iconoEscudo.setIcon(new ImageIcon("./bin/ImageIcons/escudo_"+esc+".png"));
-			panel.add(iconoEscudo);
-		}
-		private int cant=0;
-		public void actualizarIconos() {
-			if(jugador.getEscudo().getEscudo()==false) {
-				mostrarIconoDrop(0, new ImageIcon("./bin/ImageIcons/iconoDropEscudo_Deshabilitado.png"));
-				panel.remove(iconoEscudo);
-			}
-			if(jugador.getEscudo().getEscudo()&&jugador.getEscudo().getCantEsc()==3) {
-				mostrarIconoEscudo("3");
-			}
-			if(jugador.getEscudo().getEscudo()&&jugador.getEscudo().getCantEsc()==2) {
-				mostrarIconoEscudo("2");
-			}
-			if(jugador.getEscudo().getEscudo()&&jugador.getEscudo().getCantEsc()==1) {
-				mostrarIconoEscudo("1");
-			}
-			if(jugador.getCongelarPoder()) {
-				cant++;
-			}
-			if(cant==30) {
-				mostrarIconoDrop(3, new ImageIcon("./bin/ImageIcons/iconoDropCongelar_Deshabilitado.png"));
-				cant=0;
-				jugador.setCongelarPoder(false);
-			}	
-		}
-		
-		public void setearFondoYPanel(JLabel nuevoFondo) {
-			frame.setContentPane(nuevoFondo);
-			frame.getContentPane().setLayout(new BorderLayout());
-			frame.setVisible(true);
-			panel = frame.getContentPane();
-			panel.setBounds(0, 0, frameWidth, frameHeight);
-			panel.setLayout(null);
-		}
+	
+	
+	public void setearFondoYPanel(JLabel nuevoFondo) {
+		frame.setContentPane(nuevoFondo);
+		frame.getContentPane().setLayout(new BorderLayout());
+		frame.setVisible(true);
+		panel = frame.getContentPane();
+		panel.setBounds(0, 0, frameWidth, frameHeight);
+		panel.setLayout(null);
+	}
+	
+	
+	public void subirNivel() {
+		panel.removeAll();
+		frame.removeKeyListener(botonera);
+		setearFondoYPanel(fondo);
+		drops = inicializador.setearDrops();
+		new Nivel(++nivelActual, this, jugador.getVida());
+	}
 }

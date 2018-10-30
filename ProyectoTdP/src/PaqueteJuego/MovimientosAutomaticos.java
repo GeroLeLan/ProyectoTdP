@@ -24,7 +24,7 @@ class MovimientosAutomaticos {
 	private GeneradorDrops gd;
 	private FinDelJuego controladorFin;
 	
-	public MovimientosAutomaticos(PositionList<Objeto> lo, PositionList<Enemigo> le, PositionList<Disparo> ldisp, PositionList<Drop> ldrops, GUI g, Personaje p) {
+	public MovimientosAutomaticos(PositionList<Objeto> lo, PositionList<Enemigo> le, PositionList<Disparo> ldisp, PositionList<Drop> ldrops, GUI g, Personaje p, int numeroNivel) {
 		listaObjetos = lo;
 		listaEnemigos = le;
 		listaDisparos = ldisp;
@@ -33,7 +33,7 @@ class MovimientosAutomaticos {
 		personaje = p;
 		frecuencia = 0;
 		gd = new GeneradorDrops(gui);
-		controladorFin = new FinDelJuego(gui, personaje);
+		controladorFin = new FinDelJuego(gui, personaje, numeroNivel);
 	}
 	
 	

@@ -3,24 +3,52 @@ package PaqueteJuego;
 import java.awt.Color;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
+
+import PaqueteDisparos.Disparo;
+import PaqueteDrops.Drop;
 import PaqueteGenericos.Objeto;
+//import PaqueteObstaculos.DestruiblePorTodos;
 import PaquetePersonajes.Personaje;
+import TDAListaDE.EmptyListException;
+import TDAListaDE.InvalidPositionException;
+import TDAListaDE.Position;
 import TDAListaDE.PositionList;
 
 class FinDelJuego {
 	private GUI gui;
 	private Personaje personaje;
+	private final int nivelMaximo = 2;
+	private int nivelActual;
 	
-	public FinDelJuego(GUI g, Personaje per) {
+	public FinDelJuego(GUI g, Personaje per, int numeroNivel) {
 		gui = g;
 		personaje = per;
+		nivelActual = numeroNivel;
 	}
 	
 	public void chequearVictoria(PositionList<Objeto> listaObjetos) {
 		if (listaObjetos.size() == 1) { //La lista de Objetos sólo contiene al Personaje.
-			cambiarFondo("./bin/ImageIcons/You Win - Agradecimientos.jpeg");
-			new Ganador(gui);
-			pararThreads();
+			if (nivelActual == nivelMaximo) {
+				cambiarFondo("./bin/ImageIcons/You Win - Agradecimientos.jpeg");
+				new Ganador(gui);
+				pararThreads();
+			}
+			else {
+				try {
+					listaObjetos.remove(listaObjetos.first()); //Evita que en el próximo control la lista de este juego tenga tamaño 1.
+				}
+				catch (InvalidPositionException | EmptyListException e) {
+					System.out.println("Problema con la lista de objetos.");
+					e.printStackTrace();
+				}
+				
+				for (Position<Disparo> disparo : gui.getJuego().getListaDisp().positions())
+					disparo.element().morir();
+				for (Position<Drop> drop : gui.getJuego().getListaDrops().positions())
+					drop.element().morir();
+				
+				gui.subirNivel();
+			}
 		}
 		else
 			actualizarVida();
@@ -51,6 +79,9 @@ class FinDelJuego {
 			ImageIcon iconoEscala = new ImageIcon(iconoOriginal.getImage().getScaledInstance(gui.getFrameWidth(), gui.getFrameHeight(), java.awt.Image.SCALE_DEFAULT));
 			nuevoFondo.setSize(gui.getFrameWidth(), gui.getFrameHeight());
 			nuevoFondo.setIcon(iconoEscala);
+			
+			gui.getPersonaje().getEscudo().setEscudo(false);
+			gui.getInicializador().setearDrops();
 			
 			gui.getPanel().removeAll();
 			gui.setearFondoYPanel(nuevoFondo);
