@@ -2,7 +2,6 @@ package PaqueteJuego;
 
 import java.awt.*;
 import java.awt.event.KeyAdapter;
-
 import javax.swing.*;
 import PaqueteContadores.Contador;
 import PaqueteContadores.ContadorTDisparo;
@@ -28,6 +27,7 @@ public class GUI {
 	private JLabel fondo, instruccion, lvl, puntuacion, nombrePersonaje, vida, iconoVida, iconoEscudo;
 	private Juego juego;
 	private KeyAdapter botonera;
+	private SoundPlayer soundplayer;
 	
 	
 	public static void main(String[] args) {
@@ -68,15 +68,17 @@ public class GUI {
 		iconoVida = inicializador.setearIconoVida();
 		iconoEscudo=inicializador.setearIconoEscudo();
 		
+		soundplayer = new SoundPlayer();
+		nivelActual = 1;
+		
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setearFondoYPanel(fondo);
+		iniciarSoundPlayer();
 		
 		puntaje = 0;
 		nombre = "";
-		nivelActual = 1;
 		
 		nombrePersonaje.setText(nombre);
-		
 		new Nivel(nivelActual, this, 100);
 	}
 		
@@ -129,6 +131,9 @@ public class GUI {
 		panel.add(iconoEscudo);
 	}
 	
+	private void iniciarSoundPlayer() {soundplayer.playSound("/SoundEffects/Soundtrack - Nivel " + nivelActual + " - WAV.wav");}
+	void pararSoundPlayer() { soundplayer.stopSound(); }
+	
 	
 	public void actualizarIconos() {
 		if (jugador.getEscudo().getEscudo() == false) {
@@ -150,8 +155,7 @@ public class GUI {
 		}	
 	}
 	
-	
-	public void setearFondoYPanel(JLabel nuevoFondo) {
+	void setearFondoYPanel(JLabel nuevoFondo) {
 		frame.setContentPane(nuevoFondo);
 		frame.getContentPane().setLayout(new BorderLayout());
 		frame.setVisible(true);
@@ -161,11 +165,14 @@ public class GUI {
 	}
 	
 	
-	public void subirNivel() {
+	void subirNivel() {
 		panel.removeAll();
 		frame.removeKeyListener(botonera);
+		pararSoundPlayer();
+		nivelActual++;
+		iniciarSoundPlayer();
 		setearFondoYPanel(fondo);
 		drops = inicializador.setearDrops();
-		new Nivel(++nivelActual, this, jugador.getVida());
+		new Nivel(nivelActual, this, jugador.getVida());
 	}
 }

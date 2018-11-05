@@ -3,11 +3,9 @@ package PaqueteJuego;
 import java.awt.Color;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
-
 import PaqueteDisparos.Disparo;
 import PaqueteDrops.Drop;
 import PaqueteGenericos.Objeto;
-//import PaqueteObstaculos.DestruiblePorTodos;
 import PaquetePersonajes.Personaje;
 import TDAListaDE.EmptyListException;
 import TDAListaDE.InvalidPositionException;
@@ -31,6 +29,8 @@ class FinDelJuego {
 			if (nivelActual == nivelMaximo) {
 				cambiarFondo("./bin/ImageIcons/You Win - Agradecimientos.jpeg");
 				new Ganador(gui);
+				SoundPlayer sp = new SoundPlayer();
+				sp.playSound("/SoundEffects/Goodbye Moonmen - Rick and Morty - WAV.wav");
 				pararThreads();
 			}
 			else {
@@ -59,6 +59,8 @@ class FinDelJuego {
 			if (personaje.getVida() <= 30) {
 				if (personaje.getVida() <= 0) { //Perder el Juego.
 					cambiarFondo("./bin/ImageIcons/Diablo III - You Have Died.jpg");
+					SoundPlayer sp = new SoundPlayer();
+					sp.playSound("/SoundEffects/For the Damaged Coda - Blonde Redhead - WAV.wav");
 					pararThreads();
 				}
 				else {
@@ -83,6 +85,7 @@ class FinDelJuego {
 			gui.getPersonaje().getEscudo().setEscudo(false);
 			gui.getInicializador().setearDrops();
 			
+			gui.pararSoundPlayer();
 			gui.getPanel().removeAll();
 			gui.setearFondoYPanel(nuevoFondo);
 			gui.getPanel().add(personaje.getGrafico());

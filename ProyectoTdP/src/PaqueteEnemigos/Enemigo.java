@@ -7,6 +7,7 @@ import PaqueteColisionadores.ColisionadorEnemigo;
 import PaqueteDisparos.Disparo;
 import PaqueteGenericos.Animado;
 import PaqueteGenericos.Objeto;
+import PaqueteJuego.SoundPlayer;
 
 public class Enemigo extends Animado {
 	protected Inteligencia intel;
@@ -29,6 +30,8 @@ public class Enemigo extends Animado {
 	}
 	
 	protected int morir() {
+		SoundPlayer sp = new SoundPlayer();
+		sp.playSound("/SoundEffects/Small Explosion - Sound Effect - WAV.wav");
 		ImageIcon iconoOriginal = new ImageIcon("./bin/ImageIcons/Animación - Muerte de Enemigo.gif");
 		ImageIcon iconoEscala = new ImageIcon(escalarGrafico(iconoOriginal));
 		grafico.setIcon(iconoEscala);

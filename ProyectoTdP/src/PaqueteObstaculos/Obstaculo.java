@@ -6,6 +6,7 @@ import PaqueteColisionadores.Colisionador;
 import PaqueteDisparos.Disparo;
 import PaqueteDisparos.DisparoEnemigo;
 import PaqueteGenericos.Objeto;
+import PaqueteJuego.SoundPlayer;
 
 public abstract class Obstaculo extends Objeto {
 	protected int puntosKill;
@@ -31,6 +32,8 @@ public abstract class Obstaculo extends Objeto {
 	}
 	
 	protected int morir() {
+		SoundPlayer sp = new SoundPlayer();
+		sp.playSound("/SoundEffects/Small Explosion (Obstáculo) - Sound Effect - WAV.wav");
 		ImageIcon iconoOriginal = new ImageIcon("./bin/ImageIcons/obstaculoDestruido.gif");
 		ImageIcon iconoEscala = new ImageIcon(escalarGrafico(iconoOriginal));
 		grafico.setIcon(iconoEscala);

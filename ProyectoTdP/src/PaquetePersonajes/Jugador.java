@@ -2,6 +2,8 @@ package PaquetePersonajes;
 
 import javax.swing.ImageIcon;
 
+import PaqueteJuego.SoundPlayer;
+
 public class Jugador extends Personaje {
 	
 	public Jugador(int vel, int x, int y, int vid) {
@@ -20,6 +22,8 @@ public class Jugador extends Personaje {
 	}
 	
 	public int morir() {
+		SoundPlayer sp = new SoundPlayer();
+		sp.playSound("/SoundEffects/Death Sound Effect - Bloodborne - WAV.wav");
 		ImageIcon iconoOriginal = new ImageIcon("./bin/ImageIcons/Jugador - Muerto.png");
 		ImageIcon iconoEscala = new ImageIcon(escalarGrafico(iconoOriginal));
 		grafico.setIcon(iconoEscala);

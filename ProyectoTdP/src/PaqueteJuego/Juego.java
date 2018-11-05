@@ -17,8 +17,6 @@ public class Juego {
 	private Obstaculo[] obstaculos;
 	private Personaje personaje;
 	private MovimientosAutomaticos movedor;
-	@SuppressWarnings("unused")
-	private Mapa mapa; //Cambiará cuando cambie el nivel.
 	
 	public Juego(int numeroNivel, GUI g, int vidaPersonaje) {
 		listaEnemigos = new ListaDoblementeEnlazada<Enemigo>();
@@ -28,7 +26,7 @@ public class Juego {
 		listaObjetos = new ListaDoblementeEnlazada<Objeto>();
 		obstaculos = new Obstaculo[3];
 		gui = g;
-		mapa = new Mapa(numeroNivel, this, vidaPersonaje);
+		new Mapa(numeroNivel, this, vidaPersonaje);
 		movedor = new MovimientosAutomaticos(listaObjetos, listaEnemigos, listaDisparos, listaDrops, gui, personaje, numeroNivel);
 	}
 	

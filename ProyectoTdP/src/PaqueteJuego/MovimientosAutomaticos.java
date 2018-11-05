@@ -114,7 +114,7 @@ class MovimientosAutomaticos {
 				if (!enem.element().getMurioChocando()) { //Si el Enemigo muere al colisionar con el Personaje, no se crearán drops.
 					Point pos = enem.element().getPos();
 					Random r = new Random();
-					if (r.nextInt(10) < 10) {
+					if (r.nextInt(10) < 4) {
 						Drop d = gd.generarDrop(pos.x, pos.y);
 						listaDrops.addLast(d);
 						gui.getPanel().add(d.getGrafico());

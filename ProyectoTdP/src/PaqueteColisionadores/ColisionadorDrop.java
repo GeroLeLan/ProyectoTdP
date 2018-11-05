@@ -2,6 +2,7 @@ package PaqueteColisionadores;
 
 import PaqueteDrops.Drop;
 import PaqueteEnemigos.Enemigo;
+import PaqueteJuego.SoundPlayer;
 import PaqueteObstaculos.Obstaculo;
 import PaquetePersonajes.Personaje;
 
@@ -18,6 +19,8 @@ public class ColisionadorDrop extends Colisionador {
 	
 	public int chocarPersonaje(Personaje personaje) {
 		if (!miDrop.soyBorrable()) {
+			SoundPlayer sp = new SoundPlayer();
+			sp.playSound("/SoundEffects/Super Mario Bros. - Mushroom Sound Effect - WAV.wav");
 			miDrop.mejorar(personaje);
 			miDrop.morir();
 			return 15;
