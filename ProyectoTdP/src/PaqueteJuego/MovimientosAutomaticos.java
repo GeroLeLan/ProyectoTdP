@@ -46,7 +46,7 @@ class MovimientosAutomaticos {
 					obj.element().mover();
 					colisionesEntreObjetos(obj.element());
 					controladorFin.chequearVictoria(listaObjetos);
-				}
+				}    
 			}
 		}
 		catch (InvalidPositionException exc) {
