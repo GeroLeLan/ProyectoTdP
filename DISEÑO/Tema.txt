@@ -1,6 +1,0 @@
-El personaje del juego será un soldado, en su zona habrá una trinchera.
-Los enemigos serán soldados de distintas apariencias según el tipo de enemigo creado.
-Los disparos serán balas o algo semejante.
-Los obstáculos serán autos y barriles.
-Los premios serán en forma de tortuga.
-El mapa será un campo.

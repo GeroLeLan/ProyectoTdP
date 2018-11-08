@@ -1,6 +1,0 @@
-Movimiento:
-Se mueve horizontalmente a través de la grilla manteniéndose siempre en 
-las mismas filas(10). 
-Si se presiona la tecla de la derecha irá a la derecha, si se usa la de la izquierda 
-se moverá a la izquierda, si se presiona la flecha para abajo, se agachará, y si se
-presiona el espacio, el personaje disparará.    

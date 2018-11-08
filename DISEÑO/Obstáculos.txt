@@ -1,2 +1,0 @@
-Si el personaje destruye todos los obstáculos que son sólo destruibles por el personaje
-se recibe un premio(freezing).

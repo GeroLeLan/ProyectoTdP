@@ -1,5 +1,0 @@
-Ubicación:
-Al disparar el arma el disparo avanza por el mapa verticalmente.
------------------------------------
-Según si es un disparo creado por un enemigo o el personaje se corresponderá a la 
-clase necesaria.
