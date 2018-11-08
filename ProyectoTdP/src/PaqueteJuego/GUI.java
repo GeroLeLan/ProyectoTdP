@@ -184,6 +184,8 @@ public class GUI {
 		frame.removeKeyListener(botonera);
 		pararSoundPlayer();
 		nivelActual++;
+		if (nivelActual == 1)
+			highScores = inicializador.setearHighScores();
 		iniciarSoundPlayer();
 		setearFondoYPanel(fondo);
 		drops = inicializador.setearDrops();
