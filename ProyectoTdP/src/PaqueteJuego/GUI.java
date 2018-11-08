@@ -125,6 +125,15 @@ public class GUI {
 	void setJuego(Juego j) { juego = j; }
 	public Juego getJuego() { return juego; }
 	
+	public void reiniciar() {
+		nivelActual = 0;
+		jugador.modificarVida(-jugador.getVida());
+		jugador.modificarVida(100);
+		puntaje = 0;
+		nombre = "";
+		nombrePersonaje.setText(nombre);
+	}
+	
 	void setBotonera(KeyAdapter b) { botonera = b; }
 	
 	public void mostrarIconoDrop(int tipo, ImageIcon image) { drops[tipo].setIcon(image); }

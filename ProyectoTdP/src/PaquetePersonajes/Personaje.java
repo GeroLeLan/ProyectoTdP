@@ -77,9 +77,8 @@ public abstract class Personaje extends Animado {
 		return congeladoPoder;
 	}
 	public void cambiarAarmaTemporal(Arma a) {			
-		if(meme == null) {
+		if(meme == null)
 			 meme = new MementoArma(arma);
-		}
 		arma = a;
 		arma.cambiarImagenGUI();
 		cantTemporales++;

@@ -67,8 +67,7 @@ public class Inicializador {
 	public JLabel setearFondo() {
 		JLabel fondo = new JLabel();
 		fondo.setSize(frameWidth, frameHeight);
-		
-		ImageIcon iconoOriginal = buscadorDeImagenes.buscarImagen("/ImageIcons/Gif de Fondo.gif");
+		ImageIcon iconoOriginal = buscadorDeImagenes.buscarImagen("/ImageIcons/GIF de Fondo.gif");
 		ImageIcon iconoEscala = new ImageIcon(iconoOriginal.getImage().getScaledInstance(frameWidth, frameHeight, java.awt.Image.SCALE_DEFAULT));
 		fondo.setIcon(iconoEscala);
 		return fondo;

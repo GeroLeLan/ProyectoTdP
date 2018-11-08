@@ -20,11 +20,13 @@ public class FinDelJuego {
 	private Personaje personaje;
 	private final int nivelMaximo = 2;
 	private int nivelActual;
+	private SoundPlayer sp;
 	
 	public FinDelJuego(GUI g, Personaje per, int numeroNivel) {
 		gui = g;
 		personaje = per;
 		nivelActual = numeroNivel;
+		sp = new SoundPlayer();
 	}
 	
 	public void chequearVictoria(PositionList<Objeto> listaObjetos) {
@@ -32,7 +34,6 @@ public class FinDelJuego {
 			if (nivelActual == nivelMaximo) {
 				cambiarFondo("/ImageIcons/You Win - Agradecimientos.jpeg");
 				new Ganador(gui);
-				SoundPlayer sp = new SoundPlayer();
 				sp.playSound("/SoundEffects/Goodbye Moonmen - Rick and Morty - WAV.wav");
 				pararThreads();
 			}
@@ -62,7 +63,6 @@ public class FinDelJuego {
 			if (personaje.getVida() <= 30) {
 				if (personaje.getVida() <= 0) { //Perder el Juego.
 					cambiarFondo("/ImageIcons/Diablo III - You Have Died.jpg");
-					SoundPlayer sp = new SoundPlayer();
 					sp.playSound("/SoundEffects/For the Damaged Coda - Blonde Redhead - WAV.wav");
 					pararThreads();
 				}
@@ -96,6 +96,9 @@ public class FinDelJuego {
 			gui.getPanel().add(gui.getLvl());
 			gui.getPanel().add(gui.getNombrePersonaje());
 			gui.getPanel().add(gui.getVida());
+			
+			Reinicio reinicio = new Reinicio(gui, sp);
+			gui.getFrame().addKeyListener(reinicio);
 		}
 		
 		@SuppressWarnings("deprecation")
