@@ -2,9 +2,6 @@ package PaqueteEnemigos;
 
 import java.awt.Point;
 import java.util.Random;
-
-import javax.swing.ImageIcon;
-
 import PaqueteDisparos.Disparo;
 import PaqueteDisparos.DisparoEnemigo;
 import PaquetePersonajes.Personaje;
@@ -12,7 +9,7 @@ import PaquetePersonajes.Personaje;
 public class ITieneArma extends Inteligencia {
 	public ITieneArma(Personaje p) {
 		super(p);
-		icono = new ImageIcon("./bin/ImageIcons/ITieneArma.png");
+		icono = buscadorDeImagenes.buscarImagen("/ImageIcons/ITieneArma.png");
 		puntosKill = 15;
 		velocidad = 3;
 	}

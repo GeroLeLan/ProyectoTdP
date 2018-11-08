@@ -1,9 +1,7 @@
 package PaqueteDisparos;
 
-import javax.swing.ImageIcon;
-
 import PaqueteColisionadores.ColisionadorDisparoPersonaje;
-import PaqueteGenericos.Objeto;
+import PaqueteObjetosGenericos.Objeto;
 import TDAListaDE.ListaDoblementeEnlazada;
 import TDAListaDE.Position;
 import TDAListaDE.PositionList;
@@ -13,7 +11,7 @@ public class DisparoPerforador extends Disparo {
 	
 	public DisparoPerforador(int x, int y, int d) {
 		super(x, y, d);
-		grafico.setIcon(new ImageIcon("./bin/ImageIcons/Perforador.gif"));
+		grafico.setIcon(buscadorDeImagenes.buscarImagen("/ImageIcons/Perforador.gif"));
 		grafico.setSize(grafico.getIcon().getIconWidth(),grafico.getIcon().getIconHeight());
 		objetosColisionados = new ListaDoblementeEnlazada<Objeto>();
 	}
@@ -41,8 +39,4 @@ public class DisparoPerforador extends Disparo {
 		}
 		return false;
 	}
-	
-	
-	
-
 }

@@ -1,18 +1,21 @@
-package PaqueteJuego;
+package PaqueteInicioYFin;
 
 import java.awt.Color;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
+
+import BuscadoresDeArchivos.SoundPlayer;
 import PaqueteDisparos.Disparo;
 import PaqueteDrops.Drop;
-import PaqueteGenericos.Objeto;
+import PaqueteJuego.GUI;
+import PaqueteObjetosGenericos.Objeto;
 import PaquetePersonajes.Personaje;
 import TDAListaDE.EmptyListException;
 import TDAListaDE.InvalidPositionException;
 import TDAListaDE.Position;
 import TDAListaDE.PositionList;
 
-class FinDelJuego {
+public class FinDelJuego {
 	private GUI gui;
 	private Personaje personaje;
 	private final int nivelMaximo = 2;
@@ -27,7 +30,7 @@ class FinDelJuego {
 	public void chequearVictoria(PositionList<Objeto> listaObjetos) {
 		if (listaObjetos.size() == 1) { //La lista de Objetos sólo contiene al Personaje.
 			if (nivelActual == nivelMaximo) {
-				cambiarFondo("./bin/ImageIcons/You Win - Agradecimientos.jpeg");
+				cambiarFondo("/ImageIcons/You Win - Agradecimientos.jpeg");
 				new Ganador(gui);
 				SoundPlayer sp = new SoundPlayer();
 				sp.playSound("/SoundEffects/Goodbye Moonmen - Rick and Morty - WAV.wav");
@@ -58,7 +61,7 @@ class FinDelJuego {
 			gui.getVida().setText("Vida: " + personaje.getVida());
 			if (personaje.getVida() <= 30) {
 				if (personaje.getVida() <= 0) { //Perder el Juego.
-					cambiarFondo("./bin/ImageIcons/Diablo III - You Have Died.jpg");
+					cambiarFondo("/ImageIcons/Diablo III - You Have Died.jpg");
 					SoundPlayer sp = new SoundPlayer();
 					sp.playSound("/SoundEffects/For the Damaged Coda - Blonde Redhead - WAV.wav");
 					pararThreads();
@@ -77,7 +80,7 @@ class FinDelJuego {
 		
 		private void cambiarFondo(String ruta) {
 			JLabel nuevoFondo = new JLabel();
-			ImageIcon iconoOriginal = new ImageIcon(ruta);
+			ImageIcon iconoOriginal = gui.getBuscadorDeImagenes().buscarImagen(ruta);
 			ImageIcon iconoEscala = new ImageIcon(iconoOriginal.getImage().getScaledInstance(gui.getFrameWidth(), gui.getFrameHeight(), java.awt.Image.SCALE_DEFAULT));
 			nuevoFondo.setSize(gui.getFrameWidth(), gui.getFrameHeight());
 			nuevoFondo.setIcon(iconoEscala);

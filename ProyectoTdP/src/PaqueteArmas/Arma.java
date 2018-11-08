@@ -2,8 +2,7 @@ package PaqueteArmas;
 
 import PaqueteDisparos.Disparo;
 
-
-abstract public class Arma {
+public abstract class Arma {
 	protected int daño;
 	
 	public Arma () {

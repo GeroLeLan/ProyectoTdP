@@ -1,8 +1,8 @@
 package PaqueteColisionadores;
 
+import BuscadoresDeArchivos.SoundPlayer;
 import PaqueteDrops.Drop;
 import PaqueteEnemigos.Enemigo;
-import PaqueteJuego.SoundPlayer;
 import PaqueteObstaculos.Obstaculo;
 import PaquetePersonajes.Personaje;
 

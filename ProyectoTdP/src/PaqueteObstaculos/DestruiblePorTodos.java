@@ -1,7 +1,6 @@
 package PaqueteObstaculos;
 
 import javax.swing.ImageIcon;
-
 import PaqueteDisparos.DisparoEnemigo;
 
 public class DestruiblePorTodos extends Obstaculo {
@@ -13,7 +12,7 @@ public class DestruiblePorTodos extends Obstaculo {
 	}
 	
 	protected void setGrafico() {
-		ImageIcon iconoOriginal = new ImageIcon("./bin/ImageIcons/DESTRUIBLE.png");
+		ImageIcon iconoOriginal = buscadorDeImagenes.buscarImagen("/ImageIcons/DESTRUIBLE.png");
 		ImageIcon iconoEscala = new ImageIcon(escalarGrafico(iconoOriginal));
 		grafico.setIcon(iconoEscala);
 	}

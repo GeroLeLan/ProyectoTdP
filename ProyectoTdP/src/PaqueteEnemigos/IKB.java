@@ -1,15 +1,13 @@
 package PaqueteEnemigos;
 
 import java.awt.Point;
-import javax.swing.ImageIcon;
-
 import PaqueteDisparos.Disparo;
 import PaquetePersonajes.Personaje;
 
 public class IKB extends Inteligencia {
 	public IKB(Personaje p) {
 		super(p);
-		icono = new ImageIcon("./bin/ImageIcons/IKB.png");
+		icono = buscadorDeImagenes.buscarImagen("/ImageIcons/IKB.png");
 		puntosKill = 30;
 		velocidad = 5;
 	}

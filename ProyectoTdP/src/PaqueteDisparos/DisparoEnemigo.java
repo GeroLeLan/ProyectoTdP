@@ -1,9 +1,7 @@
 package PaqueteDisparos;
 
-import javax.swing.ImageIcon;
-
 import PaqueteColisionadores.ColisionadorDisparoEnemigo;
-import PaqueteGenericos.Objeto;
+import PaqueteObjetosGenericos.Objeto;
 import PaqueteObstaculos.Obstaculo;
 
 public class DisparoEnemigo extends Disparo {
@@ -11,7 +9,7 @@ public class DisparoEnemigo extends Disparo {
 	public DisparoEnemigo(int x, int y,int d) {
 		super(x + 30, y + 15,d);
 		setGrafico();
-		grafico.setIcon(new ImageIcon("./bin/ImageIcons/dispEnemigo.gif"));
+		grafico.setIcon(buscadorDeImagenes.buscarImagen("/ImageIcons/dispEnemigo.gif"));
 	}
 
 	public void mover() {

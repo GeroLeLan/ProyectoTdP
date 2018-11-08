@@ -1,19 +1,15 @@
-package PaqueteJuego;
+package PaquetePersonajes;
 
 import java.awt.Image;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
-
 import javax.swing.ImageIcon;
-
 import PaqueteDisparos.Disparo;
-import PaqueteEnemigos.Enemigo;
-import PaqueteGenericos.Objeto;
-import PaqueteObstaculos.Obstaculo;
-import PaquetePersonajes.Personaje;
-import TDAListaDE.EmptyListException;
+import PaqueteJuego.GUI;
+import PaqueteJuego.Juego;
+import PaqueteObjetosGenericos.Objeto;
 
-class AccionTeclado extends KeyAdapter {
+public class AccionTeclado extends KeyAdapter {
 	private GUI gui;
 	private Juego juego;
 	private Personaje personaje;
@@ -36,10 +32,6 @@ class AccionTeclado extends KeyAdapter {
 		if (personaje.getVida() > 0) {
 			if (comando == KeyEvent.VK_LEFT || comando == KeyEvent.VK_RIGHT || comando == KeyEvent.VK_A || comando == KeyEvent.VK_D)
 					acomodarJugador();
-			if (comando == KeyEvent.VK_K && !gui.getListaEnemigos().isEmpty())
-					dañarEnemigo();
-			if (comando == KeyEvent.VK_C)
-					dañarObstaculo();
 			if (comando == KeyEvent.VK_SPACE)
 				personajeDispara();
 		}
@@ -51,40 +43,11 @@ class AccionTeclado extends KeyAdapter {
 	}
 	
 	private void acomodarJugador() {
-		ImageIcon iconoOriginal = new ImageIcon("./bin/ImageIcons/Jugador - Estándar.png");
+		ImageIcon iconoOriginal = gui.getBuscadorDeImagenes().buscarImagen("/ImageIcons/Jugador - Estándar.png");
 		ImageIcon iconoEscala = new ImageIcon(escalarImagen(iconoOriginal, personaje));
 		gui.grafico(personaje).setIcon(iconoEscala);
 	}
-	
-	private void dañarEnemigo() {
-		try {
-			Enemigo e = gui.getListaEnemigos().first().element();
-			gui.setPuntaje(gui.getPuntaje() + e.recibirDaño(100));
-			if (e.getVida() <= 0) {
-				gui.getPanel().add(gui.grafico(e));
-				gui.getPuntuacion().setText("Puntaje: " + gui.getPuntaje());
-			}
-		}
-		catch (EmptyListException exc) {
-			System.out.println(exc.getMessage() + "\n");
-			exc.printStackTrace();
-		}
-	}
-	
-	private void dañarObstaculo() {
-		Obstaculo o = juego.getObstaculo(0);
-		if (o.getVida() <= 0) {
-			o = juego.getObstaculo(1);
-			if (o.getVida() <= 0) {
-				o = juego.getObstaculo(2);
-			}
-		}		
-		if (o.getVida() > 0) {
-			gui.setPuntaje(gui.getPuntaje() + o.recibirDisparo(new Disparo(0,0,10)));
-			gui.getPuntuacion().setText("Puntaje: " + gui.getPuntaje());
-		}
-	}
-	
+		
 	private void personajeDispara() {
 		Disparo dis = personaje.disparar();
 		if (dis != null) {

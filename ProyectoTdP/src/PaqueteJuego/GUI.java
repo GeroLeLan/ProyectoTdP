@@ -3,12 +3,15 @@ package PaqueteJuego;
 import java.awt.*;
 import java.awt.event.KeyAdapter;
 import javax.swing.*;
+import BuscadoresDeArchivos.ImageFinder;
+import BuscadoresDeArchivos.SoundPlayer;
 import PaqueteContadores.Contador;
 import PaqueteContadores.ContadorTDisparo;
 import PaqueteContadores.ContadorTiempo;
 import TDAListaDE.*;
 import PaqueteEnemigos.*;
-import PaqueteGenericos.Objeto;
+import PaqueteInicioYFin.Inicializador;
+import PaqueteObjetosGenericos.Objeto;
 import PaquetePersonajes.Personaje;
 
 public class GUI {
@@ -28,10 +31,10 @@ public class GUI {
 	private Juego juego;
 	private KeyAdapter botonera;
 	private SoundPlayer soundplayer;
+	private ImageFinder buscadorDeImagenes;
 	
 	
 	public static void main(String[] args) {
-		
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -68,6 +71,7 @@ public class GUI {
 		iconoVida = inicializador.setearIconoVida();
 		iconoEscudo=inicializador.setearIconoEscudo();
 		
+		buscadorDeImagenes = new ImageFinder();
 		soundplayer = new SoundPlayer();
 		nivelActual = 1;
 		
@@ -127,17 +131,18 @@ public class GUI {
 	public void mostrarIconoVida() { panel.add(iconoVida); }
 	public void sacarIconoVida() { panel.remove(iconoVida); }
 	public void mostrarIconoEscudo(String esc) {
-		iconoEscudo.setIcon(new ImageIcon("./bin/ImageIcons/escudo_"+esc+".png"));
+		iconoEscudo.setIcon(buscadorDeImagenes.buscarImagen("/ImageIcons/escudo_"+esc+".png"));
 		panel.add(iconoEscudo);
 	}
 	
 	private void iniciarSoundPlayer() {soundplayer.playSound("/SoundEffects/Soundtrack - Nivel " + nivelActual + " - WAV.wav");}
-	void pararSoundPlayer() { soundplayer.stopSound(); }
+	public void pararSoundPlayer() { soundplayer.stopSound(); }
 	
+	public ImageFinder getBuscadorDeImagenes() { return buscadorDeImagenes; }
 	
 	public void actualizarIconos() {
 		if (jugador.getEscudo().getEscudo() == false) {
-			mostrarIconoDrop(0, new ImageIcon("./bin/ImageIcons/iconoDropEscudo_Deshabilitado.png"));
+			mostrarIconoDrop(0, buscadorDeImagenes.buscarImagen("/ImageIcons/iconoDropEscudo_Deshabilitado.png"));
 			panel.remove(iconoEscudo);
 		}
 		if(jugador.getEscudo().getEscudo() && jugador.getEscudo().getCantEsc() == 3)
@@ -149,13 +154,13 @@ public class GUI {
 		if(jugador.getCongelarPoder())
 			cant++;
 		if(cant == 30) {
-			mostrarIconoDrop(3, new ImageIcon("./bin/ImageIcons/iconoDropCongelar_Deshabilitado.png"));
+			mostrarIconoDrop(3, buscadorDeImagenes.buscarImagen("/ImageIcons/iconoDropCongelar_Deshabilitado.png"));
 			cant=0;
 			jugador.setCongelarPoder(false);
 		}	
 	}
 	
-	void setearFondoYPanel(JLabel nuevoFondo) {
+	public void setearFondoYPanel(JLabel nuevoFondo) {
 		frame.setContentPane(nuevoFondo);
 		frame.getContentPane().setLayout(new BorderLayout());
 		frame.setVisible(true);
@@ -165,7 +170,7 @@ public class GUI {
 	}
 	
 	
-	void subirNivel() {
+	public void subirNivel() {
 		panel.removeAll();
 		frame.removeKeyListener(botonera);
 		pararSoundPlayer();

@@ -1,23 +1,18 @@
 package PaqueteDrops;
 
-import javax.swing.ImageIcon;
-
 import PaqueteColisionadores.Colisionador;
 import PaqueteColisionadores.ColisionadorDrop;
-import PaqueteGenericos.Objeto;
 import PaquetePersonajes.Personaje;
 import PaqueteJuego.GUI;
+import PaqueteObjetosGenericos.Objeto;
 
 public abstract class Drop extends Objeto {
 	protected boolean  borrable;
-	protected ImageIcon icono;
 	protected GUI gui;
 	
 	protected Drop(int x, int y, GUI gui) {
 		super(x, y);
-
 		this.gui = gui;
-
 		setGrafico();
 		borrable = false;
 	}

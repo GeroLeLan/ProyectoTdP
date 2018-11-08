@@ -9,6 +9,7 @@ public class Mapa {
 	private final int Xmax =java.awt.Toolkit.getDefaultToolkit().getScreenSize().width;
 	private final int Ymax =java.awt.Toolkit.getDefaultToolkit().getScreenSize().height;
 	private int dificultad;
+	private int cantArmados, cantAP, cantKA, cantKB, cantKM, x = 0, y = 0;
 	private final int maxEnemigos = 20;
 	private final int posXObstaculo1 =  (int) (Xmax*0.08), posXObstaculo2 = (int) (Xmax*0.256), posXObstaculo3 = (int) (Xmax*0.43), posYObstaculo = (int) (Ymax*0.5);
 	protected final int posXJugador = (int) (Xmax*0.275), posYJugador = (int) (Ymax*0.73);
@@ -16,13 +17,15 @@ public class Mapa {
 	private Juego juego;
 	private Personaje jugador;
 	
-	/* A LOOK INSIDE MY HEAD:
-	 * A ver. Hay una matriz que determina si una posición de las iniciales está o no ocupada, y cuáles son sus valores x,y en el frame.
+	/* LA CLASE MAPA:
+	 * Una matriz que determina si una posición de las iniciales está o no ocupada, y cuáles son sus valores (x,y) en el frame de la GUI.
 	 * 
-	 * Primero determino la cantidad de cada tipo de enemigo en una forma pseudo-aleatoria, dependiendo de la dificultad con la que se esté tratando.
-	 * Después, creo todos los enemigos armados (los fijos y los que pierden el arma) en posiciones aleatorias de esa matriz,
-	 * asegurándome de que no se cree más de un enemigo por posición.
-	 * Por último, lleno los lugares vacíos con los kamikazes, poniendo primero a los Buscadores, luego a los Mezcla y finalmente a los Aleatorios
+	 * Primero, se determina la cantidad de cada tipo de enemigo en una forma pseudo-aleatoria, dependiendo de la dificultad con la que se esté tratando.
+	 * Esto permite tener un control del modo en que se generan los enemigos y las cantidades de cada uno para cada nivel, en lugar de dejarlo librado al azar puro.
+	 * Así, se garantiza que los niveles superiores (si es que fueran a agregarse más niveles en un futuro) presenten más Kamikazes que los inferiores.
+	 * Después, se crean todos los enemigos armados (los que pierden el arma y los que no) en posiciones aleatorias de esa matriz,
+	 * controlando que no se cree más de un enemigo por posición.
+	 * Por último, se llenan los lugares vacíos con los Kamikazes, ubicando primero a los Buscadores, luego a los Mezcla y finalmente a los Aleatorios
 	 * para que los buscadores tengan que hacer un mayor recorrido.
 	 */
 	
@@ -55,8 +58,8 @@ public class Mapa {
 		}
 	}
 	
-	/** Con una dificultad del primer nivel (menor o igual que 1) se crean ciertos enemigos.
-	 *  Con una del segundo nivel (mayor o igual que 2) se crean otros enemigos.
+	/* Con una dificultad baja (menor o igual que 1) se crean pocos Kamikazes.
+	 *  Con una alta (mayor o igual que 2) se crean varios más.
 	 */
 	public Mapa (int dif, Juego ju, int vidaPer) {
 		dificultad = dif;
@@ -78,137 +81,102 @@ public class Mapa {
 		crearBarricadas();
 	}
 	
+	
 	private void crearEnemigos() {
-		int cantArmados, cantAP, cantKA, cantKB, cantKM, x = 0, y = 0;
-		
-		if (dificultad < 2) {
-			do {
-				cantArmados = new java.util.Random().nextInt(15);
-			} while (cantArmados < 10); //Habrá entre 10 y 14 enemigos armados.
-			
-			if (cantArmados == 10)
-				cantAP = 3;
-			else
-				cantAP = (cantArmados == 14) ? 6 : 4;
-			
-			cantKB = 2;
-			
-			if (cantArmados < 12) {
-				cantKA = 5;
-				cantKM = maxEnemigos - (cantArmados + cantKA + cantKB);
-			}
-			else {
-				if (cantArmados < 14) {
-					cantKA = 4;
-					cantKM = maxEnemigos - (cantArmados + cantKA + cantKB);
-				}
-				else { //cantArmados == 14
-					cantKA = 3;
-					cantKM = 1;
-				}
-			}
-			
-		}
-		else {
-			do {
-				cantArmados = new java.util.Random().nextInt(12);
-			} while (cantArmados < 7); //Habrá entre 7 y 11 enemigos armados.
-			
-			if (cantArmados == 7)
-				cantAP = 3;
-			else
-				cantAP = (cantArmados == 11) ? 6 : 4;
-			
-			cantKB = 4;
-			
-			if (cantArmados < 9) {
-				cantKA = 5;
-				cantKM = maxEnemigos - (cantArmados + cantKA + cantKB);
-			}
-			else {
-				if (cantArmados < 14) {
-					cantKA = 4;
-					cantKM = maxEnemigos - (cantArmados + cantKA + cantKB);
-				}
-				else { //cantArmados == 11
-					cantKA = 3;
-					cantKM = 2;
-				}
-			}
-		}
-		
-		for (int i = 0; i < cantArmados - cantAP; i++) {
-			do {
-				x = new java.util.Random().nextInt(4);
-				y = new java.util.Random().nextInt(5);
-			} while (matrizPosiciones[x][y].getOcupado()); //Deja de buscar cuando encuentra una posición vacía.
-			matrizPosiciones[x][y].setOcupado(true);
-			Enemigo enem = crearEnemigo(new ITieneArma(jugador), x, y);
-			juego.agregarEnemigo(enem);
-		}
-		
-		for (int i = 0; i < cantAP; i++) {
-			do {
-				x = new java.util.Random().nextInt(4);
-				y = new java.util.Random().nextInt(5);
-			} while (matrizPosiciones[x][y].getOcupado()); //Deja de buscar cuando encuentra una posición vacía.
-			matrizPosiciones[x][y].setOcupado(true);
-			Enemigo enem = crearEnemigo(new ITAP(jugador), x, y);
-			juego.agregarEnemigo(enem);
-		} //Dado que a lo sumo habrá 14 enemigos armados, el proceso de búsqueda de una posición no tardará demasiado.
-		
-		
-		int cont = 0; boolean quedan = true;
-		for (int i = 0; i < 4 && quedan; i++) { //Crear Kamikazes.
-			for (int j = 0; j < 5 && quedan; j++) {
-				if (!matrizPosiciones[i][j].getOcupado()) {
-					matrizPosiciones[i][j].setOcupado(true); //No es realmente necesario (la posición (i,j) no se evaluará más), pero por una cuestión de prolijidad lo seteo en true.
-					cont++;
-					
-					Enemigo enem;
-					
-					if (cont <= cantKB)
-						enem = crearEnemigo(new IKB(jugador), i, j);
-					else {
-						if (cont <= cantKB + cantKM)
-							enem = crearEnemigo(new IKM(jugador), i, j);
-						else
-							enem = crearEnemigo(new IKA(jugador), i, j);
-					}
-					
-					juego.agregarEnemigo(enem);
-					
-					if (cont == cantKB + cantKM + cantKA)
-						quedan = false;
-				}
-			}
-		}
-		
-	}
-	public Enemigo crearEnemigo(Inteligencia in,int i,int j) {
-		return new Enemigo(in, matrizPosiciones[i][j].getPosX(), matrizPosiciones[i][j].getPosY());
+		if (dificultad < 2)
+			definirCantidades(10, 14, 2, 12, 1);
+		else
+			definirCantidades(7, 11, 4, 9, 2);
+		situarEnemigos();
 	}
 	
-	private void crearBarricadas() {
-		if (dificultad < 2) {
-			DestruiblePorTodos dest1 = new DestruiblePorTodos(posXObstaculo1, posYObstaculo);
-			BarricadaEnemigos barr2 = new BarricadaEnemigos(posXObstaculo2, posYObstaculo);
-			DestruiblePorTodos dest3 = new DestruiblePorTodos(posXObstaculo3, posYObstaculo);
+		private void definirCantidades(int min, int max, int kb, int mitad, int km) {
+			do {
+				cantArmados = new java.util.Random().nextInt(max + 1);
+			} while (cantArmados < min); //Habrá entre 'min' y 'max' enemigos armados.
 			
+			if (cantArmados == min)
+				cantAP = 3;
+			else
+				cantAP = (cantArmados == max) ? 6 : 4;
+			
+			cantKB = kb;
+			
+			if (cantArmados < mitad) {
+				cantKA = 5;
+				cantKM = maxEnemigos - (cantArmados + cantKA + cantKB);
+			}
+			else {
+				if (cantArmados < max) {
+					cantKA = 4;
+					cantKM = maxEnemigos - (cantArmados + cantKA + cantKB);
+				}
+				else { //'cantArmados' es igual a 'max'
+					cantKA = 3;
+					cantKM = km;
+				}
+			}
+		}
+		
+		private void situarEnemigos() {
+			for (int i = 0; i < cantArmados - cantAP; i++) //Situar Enemigos que no pierden el arma.
+				situarArmado(new ITieneArma(jugador));
+			for (int i = 0; i < cantAP; i++) //Situar Enemigos que pierden el arma.
+				situarArmado(new ITAP(jugador));
+			int cont = 0; boolean quedan = true;
+			for (int i = 0; i < 4 && quedan; i++) { //Situar Kamikazes.
+				for (int j = 0; j < 5 && quedan; j++) {
+					if (!matrizPosiciones[i][j].getOcupado()) { //No es necesario asignarle verdadero al atributo 'ocupado' de esta posición en este punto pues ya no se lo evaluará.
+						cont++;
+						Enemigo enem;
+						if (cont <= cantKB)
+							enem = nuevoEnemigo(new IKB(jugador), i, j);
+						else {
+							if (cont <= cantKB + cantKM)
+								enem = nuevoEnemigo(new IKM(jugador), i, j);
+							else
+								enem = nuevoEnemigo(new IKA(jugador), i, j);
+						}
+						juego.agregarEnemigo(enem);
+						if (cont == cantKB + cantKM + cantKA)
+							quedan = false;
+					}
+				}
+			}
+		}
+		private void situarArmado(Inteligencia in) {
+			do {
+				x = new java.util.Random().nextInt(4);
+				y = new java.util.Random().nextInt(5);
+			} while (matrizPosiciones[x][y].getOcupado()); //Deja de buscar cuando encuentra una posición vacía.
+			matrizPosiciones[x][y].setOcupado(true);
+			Enemigo enem = nuevoEnemigo(in, x, y);
+			juego.agregarEnemigo(enem);
+		} //Dado que a lo sumo habrá 14 enemigos armados, el proceso de búsqueda de una posición será rápido.
+		
+		private Enemigo nuevoEnemigo(Inteligencia in ,int i,int j) {
+			return new Enemigo(in, matrizPosiciones[i][j].getPosX(), matrizPosiciones[i][j].getPosY());
+		}
+	
+		
+	private void crearBarricadas() {
+		BarricadaEnemigos barr2 = new BarricadaEnemigos(posXObstaculo2, posYObstaculo);
+		juego.agregarObstaculo(1, barr2);
+		
+		if (dificultad < 2) {
+			DestruiblePorTodos dest1 = new DestruiblePorTodos(posXObstaculo1, posYObstaculo);	
+			DestruiblePorTodos dest3 = new DestruiblePorTodos(posXObstaculo3, posYObstaculo);
 			juego.agregarObstaculo(0, dest1);
-			juego.agregarObstaculo(1, barr2);
 			juego.agregarObstaculo(2, dest3);
 		}
 		else {
 			BarricadaEnemigos barr1 = new BarricadaEnemigos(posXObstaculo1, posYObstaculo);
-			BarricadaEnemigos barr2 = new BarricadaEnemigos(posXObstaculo2, posYObstaculo);
 			BarricadaEnemigos barr3 = new BarricadaEnemigos(posXObstaculo3, posYObstaculo);
-			
 			juego.agregarObstaculo(0, barr1);
-			juego.agregarObstaculo(1, barr2);
 			juego.agregarObstaculo(2, barr3);
 		}
 	}
+	
 	
 	private void crearJugador(int vidaPer) {
 		jugador = new Jugador(7, posXJugador, posYJugador, vidaPer);

@@ -4,12 +4,11 @@ import PaqueteEnemigos.Enemigo;
 import PaqueteJuego.GUI;
 import TDAListaDE.Position;
 import PaquetePersonajes.Personaje;
-import javax.swing.ImageIcon;
 
 public class Congelar extends Drop{
 	public Congelar(int x, int y, GUI gui) {
 		super(x, y, gui);
-		grafico.setIcon(new ImageIcon("./bin/ImageIcons/turtleCongelar.gif"));
+		grafico.setIcon(this.gui.getBuscadorDeImagenes().buscarImagen("/ImageIcons/turtleCongelar.gif"));
 	}
 
 	public int morir() {
@@ -22,7 +21,7 @@ public class Congelar extends Drop{
 		for (Position<Enemigo> en : gui.getListaEnemigos().positions()) {
 			en.element().frenar();
 		}
-		gui.mostrarIconoDrop(3,  new ImageIcon("./bin/ImageIcons/iconoDropCongelar_Habilitado.png"));
+		gui.mostrarIconoDrop(3, gui.getBuscadorDeImagenes().buscarImagen("/ImageIcons/iconoDropCongelar_Habilitado.png"));
 		personaje.setCongelarPoder(true);
 	}
 

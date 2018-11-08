@@ -1,4 +1,4 @@
-package PaqueteJuego;
+package PaqueteInicioYFin;
 
 import java.awt.Color;
 import java.awt.Font;
@@ -7,12 +7,16 @@ import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
-class Inicializador {
+import BuscadoresDeArchivos.ImageFinder;
+
+public class Inicializador {
 	private int frameWidth, frameHeight;
+	private ImageFinder buscadorDeImagenes;
 	
 	public Inicializador(int fW, int fH) {
 		frameWidth = fW;
 		frameHeight = fH;
+		buscadorDeImagenes = new ImageFinder();
 	}
 	
 	public JLabel setearLvl() {
@@ -63,7 +67,8 @@ class Inicializador {
 	public JLabel setearFondo() {
 		JLabel fondo = new JLabel();
 		fondo.setSize(frameWidth, frameHeight);
-		ImageIcon iconoOriginal = new ImageIcon("./bin/ImageIcons/Gif de Fondo.gif");
+		
+		ImageIcon iconoOriginal = buscadorDeImagenes.buscarImagen("/ImageIcons/Gif de Fondo.gif");
 		ImageIcon iconoEscala = new ImageIcon(iconoOriginal.getImage().getScaledInstance(frameWidth, frameHeight, java.awt.Image.SCALE_DEFAULT));
 		fondo.setIcon(iconoEscala);
 		return fondo;
@@ -75,11 +80,11 @@ class Inicializador {
 		
 		for(int i = 0; i < drops.length; i++)
 			drops[i] = new JLabel();
-		drops[0].setIcon(new ImageIcon("./bin/ImageIcons/iconoDropEscudo_"+d+".png"));
-		drops[1].setIcon(new ImageIcon("./bin/ImageIcons/iconoDropDaño_"+d+".png"));
-		drops[2].setIcon(new ImageIcon("./bin/ImageIcons/iconoDropSupermisil_"+d+".png"));
-		drops[3].setIcon(new ImageIcon("./bin/ImageIcons/iconoDropCongelar_"+d+".png"));
-		drops[4].setIcon(new ImageIcon("./bin/ImageIcons/iconoDropPerforador_"+d+".png"));
+		drops[0].setIcon(buscadorDeImagenes.buscarImagen("/ImageIcons/iconoDropEscudo_"+d+".png"));
+		drops[1].setIcon(buscadorDeImagenes.buscarImagen("/ImageIcons/iconoDropDaño_"+d+".png"));
+		drops[2].setIcon(buscadorDeImagenes.buscarImagen("/ImageIcons/iconoDropSupermisil_"+d+".png"));
+		drops[3].setIcon(buscadorDeImagenes.buscarImagen("/ImageIcons/iconoDropCongelar_"+d+".png"));
+		drops[4].setIcon(buscadorDeImagenes.buscarImagen("/ImageIcons/iconoDropPerforador_"+d+".png"));
 		
 		for(int i = 0;i<drops.length;i++)
 			drops[i].setSize(drops[i].getIcon().getIconHeight(), drops[i].getIcon().getIconWidth());
@@ -95,7 +100,7 @@ class Inicializador {
 	
 	public JLabel setearIconoVida() {
 		JLabel iconoVida=new JLabel();
-		iconoVida.setIcon(new ImageIcon("./bin/ImageIcons/iconoDropVida.png"));
+		iconoVida.setIcon(buscadorDeImagenes.buscarImagen("/ImageIcons/iconoDropVida.png"));
 		iconoVida.setSize(iconoVida.getIcon().getIconHeight(),iconoVida.getIcon().getIconWidth());
 		iconoVida.setBounds((int) (frameWidth * 0.001) + 10, (int) (frameHeight * 0.79), 100, 100);
 		return iconoVida;
@@ -140,7 +145,7 @@ class Inicializador {
 		
 		try {
 			BufferedReader br;
-			FileReader fr = new FileReader("./bin/High Scores.txt");
+			FileReader fr = new FileReader("High Scores.txt");
 			br = new BufferedReader(fr);
 			
 			for (int i = 1; i < 6; i++)

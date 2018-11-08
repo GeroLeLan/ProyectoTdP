@@ -2,9 +2,7 @@ package PaqueteDrops;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import javax.swing.ImageIcon;
 import javax.swing.Timer;
-
 import PaquetePersonajes.Personaje;
 import PaqueteJuego.GUI;
 
@@ -12,7 +10,7 @@ public class SubirVida extends Drop{
 
 	public SubirVida(int x, int y, GUI gui) {
 		super(x, y, gui);
-		grafico.setIcon(new ImageIcon("./bin/ImageIcons/turtleVida.gif"));
+		grafico.setIcon(this.gui.getBuscadorDeImagenes().buscarImagen("/ImageIcons/turtleVida.gif"));
 	}
 	
 	public void mejorar(Personaje personaje) {
@@ -24,7 +22,6 @@ public class SubirVida extends Drop{
 				gui.sacarIconoVida();		
 			}
 		});
-		
 		time.start();
 	}
 	

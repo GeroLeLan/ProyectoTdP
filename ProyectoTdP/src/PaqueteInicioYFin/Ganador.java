@@ -1,4 +1,4 @@
-package PaqueteJuego;
+package PaqueteInicioYFin;
 
 import java.awt.Color;
 import java.io.BufferedReader;
@@ -9,6 +9,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 
 import PaqueteArmas.ArmaDeVictoria;
+import PaqueteJuego.GUI;
 
 class Ganador {
 	private GUI gui;
@@ -23,7 +24,7 @@ class Ganador {
 	private void ganar() {
 		try {
 			BufferedReader br;
-			FileReader fr = new FileReader("./bin/High Scores.txt");
+			FileReader fr = new FileReader("High Scores.txt");
 			br = new BufferedReader(fr);
 			String cadena;
 			int lineaCambio = -1;
@@ -56,7 +57,7 @@ class Ganador {
 	
 		private void actualizarTablaHighScores(int lineaCambio, String[] archivoViejo) {
 			try {
-				File logFile = new File("./bin/High Scores.txt");
+				File logFile = new File("High Scores.txt");
 				BufferedWriter bw;
 				FileWriter fw = new FileWriter(logFile);
 				bw = new BufferedWriter(fw);

@@ -1,4 +1,4 @@
-package PaqueteGenericos;
+package PaqueteObjetosGenericos;
 
 import java.awt.Point;
 

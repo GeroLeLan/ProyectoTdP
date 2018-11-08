@@ -2,9 +2,6 @@ package PaqueteEnemigos;
 
 import java.awt.Point;
 import java.util.Random;
-
-import javax.swing.ImageIcon;
-
 import PaqueteDisparos.Disparo;
 import PaquetePersonajes.Personaje;
 
@@ -13,7 +10,7 @@ public class IKA extends Inteligencia {
 	
 	public IKA(Personaje p) {
 		super(p);
-		icono = new ImageIcon("./bin/ImageIcons/IKA.png");
+		icono = buscadorDeImagenes.buscarImagen("/ImageIcons/IKA.png");
 		puntosKill = 20;
 		velocidad = 1;
 		vecesMovido = 1;

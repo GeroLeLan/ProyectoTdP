@@ -1,8 +1,6 @@
 package PaqueteEnemigos;
 
 import java.awt.Point;
-import javax.swing.ImageIcon;
-
 import PaqueteDisparos.Disparo;
 import PaquetePersonajes.Personaje;
 
@@ -12,7 +10,7 @@ public class ITAP extends Inteligencia {
 	
 	public ITAP(Personaje p) {
 		super(p);
-		icono = new ImageIcon("./bin/ImageIcons/ITAP - Armado.png");
+		icono = buscadorDeImagenes.buscarImagen("/ImageIcons/ITAP - Armado.png");
 		puntosKill = 20;
 		velocidad = 1;
 		intelActual = new ITieneArma(p);
@@ -26,7 +24,7 @@ public class ITAP extends Inteligencia {
 	public void cambiarInteligencia(int vida, Enemigo enem) {
 		if (!cambio && vida <= 20) {
 			intelActual = new IKB(personajeJuego);
-			icono = new ImageIcon("./bin/ImageIcons/ITAP - Desarmado.png");
+			icono = buscadorDeImagenes.buscarImagen("/ImageIcons/ITAP - Desarmado.png");
 			enem.setGrafico();
 			cambio = true;
 		}

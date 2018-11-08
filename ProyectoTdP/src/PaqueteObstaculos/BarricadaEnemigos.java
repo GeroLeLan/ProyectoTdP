@@ -1,7 +1,6 @@
 package PaqueteObstaculos;
 
 import javax.swing.ImageIcon;
-
 import PaqueteDisparos.DisparoEnemigo;
 
 public class BarricadaEnemigos extends Obstaculo {
@@ -13,12 +12,12 @@ public class BarricadaEnemigos extends Obstaculo {
 	}
 	
 	protected void setGrafico() {
-		ImageIcon iconoOriginal = new ImageIcon("./bin/ImageIcons/BARRICADA.png");
+		ImageIcon iconoOriginal = buscadorDeImagenes.buscarImagen("/ImageIcons/BARRICADA.png");
 		ImageIcon iconoEscala = new ImageIcon(escalarGrafico(iconoOriginal));
 		grafico.setIcon(iconoEscala);
 	}
 	
-	public int recibirDisparo(DisparoEnemigo dispEnem) { //El disparo del Enemigo no le hace nada a este tipo de obstáculos.
+	public int recibirDisparo(DisparoEnemigo dispEnem) { //El disparo del Enemigo no le hace daño a este tipo de obstáculos.
 		return 0;
 	}
 

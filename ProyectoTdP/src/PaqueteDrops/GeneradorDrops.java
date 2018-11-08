@@ -1,7 +1,6 @@
 package PaqueteDrops;
 
 import java.util.Random;
-
 import PaqueteJuego.GUI;
 
 public class GeneradorDrops {

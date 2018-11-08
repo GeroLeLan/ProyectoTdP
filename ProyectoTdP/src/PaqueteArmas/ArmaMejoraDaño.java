@@ -1,7 +1,5 @@
 package PaqueteArmas;
 
-import javax.swing.ImageIcon;
-
 import PaqueteArmas.Arma;
 import PaqueteDisparos.Disparo;
 import PaqueteDisparos.DisparoInstaKill;
@@ -22,8 +20,8 @@ public class ArmaMejoraDaño extends Arma {
 	}
 
 	public void cambiarImagenGUI() {
-		gui.mostrarIconoDrop(1,  new ImageIcon("./bin/ImageIcons/iconoDropDaño_Habilitado.png"));
-		gui.mostrarIconoDrop(2,  new ImageIcon("./bin/ImageIcons/iconoDropSupermisil_Deshabilitado.png"));
-		gui.mostrarIconoDrop(4,  new ImageIcon("./bin/ImageIcons/iconoDropPerforador_Deshabilitado.png"));
+		gui.mostrarIconoDrop(1, gui.getBuscadorDeImagenes().buscarImagen("/ImageIcons/iconoDropDaño_Habilitado.png"));
+		gui.mostrarIconoDrop(2, gui.getBuscadorDeImagenes().buscarImagen("/ImageIcons/iconoDropSupermisil_Deshabilitado.png"));
+		gui.mostrarIconoDrop(4, gui.getBuscadorDeImagenes().buscarImagen("/ImageIcons/iconoDropPerforador_Deshabilitado.png"));
 	}
 }

@@ -1,24 +1,24 @@
 package PaqueteDisparos;
 
-import javax.swing.ImageIcon;
-
+import BuscadoresDeArchivos.ImageFinder;
 import PaqueteColisionadores.Colisionador;
 import PaqueteColisionadores.ColisionadorDisparoPersonaje;
-import PaqueteGenericos.Objeto;
+import PaqueteObjetosGenericos.Objeto;
 import PaqueteObstaculos.Obstaculo;
-
 
 public class Disparo extends Objeto {
 	protected boolean borrable;
 	protected int daño;
 	protected int velocidad;
+	protected ImageFinder buscadorDeImagenes;
 	
 	public Disparo(int x, int y,int d) {
 		super(x, y);
 		borrable = false;
 		daño = d;
+		buscadorDeImagenes = new ImageFinder();
 		setGrafico();
-		grafico.setIcon(new ImageIcon("./bin/ImageIcons/dispPersonaje.gif"));
+		grafico.setIcon(buscadorDeImagenes.buscarImagen("/ImageIcons/dispPersonaje.gif"));
 	}
 	
 	public int getDaño() {

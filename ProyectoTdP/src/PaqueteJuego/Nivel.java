@@ -7,6 +7,8 @@ import javax.swing.JLabel;
 import PaqueteContadores.ContadorTDisparo;
 import PaqueteContadores.ContadorTiempo;
 import PaqueteEnemigos.Enemigo;
+import PaqueteInicioYFin.Inicializador;
+import PaquetePersonajes.AccionTeclado;
 import PaquetePersonajes.Personaje;
 import TDAListaDE.Position;
 import TDAListaDE.PositionList;

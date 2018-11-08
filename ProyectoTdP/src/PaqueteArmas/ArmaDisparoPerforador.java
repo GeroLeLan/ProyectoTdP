@@ -1,7 +1,5 @@
 package PaqueteArmas;
 
-import javax.swing.ImageIcon;
-
 import PaqueteDisparos.Disparo;
 import PaqueteDisparos.DisparoPerforador;
 import PaqueteJuego.GUI;
@@ -20,9 +18,9 @@ public class ArmaDisparoPerforador extends Arma {
 	}
 
 	public void cambiarImagenGUI() {
-		gui.mostrarIconoDrop(4,  new ImageIcon("./bin/ImageIcons/iconoDropPerforador_Habilitado.png"));
-		gui.mostrarIconoDrop(1,  new ImageIcon("./bin/ImageIcons/iconoDropDaño_Deshabilitado.png"));
-		gui.mostrarIconoDrop(2,  new ImageIcon("./bin/ImageIcons/iconoDropSupermisil_Deshabilitado.png"));
+		gui.mostrarIconoDrop(4, gui.getBuscadorDeImagenes().buscarImagen("/ImageIcons/iconoDropPerforador_Habilitado.png"));
+		gui.mostrarIconoDrop(1, gui.getBuscadorDeImagenes().buscarImagen("/ImageIcons/iconoDropDaño_Deshabilitado.png"));
+		gui.mostrarIconoDrop(2, gui.getBuscadorDeImagenes().buscarImagen("/ImageIcons/iconoDropSupermisil_Deshabilitado.png"));
 	}
 
 }

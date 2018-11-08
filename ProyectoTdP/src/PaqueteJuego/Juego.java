@@ -4,7 +4,7 @@ import PaqueteDisparos.Disparo;
 import PaqueteDrops.Drop;
 import TDAListaDE.*;
 import PaqueteEnemigos.*;
-import PaqueteGenericos.Objeto;
+import PaqueteObjetosGenericos.Objeto;
 import PaqueteObstaculos.*;
 import PaquetePersonajes.Personaje;
 

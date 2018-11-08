@@ -1,24 +1,21 @@
 package PaqueteEnemigos;
 
 import java.awt.Point;
-
 import PaqueteDisparos.Disparo;
 import PaquetePersonajes.Personaje;
 
-
-
 public class InteligenciaCongelada extends Inteligencia {
-	int CantTurnos;
+	int cantTurnos;
 	Enemigo enemigo;
-	protected InteligenciaCongelada(Personaje p,Enemigo e) {
+	protected InteligenciaCongelada(Personaje p, Enemigo e) {
 		super(p);
-		enemigo=e;
-		CantTurnos=30;
+		enemigo = e;
+		cantTurnos = 30;
 	}
 
 	public void mover(Point pos) {
-		CantTurnos--;
-		if(CantTurnos==0) {
+		cantTurnos--;
+		if(cantTurnos == 0) {
 			enemigo.recuperarIntel();
 		}
 	}

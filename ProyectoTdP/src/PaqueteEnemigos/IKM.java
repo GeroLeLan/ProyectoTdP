@@ -1,8 +1,6 @@
 package PaqueteEnemigos;
 
 import java.awt.Point;
-import javax.swing.ImageIcon;
-
 import PaqueteDisparos.Disparo;
 import PaquetePersonajes.Personaje;
 
@@ -12,7 +10,7 @@ public class IKM extends Inteligencia {
 	
 	public IKM(Personaje p) {
 		super(p);
-		icono = new ImageIcon("./bin/ImageIcons/IKM.png");
+		icono = buscadorDeImagenes.buscarImagen("/ImageIcons/IKM.png");
 		puntosKill = 25;
 		velocidad = 3;
 		intelActual = new IKB(p);

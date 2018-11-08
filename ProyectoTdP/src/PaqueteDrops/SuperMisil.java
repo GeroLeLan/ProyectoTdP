@@ -1,8 +1,5 @@
 package PaqueteDrops;
 
-import javax.swing.ImageIcon;
-
-
 import PaqueteArmas.ArmaSupermisil;
 import PaqueteContadores.ContadorTemporales;
 import PaquetePersonajes.Personaje;
@@ -10,18 +7,18 @@ import PaqueteJuego.GUI;
 
 public class SuperMisil extends Temporales {
 	private Personaje p;
-	ContadorTemporales tiempo;
+	private ContadorTemporales tiempo;
+	
 	public SuperMisil(int x, int y, GUI gui) {
 		super(x, y,gui);
-		tiempo=new ContadorTemporales(this);
-		grafico.setIcon(new ImageIcon("./bin/ImageIcons/turtleSupermisil.gif"));
+		tiempo = new ContadorTemporales(this);
+		grafico.setIcon(this.gui.getBuscadorDeImagenes().buscarImagen("/ImageIcons/turtleSupermisil.gif"));
 		setGrafico();
 	}
 	
 	public void mejorar(Personaje personaje) {
-
 		personaje.cambiarAarmaTemporal(new ArmaSupermisil(gui));
-		p=personaje;
+		p = personaje;
 		tiempo.start();
 	}
 		
@@ -37,9 +34,8 @@ public class SuperMisil extends Temporales {
 	
 	@SuppressWarnings("deprecation")
 	public void terminar() {
-		gui.mostrarIconoDrop(2,  new ImageIcon("./bin/ImageIcons/iconoDropSupermisil_Deshabilitado.png"));
+		gui.mostrarIconoDrop(2, gui.getBuscadorDeImagenes().buscarImagen("/ImageIcons/iconoDropSupermisil_Deshabilitado.png"));
 		p.recuperarArma();
-		
 		tiempo.stop();
 	}
 	

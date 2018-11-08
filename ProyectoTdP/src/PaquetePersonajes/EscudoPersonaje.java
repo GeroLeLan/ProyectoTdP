@@ -1,7 +1,7 @@
 package PaquetePersonajes;
 
 public class EscudoPersonaje {
-	protected boolean escudo=false;
+	protected boolean escudo = false;
 	protected int cantEsc;
 	
 	public EscudoPersonaje() {}

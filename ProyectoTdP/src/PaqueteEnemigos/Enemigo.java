@@ -2,24 +2,28 @@ package PaqueteEnemigos;
 
 import java.util.Random;
 import javax.swing.ImageIcon;
+
+import BuscadoresDeArchivos.ImageFinder;
+import BuscadoresDeArchivos.SoundPlayer;
 import PaqueteColisionadores.Colisionador;
 import PaqueteColisionadores.ColisionadorEnemigo;
 import PaqueteDisparos.Disparo;
-import PaqueteGenericos.Animado;
-import PaqueteGenericos.Objeto;
-import PaqueteJuego.SoundPlayer;
+import PaqueteObjetosGenericos.Animado;
+import PaqueteObjetosGenericos.Objeto;
 
 public class Enemigo extends Animado {
-	protected Inteligencia intel;
-	protected Inteligencia meme;
-	protected final int vidaInicial = 100;
-	protected boolean moviendo, murioPorChocar;
+	private Inteligencia intel;
+	private Inteligencia meme;
+	private final int vidaInicial = 100;
+	private boolean moviendo, murioPorChocar;
+	private ImageFinder buscadorDeImagenes;
 	
 	public Enemigo (Inteligencia i, int x, int y) {
 		super(i.getVelocidad(), x, y);
 		vida = vidaInicial;
 		intel = i;
 		setGrafico();
+		buscadorDeImagenes = new ImageFinder();
 		moviendo = intel.iniciaConMovimiento();
 	}
 	
@@ -32,7 +36,7 @@ public class Enemigo extends Animado {
 	protected int morir() {
 		SoundPlayer sp = new SoundPlayer();
 		sp.playSound("/SoundEffects/Small Explosion - Sound Effect - WAV.wav");
-		ImageIcon iconoOriginal = new ImageIcon("./bin/ImageIcons/Animación - Muerte de Enemigo.gif");
+		ImageIcon iconoOriginal = buscadorDeImagenes.buscarImagen("/ImageIcons/Animación - Muerte de Enemigo.gif");
 		ImageIcon iconoEscala = new ImageIcon(escalarGrafico(iconoOriginal));
 		grafico.setIcon(iconoEscala);
 		return intel.getPuntosKill();
@@ -51,7 +55,7 @@ public class Enemigo extends Animado {
 	}
 	
 	public int recibirDaño(int d) {
-		
+		moviendo = true;
 		vida -= d;
 		intel.cambiarInteligencia(vida, this);
 		if(vida <= 0)

@@ -1,21 +1,23 @@
 package PaqueteObstaculos;
 
-
 import javax.swing.ImageIcon;
+import BuscadoresDeArchivos.ImageFinder;
+import BuscadoresDeArchivos.SoundPlayer;
 import PaqueteColisionadores.Colisionador;
 import PaqueteDisparos.Disparo;
 import PaqueteDisparos.DisparoEnemigo;
-import PaqueteGenericos.Objeto;
-import PaqueteJuego.SoundPlayer;
+import PaqueteObjetosGenericos.Objeto;
 
 public abstract class Obstaculo extends Objeto {
 	protected int puntosKill;
+	protected ImageFinder buscadorDeImagenes;
 	
 	protected Obstaculo(int x, int y) {
 		super(x, y);
 		grafico.setSize((int)(Xmax*0.09),(int)(Ymax*0.07));
 		grafico.setLocation(pos);
 		vida = 50;
+		buscadorDeImagenes = new ImageFinder();
 	}
 	
 	public int recibirDisparo(Disparo dispPer) {
@@ -34,7 +36,7 @@ public abstract class Obstaculo extends Objeto {
 	protected int morir() {
 		SoundPlayer sp = new SoundPlayer();
 		sp.playSound("/SoundEffects/Small Explosion (Obstáculo) - Sound Effect - WAV.wav");
-		ImageIcon iconoOriginal = new ImageIcon("./bin/ImageIcons/obstaculoDestruido.gif");
+		ImageIcon iconoOriginal = buscadorDeImagenes.buscarImagen("/ImageIcons/obstaculoDestruido.gif");
 		ImageIcon iconoEscala = new ImageIcon(escalarGrafico(iconoOriginal));
 		grafico.setIcon(iconoEscala);
 		return puntosKill;
