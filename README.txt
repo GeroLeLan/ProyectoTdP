@@ -16,6 +16,12 @@ Derrota: Perder el Juego implica que se acabe la vida del Jugador. Cuando esto o
 
 
 
+*Para la Ejecución:*
+En la misma carpeta donde se tenga el archivo .jar llamado "XSOUP_GAME" se deberá tener el archivo .txt llamado "High Scores". Esto permitirá que
+el dicho .tx pueda ser leído y sobreescrito cuando corresponda hacerlo.
+
+
+
 *Modificaciones del Enunciado y Comentarios sobre Implementación:*
 El Jugador y los Enemigos no son naves en el espacio, sino soldados en una playa.
 
