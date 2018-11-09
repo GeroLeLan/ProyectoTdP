@@ -48,8 +48,10 @@ class Nivel {
 	
 	private void crearNivel(int dificultad) {
 		if (dificultad == 1) {
-			for(int i = 0; i < highScores.length; i++)
+			for(int i = 0; i < highScores.length; i++) {
+				highScores[i].setVisible(true);
 				panel.add(highScores[i]);
+			}
 		}
 		
 		lvl.setText("Nivel: " + dificultad);

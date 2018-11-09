@@ -1,9 +1,0 @@
-Aparición:
-Tienen una probabilidad de aparecer cuando mueren los enemigos. 
------------------------------------
-Movimiento:
-Se desplazan hacia el personaje con movimientos aleatorios descendientes sin tocar los bordes
-de la pantalla. La probabilidad de que se mueva a izquierda o derecha depende de la cercanía 
-que se encuentre con el borde del mapa.
-----------------------------------
-Los disparos pasarán a traves de ellos.

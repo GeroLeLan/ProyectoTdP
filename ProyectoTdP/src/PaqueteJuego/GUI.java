@@ -69,7 +69,7 @@ public class GUI {
 		drops = inicializador.setearDrops();
 		highScores = inicializador.setearHighScores();
 		iconoVida = inicializador.setearIconoVida();
-		iconoEscudo=inicializador.setearIconoEscudo();
+		iconoEscudo = inicializador.setearIconoEscudo();
 		
 		buscadorDeImagenes = new ImageFinder();
 		soundplayer = new SoundPlayer();
@@ -184,6 +184,8 @@ public class GUI {
 		frame.removeKeyListener(botonera);
 		pararSoundPlayer();
 		nivelActual++;
+		if (nivelActual == 1)
+			highScores = inicializador.setearHighScores();
 		iniciarSoundPlayer();
 		setearFondoYPanel(fondo);
 		drops = inicializador.setearDrops();
