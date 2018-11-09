@@ -1,5 +1,3 @@
-JAVA 9.0.4
-
 *Controles del Juego:*
 Al comenzar un Nivel, se debe presionar la tecla ESPACIO (como se lo indica en la pantalla).
 El Jugador se mueve con las FLECHAS hacia la IZQUIERDA o hacia la DERECHA, o bien con las LETRAS A y D. No es posible moverse verticalmente.
@@ -19,6 +17,9 @@ Derrota: Perder el Juego implica que se acabe la vida del Jugador. Cuando esto o
 
 
 *Para la Ejecución:*
+El Proyecto y el archivo .jar fueron creados a través de Java, usando sus Versiones 8 y 9. El archivo .jar podrá ser ejecutado con cualquiera de estas
+dos versiones.
+
 En la misma carpeta donde se tenga el archivo .jar llamado "XSOUP_GAME" se deberá tener el archivo .txt llamado "High Scores". Esto permitirá que
 el dicho .tx pueda ser leído y sobreescrito cuando corresponda hacerlo.
 
