@@ -17,6 +17,10 @@ Derrota: Perder el Juego implica que se acabe la vida del Jugador. Cuando esto o
 
 
 *Para la Ejecución:*
+En la carpeta del Proyecto no se incluye el archivo .jar. Esto se debe a que su tamaño es de 170 MB, lo que supera el límite de 100 MB por archivo
+impuesto por GitHub. Por lo tanto, a continuación se provee un link de descarga para este archivo:
+https://drive.google.com/file/d/1qYIlSRIOjYZ74W0ZDI8w4EXCIYPU6y12/view?usp=sharing
+
 El Proyecto y el archivo .jar fueron creados a través de Java, usando sus Versiones 8 y 9. El archivo .jar podrá ser ejecutado con cualquiera de estas
 dos versiones.
 
