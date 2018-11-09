@@ -6,7 +6,7 @@ import PaquetePersonajes.Personaje;
 
 public class InteligenciaCongelada extends Inteligencia {
 	int cantTurnos;
-	Enemigo enemigo;
+	protected Enemigo enemigo;
 	protected InteligenciaCongelada(Personaje p, Enemigo e) {
 		super(p);
 		enemigo = e;

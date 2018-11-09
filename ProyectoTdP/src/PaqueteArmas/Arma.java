@@ -1,9 +1,11 @@
 package PaqueteArmas;
 
 import PaqueteDisparos.Disparo;
+import PaqueteJuego.GUI;
 
 public abstract class Arma {
 	protected int daño;
+	protected GUI gui;
 	
 	public Arma () {
 		daño = 10;

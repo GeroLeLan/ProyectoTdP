@@ -1,7 +1,7 @@
 package PaqueteEnemigos;
 
 public class MementoInteligencia {
-	Inteligencia intel;
+	private Inteligencia intel;
 	public MementoInteligencia(Inteligencia in) {
 		intel = in;
 	}

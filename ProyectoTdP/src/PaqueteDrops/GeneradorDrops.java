@@ -4,7 +4,7 @@ import java.util.Random;
 import PaqueteJuego.GUI;
 
 public class GeneradorDrops {
-	Drop muchos, varios, algunos, limitados, escasos, pocos;
+	private Drop muchos, varios, algunos, limitados, escasos, pocos;
 	
 	public GeneradorDrops(GUI gui) {
 		muchos = new SuperMisil(0, 0, gui);

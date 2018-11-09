@@ -5,7 +5,7 @@ import PaqueteDisparos.MegaDisparo;
 import PaqueteJuego.GUI;
 
 public class ArmaSupermisil extends Arma {
-	protected GUI gui;
+	
 	
 	public ArmaSupermisil(GUI g) {
 		super();

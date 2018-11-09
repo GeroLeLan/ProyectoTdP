@@ -5,7 +5,7 @@ import PaqueteDisparos.DisparoPerforador;
 import PaqueteJuego.GUI;
 
 public class ArmaDisparoPerforador extends Arma {
-	protected GUI gui;
+	
 	
 	public ArmaDisparoPerforador(GUI g) {
 		super();

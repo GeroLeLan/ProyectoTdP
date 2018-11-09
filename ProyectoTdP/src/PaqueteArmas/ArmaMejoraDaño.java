@@ -6,7 +6,7 @@ import PaqueteDisparos.DisparoInstaKill;
 import PaqueteJuego.GUI;
 
 public class ArmaMejoraDaño extends Arma {
-	protected GUI gui;
+	
 	
 	public ArmaMejoraDaño(GUI g) {
 		super();
